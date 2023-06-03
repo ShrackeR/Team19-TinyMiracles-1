@@ -252,7 +252,7 @@ const forgotPassword = async (req, res) => {
 
   try {
     const user = await User.forgot(aadhar);
-    console.log(user);
+    console.log(user,"hey");
     const newToken = jwt.sign(
       {
         _id: user._id,
@@ -262,8 +262,9 @@ const forgotPassword = async (req, res) => {
         expiresIn: "20m",
       }
     );
-    console.log(newToken);
+    console.log(newToken,"Hi");
     const emailTemplate = resetPassword(user.email, newToken);
+    console.log("bye")
     sendEmail(emailTemplate);
     res.status(200).json({
       status: true,
