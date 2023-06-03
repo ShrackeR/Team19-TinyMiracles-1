@@ -1,7 +1,61 @@
+// import React, { Component } from 'react'
+// export default class SignUp extends Component {
+//   render() {
+//     return (
+//       <form>
+//         <h3>Sign Up</h3>
+//         <div className="mb-3">
+//           <label>Name</label>
+//           <input
+//             type="text"
+//             className="form-control"
+//             placeholder="Name"
+//           />
+//         </div>
+//         <div className="mb-3">
+//           <label>Email address</label>
+//           <input
+//             type="email"
+//             className="form-control"
+//             placeholder="Enter email"
+//           />
+//         </div>
+//         <div className="mb-3">
+//           <label>Aadhar no.</label>
+//           <input
+//             type="text"
+//             className="form-control"
+//             placeholder="Enter Aadhar number"
+//           />
+//         </div>
+//         <div className="mb-3">
+//           <label>Password</label>
+//           <input
+//             type="password"
+//             className="form-control"
+//             placeholder="Enter password"
+//           />
+//         </div>
+//         <div className="d-grid">
+//           <button type="submit" className="btn btn-primary">
+//             Sign Up
+//           </button>
+//         </div>
+//         <p className="forgot-password text-right">
+//           Already registered <a href="/sign-in">sign in?</a>
+//         </p>
+//       </form>
+//     )
+//   }
+// }
+
+
+
+
 import React, { useState } from 'react';
 import  {useSignup} from "../hooks/useSignup"
 
-const Signup = () => {
+const App = () => {
   const{signup,error,isLoading,success,setSuccess}=useSignup();
 
   const [formData, setFormData] = useState({
@@ -127,194 +181,168 @@ const Signup = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        Name:
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          className="form-control"
-        />
-      </div>
       <br />
-      <div>
+      <label>
         Aadhar:
         <input
           type="text"
           name="aadhar"
           value={formData.aadhar}
           onChange={handleChange}
-          className="form-control"
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         Is PAN Card Available:
         <input
           type="checkbox"
           name="isPanCard"
           checked={formData.isPanCard}
           onChange={handleChange}
-          className="form-control"
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         PAN:
         <input
           type="text"
           name="pan"
           value={formData.pan}
           onChange={handleChange}
-          className="form-control"
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         Is Eshram Available:
         <input
           type="checkbox"
           name="isEshram"
           checked={formData.isEshram}
           onChange={handleChange}
-          className="form-control"
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         Eshram:
         <input
           type="text"
           name="eshram"
           value={formData.eshram}
           onChange={handleChange}
-          className="form-control"
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         Mobile:
         <input
           type="text"
           name="mobile"
           value={formData.mobile}
           onChange={handleChange}
-          className="form-control"
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         Date of Birth:
         <input
           type="date"
           name="dob"
           value={formData.dob}
           onChange={handleChange}
-          className="form-control"
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         Email:
         <input
           type="email"
           name="email"
           value={formData.email}
           onChange={handleChange}
-          className="form-control"
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         Area:
         <input
           type="text"
           name="area"
           value={formData.area}
           onChange={handleChange}
-          className="form-control"
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         Street:
         <input
           type="text"
           name="street"
           value={formData.street}
           onChange={handleChange}
-          className="form-control"
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         City:
         <input
           type="text"
           name="city"
           value={formData.city}
           onChange={handleChange}
-          className="form-control"
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         State:
         <input
           type="text"
           name="state"
           value={formData.state}
           onChange={handleChange}
-          className="form-control"
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         PIN:
         <input
           type="text"
           name="pin"
           value={formData.pin}
           onChange={handleChange}
-          className="form-control"
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         Password:
         <input
           type="password"
           name="password"
           value={formData.password}
           onChange={handleChange}
-          className="form-control"
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         Family & Friends:
         <input
           type="text"
           name="familyFriends"
           value={formData.familyFriends}
           onChange={handleChange}
-          className="form-control"
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         Is Bank Account Available:
         <input
           type="checkbox"
           name="isBankAccount"
           checked={formData.isBankAccount}
           onChange={handleChange}
-          className="form-control"
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         Bank Name:
         <input
           type="text"
@@ -322,9 +350,9 @@ const Signup = () => {
           value={formData.bankName}
           onChange={handleChange}
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         Account Number:
         <input
           type="text"
@@ -332,9 +360,9 @@ const Signup = () => {
           value={formData.accountNumber}
           onChange={handleChange}
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         IFSC:
         <input
           type="text"
@@ -342,9 +370,9 @@ const Signup = () => {
           value={formData.ifsc}
           onChange={handleChange}
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         Medical Test Frequency:
         <input
           type="text"
@@ -352,9 +380,9 @@ const Signup = () => {
           value={formData.medicalTestFrequency}
           onChange={handleChange}
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         Last Checkup:
         <input
           type="date"
@@ -362,9 +390,9 @@ const Signup = () => {
           value={formData.lastCheckup}
           onChange={handleChange}
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         Diseases:
         {formData.diseases.map((disease, index) => (
           <div key={index}>
@@ -382,9 +410,9 @@ const Signup = () => {
         <button type="button" onClick={handleAddDisease}>
           Add Disease
         </button>
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         Number of Children:
         <input
           type="number"
@@ -392,9 +420,9 @@ const Signup = () => {
           value={formData.numberOfChildren}
           onChange={handleChange}
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         Need Child Education Assistance:
         <input
           type="checkbox"
@@ -402,9 +430,9 @@ const Signup = () => {
           checked={formData.needChildEducationAssistance}
           onChange={handleChange}
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         Need Employment Support:
         <input
           type="checkbox"
@@ -412,9 +440,9 @@ const Signup = () => {
           checked={formData.needEmploymentSupport}
           onChange={handleChange}
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         Education Level:
         <input
           type="text"
@@ -422,9 +450,9 @@ const Signup = () => {
           value={formData.educationLevel}
           onChange={handleChange}
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         Skillset:
         <input
           type="text"
@@ -432,9 +460,9 @@ const Signup = () => {
           value={formData.skillset}
           onChange={handleChange}
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         Interests:
         <input
           type="text"
@@ -442,9 +470,9 @@ const Signup = () => {
           value={formData.interests}
           onChange={handleChange}
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         Events Attended:
         <input
           type="text"
@@ -452,9 +480,9 @@ const Signup = () => {
           value={formData.eventsAttended}
           onChange={handleChange}
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         Community:
         <input
           type="text"
@@ -462,9 +490,9 @@ const Signup = () => {
           value={formData.community}
           onChange={handleChange}
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         Gender:
         <select
           name="gender"
@@ -476,11 +504,11 @@ const Signup = () => {
           <option value="female">Female</option>
           <option value="other">Other</option>
         </select>
-      </div>
+      </label>
       <br />
       <button type="submit">Submit</button>
     </form>
   );
 };
 
-export default Signup;
+export default App;

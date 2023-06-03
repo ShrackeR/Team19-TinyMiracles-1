@@ -21,13 +21,22 @@ console.log(aadhar)
 
 <form className="login" onSubmit={handleSubmit}>
 <h3>Reset Password</h3>
-
+<div className="mb-3">
 <label>Aadhar</label>
 <input 
   type="text" 
   onChange={(e) => setAadhar(e.target.value)} 
-  value={aadhar} 
+  value={aadhar}
+  className="form-control"
+  placeholder="Enter password" 
 />
+</div>
+{/* <label>Aadhar</label>
+<input 
+  type="text" 
+  onChange={(e) => setAadhar(e.target.value)} 
+  value={aadhar} 
+/> */}
 {/* <label>Password:</label>
 <input 
   type="password" 
@@ -35,7 +44,7 @@ console.log(aadhar)
   value={newpassword} 
 /> */}
 
-<button>Reset Password</button>
+<button className="btn btn-primary">Reset Password</button>
 
 </form>
             );

@@ -19,14 +19,16 @@ await resetPassword(newpassword,confirmpassword);
     return (
   
   
-  <form className="login" onSubmit={handleSubmit}>
+  <form  onSubmit={handleSubmit}>
   <h3>Reset Password</h3>
-
+      
    <label>Password:</label>
   <input 
     type="password" 
     onChange={(e) => setNewpassword(e.target.value)} 
     value={newpassword} 
+    className="form-control"
+    placeholder="Enter Adhar Number"
   /> 
   <label>Confirm Password:</label>
    <input 
