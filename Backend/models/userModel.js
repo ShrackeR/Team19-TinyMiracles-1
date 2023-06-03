@@ -224,7 +224,7 @@ userSchema.statics.signup = async function (
 };
 
 // static login method
-userSchema.statics.login = async function (password, aadhar) {
+userSchema.statics.login = async function ( aadhar,password) {
   if (!aadhar || !password) {
     throw Error("All fields must be filled");
   }

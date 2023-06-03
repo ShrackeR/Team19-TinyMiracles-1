@@ -17,7 +17,9 @@ const createToken = (_id) => {
 // });
 // login a user
 const loginUser = async (req, res) => {
+  console.log(req.body);
   const { aadhar, password } = req.body;
+ 
 
   try {
     const user = await User.login(aadhar, password);
@@ -28,141 +30,143 @@ const loginUser = async (req, res) => {
     const name = user.name;
     const mobile = user.number;
 
-    res.status(200).json({ name, mobile, gender, email, token });
+    res.status(200).json("Success" );
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(400).json({ error: error.message});
+    console.log(error.message,"hi")
   }
 };
 
 // signup a user
-const feesUpload = async (req, res) => {
-  const { name, feesReceipt, prevAllot } = req.body;
-  console.log("inside feesUpload userctrller");
+// const feesUpload = async (req, res) => {
+//   const { name, feesReceipt, prevAllot } = req.body;
+//   console.log("inside feesUpload userctrller");
 
-  try {
-    var options = {
-      validation: {
-        allowedExts: ["pdf"],
-        allowedMimeTypes: [
-          "text/plain",
-          "application/msword",
-          "application/x-pdf",
-          "application/pdf",
-        ],
-      },
-    };
-    const feesReceiptResult = await cloudinary.uploader.upload(feesReceipt, {
-      folder: "FeesReceipt",
-    });
+//   try {
+//     var options = {
+//       validation: {
+//         allowedExts: ["pdf"],
+//         allowedMimeTypes: [
+//           "text/plain",
+//           "application/msword",
+//           "application/x-pdf",
+//           "application/pdf",
+//         ],
+//       },
+//     };
+//     const feesReceiptResult = await cloudinary.uploader.upload(feesReceipt, {
+//       folder: "FeesReceipt",
+//     });
 
-    const prevAllotmentResult = await cloudinary.uploader.upload(prevAllot, {
-      folder: "PrevAllotment",
-    });
+//     const prevAllotmentResult = await cloudinary.uploader.upload(prevAllot, {
+//       folder: "PrevAllotment",
+//     });
 
-    const upload = await FeesAllotment.upload({
-      name,
-      feesReceipt: {
-        public_id: feesReceiptResult.public_id,
-        url: feesReceiptResult.secure_url,
-      },
-      prevAllot: {
-        public_id: prevAllotmentResult.public_id,
-        url: prevAllotmentResult.secure_url,
-      },
-    });
-    res.status(200).json({ upload });
-  } catch (error) {
-    console.log("Inside feesupload usectrl", error.message);
-    res.status(400).json({ error: error.message });
-  }
-};
+//     const upload = await FeesAllotment.upload({
+//       name,
+//       feesReceipt: {
+//         public_id: feesReceiptResult.public_id,
+//         url: feesReceiptResult.secure_url,
+//       },
+//       prevAllot: {
+//         public_id: prevAllotmentResult.public_id,
+//         url: prevAllotmentResult.secure_url,
+//       },
+//     });
+//     res.status(200).json({ upload });
+//   } catch (error) {
+//     console.log("Inside feesupload usectrl", error.message);
+//     res.status(400).json({ error: error.message });
+//   }
+// };
 
-const registerUser = async (req, res) => {
-  const {
-    name,
-    course,
-    category,
-    semester,
-    merit,
-    academicYear_institute,
-    academicYear_hostel,
-    pname,
-    address,
-    stu_Number,
-    parent_Number,
-    email,
-    gname,
-    gaurdian_address,
-    gaurdian_Number,
-    gender,
-    aadhar,
-    allotment,
-    sundertaking,
-    pundertaking,
-  } = req.body;
-  console.log("inside usecontroller :", gender);
+// const registerUser = async (req, res) => {
+//   const {
+//     name,
+//     course,
+//     category,
+//     semester,
+//     merit,
+//     academicYear_institute,
+//     academicYear_hostel,
+//     pname,
+//     address,
+//     stu_Number,
+//     parent_Number,
+//     email,
+//     gname,
+//     gaurdian_address,
+//     gaurdian_Number,
+//     gender,
+//     aadhar,
+//     allotment,
+//     sundertaking,
+//     pundertaking,
+//   } = req.body;
+//   console.log("inside usecontroller :", gender);
 
-  try {
-    const aadharResult = await cloudinary.uploader.upload(aadhar, {
-      folder: "Aadhar",
-    });
-    const allotmentResult = await cloudinary.uploader.upload(allotment, {
-      folder: "Allotment",
-    });
-    const sundertakingResult = await cloudinary.uploader.upload(sundertaking, {
-      folder: "Student-Undertaking",
-    });
-    const pundertakingResult = await cloudinary.uploader.upload(pundertaking, {
-      folder: "Parent-Undertaking",
-    });
-    console.log("result of aadhar", aadharResult.public_id);
-    console.log("result of pundertaking", pundertakingResult.public_id);
-    const register = await Register.register({
-      name,
-      course,
-      category,
-      semester,
-      merit,
-      academicYear_institute,
-      academicYear_hostel,
-      pname,
-      address,
-      stu_Number,
-      parent_Number,
-      email,
-      gname,
-      gaurdian_address,
-      gaurdian_Number,
-      gender,
-      aadhar: {
-        public_id: aadharResult.public_id,
-        url: aadharResult.secure_url,
-      },
-      allotment: {
-        public_id: allotmentResult.public_id,
-        url: allotmentResult.secure_url,
-      },
-      sundertaking: {
-        public_id: sundertakingResult.public_id,
-        url: sundertakingResult.secure_url,
-      },
-      pundertaking: {
-        public_id: pundertakingResult.public_id,
-        url: pundertakingResult.secure_url,
-      },
-    });
+//   try {
+//     const aadharResult = await cloudinary.uploader.upload(aadhar, {
+//       folder: "Aadhar",
+//     });
+//     const allotmentResult = await cloudinary.uploader.upload(allotment, {
+//       folder: "Allotment",
+//     });
+//     const sundertakingResult = await cloudinary.uploader.upload(sundertaking, {
+//       folder: "Student-Undertaking",
+//     });
+//     const pundertakingResult = await cloudinary.uploader.upload(pundertaking, {
+//       folder: "Parent-Undertaking",
+//     });
+//     console.log("result of aadhar", aadharResult.public_id);
+//     console.log("result of pundertaking", pundertakingResult.public_id);
+//     const register = await Register.register({
+//       name,
+//       course,
+//       category,
+//       semester,
+//       merit,
+//       academicYear_institute,
+//       academicYear_hostel,
+//       pname,
+//       address,
+//       stu_Number,
+//       parent_Number,
+//       email,
+//       gname,
+//       gaurdian_address,
+//       gaurdian_Number,
+//       gender,
+//       aadhar: {
+//         public_id: aadharResult.public_id,
+//         url: aadharResult.secure_url,
+//       },
+//       allotment: {
+//         public_id: allotmentResult.public_id,
+//         url: allotmentResult.secure_url,
+//       },
+//       sundertaking: {
+//         public_id: sundertakingResult.public_id,
+//         url: sundertakingResult.secure_url,
+//       },
+//       pundertaking: {
+//         public_id: pundertakingResult.public_id,
+//         url: pundertakingResult.secure_url,
+//       },
+//     });
 
-    res.status(200).json({ name });
-  } catch (error) {
-    console.log(
-      "error inside in catch usercontroller register user ",
-      error.message
-    );
-    res.status(400).json({ error: error.message });
-  }
-};
+//     res.status(200).json({ name });
+//   } catch (error) {
+//     console.log(
+//       "error inside in catch usercontroller register user ",
+//       error.message
+//     );
+//     res.status(400).json({ error: error.message });
+//   }
+// };
 
 const signupUser = async (req, res) => {
+  console.log(req.body)
   const {
     name,
     aadhar,
@@ -288,9 +292,9 @@ const ResetPassword = async (req, res) => {
 
 module.exports = {
   signupUser,
-  registerUser,
+  // registerUser,
   loginUser,
   forgotPassword,
   ResetPassword,
-  feesUpload,
+  // feesUpload,
 };
