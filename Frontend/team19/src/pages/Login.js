@@ -15,7 +15,7 @@ const Login = () => {
   return (
     <>
     
-       <form>
+       <form onSubmit={handleSubmit}>
         <h3>Sign In</h3>
         <div className="mb-3">
           <label>Aadhar</label>

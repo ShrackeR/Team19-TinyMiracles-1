@@ -127,6 +127,7 @@ const Signup = () => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <h3>Sign up</h3>
       <div className="mb-3">
         Name:
         <input
@@ -138,7 +139,6 @@ const Signup = () => {
           placeholder="Enter Your Name"
         />
       </div>
-      <br />
       <div className="mb-3">
         Aadhar:
         <input
@@ -150,20 +150,17 @@ const Signup = () => {
           placeholder="Enter aadhar no."
         />
       </div>
-      <br />
-      <div>
+      <div className="mb-3">
         Is PAN Card Available:
         <input
           type="checkbox"
           name="isPanCard"
           checked={formData.isPanCard}
           onChange={handleChange}
-          className="form-control"
+          className="form-check"
         />
-        
       </div>
-      <br />
-      {formData.isPanCard=="yes" &&  <div className="mb-3">
+      <div className="mb-3">
         PAN:
         <input
           type="text"
@@ -173,22 +170,19 @@ const Signup = () => {
           className="form-control"
           placeholder="Enter PAN number"
         />
-      </div>}
-     
-      <br />
-      <div>
+      </div>
+      <div className="mb-3">
         Is Eshram Available:
         <input
           type="checkbox"
           name="isEshram"
           checked={formData.isEshram}
           onChange={handleChange}
-          className="form-control"
+          className="form-check"
         />
-        
       </div>
-      <br />
-      {formData.isEshram=="yes" && <div className="mb-3">
+      
+      <div className="mb-3">
         Eshram:
         <input
           type="text"
@@ -198,9 +192,7 @@ const Signup = () => {
           className="form-control"
           placeholder="Enter Eshram"
         />
-      </div>}
-      
-      <br />
+      </div>
       <div className="mb-3">
         Mobile:
         <input
@@ -212,7 +204,6 @@ const Signup = () => {
           placeholder="Enter Mobile no."
         />
       </div>
-      <br />
       <div className="mb-3">
         Date of Birth:
         <input
@@ -224,7 +215,6 @@ const Signup = () => {
           placeholder="Enter DOB"
         />
       </div>
-      <br />
       <div>
         Email:
         <input
@@ -236,7 +226,6 @@ const Signup = () => {
           placeholder="Enter Email ID"
         />
       </div>
-      <br />
       <div className="mb-3">
         <h6>Address</h6>
         Area:
@@ -248,7 +237,6 @@ const Signup = () => {
           className="form-control"
         />
       </div>
-      <br />
       <div className="mb-3">
         Street:
         <input
@@ -259,7 +247,6 @@ const Signup = () => {
           className="form-control"
         />
       </div>
-      <br />
       <div className="mb-3">
         City:
         <input
@@ -270,7 +257,6 @@ const Signup = () => {
           className="form-control"
         />
       </div>
-      <br />
       <div className="mb-3">
         State:
         <input
@@ -281,7 +267,6 @@ const Signup = () => {
           className="form-control"
         />
       </div>
-      <br />
       <div className="mb-3">
         PIN:
         <input
@@ -292,7 +277,6 @@ const Signup = () => {
           className="form-control"
         />
       </div>
-      <br />
       <div className="mb-3">
         Password:
         <input
@@ -304,7 +288,6 @@ const Signup = () => {
           placeholder="Enter Password"
         />
       </div>
-      <br />
       <div className="mb-3">
         Family & Friends:
         <input
@@ -315,18 +298,16 @@ const Signup = () => {
           className="form-control"
         />
       </div>
-      <br />
-      <div className="mb-3">
+      <div>
         Is Bank Account Available:
         <input
           type="checkbox"
           name="isBankAccount"
           checked={formData.isBankAccount}
           onChange={handleChange}
-          className="form-control"
+          className="form-check"
         />
       </div>
-      <br />
       <div className="mb-3">
         Bank Name:
         <input
@@ -338,7 +319,6 @@ const Signup = () => {
           placeholder="Enter Bank Name"
         />
       </div>
-      <br />
       <div className="mb-3">
         Account Number:
         <input
@@ -350,7 +330,6 @@ const Signup = () => {
           placeholder="Enter AAccount Number"
         />
       </div>
-      <br />
       <div className="mb-3">
         IFSC:
         <input
@@ -362,7 +341,6 @@ const Signup = () => {
           placeholder="Enter IFSC Code"
         />
       </div>
-      <br />
       <div className="mb-3">
         Medical Test Frequency:
         <input
@@ -373,7 +351,6 @@ const Signup = () => {
           className="form-control"
         />
       </div>
-      <br />
       <div className="mb-3">
         Last Checkup:
         <input
@@ -384,7 +361,6 @@ const Signup = () => {
           className="form-control"
         />
       </div>
-      <br />
       <div className="mb-3">
         Diseases:
         {formData.diseases.map((disease, index) => (
@@ -395,20 +371,19 @@ const Signup = () => {
               value={disease}
               onChange={(e) => handleDiseasesChange(e, index)}
             />
-            <div className="d-grid">
-              <button type="button" className="btn btn-primary" onClick={() => handleRemoveDisease(index)}>
+            <div>
+              <button type="button" className="btn btn-primary btn-sm" onClick={() => handleRemoveDisease(index)}>
                 Remove
               </button>
             </div>
           </div>
         ))}
-        <div className="d-grid">
-          <button type="button" className="btn btn-primary" onClick={handleAddDisease}>
+        <div>
+          <button type="button" className="btn btn-primary btn-sm" onClick={handleAddDisease}>
             Add Disease
           </button>
         </div>
       </div>
-      <br />
       <div className="mb-3">
         Number of Children:
         <input
@@ -420,7 +395,6 @@ const Signup = () => {
           placeholder="Enter no. of children"
         />
       </div>
-      <br />
       <div className="mb-3">
         Need Child Education Assistance:
         <input
@@ -428,10 +402,9 @@ const Signup = () => {
           name="needChildEducationAssistance"
           checked={formData.needChildEducationAssistance}
           onChange={handleChange}
-          className="form-control"
+          className="form-check"
         />
       </div>
-      <br />
       <div className="mb-3">
         Need Employment Support:
         <input
@@ -439,10 +412,9 @@ const Signup = () => {
           name="needEmploymentSupport"
           checked={formData.needEmploymentSupport}
           onChange={handleChange}
-          className="form-control"
+          className="form-check"
         />
       </div>
-      <br />
       <div className="mb-3">
         Education Level:
         <input
@@ -454,7 +426,6 @@ const Signup = () => {
           placeholder="Enter Education"
         />
       </div>
-      <br />
       <div className="mb-3">
         Skillset:
         <input
@@ -466,7 +437,6 @@ const Signup = () => {
           placeholder="Enter Skills"
         />
       </div>
-      <br />
       <div className="mb-3">
         Interests:
         <input
@@ -478,7 +448,6 @@ const Signup = () => {
           placeholder="Enter Interests"
         />
       </div>
-      <br />
       <div className="mb-3">
         Events Attended:
         <input
@@ -489,7 +458,6 @@ const Signup = () => {
           className="form-control"
         />
       </div>
-      <br />
       <div className="mb-3">
         Community:
         <input
@@ -501,7 +469,6 @@ const Signup = () => {
           placeholder="Enter Community"
         />
       </div>
-      <br />
       <div className="mb-3">
         Gender:
         <select
@@ -516,7 +483,6 @@ const Signup = () => {
           <option value="other">Other</option>
         </select>
       </div>
-      <br />
       <div className="d-grid">
         <button type="submit" className="btn btn-primary">Submit</button>
       </div>
