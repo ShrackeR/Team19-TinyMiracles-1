@@ -28,9 +28,10 @@ const eventSchema = new Schema({
         type: Date,
         required: true
     },
-    // volunteers: [{
-    //     type: String
-    //   }],
+    tag: {
+        type: String,
+        required: true
+    },
     attendants: [{
         type: String
     }],

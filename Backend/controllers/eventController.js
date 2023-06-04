@@ -91,7 +91,7 @@ const updateevent = async (req, res) => {
         try {
             const eventobj = await Event.findById(id);
             if (eventobj == null) {
-                res.status(404).json({ "error": "Event not found" });
+                res.status(400).json({ "error": "Event not found" });
             }
             console.log(eventobj);
             eventobj.title = title;
@@ -105,7 +105,7 @@ const updateevent = async (req, res) => {
                 res.status(200).json(event);
             })
         } catch (error) {
-            res.status(404).json({ "error": "Event not found" });
+            res.status(400).json({ "error": "Event not found" });
         }
 
     } catch (error) {
@@ -123,8 +123,8 @@ const markAttendance = async (req, res) => {
         const userobj = await User.findById(user);
         console.log(eventobj);
         eventobj.attendants.push(user);
-        await eventobj.save()
         userobj.eventsAttended.push(event);
+        await eventobj.save()
         await userobj.save().then(function (user) {
             res.status(200).json("Success");
         });
