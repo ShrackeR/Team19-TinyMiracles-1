@@ -17,7 +17,7 @@ const eventSchema = new Schema({
     },
     community: {
         type: String,
-        required: true
+        // required: true
 
     },
     start: {
@@ -30,7 +30,7 @@ const eventSchema = new Schema({
     },
     tag: {
         type: String,
-        required: true
+        // required: true
     },
     attendants: [{
         type: String

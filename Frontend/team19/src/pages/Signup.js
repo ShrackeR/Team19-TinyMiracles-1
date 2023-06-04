@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import  {useSignup} from "../hooks/useSignup"
+import Wrapper from '../components/Wrrapper';
 
 const Signup = () => {
   const{signup,error,isLoading,success,setSuccess}=useSignup();
@@ -54,6 +55,7 @@ const Signup = () => {
   };
 
   const handleChange = (e) => {
+    
     const { name, value, type, checked } = e.target;
 
     if (type === 'checkbox') {
@@ -126,6 +128,7 @@ const Signup = () => {
   };
 
   return (
+    <Wrapper>
     <form onSubmit={handleSubmit}>
       <h3>Sign up</h3>
       <div className="mb-3">
@@ -487,6 +490,7 @@ const Signup = () => {
         <button type="submit" className="btn btn-primary">Submit</button>
       </div>
     </form>
+    </Wrapper>
   );
 };
 

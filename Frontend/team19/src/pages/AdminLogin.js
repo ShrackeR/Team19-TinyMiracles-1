@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLogin } from "../hooks/useLogin";
 import { useLogin2 } from "../hooks/useLogin2";
+import Wrapper from "../components/Wrrapper";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
@@ -14,6 +15,7 @@ const AdminLogin = () => {
   };
 
   return (
+    <Wrapper>
     <div>
       <h1>Sign In</h1>
       <form onSubmit={handleSubmit}>
@@ -59,6 +61,7 @@ const AdminLogin = () => {
         </p>
       </div>
     </div>
+    </Wrapper>
   );
 };
 

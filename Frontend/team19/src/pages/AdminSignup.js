@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSignup2 } from "../hooks/useSignup2";
-
+import Wrapper from "../components/Wrrapper";
 const AdminSignup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -18,6 +18,7 @@ const AdminSignup = () => {
   };
 
   return (
+    <Wrapper>
     <div>
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
@@ -103,6 +104,7 @@ const AdminSignup = () => {
         </p>
       </div>
     </div>
+    </Wrapper>
   );
 };
 

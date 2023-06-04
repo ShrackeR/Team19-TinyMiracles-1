@@ -18,6 +18,7 @@ import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
 // import './App.css';
 import Layout from "./components/Layout";
 import Wrapper from "./components/Wrrapper";
+import CreateEvent from "./pages/CreateEvent";
 
 function App() {
   const { user } = useAuthContext();
@@ -27,7 +28,7 @@ function App() {
     <BrowserRouter>
    
     <Layout>
-      <Wrapper>
+      {/* <Wrapper> */}
       <Routes>
           
 
@@ -60,6 +61,10 @@ function App() {
               path="/admin/ad"
               element={admin ? <AdminHome /> : <Navigate to="/adminlogin" />}
             />
+            <Route
+            path="/createEvent"
+            element={<CreateEvent/>}
+            />
              <Route
               path="/adminlogin"
               element={!admin ? <AdminLogin /> : <Navigate to="/admin/ad" />}
@@ -74,7 +79,7 @@ function App() {
             />
             {/* <Route exact path="/view/:id" component={Details} /> */}
              </Routes>
-      </Wrapper>
+      {/* </Wrapper> */}
          
         
     </Layout>
