@@ -1,4 +1,5 @@
 let resetPassword = (email, token) => {
+  console.log(email)
   const emailTemplate = {
     from: "noreply@gmail.com",
     to: email,

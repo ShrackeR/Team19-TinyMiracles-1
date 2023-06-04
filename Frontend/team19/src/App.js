@@ -1,469 +1,85 @@
-import React, { useState } from 'react';
-import  {useSignup} from "./hooks/useSignup"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useAuthContext } from "./hooks/useAuthContext";
+import Signup from "./pages/Signup";
+import Navbar from "./components/Navbar";
+import Login from "./pages/Login";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
+import HomeMain from "./pages/HomeMain";
+import { useAuthContext2 } from "./hooks/useAuthContext2";
+import AdminHome from "./pages/AdminHome";
+import AdminLogin from "./pages/AdminLogin";
+import AdminSignup from "./pages/AdminSignup";
+import StartNavbar from "./components/StartNavbar";
+import AdminNavbar from "./components/AdminNavbar";
+import Details from './pages/Details';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+// import './App.css';
+import Layout from "./components/Layout";
+import Wrapper from "./components/Wrrapper";
 
-const App = () => {
-  const{signup,error,isLoading,success,setSuccess}=useSignup();
-
-  const [formData, setFormData] = useState({
-    name: '',
-    aadhar: '',
-    isPanCard: false,
-    pan: '',
-    isEshram: false,
-    eshram: '',
-    mobile: '',
-    dob: '',
-    email: '',
-    area: '',
-    street: '',
-    city: '',
-    state: '',
-    pin: '',
-    password: '',
-    familyFriends: [],
-    isBankAccount: false,
-    bankName: '',
-    accountNumber: '',
-    ifsc: '',
-    medicalTestFrequency: '',
-    lastCheckup: '',
-    diseases: [],
-    numberOfChildren: 0,
-    needChildEducationAssistance: false,
-    needEmploymentSupport: false,
-    educationLevel: '',
-    skillset: [],
-    interests: [],
-    eventsAttended: [],
-    community: '',
-    gender: '',
-  });
-  
-  const handleDiseasesChange = (e, index) => {
-    const { value } = e.target;
-
-    setFormData((prevFormData) => {
-      const updatedDiseases = [...prevFormData.diseases];
-      updatedDiseases[index] = value;
-
-      return {
-        ...prevFormData,
-        diseases: updatedDiseases,
-      };
-    });
-  };
-
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-
-    if (type === 'checkbox') {
-      setFormData((prevData) => ({
-        ...prevData,
-        [name]: checked,
-      }));
-    } else {
-      setFormData((prevData) => ({
-        ...prevData,
-        [name]: value,
-      }));
-    }
-  };
-  const handleAddDisease = () => {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      diseases: [...prevFormData.diseases, ''],
-    }));
-  };
-
-  const handleRemoveDisease = (index) => {
-    setFormData((prevFormData) => {
-      const updatedDiseases = [...prevFormData.diseases];
-      updatedDiseases.splice(index, 1);
-
-      return {
-        ...prevFormData,
-        diseases: updatedDiseases,
-      };
-    });
-  };
-  const handleSubmit =async (e) => {
-    e.preventDefault();
-    // Perform form submission or validation
-    // console.log(formData);
-    await signup(formData);
-    // await signup( name,
-    //   aadhar,
-    //   isPanCard,
-    //   pan,
-    //   isEshram,
-    //   eshram,
-    //   mobile,
-    //   dob,
-    //   email,
-    //   area,
-    //   street,
-    //   city,
-    //   state,
-    //   pin,
-    //   password,
-    //   familyFriends,
-    //   isBankAccount,
-    //   bankName,
-    //   accountNumber,
-    //   ifsc,
-    //   medicalTestFrequency,
-    //   lastCheckup,
-    //   diseases,
-    //   numberOfChildren,
-    //   needChildEducationAssistance,
-    //   needEmploymentSupport,
-    //   educationLevel,
-    //   skillset,
-    //   interests,
-    //   eventsAttended,
-    //   community,
-    //   gender)
-  };
+function App() {
+  const { user } = useAuthContext();
+  const { admin } = useAuthContext2();
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Name:
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Aadhar:
-        <input
-          type="text"
-          name="aadhar"
-          value={formData.aadhar}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Is PAN Card Available:
-        <input
-          type="checkbox"
-          name="isPanCard"
-          checked={formData.isPanCard}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        PAN:
-        <input
-          type="text"
-          name="pan"
-          value={formData.pan}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Is Eshram Available:
-        <input
-          type="checkbox"
-          name="isEshram"
-          checked={formData.isEshram}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Eshram:
-        <input
-          type="text"
-          name="eshram"
-          value={formData.eshram}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Mobile:
-        <input
-          type="text"
-          name="mobile"
-          value={formData.mobile}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Date of Birth:
-        <input
-          type="date"
-          name="dob"
-          value={formData.dob}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Email:
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Area:
-        <input
-          type="text"
-          name="area"
-          value={formData.area}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Street:
-        <input
-          type="text"
-          name="street"
-          value={formData.street}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        City:
-        <input
-          type="text"
-          name="city"
-          value={formData.city}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        State:
-        <input
-          type="text"
-          name="state"
-          value={formData.state}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        PIN:
-        <input
-          type="text"
-          name="pin"
-          value={formData.pin}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Password:
-        <input
-          type="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Family & Friends:
-        <input
-          type="text"
-          name="familyFriends"
-          value={formData.familyFriends}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Is Bank Account Available:
-        <input
-          type="checkbox"
-          name="isBankAccount"
-          checked={formData.isBankAccount}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Bank Name:
-        <input
-          type="text"
-          name="bankName"
-          value={formData.bankName}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Account Number:
-        <input
-          type="text"
-          name="accountNumber"
-          value={formData.accountNumber}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        IFSC:
-        <input
-          type="text"
-          name="ifsc"
-          value={formData.ifsc}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Medical Test Frequency:
-        <input
-          type="text"
-          name="medicalTestFrequency"
-          value={formData.medicalTestFrequency}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Last Checkup:
-        <input
-          type="date"
-          name="lastCheckup"
-          value={formData.lastCheckup}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Diseases:
-        {formData.diseases.map((disease, index) => (
-          <div key={index}>
-            <input
-              type="text"
-              name="disease"
-              value={disease}
-              onChange={(e) => handleDiseasesChange(e, index)}
+    <BrowserRouter>
+   
+    <Layout>
+      <Wrapper>
+      <Routes>
+          
+
+          <Route
+          path="/homepage"
+          element={<HomeMain/>}
+          />
+
+            <Route
+              path="/"
+              element={user ? <HomeMain /> : <Navigate to="/login" />}
             />
-            <button type="button" onClick={() => handleRemoveDisease(index)}>
-              Remove
-            </button>
-          </div>
-        ))}
-        <button type="button" onClick={handleAddDisease}>
-          Add Disease
-        </button>
-      </label>
-      <br />
-      <label>
-        Number of Children:
-        <input
-          type="number"
-          name="numberOfChildren"
-          value={formData.numberOfChildren}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Need Child Education Assistance:
-        <input
-          type="checkbox"
-          name="needChildEducationAssistance"
-          checked={formData.needChildEducationAssistance}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Need Employment Support:
-        <input
-          type="checkbox"
-          name="needEmploymentSupport"
-          checked={formData.needEmploymentSupport}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Education Level:
-        <input
-          type="text"
-          name="educationLevel"
-          value={formData.educationLevel}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Skillset:
-        <input
-          type="text"
-          name="skillset"
-          value={formData.skillset}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Interests:
-        <input
-          type="text"
-          name="interests"
-          value={formData.interests}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Events Attended:
-        <input
-          type="text"
-          name="eventsAttended"
-          value={formData.eventsAttended}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Community:
-        <input
-          type="text"
-          name="community"
-          value={formData.community}
-          onChange={handleChange}
-        />
-      </label>
-      <br />
-      <label>
-        Gender:
-        <select
-          name="gender"
-          value={formData.gender}
-          onChange={handleChange}
-        >
-          <option value="">Select Gender</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="other">Other</option>
-        </select>
-      </label>
-      <br />
-      <button type="submit">Submit</button>
-    </form>
+            <Route
+              path="/login"
+              element={!user ? <Login /> : <Navigate to="/" />}
+             /> 
+             <Route
+              path="/forgotPassword"
+              element={!user ? <ForgotPassword /> : <Navigate to="/" />}
+            />
+            <Route
+              path="/resetPassword/:newToken"
+              element={!user ? <ResetPassword /> : <Navigate to="/" />}
+            />
+            <Route
+              path="/signup"
+              element={!user ? <Signup /> : <Navigate to="/" />}
+            />
+            <Route
+              path="/admin/ad"
+              element={admin ? <AdminHome /> : <Navigate to="/adminlogin" />}
+            />
+             <Route
+              path="/adminlogin"
+              element={!admin ? <AdminLogin /> : <Navigate to="/admin/ad" />}
+              />
+              <Route
+              path="/adminsignup"
+              element={!admin ? <AdminSignup /> : <Navigate to="/admin/ad" />}
+            />
+            <Route
+              path="admin/ad/view/:id"
+              element={admin ? <Details /> : <Navigate to="/adminlogin" />}
+            />
+            {/* <Route exact path="/view/:id" component={Details} /> */}
+             </Routes>
+      </Wrapper>
+         
+        
+    </Layout>
+    </BrowserRouter>
   );
-};
+}
 
 export default App;
