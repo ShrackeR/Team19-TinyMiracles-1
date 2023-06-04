@@ -12,7 +12,10 @@ import AdminLogin from "./pages/AdminLogin";
 import AdminSignup from "./pages/AdminSignup";
 import StartNavbar from "./components/StartNavbar";
 import AdminNavbar from "./components/AdminNavbar";
-
+import Details from './pages/Details';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+import './App.css';
 
 function App() {
   const { user } = useAuthContext();
@@ -62,6 +65,11 @@ function App() {
               path="/adminsignup"
               element={!admin ? <AdminSignup /> : <Navigate to="/admin/ad" />}
             />
+            <Route
+              path="admin/ad/view/:id"
+              element={admin ? <Details /> : <Navigate to="/adminlogin" />}
+            />
+            {/* <Route exact path="/view/:id" component={Details} /> */}
              </Routes>
         </div>
       </BrowserRouter>

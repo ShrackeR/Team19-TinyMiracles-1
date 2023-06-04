@@ -16,9 +16,9 @@ const Navbar2 = () => {
   return (
     <header>
       <div className="container">
-        <Link to="/admin/ad">
+        {/* <Link to="/admin/ad">
           <h1>VJTI Hostel Portal-Admin</h1>
-        </Link>
+        </Link> */}
         <nav>
           {admin &&!user  && (
             <div>

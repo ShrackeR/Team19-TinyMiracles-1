@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 // const workoutRoutes = require('./routes/workouts')
 const userRoutes = require('./routes/user')
 const adminRoutes = require("./routes/admin");
+const detailRoutes = require("./routes/details");
 
 // const appointmentRoutes = require('./routes/appointment')
 // const healthRoutes = require('./routes/healthroutes');
@@ -33,6 +34,7 @@ app.use((req, res, next) => {
 // app.use('/api/workouts', workoutRoutes)
 app.use('/api/user', userRoutes)
 app.use("/api/admin", adminRoutes);
+app.use("/api/details", detailRoutes);
 
 // app.use('/api/doctor', appointmentRoutes)
 // app.use('/h', healthRoutes);
