@@ -3,8 +3,8 @@ import { useCreateEvent } from "../hooks/useCreateEvent";
 import Wrapper from "../components/Wrrapper";
 
 const EditEvent = (props) => {
-  const id=props.id;
-  // const id = "647ca68456ee5b502156f9df";
+  // const id=props.id;
+  const id = "647ca68456ee5b502156f9df";
   console.log("here!!!!")
 
   const { createEvent, error, isLoading, success, setSuccess } = useCreateEvent();

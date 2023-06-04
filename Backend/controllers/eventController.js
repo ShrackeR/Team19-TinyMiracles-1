@@ -134,6 +134,31 @@ const markAttendance = async (req, res) => {
         console.log(error.message)
     }
 };
+
+const unmarkAttendanceasync = async (req, res) => {
+    
+    try {
+        console.log(req.body);
+        const { event, user } = req.body;
+        
+        const eventObj = await Event.findByIdAndUpdate(event, {
+          $pull: { attendants: user },
+        });
+        const userObj = await User.findByIdAndUpdate(user, {
+          $pull: { eventsAttended: event },
+        });
+        
+        if (!eventObj || !userObj) {
+          return res.status(404).json({ error: 'Event or user not found' });
+        }
+        
+        res.status(200).json('Success');
+      } catch (error) {
+        res.status(400).json({ error: error.message });
+        console.log(error.message);
+      }
+};
+
 // user events
 
 module.exports = {

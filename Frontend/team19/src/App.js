@@ -43,7 +43,7 @@ function App() {
               element={user ? <HomeMain /> : <Navigate to="/login" />}
             />
             <Route
-              path="/editEvent"
+              path="/editEvent/:eventId"
               element={<EditEvent/>}
             />
             <Route
