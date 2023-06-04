@@ -18,41 +18,45 @@ const AdminSignup = () => {
   };
 
   return (
-    <div className="form-wrapper">
+    <div>
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
-        <div className="form-item">
+        <div className="mb-3">
           <label htmlFor="name">Name</label>
           <input
             type="text"
             placeholder="Name"
             onChange={(e) => setName(e.target.value)}
             value={name}
+            className="form-control"
           />
         </div>
-        <div className="form-item">
+        <div className="mb-3">
           <label htmlFor="email">Email</label>
           <input
             type="email"
             placeholder="Email Address"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
+            className="form-control"
           />
         </div>
-        <div className="form-item">
+        <div className="mb-3">
           <label htmlFor="password">Password</label>
           <input
             type="password"
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
+            className="form-control"
           />
         </div>
-        <div className="form-item">
+        <div className="mb-3">
           <label htmlFor="gender">Gender</label>
           <select
             onChange={(e) => setGender(e.target.value)}
             value={gender}
+            className="form-control"
           >
             <option value="">Select Gender</option>
             <option value="male">Male</option>
@@ -60,27 +64,29 @@ const AdminSignup = () => {
             <option value="other">Other</option>
           </select>
         </div>
-        <div className="form-item">
+        <div className="mb-3">
           <label htmlFor="address">Address</label>
           <input
             type="text"
             placeholder="Address"
             onChange={(e) => setAddress(e.target.value)}
             value={address}
+            className="form-control"
           />
         </div>
-        <div className="form-item">
+        <div className="mb-3">
           <label htmlFor="phone">Phone</label>
           <input
             type="text"
             placeholder="Phone"
             onChange={(e) => setPhone(e.target.value)}
             value={phone}
+            className="form-control"
           />
         </div>
 
-        <div className="button-panel">
-          <button className="button" disabled={isLoading}>
+        <div className="d-grid">
+          <button className="btn btn-primary" disabled={isLoading}>
             Sign Up
           </button>
           {error && <div className="error">{error}</div>}

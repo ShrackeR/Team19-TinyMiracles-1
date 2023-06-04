@@ -127,7 +127,7 @@ const Signup = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
+      <div className="mb-3">
         Name:
         <input
           type="text"
@@ -135,10 +135,11 @@ const Signup = () => {
           value={formData.name}
           onChange={handleChange}
           className="form-control"
+          placeholder="Enter Your Name"
         />
       </div>
       <br />
-      <div>
+      <div className="mb-3">
         Aadhar:
         <input
           type="text"
@@ -146,6 +147,7 @@ const Signup = () => {
           value={formData.aadhar}
           onChange={handleChange}
           className="form-control"
+          placeholder="Enter aadhar no."
         />
       </div>
       <br />
@@ -160,7 +162,7 @@ const Signup = () => {
         />
       </div>
       <br />
-      <div>
+      <div className="mb-3">
         PAN:
         <input
           type="text"
@@ -168,6 +170,7 @@ const Signup = () => {
           value={formData.pan}
           onChange={handleChange}
           className="form-control"
+          placeholder="Enter PAN number"
         />
       </div>
       <br />
@@ -182,7 +185,7 @@ const Signup = () => {
         />
       </div>
       <br />
-      <div>
+      <div className="mb-3">
         Eshram:
         <input
           type="text"
@@ -190,10 +193,11 @@ const Signup = () => {
           value={formData.eshram}
           onChange={handleChange}
           className="form-control"
+          placeholder="Enter Eshram"
         />
       </div>
       <br />
-      <div>
+      <div className="mb-3">
         Mobile:
         <input
           type="text"
@@ -201,10 +205,11 @@ const Signup = () => {
           value={formData.mobile}
           onChange={handleChange}
           className="form-control"
+          placeholder="Enter Mobile no."
         />
       </div>
       <br />
-      <div>
+      <div className="mb-3">
         Date of Birth:
         <input
           type="date"
@@ -212,6 +217,7 @@ const Signup = () => {
           value={formData.dob}
           onChange={handleChange}
           className="form-control"
+          placeholder="Enter DOB"
         />
       </div>
       <br />
@@ -223,10 +229,12 @@ const Signup = () => {
           value={formData.email}
           onChange={handleChange}
           className="form-control"
+          placeholder="Enter Email ID"
         />
       </div>
       <br />
-      <div>
+      <div className="mb-3">
+        <h6>Address</h6>
         Area:
         <input
           type="text"
@@ -237,7 +245,7 @@ const Signup = () => {
         />
       </div>
       <br />
-      <div>
+      <div className="mb-3">
         Street:
         <input
           type="text"
@@ -248,7 +256,7 @@ const Signup = () => {
         />
       </div>
       <br />
-      <div>
+      <div className="mb-3">
         City:
         <input
           type="text"
@@ -259,7 +267,7 @@ const Signup = () => {
         />
       </div>
       <br />
-      <div>
+      <div className="mb-3">
         State:
         <input
           type="text"
@@ -270,7 +278,7 @@ const Signup = () => {
         />
       </div>
       <br />
-      <div>
+      <div className="mb-3">
         PIN:
         <input
           type="text"
@@ -281,7 +289,7 @@ const Signup = () => {
         />
       </div>
       <br />
-      <div>
+      <div className="mb-3">
         Password:
         <input
           type="password"
@@ -289,10 +297,11 @@ const Signup = () => {
           value={formData.password}
           onChange={handleChange}
           className="form-control"
+          placeholder="Enter Password"
         />
       </div>
       <br />
-      <div>
+      <div className="mb-3">
         Family & Friends:
         <input
           type="text"
@@ -303,7 +312,7 @@ const Signup = () => {
         />
       </div>
       <br />
-      <div>
+      <div className="mb-3">
         Is Bank Account Available:
         <input
           type="checkbox"
@@ -314,57 +323,65 @@ const Signup = () => {
         />
       </div>
       <br />
-      <div>
+      <div className="mb-3">
         Bank Name:
         <input
           type="text"
           name="bankName"
           value={formData.bankName}
           onChange={handleChange}
+          className="form-control"
+          placeholder="Enter Bank Name"
         />
       </div>
       <br />
-      <div>
+      <div className="mb-3">
         Account Number:
         <input
           type="text"
           name="accountNumber"
           value={formData.accountNumber}
           onChange={handleChange}
+          className="form-control"
+          placeholder="Enter AAccount Number"
         />
       </div>
       <br />
-      <div>
+      <div className="mb-3">
         IFSC:
         <input
           type="text"
           name="ifsc"
           value={formData.ifsc}
           onChange={handleChange}
+          className="form-control"
+          placeholder="Enter IFSC Code"
         />
       </div>
       <br />
-      <div>
+      <div className="mb-3">
         Medical Test Frequency:
         <input
           type="text"
           name="medicalTestFrequency"
           value={formData.medicalTestFrequency}
           onChange={handleChange}
+          className="form-control"
         />
       </div>
       <br />
-      <div>
+      <div className="mb-3">
         Last Checkup:
         <input
           type="date"
           name="lastCheckup"
           value={formData.lastCheckup}
           onChange={handleChange}
+          className="form-control"
         />
       </div>
       <br />
-      <div>
+      <div className="mb-3">
         Diseases:
         {formData.diseases.map((disease, index) => (
           <div key={index}>
@@ -374,102 +391,120 @@ const Signup = () => {
               value={disease}
               onChange={(e) => handleDiseasesChange(e, index)}
             />
-            <button type="button" onClick={() => handleRemoveDisease(index)}>
-              Remove
-            </button>
+            <div className="d-grid">
+              <button type="button" className="btn btn-primary" onClick={() => handleRemoveDisease(index)}>
+                Remove
+              </button>
+            </div>
           </div>
         ))}
-        <button type="button" onClick={handleAddDisease}>
-          Add Disease
-        </button>
+        <div className="d-grid">
+          <button type="button" className="btn btn-primary" onClick={handleAddDisease}>
+            Add Disease
+          </button>
+        </div>
       </div>
       <br />
-      <div>
+      <div className="mb-3">
         Number of Children:
         <input
           type="number"
           name="numberOfChildren"
           value={formData.numberOfChildren}
           onChange={handleChange}
+          className="form-control"
+          placeholder="Enter no. of children"
         />
       </div>
       <br />
-      <div>
+      <div className="mb-3">
         Need Child Education Assistance:
         <input
           type="checkbox"
           name="needChildEducationAssistance"
           checked={formData.needChildEducationAssistance}
           onChange={handleChange}
+          className="form-control"
         />
       </div>
       <br />
-      <div>
+      <div className="mb-3">
         Need Employment Support:
         <input
           type="checkbox"
           name="needEmploymentSupport"
           checked={formData.needEmploymentSupport}
           onChange={handleChange}
+          className="form-control"
         />
       </div>
       <br />
-      <div>
+      <div className="mb-3">
         Education Level:
         <input
           type="text"
           name="educationLevel"
           value={formData.educationLevel}
           onChange={handleChange}
+          className="form-control"
+          placeholder="Enter Education"
         />
       </div>
       <br />
-      <div>
+      <div className="mb-3">
         Skillset:
         <input
           type="text"
           name="skillset"
           value={formData.skillset}
           onChange={handleChange}
+          className="form-control"
+          placeholder="Enter Skills"
         />
       </div>
       <br />
-      <div>
+      <div className="mb-3">
         Interests:
         <input
           type="text"
           name="interests"
           value={formData.interests}
           onChange={handleChange}
+          className="form-control"
+          placeholder="Enter Interests"
         />
       </div>
       <br />
-      <div>
+      <div className="mb-3">
         Events Attended:
         <input
           type="text"
           name="eventsAttended"
           value={formData.eventsAttended}
           onChange={handleChange}
+          className="form-control"
         />
       </div>
       <br />
-      <div>
+      <div className="mb-3">
         Community:
         <input
           type="text"
           name="community"
           value={formData.community}
           onChange={handleChange}
+          className="form-control"
+          placeholder="Enter Community"
         />
       </div>
       <br />
-      <div>
+      <div className="mb-3">
         Gender:
         <select
           name="gender"
           value={formData.gender}
           onChange={handleChange}
+          className="form-control"
         >
           <option value="">Select Gender</option>
           <option value="male">Male</option>
@@ -478,7 +513,9 @@ const Signup = () => {
         </select>
       </div>
       <br />
-      <button type="submit">Submit</button>
+      <div className="d-grid">
+        <button type="submit" className="btn btn-primary">Submit</button>
+      </div>
     </form>
   );
 };

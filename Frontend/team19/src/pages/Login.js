@@ -14,36 +14,7 @@ const Login = () => {
 
   return (
     <>
-      {/* <form className="login" onSubmit={handleSubmit}>
-        <h3>Log In</h3>
-
-        <label>Aadhar</label>
-        <input
-          type="text"
-          onChange={(e) => setAadhar(e.target.value)}
-          value={aadhar}
-        />
-        <label>Password:</label>
-        <input
-          type="password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-        />
-        
-        <div>
-          <Link to="/forgotPassword">Forgot Password ?</Link>
-        </div>
-        <button disabled={isLoading}>Log in</button>
-        <div>
-          {isLoading && (
-            <div>
-              {" "}
-              <i class="fa fa-circle-o-notch fa-spin"></i> <span>Loading </span>
-            </div>
-          )}
-        </div>
-        {error && <div className="error">{error}</div>}
-      </form> */}
+    
        <form>
         <h3>Sign In</h3>
         <div className="mb-3">

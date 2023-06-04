@@ -14,30 +14,33 @@ const AdminLogin = () => {
   };
 
   return (
-    <div class="form-wrapper">
+    <div>
       <h1>Sign In</h1>
       <form onSubmit={handleSubmit}>
-        <div className="form-item">
+        <div className="mb-3">
           <label for="email"></label>
           <input
             type="email"
             placeholder="Email Address"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
+            className="form-control"
           />
         </div>
-        <div className="form-item">
+        <br/>
+        <div className="mb-3">
           <label for="password"></label>
           <input
             type="password"
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
+            className="form-control"
           />
         </div>
 
-        <div className="button-panel">
-          <button className="button" disabled={isLoading}>
+        <div className="d-grid">
+          <button className="btn btn-primary" disabled={isLoading}>
             Log in
           </button>
           {error && <div className="error">{error}</div>}

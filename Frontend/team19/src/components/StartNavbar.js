@@ -6,38 +6,41 @@ const StartNavbar = () => {
    
   const { user } = useAuthContext();
   const { admin } = useAuthContext2();
-    return (  <header>
-        <div className="container">
-        <a href="#" className="flex items-center">
-          <img
-            src="https://img.collegepravesh.com/2016/01/VJTI-Mumbai-Logo.png"
-            className="h-6 mr-3 sm:h-10"
-            alt="Flowbite Logo"
-          />
-          <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-            {/* <Link to="/">
-              <h1>VJTI Hostel Portal</h1>
-            </Link> */}
-          </span>
-        </a>
-        
+    return ( 
+  
     
-    
-    <nav>
 
-        {!user  && !admin && (
-          <div>
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Register</Link>
-            <Link to="/adminlogin">Admin-Login</Link>
-            {/* <Link to="/clerklogin">Clerk-Login</Link> */}
-            <Link to="/adminsignup">Admin-Signup</Link>
-            {/* <Link to="/clerksignup">CLerk-Signup</Link> */}
+
+
+        <>
+       <div className="App">
+        <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+          <div className="container">
+            <Link className="navbar-brand" to={'/sign-in'}>
+              positronX
+            </Link>
+            <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+              <ul className="navbar-nav ml-auto">
+                <li className="nav-item">
+                  <Link className="nav-link" to={'/sign-in'}>
+                    Login
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to={'/sign-up'}>
+                    Sign up
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
-        )}
-      </nav>
-      </div>
-      </header>);
+        </nav>
+
+        </div>
+    </>
+    
+      
+      );
 }
  
 export default StartNavbar;
