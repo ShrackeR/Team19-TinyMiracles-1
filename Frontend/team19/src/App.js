@@ -51,7 +51,7 @@ function App() {
     <div className="App">
       <nav className="navbar navbar-expand-lg navbar-light fixed-top">
         <div className="container">
-          <Link className="navbar-brand" to={'/sign-in'}>
+          <Link className="navbar-brand" to={'/login'}>
             Tiny
           </Link>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
@@ -73,6 +73,10 @@ function App() {
       <div className="auth-wrapper">
         <div className="auth-inner">
           <Routes>
+            <Route
+            path='/homepage'
+            element={<HomeMain/>}
+            ></Route>
           <Route
               path="/"
               element={user ? <HomeMain /> : <Navigate to="/login" />}
