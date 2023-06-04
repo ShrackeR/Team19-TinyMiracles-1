@@ -127,261 +127,227 @@ const Signup = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="mb-3">
+      <label>
         Name:
         <input
           type="text"
           name="name"
           value={formData.name}
           onChange={handleChange}
-          className="form-control"
-          placeholder="Enter Your Name"
         />
-      </div>
+      </label>
       <br />
-      <div className="mb-3">
+      <label>
         Aadhar:
         <input
           type="text"
           name="aadhar"
           value={formData.aadhar}
           onChange={handleChange}
-          className="form-control"
-          placeholder="Enter aadhar no."
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         Is PAN Card Available:
         <input
           type="checkbox"
           name="isPanCard"
           checked={formData.isPanCard}
           onChange={handleChange}
-          className="form-control"
         />
-      </div>
+      </label>
       <br />
-      <div className="mb-3">
+      <label>
         PAN:
         <input
           type="text"
           name="pan"
           value={formData.pan}
           onChange={handleChange}
-          className="form-control"
-          placeholder="Enter PAN number"
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         Is Eshram Available:
         <input
           type="checkbox"
           name="isEshram"
           checked={formData.isEshram}
           onChange={handleChange}
-          className="form-control"
         />
-      </div>
+      </label>
       <br />
-      <div className="mb-3">
+      <label>
         Eshram:
         <input
           type="text"
           name="eshram"
           value={formData.eshram}
           onChange={handleChange}
-          className="form-control"
-          placeholder="Enter Eshram"
         />
-      </div>
+      </label>
       <br />
-      <div className="mb-3">
+      <label>
         Mobile:
         <input
           type="text"
           name="mobile"
           value={formData.mobile}
           onChange={handleChange}
-          className="form-control"
-          placeholder="Enter Mobile no."
         />
-      </div>
+      </label>
       <br />
-      <div className="mb-3">
+      <label>
         Date of Birth:
         <input
           type="date"
           name="dob"
           value={formData.dob}
           onChange={handleChange}
-          className="form-control"
-          placeholder="Enter DOB"
         />
-      </div>
+      </label>
       <br />
-      <div>
+      <label>
         Email:
         <input
           type="email"
           name="email"
           value={formData.email}
           onChange={handleChange}
-          className="form-control"
-          placeholder="Enter Email ID"
         />
-      </div>
+      </label>
       <br />
-      <div className="mb-3">
-        <h6>Address</h6>
+      <label>
         Area:
         <input
           type="text"
           name="area"
           value={formData.area}
           onChange={handleChange}
-          className="form-control"
         />
-      </div>
+      </label>
       <br />
-      <div className="mb-3">
+      <label>
         Street:
         <input
           type="text"
           name="street"
           value={formData.street}
           onChange={handleChange}
-          className="form-control"
         />
-      </div>
+      </label>
       <br />
-      <div className="mb-3">
+      <label>
         City:
         <input
           type="text"
           name="city"
           value={formData.city}
           onChange={handleChange}
-          className="form-control"
         />
-      </div>
+      </label>
       <br />
-      <div className="mb-3">
+      <label>
         State:
         <input
           type="text"
           name="state"
           value={formData.state}
           onChange={handleChange}
-          className="form-control"
         />
-      </div>
+      </label>
       <br />
-      <div className="mb-3">
+      <label>
         PIN:
         <input
           type="text"
           name="pin"
           value={formData.pin}
           onChange={handleChange}
-          className="form-control"
         />
-      </div>
+      </label>
       <br />
-      <div className="mb-3">
+      <label>
         Password:
         <input
           type="password"
           name="password"
           value={formData.password}
           onChange={handleChange}
-          className="form-control"
-          placeholder="Enter Password"
         />
-      </div>
+      </label>
       <br />
-      <div className="mb-3">
+      <label>
         Family & Friends:
         <input
           type="text"
           name="familyFriends"
           value={formData.familyFriends}
           onChange={handleChange}
-          className="form-control"
         />
-      </div>
+      </label>
       <br />
-      <div className="mb-3">
+      <label>
         Is Bank Account Available:
         <input
           type="checkbox"
           name="isBankAccount"
           checked={formData.isBankAccount}
           onChange={handleChange}
-          className="form-control"
         />
-      </div>
+      </label>
       <br />
-      <div className="mb-3">
+      <label>
         Bank Name:
         <input
           type="text"
           name="bankName"
           value={formData.bankName}
           onChange={handleChange}
-          className="form-control"
-          placeholder="Enter Bank Name"
         />
-      </div>
+      </label>
       <br />
-      <div className="mb-3">
+      <label>
         Account Number:
         <input
           type="text"
           name="accountNumber"
           value={formData.accountNumber}
           onChange={handleChange}
-          className="form-control"
-          placeholder="Enter AAccount Number"
         />
-      </div>
+      </label>
       <br />
-      <div className="mb-3">
+      <label>
         IFSC:
         <input
           type="text"
           name="ifsc"
           value={formData.ifsc}
           onChange={handleChange}
-          className="form-control"
-          placeholder="Enter IFSC Code"
         />
-      </div>
+      </label>
       <br />
-      <div className="mb-3">
+      <label>
         Medical Test Frequency:
         <input
           type="text"
           name="medicalTestFrequency"
           value={formData.medicalTestFrequency}
           onChange={handleChange}
-          className="form-control"
         />
-      </div>
+      </label>
       <br />
-      <div className="mb-3">
+      <label>
         Last Checkup:
         <input
           type="date"
           name="lastCheckup"
           value={formData.lastCheckup}
           onChange={handleChange}
-          className="form-control"
         />
-      </div>
+      </label>
       <br />
-      <div className="mb-3">
+      <label>
         Diseases:
         {formData.diseases.map((disease, index) => (
           <div key={index}>
@@ -391,131 +357,111 @@ const Signup = () => {
               value={disease}
               onChange={(e) => handleDiseasesChange(e, index)}
             />
-            <div className="d-grid">
-              <button type="button" className="btn btn-primary" onClick={() => handleRemoveDisease(index)}>
-                Remove
-              </button>
-            </div>
+            <button type="button" onClick={() => handleRemoveDisease(index)}>
+              Remove
+            </button>
           </div>
         ))}
-        <div className="d-grid">
-          <button type="button" className="btn btn-primary" onClick={handleAddDisease}>
-            Add Disease
-          </button>
-        </div>
-      </div>
+        <button type="button" onClick={handleAddDisease}>
+          Add Disease
+        </button>
+      </label>
       <br />
-      <div className="mb-3">
+      <label>
         Number of Children:
         <input
           type="number"
           name="numberOfChildren"
           value={formData.numberOfChildren}
           onChange={handleChange}
-          className="form-control"
-          placeholder="Enter no. of children"
         />
-      </div>
+      </label>
       <br />
-      <div className="mb-3">
+      <label>
         Need Child Education Assistance:
         <input
           type="checkbox"
           name="needChildEducationAssistance"
           checked={formData.needChildEducationAssistance}
           onChange={handleChange}
-          className="form-control"
         />
-      </div>
+      </label>
       <br />
-      <div className="mb-3">
+      <label>
         Need Employment Support:
         <input
           type="checkbox"
           name="needEmploymentSupport"
           checked={formData.needEmploymentSupport}
           onChange={handleChange}
-          className="form-control"
         />
-      </div>
+      </label>
       <br />
-      <div className="mb-3">
+      <label>
         Education Level:
         <input
           type="text"
           name="educationLevel"
           value={formData.educationLevel}
           onChange={handleChange}
-          className="form-control"
-          placeholder="Enter Education"
         />
-      </div>
+      </label>
       <br />
-      <div className="mb-3">
+      <label>
         Skillset:
         <input
           type="text"
           name="skillset"
           value={formData.skillset}
           onChange={handleChange}
-          className="form-control"
-          placeholder="Enter Skills"
         />
-      </div>
+      </label>
       <br />
-      <div className="mb-3">
+      <label>
         Interests:
         <input
           type="text"
           name="interests"
           value={formData.interests}
           onChange={handleChange}
-          className="form-control"
-          placeholder="Enter Interests"
         />
-      </div>
+      </label>
       <br />
-      <div className="mb-3">
+      <label>
         Events Attended:
         <input
           type="text"
           name="eventsAttended"
           value={formData.eventsAttended}
           onChange={handleChange}
-          className="form-control"
         />
-      </div>
+      </label>
       <br />
-      <div className="mb-3">
+      <label>
         Community:
         <input
           type="text"
           name="community"
           value={formData.community}
           onChange={handleChange}
-          className="form-control"
-          placeholder="Enter Community"
         />
-      </div>
+      </label>
       <br />
-      <div className="mb-3">
+      <label>
         Gender:
         <select
           name="gender"
           value={formData.gender}
           onChange={handleChange}
-          className="form-control"
         >
           <option value="">Select Gender</option>
           <option value="male">Male</option>
           <option value="female">Female</option>
           <option value="other">Other</option>
         </select>
-      </div>
+      </label>
       <br />
-      <div className="d-grid">
-        <button type="submit" className="btn btn-primary">Submit</button>
-      </div>
+      <button type="submit">Submit</button>
     </form>
   );
 };

@@ -30,7 +30,7 @@ const loginUser = async (req, res) => {
     const name = user.name;
     const mobile = user.number;
 
-    res.status(200).json("Success" );
+    res.status(200).json(token );
   } catch (error) {
     res.status(400).json({ error: error.message});
     console.log(error.message,"hi")

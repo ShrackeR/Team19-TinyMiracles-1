@@ -72,7 +72,7 @@ const Details = () => {
         <div className="container mt-3 mango">
         
   
-        <Card sx={{ maxWidth: 600 }}>
+        <Card sx={{ maxWidth: 800 }}>
           <CardContent>
             <div className="add_btn">
               <NavLink to={`/edit/${getuserdata._id}`}>

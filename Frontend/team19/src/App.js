@@ -15,7 +15,7 @@ import AdminNavbar from "./components/AdminNavbar";
 import Details from './pages/Details';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-import './App.css';
+// import './App.css';
 import Layout from "./components/Layout";
 
 function App() {
@@ -26,9 +26,9 @@ function App() {
     // <Layout>
     <div className="App">
       <BrowserRouter>
-      {/* {user && <Navbar />}
+      {user && <Navbar />}
       {admin && <AdminNavbar />}
-      {!user  && !admin && <StartNavbar />} */}
+      {/* {!user  && !admin && <StartNavbar />} */}
 
       <div>
       <div className="auth-wrapper">
