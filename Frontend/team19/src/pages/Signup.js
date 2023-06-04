@@ -160,9 +160,10 @@ const Signup = () => {
           onChange={handleChange}
           className="form-control"
         />
+        
       </div>
       <br />
-      <div className="mb-3">
+      {formData.isPanCard=="yes" &&  <div className="mb-3">
         PAN:
         <input
           type="text"
@@ -172,7 +173,8 @@ const Signup = () => {
           className="form-control"
           placeholder="Enter PAN number"
         />
-      </div>
+      </div>}
+     
       <br />
       <div>
         Is Eshram Available:
@@ -183,9 +185,10 @@ const Signup = () => {
           onChange={handleChange}
           className="form-control"
         />
+        
       </div>
       <br />
-      <div className="mb-3">
+      {formData.isEshram=="yes" && <div className="mb-3">
         Eshram:
         <input
           type="text"
@@ -195,7 +198,8 @@ const Signup = () => {
           className="form-control"
           placeholder="Enter Eshram"
         />
-      </div>
+      </div>}
+      
       <br />
       <div className="mb-3">
         Mobile:

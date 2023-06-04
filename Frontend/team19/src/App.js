@@ -15,25 +15,20 @@ import AdminNavbar from "./components/AdminNavbar";
 import Details from './pages/Details';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-import './App.css';
+// import './App.css';
 import Layout from "./components/Layout";
+import Wrapper from "./components/Wrrapper";
 
 function App() {
   const { user } = useAuthContext();
   const { admin } = useAuthContext2();
 
   return (
-    // <Layout>
-    <div className="App">
-      <BrowserRouter>
-      {/* {user && <Navbar />}
-      {admin && <AdminNavbar />}
-      {!user  && !admin && <StartNavbar />} */}
-
-      <div>
-      <div className="auth-wrapper">
-          <div className="auth-inner">
-          <Routes>
+    <BrowserRouter>
+   
+    <Layout>
+      <Wrapper>
+      <Routes>
           
 
           <Route
@@ -79,14 +74,11 @@ function App() {
             />
             {/* <Route exact path="/view/:id" component={Details} /> */}
              </Routes>
-          </div>
-        </div>
-      
-      
-        </div>
-      </BrowserRouter>
-    </div>
-    // </Layout>
+      </Wrapper>
+         
+        
+    </Layout>
+    </BrowserRouter>
   );
 }
 

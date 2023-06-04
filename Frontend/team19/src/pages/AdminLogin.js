@@ -18,7 +18,7 @@ const AdminLogin = () => {
       <h1>Sign In</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label for="email"></label>
+          <label for="email">Email</label>
           <input
             type="email"
             placeholder="Email Address"
@@ -27,9 +27,8 @@ const AdminLogin = () => {
             className="form-control"
           />
         </div>
-        <br/>
         <div className="mb-3">
-          <label for="password"></label>
+          <label for="password">Password</label>
           <input
             type="password"
             placeholder="Password"
