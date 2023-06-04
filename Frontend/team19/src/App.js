@@ -19,6 +19,7 @@ import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
 import Layout from "./components/Layout";
 import Wrapper from "./components/Wrrapper";
 import CreateEvent from "./pages/CreateEvent";
+import EditEvent from "./pages/editEvent";
 
 function App() {
   const { user } = useAuthContext();
@@ -40,6 +41,10 @@ function App() {
             <Route
               path="/"
               element={user ? <HomeMain /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/editEvent"
+              element={<EditEvent/>}
             />
             <Route
               path="/login"

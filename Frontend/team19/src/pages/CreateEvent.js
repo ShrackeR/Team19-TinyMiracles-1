@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useCreateEvent } from "../hooks/useCreateEvent";
+import Wrapper from "../components/Wrrapper";
 const CreateEvent=()=>{
     const{createEvent,error,isLoading,success,setSuccess}=useCreateEvent();
     const [eventData,setEventData]=useState({
@@ -30,6 +31,7 @@ const CreateEvent=()=>{
        await createEvent(eventData);
     }
     return (<>
+    <Wrapper>
     <form onSubmit={handleSubmit}>
       <h3>Fill Event Details</h3>
       <div className="mb-3">
@@ -108,7 +110,7 @@ const CreateEvent=()=>{
           name="tag"
           value={eventData.tag}
           onChange={handleChange}
-          className="form-control"
+          className="form-control multiple"
         >
           <option value="Education">Education</option>
           <option value="Health">Health Related</option>
@@ -131,6 +133,7 @@ const CreateEvent=()=>{
         <button type="submit" className="btn btn-primary">Submit</button>
       </div>
     </form>
+    </Wrapper>
     
     </>)
 }

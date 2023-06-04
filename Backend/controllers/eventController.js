@@ -74,6 +74,7 @@ const createevent = async (req, res) => {
         blank = [];
 
         const upload = await Event.create({ title, description, location, community, start, end, blank, blank });
+        console.log(upload);
         res.status(200).json({ upload });
     } catch (error) {
         console.log("Inside createevent", error.message);
