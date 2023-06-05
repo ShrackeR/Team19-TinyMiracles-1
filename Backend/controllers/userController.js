@@ -199,7 +199,7 @@ const signupUser = async (req, res) => {
     interests,
     eventsAttended,
     community,
-    gender,
+    gender,status
   } = req.body;
 
   try {
@@ -235,7 +235,7 @@ const signupUser = async (req, res) => {
       interests,
       eventsAttended,
       community,
-      gender
+      gender,status
     );
 
     res.status(200).json({

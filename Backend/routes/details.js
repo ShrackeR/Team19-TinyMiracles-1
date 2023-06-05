@@ -26,16 +26,37 @@ router.get("/getdata/:id",async(req,res)=>{
         res.status(422).json(error);
     }
 })
-router.delete("/deleteuser/:id",async(req,res)=>{
+router.delete("/deleteuser/:id", async (req, res) => {
+    try {
+      const { id } = req.params;
+  
+      const updateUser = await User.findByIdAndUpdate(
+        { _id: id },
+        { status: "Inactive" },
+        { new: true }
+      );
+  
+      console.log(updateUser);
+      res.status(201).json(updateUser);
+    } catch (error) {
+      res.status(422).json(error);
+    }
+  });
+  
+router.patch("/updateuser/:id",async(req,res)=>{
     try {
         const {id} = req.params;
 
-        const deletuser = await User.findByIdAndDelete({_id:id})
-        console.log(deletuser);
-        res.status(201).json(deletuser);
+        const updateduser = await User.findByIdAndUpdate(id,req.body,{
+            new:true
+        });
+
+        console.log(updateduser);
+        res.status(201).json(updateduser);
 
     } catch (error) {
         res.status(422).json(error);
     }
 })
+
 module.exports = router;

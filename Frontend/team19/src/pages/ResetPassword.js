@@ -1,6 +1,7 @@
 import { useState } from "react";
 import  {useResetPassword} from "../hooks/useResetPassword"
 
+import Wrapper from "../components/Wrrapper";
 
 const ResetPassword = () => {
     const{resetPassword,error,isLoading}=useResetPassword();
@@ -18,7 +19,7 @@ await resetPassword(newpassword,confirmpassword);
   
     return (
   
-  
+  <Wrapper>
   <form  onSubmit={handleSubmit}>
   <h3>Reset Password</h3>
       
@@ -40,6 +41,7 @@ await resetPassword(newpassword,confirmpassword);
   <button>Reset Password</button>
   
   </form>
+  </Wrapper>
               );
   }
   

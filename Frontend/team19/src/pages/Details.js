@@ -23,7 +23,7 @@ const Details = () => {
 
     const getdata = async () => {
 
-        const res = await fetch(`/api/details/getdata/${id}`, {
+        const res = await fetch(` http://localhost:4000/api/details/getdata/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -48,7 +48,7 @@ const Details = () => {
 
     const deleteuser = async (id) => {
 
-        const res2 = await fetch(`/api/details/getdata/${id}`, {
+        const res2 = await fetch(` http://localhost:4000/api/details/deleteuser/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
@@ -63,7 +63,7 @@ const Details = () => {
         } else {
             console.log("user deleted");
             alert("Success");
-            navigate("/")
+            window.location.reload(false);
         }
 
     }

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useLogin } from "../hooks/useLogin";
 import { Link } from "react-router-dom";
+import Wrapper from "../components/Wrrapper";
+
 const Login = () => {
   const [aadhar, setAadhar] = useState("");
   const [password, setPassword] = useState("");
@@ -13,7 +15,7 @@ const Login = () => {
   };
 
   return (
-    <>
+    <Wrapper>
     
        <form onSubmit={handleSubmit}>
         <h3>Sign In</h3>
@@ -61,7 +63,7 @@ const Login = () => {
         </div>
         {error && <div className="error">{error}</div>}
       </form>
-    </>
+    </Wrapper>
   );
 };
 

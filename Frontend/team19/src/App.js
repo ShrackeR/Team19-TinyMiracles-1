@@ -13,38 +13,45 @@ import AdminSignup from "./pages/AdminSignup";
 import StartNavbar from "./components/StartNavbar";
 import AdminNavbar from "./components/AdminNavbar";
 import Details from './pages/Details';
+import Edit from './pages/Edit';
+
+import Notification from "./pages/Notification";
+import AdminNotification from "./pages/AdminNotification";
+import Adminann from "./pages/Adminann";
+
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
 // import './App.css';
+import FlaskForm from "./pages/FlaskForm";
 import Layout from "./components/Layout";
+// import Wrapper from "./components/Wrrapper";
 
 function App() {
   const { user } = useAuthContext();
   const { admin } = useAuthContext2();
-
+  console.log(user);
   return (
-    // <Layout>
-    <div className="App">
-      <BrowserRouter>
-      {user && <Navbar />}
-      {admin && <AdminNavbar />}
-      {/* {!user  && !admin && <StartNavbar />} */}
-
-      <div>
-      <div className="auth-wrapper">
-          <div className="auth-inner">
-          <Routes>
+    <BrowserRouter>
+   
+    <Layout>
+      
+      <Routes>
           
 
-          <Route
+          {/* <Route exact
           path="/homepage"
           element={<HomeMain/>}
-          />
+          /> */}
 
+            
             <Route
-              path="/"
-              element={user ? <HomeMain /> : <Navigate to="/login" />}
+              path="/flask"
+              element={user ? <FlaskForm /> : <Navigate to="/login" />}
             />
+            {/* <Route
+             path="/"
+              element={user ? <HomeMain/> : <Navigate to="/login" />}
+            /> */}
             <Route
               path="/login"
               element={!user ? <Login /> : <Navigate to="/" />}
@@ -52,6 +59,18 @@ function App() {
              <Route
               path="/forgotPassword"
               element={!user ? <ForgotPassword /> : <Navigate to="/" />}
+            />
+              <Route
+              path="/"
+              element={user ? <Notification /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/admin/an"
+              element={ admin?<AdminNotification />:<Navigate to="/adminlogin" /> }
+            />
+            <Route
+              path="/admin/ad"
+              element={admin ? <Adminann /> : <Navigate to="/adminlogin" />}
             />
             <Route
               path="/resetPassword/:newToken"
@@ -77,16 +96,17 @@ function App() {
               path="admin/ad/view/:id"
               element={admin ? <Details /> : <Navigate to="/adminlogin" />}
             />
+            <Route
+              path="edit/:id"
+              element={admin ? <Edit/> : <Navigate to="/adminlogin" />}
+            />
+            
             {/* <Route exact path="/view/:id" component={Details} /> */}
              </Routes>
-          </div>
-        </div>
-      
-      
-        </div>
-      </BrowserRouter>
-    </div>
-    // </Layout>
+         
+        
+    </Layout>
+    </BrowserRouter>
   );
 }
 
