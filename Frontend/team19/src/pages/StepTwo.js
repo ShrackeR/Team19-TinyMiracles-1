@@ -23,12 +23,14 @@ const StepTwo = ({ nextStep, handleFormData, prevStep, values }) => {
         <Card.Body>
           <Form onSubmit={submitFormData}>
             <Form.Group className="mb-3">
-              <Form.Label>Age</Form.Label>
+              <Form.Label>Area:</Form.Label>
               <Form.Control
                 style={{ border: error ? "2px solid red" : "" }}
-                type="number"
-                placeholder="Age"
+                type="text"
+                name="area"
+                placeholder="area"
                 onChange={handleFormData}
+                value={values.area}
               />
               {/* {error ? (
                 <Form.Text style={{ color: "red" }}>
@@ -39,20 +41,48 @@ const StepTwo = ({ nextStep, handleFormData, prevStep, values }) => {
               )} */}
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Email</Form.Label>
+              <Form.Label>Street:</Form.Label>
               <Form.Control
                 style={{ border: error ? "2px solid red" : "" }}
-                type="email"
-                placeholder="email"
+                type="text"
+                name="street"
+                placeholder="Street"
                 onChange={handleFormData}
+                value={values.street}
               />
-              {/* {error ? (
-                <Form.Text style={{ color: "red" }}>
-                  This is a required field
-                </Form.Text>
-              ) : (
-                ""
-              )} */}
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>State:</Form.Label>
+              <Form.Control
+                style={{ border: error ? "2px solid red" : "" }}
+                type="text"
+                name="state"
+                placeholder="state"
+                onChange={handleFormData}
+                value={values.state}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>City:</Form.Label>
+              <Form.Control
+                style={{ border: error ? "2px solid red" : "" }}
+                type="text"
+                name="city"
+                placeholder="city"
+                onChange={handleFormData}
+                value={values.city}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>PIN:</Form.Label>
+              <Form.Control
+                style={{ border: error ? "2px solid red" : "" }}
+                type="text"
+                name="pin"
+                placeholder="pin"
+                onChange={handleFormData}
+                value={values.pin}
+              />
             </Form.Group>
             <div style={{ display: "flex", justifyContent: "space-around" }}>
               <Button variant="primary" onClick={prevStep}>
@@ -60,8 +90,8 @@ const StepTwo = ({ nextStep, handleFormData, prevStep, values }) => {
               </Button>
 
               <Button variant="primary" type="submit">
-                Submit
-              </Button>
+                  Continue
+                </Button>
             </div>
           </Form>
         </Card.Body>

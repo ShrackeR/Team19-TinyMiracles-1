@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import './StartNavbar.css';
+import { Nav, Navbar, NavLink } from "react-bootstrap";
 
 
 const StartNavbar = () => {
@@ -9,7 +10,7 @@ const StartNavbar = () => {
 
         <>
        <div className="App">
-        <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+        {/* <nav className="navbar navbar-expand-lg navbar-light fixed-top">
           <div className="container">
             <Link className="navbar-brand" to={'/homepage'}>
               Tiny Miracles
@@ -21,25 +22,27 @@ const StartNavbar = () => {
                     Login
                   </Link>
                 </li>
-                {/* <li className="nav-item">
-                  <Link className="nav-link" to={'/signup'}>
-                    Sign up
-                  </Link>
-                </li> */}
+                
                 <li className="nav-item">
                   <Link className="nav-link" to={'/adminlogin'}>
                     Admin Login
                   </Link>
                 </li>
-                {/* <li className="nav-item">
-                  <Link className="nav-link" to={'/adminsignup'}>
-                    Admin Signup
-                  </Link>
-                </li> */}
+               
               </ul>
             </div>
           </div>
-        </nav>
+        </nav> */}
+        <Navbar collapseOnSelect expand="sm" bg="light" variant="light">
+            <Navbar.Toggle aria-controls="navbarScroll" data-bs-toggle="collapse" data-bs-target="#navbarScroll" />
+            <Navbar.Collapse id="navbarScroll">
+                <Nav>
+                    <NavLink  eventKey="1" as={Link} to="/homepage">Tiny Miracles</NavLink>
+                    <NavLink  eventKey="2" as={Link} to="/login">Login</NavLink>
+                    <NavLink  eventKey="3" as={Link} to="/adminlogin">Admin Login</NavLink>
+                </Nav>
+            </Navbar.Collapse>     
+        </Navbar>
 
         </div>
     </>

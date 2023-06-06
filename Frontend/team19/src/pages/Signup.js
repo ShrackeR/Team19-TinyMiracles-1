@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import  {useSignup} from "../hooks/useSignup"
 import Wrapper from '../components/Wrrapper';
-import './signup.css'
+import classes from'./signup.module.css'
 import StepOne from "./StepOne";
 import StepTwo from "./StepTwo";
 import Final from "./Final";
+// import Personal from './Personal';
+import Personal from './Personal';
 import { Container, Row, Col } from "react-bootstrap";
 
 const Signup = () => {
@@ -105,7 +107,7 @@ const Signup = () => {
   const handleSubmit =async (e) => {
     e.preventDefault();
     // Perform form submission or validation
-    // console.log(formData);
+    console.log(formData);
     await signup(formData);
     // await signup( name,
     //   aadhar,
@@ -146,10 +148,12 @@ const Signup = () => {
     case 1:
       return (
         <div className="App">
+         
           <Container>
             <Row>
-              <Col  md={{ span: 6, offset: 3 }} className="custom-margin">
-                <StepOne nextStep={nextStep} handleFormData={handleChange} values={formData} />
+            
+              <Col  md={{ span: 6, offset: 3 }} className={classes.App1}>
+                <StepOne nextStep={nextStep} handleFormData={handleChange} values={formData} submitF={handleSubmit}/>
               </Col>
             </Row>
           </Container>
@@ -158,10 +162,10 @@ const Signup = () => {
     // case 2 to show stepTwo form passing nextStep, prevStep, and handleInputData as handleFormData method as prop and also formData as value to the fprm
     case 2:
       return (
-        <div className="App">
+        <div className={`App ${classes.App1}`}>
           <Container>
             <Row>
-              <Col  md={{ span: 6, offset: 3 }} className="custom-margin">
+              <Col  md={{ span: 6, offset: 3 }} >
                 <StepTwo nextStep={nextStep} prevStep={prevStep} handleFormData={handleChange} values={formData} />
               </Col>
             </Row>
@@ -171,20 +175,36 @@ const Signup = () => {
       // Only formData is passed as prop to show the final value at form submit
     case 3:
       return (
-        <div className="App">
+        <div className={`App ${classes.App1}`}>
           <Container>
             <Row>
-              <Col  md={{ span: 6, offset: 3 }} className="custom-margin">
-                <Final values={formData}  />
+              <Col  md={{ span: 6, offset: 3 }} >
+              <Final nextStep={nextStep} prevStep={prevStep} handleFormData={handleChange} values={formData}  />
               </Col>
             </Row>
           </Container>
         </div>
       );
     // default case to show nothing
+    case 4:
+      return (
+        <div className={`App ${classes.App1}`}>
+          <Container>
+            <Row>
+              <Col  md={{ span: 6, offset: 3 }} >
+              <Personal nextStep={nextStep} prevStep={prevStep} handleFormData={handleChange} values={formData} handleAddDisease={handleAddDisease}
+              handleDiseasesChange={handleDiseasesChange}
+              handleRemoveDisease={handleRemoveDisease}
+              submitF={handleSubmit}
+              />
+              </Col>
+            </Row>
+          </Container>
+        </div>
+      )
     default:
       return (
-        <div className="App">
+        <div className={`App ${classes.App1}`}>
         </div>
       );
   }

@@ -3,6 +3,7 @@ import { useLogin } from "../hooks/useLogin";
 import { useLogin2 } from "../hooks/useLogin2";
 import Wrapper from "../components/Wrrapper";
 import { Link } from "react-router-dom";
+import './AdminLogin.css';
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
@@ -17,7 +18,7 @@ const AdminLogin = () => {
 
   return (
     <Wrapper>
-    <div>
+    <div >
       <h1>Sign In</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
