@@ -26,11 +26,12 @@ const loginUser = async (req, res) => {
 
     // create a token
     const token = createToken(user._id);
+    const id=user._id;
     const gender = user.gender;
     const name = user.name;
     const mobile = user.number;
-
-    res.status(200).json("Success" );
+    console.log(token,id,name);
+    res.status(200).json({token,name,id});
   } catch (error) {
     res.status(400).json({ error: error.message});
     console.log(error.message,"hi")
@@ -199,7 +200,7 @@ const signupUser = async (req, res) => {
     interests,
     eventsAttended,
     community,
-    gender,
+    gender,status
   } = req.body;
 
   try {
@@ -235,7 +236,7 @@ const signupUser = async (req, res) => {
       interests,
       eventsAttended,
       community,
-      gender
+      gender,status
     );
 
     res.status(200).json({

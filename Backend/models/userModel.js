@@ -16,15 +16,14 @@ const userSchema = new Schema({
     unique:true
   },
   isPanCard : {
-    type : Boolean,
-    required : true
+    type : Boolean
   },
   pan: {
     type: String,
   },
   isEshram : {
-    type : Boolean,
-    required : true
+    type : Boolean
+   
   },
   eshram: {
     type: String,
@@ -70,7 +69,7 @@ const userSchema = new Schema({
   }],
   isBankAccount : {
     type : Boolean,
-    required : true
+    
   },
   bankName: {
     type: String
@@ -109,7 +108,10 @@ const userSchema = new Schema({
   gender:{
     type:String,
     required:true
-  }
+  },
+status:{
+  type:String
+}
 });
 
 
@@ -147,7 +149,7 @@ userSchema.statics.signup = async function (
   interests,
   eventsAttended,
   community,
-  gender
+  gender,status
 ) {
   // validation
   if (
@@ -155,14 +157,13 @@ userSchema.statics.signup = async function (
     !password ||
     !name ||
     !mobile ||
-    !isPanCard ||
-    !isEshram ||
+    !aadhar||
     !dob ||
     !area ||
     !city ||
     !state ||
     !pin ||
-    !isBankAccount ||
+    
     !educationLevel ||
     !community ||
     !gender
@@ -216,7 +217,7 @@ userSchema.statics.signup = async function (
     interests,
     eventsAttended,
     community,
-    gender
+    gender,status
   });
 
   return user;

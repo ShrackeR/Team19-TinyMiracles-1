@@ -37,6 +37,7 @@ app.use((req, res, next) => {
 app.use('/api/user', userRoutes)
 app.use('/api/event',eventRoutes)
 app.use('/api/admin',adminRoutes)
+app.use('/api/details',detailRoutes)
 // app.use('/api/appointmentt',adminRoutes)
 // app.use('/api/doctor', appointmentRoutes)
 // app.use('/h', healthRoutes);

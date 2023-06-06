@@ -87,7 +87,7 @@ const Personal = ({handleRemoveDisease,handleDiseasesChange,handleAddDisease, ne
         />
       </div>
       <div className="mb-3">
-        Education Level:<span class="required-field"></span>
+      <span style={{ color: 'red' }}>*</span>Education Level:
         <input
           type="text"
           name="educationLevel"
@@ -130,7 +130,7 @@ const Personal = ({handleRemoveDisease,handleDiseasesChange,handleAddDisease, ne
         />
       </div>
       <div className="mb-3">
-        Community:<span class="required-field"></span>
+      <span style={{ color: 'red' }}>*</span> Community:
         <input
           type="text"
           name="community"
@@ -141,7 +141,7 @@ const Personal = ({handleRemoveDisease,handleDiseasesChange,handleAddDisease, ne
         />
       </div>
       <div className="mb-3">
-        Gender:<span class="required-field"></span>
+      <span style={{ color: 'red' }}>*</span> Gender:
         <select
           name="gender"
           value={values.gender}

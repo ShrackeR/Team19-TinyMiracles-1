@@ -18,7 +18,7 @@ const router = express.Router()
 
 // login route
 router.post('/create', createevent)
-router.post('/markAttendance',markAttendance)
+router.get('/markAttendance',markAttendance)
 router.get('/get/:id',getevent)
 router.get('/getall',allevents)
 router.put('/update/:id',updateevent)

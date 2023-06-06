@@ -118,8 +118,10 @@ const updateevent = async (req, res) => {
 
 const markAttendance = async (req, res) => {
     try {
-        console.log(req.body);
-        const { event, user } = req.body;
+        console.log("params"+req.params);
+        console.log("query"+req.query);
+        const { event, user } = req.query;
+        console.log("params"+event+user);
         const eventobj = await Event.findById(event);
         const userobj = await User.findById(user);
         console.log(eventobj);
