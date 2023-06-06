@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import  {useSignup} from "../hooks/useSignup"
 import Wrapper from '../components/Wrrapper';
+import './signup.css'
+import StepOne from "./StepOne";
+import StepTwo from "./StepTwo";
+import Final from "./Final";
+import { Container, Row, Col } from "react-bootstrap";
 
 const Signup = () => {
   const{signup,error,isLoading,success,setSuccess}=useSignup();
+  const [step, setstep] = useState(1);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -39,6 +45,14 @@ const Signup = () => {
     community: '',
     gender: '',
   });
+  const nextStep = () => {
+    setstep(step + 1);
+  };
+
+  // function for going to previous step by decreasing step state by 1
+  const prevStep = () => {
+    setstep(step - 1);
+  };
   
   const handleDiseasesChange = (e, index) => {
     const { value } = e.target;
@@ -127,12 +141,60 @@ const Signup = () => {
     //   gender)
   };
 
-  return (
-    <Wrapper>
-    <form onSubmit={handleSubmit}>
+  switch (step) {
+    // case 1 to show stepOne form and passing nextStep, prevStep, and handleInputData as handleFormData method as prop and also formData as value to the fprm
+    case 1:
+      return (
+        <div className="App">
+          <Container>
+            <Row>
+              <Col  md={{ span: 6, offset: 3 }} className="custom-margin">
+                <StepOne nextStep={nextStep} handleFormData={handleChange} values={formData} />
+              </Col>
+            </Row>
+          </Container>
+        </div>
+      );
+    // case 2 to show stepTwo form passing nextStep, prevStep, and handleInputData as handleFormData method as prop and also formData as value to the fprm
+    case 2:
+      return (
+        <div className="App">
+          <Container>
+            <Row>
+              <Col  md={{ span: 6, offset: 3 }} className="custom-margin">
+                <StepTwo nextStep={nextStep} prevStep={prevStep} handleFormData={handleChange} values={formData} />
+              </Col>
+            </Row>
+          </Container>
+        </div>
+      );
+      // Only formData is passed as prop to show the final value at form submit
+    case 3:
+      return (
+        <div className="App">
+          <Container>
+            <Row>
+              <Col  md={{ span: 6, offset: 3 }} className="custom-margin">
+                <Final values={formData}  />
+              </Col>
+            </Row>
+          </Container>
+        </div>
+      );
+    // default case to show nothing
+    default:
+      return (
+        <div className="App">
+        </div>
+      );
+  }
+
+  // return (
+    // <Wrapper>
+    {/* <form onSubmit={handleSubmit}>
       <h3>Sign up</h3>
       <div className="mb-3">
-        Name:
+        Name:<span class="required-field"></span>
         <input
           type="text"
           name="name"
@@ -143,7 +205,7 @@ const Signup = () => {
         />
       </div>
       <div className="mb-3">
-        Aadhar:
+        Aadhar:<span class="required-field"></span>
         <input
           type="text"
           name="aadhar"
@@ -197,7 +259,7 @@ const Signup = () => {
         />
       </div>
       <div className="mb-3">
-        Mobile:
+        Mobile:<span class="required-field"></span>
         <input
           type="text"
           name="mobile"
@@ -208,7 +270,7 @@ const Signup = () => {
         />
       </div>
       <div className="mb-3">
-        Date of Birth:
+        Date of Birth:<span class="required-field"></span>
         <input
           type="date"
           name="dob"
@@ -219,7 +281,7 @@ const Signup = () => {
         />
       </div>
       <div>
-        Email:
+        Email:<span class="required-field"></span>
         <input
           type="email"
           name="email"
@@ -230,7 +292,7 @@ const Signup = () => {
         />
       </div>
       <div className="mb-3">
-        <h6>Address</h6>
+        <h6>Address<span class="required-field"></span></h6>
         Area:
         <input
           type="text"
@@ -281,7 +343,7 @@ const Signup = () => {
         />
       </div>
       <div className="mb-3">
-        Password:
+        Password:<span class="required-field"></span>
         <input
           type="password"
           name="password"
@@ -419,7 +481,7 @@ const Signup = () => {
         />
       </div>
       <div className="mb-3">
-        Education Level:
+        Education Level:<span class="required-field"></span>
         <input
           type="text"
           name="educationLevel"
@@ -430,7 +492,7 @@ const Signup = () => {
         />
       </div>
       <div className="mb-3">
-        Skillset:
+        Skillset:<span class="required-field"></span>
         <input
           type="text"
           name="skillset"
@@ -462,7 +524,7 @@ const Signup = () => {
         />
       </div>
       <div className="mb-3">
-        Community:
+        Community:<span class="required-field"></span>
         <input
           type="text"
           name="community"
@@ -473,7 +535,7 @@ const Signup = () => {
         />
       </div>
       <div className="mb-3">
-        Gender:
+        Gender:<span class="required-field"></span>
         <select
           name="gender"
           value={formData.gender}
@@ -489,9 +551,9 @@ const Signup = () => {
       <div className="d-grid">
         <button type="submit" className="btn btn-primary">Submit</button>
       </div>
-    </form>
-    </Wrapper>
-  );
+    </form> */}
+    // </Wrapper>
+  // );
 };
 
 export default Signup;

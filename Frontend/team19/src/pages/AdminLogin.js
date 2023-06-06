@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLogin } from "../hooks/useLogin";
 import { useLogin2 } from "../hooks/useLogin2";
 import Wrapper from "../components/Wrrapper";
+import { Link } from "react-router-dom";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
@@ -57,7 +58,7 @@ const AdminLogin = () => {
       </div>
       <div class="form-footer">
         <p>
-          <a href="/signup">Create an account</a>
+        <Link to="/adminsignup">Don't have account ?</Link>
         </p>
       </div>
     </div>

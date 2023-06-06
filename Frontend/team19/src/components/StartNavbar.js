@@ -11,7 +11,7 @@ const StartNavbar = () => {
        <div className="App">
         <nav className="navbar navbar-expand-lg navbar-light fixed-top">
           <div className="container">
-            <Link className="navbar-brand" to={'/login'}>
+            <Link className="navbar-brand" to={'/homepage'}>
               Tiny Miracles
             </Link>
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
@@ -21,21 +21,21 @@ const StartNavbar = () => {
                     Login
                   </Link>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <Link className="nav-link" to={'/signup'}>
                     Sign up
                   </Link>
-                </li>
+                </li> */}
                 <li className="nav-item">
                   <Link className="nav-link" to={'/adminlogin'}>
                     Admin Login
                   </Link>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <Link className="nav-link" to={'/adminsignup'}>
                     Admin Signup
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
