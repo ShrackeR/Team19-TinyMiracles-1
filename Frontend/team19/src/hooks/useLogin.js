@@ -16,13 +16,14 @@ export const useLogin = () => {
       body: JSON.stringify({ aadhar, password })
     })
     const json = await response.json()
-
+    console.log(JSON.stringify(json),"inside useLogin")
     if (!response.ok) {
       setIsLoading(false)
       setError(json.error)
     }
     if (response.ok) {
       // save the user to local storage
+      
       localStorage.setItem('user', JSON.stringify(json))
 
       // update the auth context

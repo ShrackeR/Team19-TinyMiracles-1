@@ -15,8 +15,9 @@ const Login = () => {
   };
 
   return (
+
     <Wrapper>
-    
+
        <form onSubmit={handleSubmit}>
         <h3>Sign In</h3>
         <div className="mb-3">
@@ -63,7 +64,11 @@ const Login = () => {
         </div>
         {error && <div className="error">{error}</div>}
       </form>
+
     </Wrapper>
+
+  
+
   );
 };
 

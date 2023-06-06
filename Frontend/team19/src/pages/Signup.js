@@ -846,6 +846,20 @@ const renderForm = () => {
           placeholder="Enter DOB"
         />
       </div>
+      <div className="mb-3">
+      <span style={{ color: 'red' }}>*</span> Gender:
+        <select
+          name="gender"
+          value={formData.gender}
+          onChange={handleChange}
+          className="form-control"
+        >
+          <option value="">Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
       <div>
       <span style={{ color: 'red' }}>*</span> Email:
         <input
@@ -927,7 +941,17 @@ const renderForm = () => {
       </div>
 
 
-
+      <div className="mb-3">
+      <span style={{ color: 'red' }}>*</span> Education Level:
+        <input
+          type="text"
+          name="educationLevel"
+          value={formData.educationLevel}
+          onChange={handleChange}
+          className="form-control"
+          placeholder="Enter Education"
+        />
+      </div>
 
         </div>
       );
@@ -1075,17 +1099,7 @@ const renderForm = () => {
           className="form-check"
         />
       </div>
-      <div className="mb-3">
-      <span style={{ color: 'red' }}>*</span> Education Level:
-        <input
-          type="text"
-          name="educationLevel"
-          value={formData.educationLevel}
-          onChange={handleChange}
-          className="form-control"
-          placeholder="Enter Education"
-        />
-      </div>
+      
       <div className="mb-3">
         Skillset:
         <input
@@ -1129,20 +1143,7 @@ const renderForm = () => {
           placeholder="Enter Community"
         />
       </div>
-      <div className="mb-3">
-      <span style={{ color: 'red' }}>*</span> Gender:
-        <select
-          name="gender"
-          value={formData.gender}
-          onChange={handleChange}
-          className="form-control"
-        >
-          <option value="">Select Gender</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
+      
 
         </div>
       );
@@ -1156,19 +1157,19 @@ return (
       <form onSubmit={handleSubmit}>
         {/* Tab navigation */}
         <div className="btn-group">
-          <div
-            variant={activeTab === 1 ? 'primary' : 'secondary'}
+          <div style={{cursor: "pointer"}}
+            variant={activeTab === 1 ? 'primary'  : 'secondary'} 
             onClick={() => handleTabClick(1)}
           >
             Personal Information
           </div>
-          <div
+          <div style={{cursor: "pointer"}}
             variant={activeTab === 2 ? 'primary' : 'secondary'}
             onClick={() => handleTabClick(2)}
           >
             Analytical Information
           </div>
-          <div
+          <div style={{cursor: "pointer"}}
             variant={activeTab === 3 ? 'primary' : 'secondary'}
             onClick={() => handleTabClick(3)}
           >

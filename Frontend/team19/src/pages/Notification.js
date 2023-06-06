@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./noti.css";
 
 const Notification = () => {
 
@@ -48,7 +49,7 @@ const Notification = () => {
 <div>
 {notifi && notifi.map((not) => (
   <div key={not._id}>
-  <div >
+  <div  >
     {not.announcement}
   </div>
   {/* <button className="material-symbols-outlined" onClick={()=>handleClick(not)}>delete</button> */}
