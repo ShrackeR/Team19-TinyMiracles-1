@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
 import Signup from "./pages/Signup";
+// import UserHome from "./pages/UserHome";
 
 import Login from "./pages/Login";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -39,7 +40,7 @@ function App() {
 
             <Route
               path="/"
-              element={user ? <Home /> : <Navigate to="/login" />}
+              element={user ? <Home/> : <Navigate to="/login" />}
             />
             <Route
               path="/editEvent/:eventId"
