@@ -1,18 +1,21 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
 import Signup from "./pages/Signup";
+<<<<<<< HEAD
 import Scanner from "./pages/Scanner";
 import Navbar from "./components/Navbar";
+=======
+
+>>>>>>> 2cc9fe67edfb6c7ae3d66e976c131514ec9bc921
 import Login from "./pages/Login";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
-import HomeMain from "./pages/HomeMain";
+import Home from "./pages/Home";
 import { useAuthContext2 } from "./hooks/useAuthContext2";
 import AdminHome from "./pages/AdminHome";
 import AdminLogin from "./pages/AdminLogin";
 import AdminSignup from "./pages/AdminSignup";
-import StartNavbar from "./components/StartNavbar";
-import AdminNavbar from "./components/AdminNavbar";
+
 import Details from './pages/Details';
 import Edit from './pages/Edit';
 import Allevents from "./pages/Allevents";
@@ -47,13 +50,22 @@ function App() {
 
           {/* <Route exact
           path="/homepage"
+<<<<<<< HEAD
           element={<HomeMain/>}
           /> */}
+=======
+          element={<Home/>}
+          />
+>>>>>>> 2cc9fe67edfb6c7ae3d66e976c131514ec9bc921
 
             
             <Route
               path="/"
+<<<<<<< HEAD
               element={user ? <FlaskForm /> : <Navigate to="/login" />}
+=======
+              element={user ? <Home /> : <Navigate to="/login" />}
+>>>>>>> 2cc9fe67edfb6c7ae3d66e976c131514ec9bc921
             />
             <Route
               exact path="/allevents"

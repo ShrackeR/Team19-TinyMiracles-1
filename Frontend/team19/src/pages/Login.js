@@ -50,6 +50,9 @@ const Login = () => {
             Submit
           </button>
         </div>
+        <p className="forgot-password text-left">
+        <Link to="/signup">Don't have account ?</Link>
+        </p>
         <p className="forgot-password text-right">
         <Link to="/forgotPassword">Forgot Password ?</Link>
         </p>
