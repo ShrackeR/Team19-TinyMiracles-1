@@ -368,6 +368,7 @@
 // export default EventDetails;x
 
 import QrCode from "react-qr-code";
+
 import React, { useState, useEffect}  from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";

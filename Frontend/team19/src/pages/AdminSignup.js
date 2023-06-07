@@ -20,7 +20,7 @@ const AdminSignup = () => {
 
   return (
     <Wrapper >
-    <div className="main_Box">
+    <div style={{marginTop:12+'rem'}}>
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">

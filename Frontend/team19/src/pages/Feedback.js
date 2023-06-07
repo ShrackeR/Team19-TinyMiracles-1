@@ -47,8 +47,9 @@ function Feedbackk(props) {
       .then((response) => response.json())
       .then((result) => {
         // Handle the response from the backend
-        alert("Form Submitted");
         setExp("");
+        alert("Form Submitted");
+        
       })
       .catch((error) => {
         // Handle errors

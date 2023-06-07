@@ -49,7 +49,7 @@ function App() {
           {/* <Route exact
           path="/homepage"
           element={<HomeMain/>}
-          /> */}
+          />  */}
           <Route
               path="/"
               element={user ? <Home /> : <Navigate to="/login" />}
@@ -70,6 +70,7 @@ function App() {
             <Route
               path="/scanner"
               element={<Scanner /> }
+             
             />
             <Route
              exact path="/allevents/eventdetails/:id"

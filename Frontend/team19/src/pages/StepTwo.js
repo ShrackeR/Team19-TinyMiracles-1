@@ -17,13 +17,51 @@ const StepTwo = ({ nextStep, handleFormData, prevStep, values }) => {
       nextStep();
     
   };
+  const statesOfIndia = [
+    'Andaman and Nicobar Islands',
+    'Andhra Pradesh',
+    'Arunachal Pradesh',
+    'Assam',
+    'Bihar',
+    'Chandigarh',
+    'Chhattisgarh',
+    'Dadra and Nagar Haveli',
+    'Daman and Diu',
+    'Delhi',
+    'Goa',
+    'Gujarat',
+    'Haryana',
+    'Himachal Pradesh',
+    'Jammu and Kashmir',
+    'Jharkhand',
+    'Karnataka',
+    'Kerala',
+    'Lakshadweep',
+    'Madhya Pradesh',
+    'Maharashtra',
+    'Manipur',
+    'Meghalaya',
+    'Mizoram',
+    'Nagaland',
+    'Odisha',
+    'Puducherry',
+    'Punjab',
+    'Rajasthan',
+    'Sikkim',
+    'Tamil Nadu',
+    'Telangana',
+    'Tripura',
+    'Uttar Pradesh',
+    'Uttarakhand',
+    'West Bengal',
+  ];
   return (
     <>
       <Card style={{ marginTop: 100 }}>
         <Card.Body>
           <Form onSubmit={submitFormData}>
             <Form.Group className="mb-3">
-              <Form.Label>Area:</Form.Label>
+              <Form.Label> <span style={{ color: 'red' }}>*</span>Area:</Form.Label>
               <Form.Control
                 style={{ border: error ? "2px solid red" : "" }}
                 type="text"
@@ -41,7 +79,7 @@ const StepTwo = ({ nextStep, handleFormData, prevStep, values }) => {
               )} */}
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Street:</Form.Label>
+              <Form.Label> <span style={{ color: 'red' }}>*</span>Street:</Form.Label>
               <Form.Control
                 style={{ border: error ? "2px solid red" : "" }}
                 type="text"
@@ -51,19 +89,24 @@ const StepTwo = ({ nextStep, handleFormData, prevStep, values }) => {
                 value={values.street}
               />
             </Form.Group>
+            
+              <Form.Label> <span style={{ color: 'red' }}>*</span>State:</Form.Label>
+              <select
+                  name="state"
+                  value={values.state}
+                  onChange={handleFormData}
+                  className="form-control"
+                >
+                  <option value="">Select State</option>
+                  {statesOfIndia.map((state) => (
+                    <option key={state} value={state}>
+                      {state}
+                    </option>
+                  ))}
+                </select>
+            
             <Form.Group className="mb-3">
-              <Form.Label>State:</Form.Label>
-              <Form.Control
-                style={{ border: error ? "2px solid red" : "" }}
-                type="text"
-                name="state"
-                placeholder="state"
-                onChange={handleFormData}
-                value={values.state}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>City:</Form.Label>
+              <Form.Label> <span style={{ color: 'red' }}>*</span>City:</Form.Label>
               <Form.Control
                 style={{ border: error ? "2px solid red" : "" }}
                 type="text"
@@ -74,7 +117,7 @@ const StepTwo = ({ nextStep, handleFormData, prevStep, values }) => {
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>PIN:</Form.Label>
+              <Form.Label> <span style={{ color: 'red' }}>*</span>PIN:</Form.Label>
               <Form.Control
                 style={{ border: error ? "2px solid red" : "" }}
                 type="text"

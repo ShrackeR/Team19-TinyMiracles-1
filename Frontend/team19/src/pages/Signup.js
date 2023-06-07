@@ -565,6 +565,11 @@ const Signup = () => {
   const { signup, error, isLoading, success, setSuccess } = useSignup();
 
   const [activeTab, setActiveTab] = useState(1);
+<<<<<<< HEAD
+=======
+  // const{signup,error,isLoading,success,setSuccess}=useSignup();
+  const [step, setstep] = useState(1);
+>>>>>>> e1ef63dfe7d44f37021a5eb57962e8610b082ce0
 
   const [formData, setFormData] = useState({
     name: '',
@@ -601,6 +606,7 @@ const Signup = () => {
     gender: '',
     status: 'ACTIVE',
   });
+<<<<<<< HEAD
 
   const statesOfIndia = [
     'Andaman and Nicobar Islands',
@@ -641,6 +647,17 @@ const Signup = () => {
     'West Bengal',
   ];
 
+=======
+  const nextStep = () => {
+    setstep(step + 1);
+  };
+
+  // function for going to previous step by decreasing step state by 1
+  const prevStep = () => {
+    setstep(step - 1);
+  };
+  
+>>>>>>> e1ef63dfe7d44f37021a5eb57962e8610b082ce0
   const handleDiseasesChange = (e, index) => {
     const { value } = e.target;
 
@@ -678,6 +695,7 @@ const Signup = () => {
     }));
   };
 
+<<<<<<< HEAD
   const handleTabClick = (tab) => {
     if (activeTab !== tab) {
       setActiveTab(tab);
@@ -768,6 +786,100 @@ const renderForm = () => {
           {/* ... */}
           <div className="mb-3">
       <span style={{ color: 'red' }}>*</span> Name:
+=======
+  const handleRemoveDisease = (index) => {
+    setFormData((prevFormData) => {
+      const updatedDiseases = [...prevFormData.diseases];
+      updatedDiseases.splice(index, 1);
+
+      return {
+        ...prevFormData,
+        diseases: updatedDiseases,
+      };
+    });
+  };
+  const handleSubmit =async (e) => {
+    e.preventDefault();
+    // Perform form submission or validation
+    console.log(formData);
+    await signup(formData);
+   
+  };
+ 
+  switch (step) {
+    // case 1 to show stepOne form and passing nextStep, prevStep, and handleInputData as handleFormData method as prop and also formData as value to the fprm
+    case 1:
+      return (
+        <div style={{marginTop:-8+'rem'}}>
+         
+          <Container>
+            <Row>
+            
+              <Col  md={{ span: 6, offset: 3 }} className={classes.App1}>
+                <StepOne nextStep={nextStep} handleFormData={handleChange} values={formData} submitF={handleSubmit}/>
+              </Col>
+            </Row>
+          </Container>
+        </div>
+      );
+    // case 2 to show stepTwo form passing nextStep, prevStep, and handleInputData as handleFormData method as prop and also formData as value to the fprm
+    case 2:
+      return (
+        <div style={{marginTop:-8+'rem'}}>
+          <Container>
+            <Row>
+              <Col  md={{ span: 6, offset: 3 }} >
+                <StepTwo nextStep={nextStep} prevStep={prevStep} handleFormData={handleChange} values={formData} />
+              </Col>
+            </Row>
+          </Container>
+        </div>
+      );
+      // Only formData is passed as prop to show the final value at form submit
+    case 3:
+      return (
+        <div style={{marginTop:-8+'rem'}}>
+          <Container>
+            <Row>
+              <Col  md={{ span: 6, offset: 3 }} >
+              <Final nextStep={nextStep} prevStep={prevStep} handleFormData={handleChange} values={formData}  />
+              </Col>
+            </Row>
+          </Container>
+        </div>
+      );
+    // default case to show nothing
+    case 4:
+      return (
+        <div style={{marginTop:-8+'rem'}}>
+          <Container>
+            <Row>
+              <Col  md={{ span: 6, offset: 3 }} >
+              <Personal nextStep={nextStep} prevStep={prevStep} handleFormData={handleChange} values={formData} handleAddDisease={handleAddDisease}
+              handleDiseasesChange={handleDiseasesChange}
+              handleRemoveDisease={handleRemoveDisease}
+              submitF={handleSubmit}
+              />
+              </Col>
+            </Row>
+          </Container>
+        </div>
+      )
+    default:
+      return (
+        <div >
+        </div>
+      );
+  }
+}
+
+  // return (
+    // <Wrapper>
+    {/* <form onSubmit={handleSubmit}>
+      <h3>Sign up</h3>
+      <div className="mb-3">
+        Name:<span class="required-field"></span>
+>>>>>>> e1ef63dfe7d44f37021a5eb57962e8610b082ce0
         <input
           type="text"
           name="name"
@@ -779,6 +891,10 @@ const renderForm = () => {
       </div>
       <div className="mb-3">
       <span style={{ color: 'red' }}>*</span> Aadhar:
+<<<<<<< HEAD
+=======
+        Aadhar:<span class="required-field"></span>
+>>>>>>> e1ef63dfe7d44f37021a5eb57962e8610b082ce0
         <input
           type="text"
           name="aadhar"
@@ -833,6 +949,10 @@ const renderForm = () => {
       </div>
       <div className="mb-3">
       <span style={{ color: 'red' }}>*</span> Mobile:
+<<<<<<< HEAD
+=======
+        Mobile:<span class="required-field"></span>
+>>>>>>> e1ef63dfe7d44f37021a5eb57962e8610b082ce0
         <input
           type="text"
           name="mobile"
@@ -844,6 +964,10 @@ const renderForm = () => {
       </div>
       <div className="mb-3">
       <span style={{ color: 'red' }}>*</span> Date of Birth:
+<<<<<<< HEAD
+=======
+        Date of Birth:<span class="required-field"></span>
+>>>>>>> e1ef63dfe7d44f37021a5eb57962e8610b082ce0
         <input
           type="date"
           name="dob"
@@ -869,6 +993,10 @@ const renderForm = () => {
       </div>
       <div>
       <span style={{ color: 'red' }}>*</span> Email:
+<<<<<<< HEAD
+=======
+        Email:<span class="required-field"></span>
+>>>>>>> e1ef63dfe7d44f37021a5eb57962e8610b082ce0
         <input
           type="email"
           name="email"
@@ -881,6 +1009,11 @@ const renderForm = () => {
       <div className="mb-3">
         <h6>Address</h6>
         <span style={{ color: 'red' }}>*</span> Area:
+<<<<<<< HEAD
+=======
+        <h6>Address<span class="required-field"></span></h6>
+        Area:
+>>>>>>> e1ef63dfe7d44f37021a5eb57962e8610b082ce0
         <input
           type="text"
           name="area"
@@ -936,7 +1069,11 @@ const renderForm = () => {
         />
       </div>
       <div className="mb-3">
+<<<<<<< HEAD
       <span style={{ color: 'red' }}>*</span> Password:
+=======
+        Password:<span class="required-field"></span>
+>>>>>>> e1ef63dfe7d44f37021a5eb57962e8610b082ce0
         <input
           type="password"
           name="password"
@@ -969,105 +1106,106 @@ const renderForm = () => {
           {/* Form fields for address information */}
           {/* ... */}
           
-      <div className="mb-3">
-        Family & Friends:
-        <input
-          type="text"
-          name="familyFriends"
-          value={formData.familyFriends}
-          onChange={handleChange}
-          className="form-control"
-        />
-      </div>
-      <div>
-        Is Bank Account Available:
-        <input
-          type="checkbox"
-          name="isBankAccount"
-          checked={formData.isBankAccount}
-          onChange={handleChange}
-          className="form-check"
-        />
-      </div>
-      <div className="mb-3">
-        Bank Name:
-        <input
-          type="text"
-          name="bankName"
-          value={formData.bankName}
-          onChange={handleChange}
-          className="form-control"
-          placeholder="Enter Bank Name"
-        />
-      </div>
-      <div className="mb-3">
-        Account Number:
-        <input
-          type="text"
-          name="accountNumber"
-          value={formData.accountNumber}
-          onChange={handleChange}
-          className="form-control"
-          placeholder="Enter AAccount Number"
-        />
-      </div>
-      <div className="mb-3">
-        IFSC:
-        <input
-          type="text"
-          name="ifsc"
-          value={formData.ifsc}
-          onChange={handleChange}
-          className="form-control"
-          placeholder="Enter IFSC Code"
-        />
-      </div>
-      <div className="mb-3">
-        Medical Test Frequency:
-        <input
-          type="text"
-          name="medicalTestFrequency"
-          value={formData.medicalTestFrequency}
-          onChange={handleChange}
-          className="form-control"
-        />
-      </div>
-      <div className="mb-3">
-        Last Checkup:
-        <input
-          type="date"
-          name="lastCheckup"
-          value={formData.lastCheckup}
-          onChange={handleChange}
-          className="form-control"
-        />
-      </div>
-      <div className="mb-3">
-        Diseases:
-        {formData.diseases.map((disease, index) => (
-          <div key={index}>
-            <input
-              type="text"
-              name="disease"
-              value={disease}
-              onChange={(e) => handleDiseasesChange(e, index)}
-            />
-            <div>
-              <button type="button" className="btn btn-primary btn-sm" onClick={() => handleRemoveDisease(index)}>
-                Remove
-              </button>
-            </div>
-          </div>
-        ))}
-        <div>
-          <button type="button" className="btn btn-primary btn-sm" onClick={handleAddDisease}>
-            Add Disease
-          </button>
-        </div>
-      </div>
+    //   <div className="mb-3">
+    //     Family & Friends:
+    //     <input
+    //       type="text"
+    //       name="familyFriends"
+    //       value={formData.familyFriends}
+    //       onChange={handleChange}
+    //       className="form-control"
+    //     />
+    //   </div>
+    //   <div>
+    //     Is Bank Account Available:
+    //     <input
+    //       type="checkbox"
+    //       name="isBankAccount"
+    //       checked={formData.isBankAccount}
+    //       onChange={handleChange}
+    //       className="form-check"
+    //     />
+    //   </div>
+    //   <div className="mb-3">
+    //     Bank Name:
+    //     <input
+    //       type="text"
+    //       name="bankName"
+    //       value={formData.bankName}
+    //       onChange={handleChange}
+    //       className="form-control"
+    //       placeholder="Enter Bank Name"
+    //     />
+    //   </div>
+    //   <div className="mb-3">
+    //     Account Number:
+    //     <input
+    //       type="text"
+    //       name="accountNumber"
+    //       value={formData.accountNumber}
+    //       onChange={handleChange}
+    //       className="form-control"
+    //       placeholder="Enter AAccount Number"
+    //     />
+    //   </div>
+    //   <div className="mb-3">
+    //     IFSC:
+    //     <input
+    //       type="text"
+    //       name="ifsc"
+    //       value={formData.ifsc}
+    //       onChange={handleChange}
+    //       className="form-control"
+    //       placeholder="Enter IFSC Code"
+    //     />
+    //   </div>
+    //   <div className="mb-3">
+    //     Medical Test Frequency:
+    //     <input
+    //       type="text"
+    //       name="medicalTestFrequency"
+    //       value={formData.medicalTestFrequency}
+    //       onChange={handleChange}
+    //       className="form-control"
+    //     />
+    //   </div>
+    //   <div className="mb-3">
+    //     Last Checkup:
+    //     <input
+    //       type="date"
+    //       name="lastCheckup"
+    //       value={formData.lastCheckup}
+    //       onChange={handleChange}
+    //       className="form-control"
+    //     />
+    //   </div>
+    //   <div className="mb-3">
+    //     Diseases:
+    //     {formData.diseases.map((disease, index) => (
+    //       <div key={index}>
+    //         <input
+    //           type="text"
+    //           name="disease"
+    //           value={disease}
+    //           onChange={(e) => handleDiseasesChange(e, index)}
+    //         />
+    //         <div>
+    //           <button type="button" className="btn btn-primary btn-sm" onClick={() => handleRemoveDisease(index)}>
+    //             Remove
+    //           </button>
+    //         </div>
+    //       </div>
+    //     ))}
+    //     <div>
+    //       <button type="button" className="btn btn-primary btn-sm" onClick={handleAddDisease}>
+    //         Add Disease
+    //       </button>
+    //     </div>
+    //   </div>
 
-        </div>
+    //     </div>
         
+<<<<<<< HEAD
       );
     case 3:
       return (
@@ -1183,13 +1321,153 @@ return (
             Additional Information
           </div>
         </div>
+=======
+    //   );
+    // case 3:
+    //   return (
+    //     <div>
+    //       <h2>Additional Information</h2>
+    //       {/* Form fields for additional information */}
+    //       {/* ... */}
+    //       <div className="mb-3">
+    //     Number of Children:
+    //     <input
+    //       type="number"
+    //       name="numberOfChildren"
+    //       value={formData.numberOfChildren}
+    //       onChange={handleChange}
+    //       className="form-control"
+    //       placeholder="Enter no. of children"
+    //     />
+    //   </div>
+    //   <div className="mb-3">
+    //     Need Child Education Assistance:
+    //     <input
+    //       type="checkbox"
+    //       name="needChildEducationAssistance"
+    //       checked={formData.needChildEducationAssistance}
+    //       onChange={handleChange}
+    //       className="form-check"
+    //     />
+    //   </div>
+    //   <div className="mb-3">
+    //     Need Employment Support:
+    //     <input
+    //       type="checkbox"
+    //       name="needEmploymentSupport"
+    //       checked={formData.needEmploymentSupport}
+    //       onChange={handleChange}
+    //       className="form-check"
+    //     />
+    //   </div>
+    //   <div className="mb-3">
+    //     Education Level:<span class="required-field"></span>
+    //     <input
+    //       type="text"
+    //       name="educationLevel"
+    //       value={formData.educationLevel}
+    //       onChange={handleChange}
+    //       className="form-control"
+    //       placeholder="Enter Education"
+    //     />
+    //   </div>
+    //   <div className="mb-3">
+    //     Skillset:<span class="required-field"></span>
+    //     <input
+    //       type="text"
+    //       name="skillset"
+    //       value={formData.skillset}
+    //       onChange={handleChange}
+    //       className="form-control"
+    //       placeholder="Enter Skills"
+    //     />
+    //   </div>
+    //   <div className="mb-3">
+    //     Interests:
+    //     <input
+    //       type="text"
+    //       name="interests"
+    //       value={formData.interests}
+    //       onChange={handleChange}
+    //       className="form-control"
+    //       placeholder="Enter Interests"
+    //     />
+    //   </div>
+    //   <div className="mb-3">
+    //     Events Attended:
+    //     <input
+    //       type="text"
+    //       name="eventsAttended"
+    //       value={formData.eventsAttended}
+    //       onChange={handleChange}
+    //       className="form-control"
+    //     />
+    //   </div>
+    //   <div className="mb-3">
+      //   Community:<span class="required-field"></span>
+      //   <input
+      //     type="text"
+      //     name="community"
+      //     value={formData.community}
+      //     onChange={handleChange}
+      //     className="form-control"
+      //     placeholder="Enter Community"
+      //   />
+      // </div>
+    //   <div className="mb-3">
+    //     Gender:<span class="required-field"></span>
+    //     <select
+    //       name="gender"
+    //       value={formData.gender}
+    //       onChange={handleChange}
+    //       className="form-control"
+    //     >
+    //       <option value="">Select Gender</option>
+    //       <option value="male">Male</option>
+    //       <option value="female">Female</option>
+    //       <option value="other">Other</option>
+    //     </select>
+    //   </div>
+    //   <div className="d-grid">
+    //     <button type="submit" className="btn btn-primary">Submit</button>
+    //   </div>
+    // </form> */}
+    // </Wrapper>
+  // );
+// };
 
-        {/* Render form based on active tab */}
-        {renderForm()}
+// return (
+//   <Wrapper>
+//       <form onSubmit={handleSubmit}>
+//         {/* Tab navigation */}
+//         <div className="btn-group">
+//           <div style={{cursor: "pointer"}}
+//             variant={activeTab === 1 ? 'primary'  : 'secondary'} 
+//             onClick={() => handleTabClick(1)}
+//           >
+//             Personal Information
+//           </div>
+//           <div style={{cursor: "pointer"}}
+//             variant={activeTab === 2 ? 'primary' : 'secondary'}
+//             onClick={() => handleTabClick(2)}
+//           >
+//             Analytical Information
+//           </div>
+//           <div style={{cursor: "pointer"}}
+//             variant={activeTab === 3 ? 'primary' : 'secondary'}
+//             onClick={() => handleTabClick(3)}
+//           >
+//             Additional Information
+//           </div>
+//         </div>
+>>>>>>> e1ef63dfe7d44f37021a5eb57962e8610b082ce0
 
-        {/* Submit button */}
-        <button type="submit" variant="primary">Submit</button>
-      </form>
-    </Wrapper>);
-};
+//         {/* Render form based on active tab */}
+//         {renderForm()}
+
+//         {/* Submit button */}
+//         <button type="submit" variant="primary">Submit</button>
+//       </form>
+//     </Wrapper>);
+// };
 export default Signup;

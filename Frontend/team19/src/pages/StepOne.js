@@ -25,7 +25,7 @@ const StepOne = ({ nextStep, handleFormData, values,submitF }) => {
         <Card.Body>
           <Form onSubmit={submitFormData} >
             <Form.Group className="mb-3">
-              <Form.Label>Name:</Form.Label>
+              <Form.Label> <span style={{ color: 'red' }}>*</span>Name:</Form.Label>
               <Form.Control
                 style={{ border: error ? "2px solid red" : "" }}
                 name="name"
@@ -37,7 +37,7 @@ const StepOne = ({ nextStep, handleFormData, values,submitF }) => {
             
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Aadhar</Form.Label>
+              <Form.Label> <span style={{ color: 'red' }}>*</span>Aadhar</Form.Label>
               <Form.Control
                 style={{ border: error ? "2px solid red" : "" }}
                 name="aadhar"
@@ -49,7 +49,7 @@ const StepOne = ({ nextStep, handleFormData, values,submitF }) => {
               
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Mobile:</Form.Label>
+              <Form.Label> <span style={{ color: 'red' }}>*</span>Mobile:</Form.Label>
               <Form.Control
                 style={{ border: error ? "2px solid red" : "" }}
                 name="mobile"
@@ -61,7 +61,7 @@ const StepOne = ({ nextStep, handleFormData, values,submitF }) => {
               
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Email</Form.Label>
+              <Form.Label> <span style={{ color: 'red' }}>*</span>Email</Form.Label>
               <Form.Control
                 style={{ border: error ? "2px solid red" : "" }}
                 name="email"
@@ -73,7 +73,7 @@ const StepOne = ({ nextStep, handleFormData, values,submitF }) => {
               
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>DOB:</Form.Label>
+              <Form.Label> <span style={{ color: 'red' }}>*</span>DOB:</Form.Label>
               <Form.Control
                 style={{ border: error ? "2px solid red" : "" }}
                 name="dob"
@@ -85,7 +85,7 @@ const StepOne = ({ nextStep, handleFormData, values,submitF }) => {
               
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Password:</Form.Label>
+              <Form.Label> <span style={{ color: 'red' }}>*</span>Password:</Form.Label>
               <Form.Control
                 style={{ border: error ? "2px solid red" : "" }}
                 name="password"
