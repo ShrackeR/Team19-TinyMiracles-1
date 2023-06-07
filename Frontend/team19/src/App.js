@@ -25,7 +25,7 @@ import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
 // import './App.css';
 import FlaskForm from "./pages/FlaskForm";
 import Layout from "./components/Layout";
-import ViewAttended from "./pages/ViewAttended";
+import ViewAttend from "./pages/ViewAttend";
 // import Wrapper from "./components/Wrrapper";
 // import Home from "./pages/Home";
 import Wrapper from "./components/Wrrapper";
@@ -47,10 +47,10 @@ function App() {
       <Routes>
           
 
-          {/* <Route exact
+          <Route exact
           path="/homepage"
-          element={<HomeMain/>}
-          />  */}
+          element={<Home/>}
+          /> 
           <Route
               path="/"
               element={user ? <Home /> : <Navigate to="/login" />}
@@ -61,8 +61,8 @@ function App() {
               element={user ? <FlaskForm /> : <Navigate to="/flask" />}
             />
             <Route
-              exact path="/allevents"
-              element={user ? <Allevents /> : <Navigate to="/allevents" />}
+             path="/allevents"
+              element={user|| admin ? <Allevents /> : <Navigate to="/allevents" />}
             />
             <Route
               exact path="/feedback"
@@ -75,7 +75,7 @@ function App() {
             />
             <Route
              exact path="/allevents/eventdetails/:id"
-              element={user ? <EventDetails /> : <Navigate to="/allevents" />}
+              element={user ||admin ? <EventDetails /> : <Navigate to="/allevents" />}
             />
             <Route path="/viewallattendance/:id"element={<Viewallattendance/> } />
             
@@ -144,7 +144,7 @@ function App() {
 
             <Route
             path="/viewAttendedEvents/:id"
-            element={<ViewAttended/>}
+            element={<ViewAttend/>}
             />
              </Routes>
              

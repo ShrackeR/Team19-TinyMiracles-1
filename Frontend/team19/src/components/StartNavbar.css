@@ -3,7 +3,6 @@
     box-sizing: border-box;
 }
 body {
-<<<<<<< HEAD
     margin: 0;
     padding: 0px;
 }
@@ -117,14 +116,12 @@ header .text .arrow .left:after, header .text .arrow .right:after, header .text 
 }
 .dots .active.black {
     background-color: #000;
-=======
   background:white !important;
   min-height: 100vh;
   text-align: center !important;
   display: flex;
   font-weight: 400;
   font-family: 'Fira Sans', sans-serif;
->>>>>>> 300490e3ba2954561634e65b046f44089839f7ba
 }
 
 /* /Start Home Page/
@@ -641,7 +638,6 @@ footer .newsletter i {
     }
 
 }
-<<<<<<< HEAD
 
 @media (max-width: 576px) {
     h3, h1 {
@@ -669,7 +665,7 @@ footer .newsletter i {
     .menu {
         padding: 60px 0 60px 20px;
     }
-=======
+}
 @media (max-width:1000px) {
   .auth-inner{
     width: 70%;
@@ -678,7 +674,7 @@ footer .newsletter i {
 }
 .auth-inner {
   width: 40%;
-  margin-top: 100rem;
+  margin-top: 30rem;
   /* margin: auto; */
   background: #ffffff;
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
@@ -725,6 +721,5 @@ footer .newsletter i {
 
 .forgot-password a {
   color: #167bff;
->>>>>>> 300490e3ba2954561634e65b046f44089839f7ba
 }
 /* /End Home Page Responsive/ */

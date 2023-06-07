@@ -1,553 +1,3 @@
-// import React, { useState } from 'react';
-// import  {useSignup} from "../hooks/useSignup"
-// import Wrapper from "../components/Wrrapper";
-
-// const Signup = () => {
-//   const{signup,error,isLoading,success,setSuccess}=useSignup();
-
-//   const [formData, setFormData] = useState({
-//     name: '',
-//     aadhar: '',
-//     isPanCard: false,
-//     pan: '',
-//     isEshram: false,
-//     eshram: '',
-//     mobile: '',
-//     dob: '',
-//     email: '',
-//     area: '',
-//     street: '',
-//     city: '',
-//     state: '',
-//     pin: '',
-//     password: '',
-//     familyFriends: [],
-//     isBankAccount: false,
-//     bankName: '',
-//     accountNumber: '',
-//     ifsc: '',
-//     medicalTestFrequency: '',
-//     lastCheckup: '',
-//     diseases: [],
-//     numberOfChildren: 0,
-//     needChildEducationAssistance: false,
-//     needEmploymentSupport: false,
-//     educationLevel: '',
-//     skillset: [],
-//     interests: [],
-//     eventsAttended: [],
-//     community: '',
-//     gender: '',
-//     status:'ACTIVE'
-//   });
-//   const statesOfIndia = [
-//     'Andaman and Nicobar Islands',
-//     'Andhra Pradesh',
-//     'Arunachal Pradesh',
-//     'Assam',
-//     'Bihar',
-//     'Chandigarh',
-//     'Chhattisgarh',
-//     'Dadra and Nagar Haveli',
-//     'Daman and Diu',
-//     'Delhi',
-//     'Goa',
-//     'Gujarat',
-//     'Haryana',
-//     'Himachal Pradesh',
-//     'Jammu and Kashmir',
-//     'Jharkhand',
-//     'Karnataka',
-//     'Kerala',
-//     'Lakshadweep',
-//     'Madhya Pradesh',
-//     'Maharashtra',
-//     'Manipur',
-//     'Meghalaya',
-//     'Mizoram',
-//     'Nagaland',
-//     'Odisha',
-//     'Puducherry',
-//     'Punjab',
-//     'Rajasthan',
-//     'Sikkim',
-//     'Tamil Nadu',
-//     'Telangana',
-//     'Tripura',
-//     'Uttar Pradesh',
-//     'Uttarakhand',
-//     'West Bengal',
-//   ];
-//   const handleDiseasesChange = (e, index) => {
-//     const { value } = e.target;
-
-//     setFormData((prevFormData) => {
-//       const updatedDiseases = [...prevFormData.diseases];
-//       updatedDiseases[index] = value;
-
-//       return {
-//         ...prevFormData,
-//         diseases: updatedDiseases,
-//       };
-//     });
-//   };
-
-//   const handleChange = (e) => {
-//     const { name, value, type, checked } = e.target;
-
-//     if (type === 'checkbox') {
-//       setFormData((prevData) => ({
-//         ...prevData,
-//         [name]: checked,
-//       }));
-//     } else {
-//       setFormData((prevData) => ({
-//         ...prevData,
-//         [name]: value,
-//       }));
-//     }
-//   };
-//   const handleAddDisease = () => {
-//     setFormData((prevFormData) => ({
-//       ...prevFormData,
-//       diseases: [...prevFormData.diseases, ''],
-//     }));
-//   };
-
-//   const handleRemoveDisease = (index) => {
-//     setFormData((prevFormData) => {
-//       const updatedDiseases = [...prevFormData.diseases];
-//       updatedDiseases.splice(index, 1);
-
-//       return {
-//         ...prevFormData,
-//         diseases: updatedDiseases,
-//       };
-//     });
-//   };
-//   console.log(formData);
-//   const handleSubmit =async (e) => {
-//     e.preventDefault();
-//     // Perform form submission or validation
-//     // console.log(formData);
-//     await signup(formData);
-//     // await signup( name,
-//     //   aadhar,
-//     //   isPanCard,
-//     //   pan,
-//     //   isEshram,
-//     //   eshram,
-//     //   mobile,
-//     //   dob,
-//     //   email,
-//     //   area,
-//     //   street,
-//     //   city,
-//     //   state,
-//     //   pin,
-//     //   password,
-//     //   familyFriends,
-//     //   isBankAccount,
-//     //   bankName,
-//     //   accountNumber,
-//     //   ifsc,
-//     //   medicalTestFrequency,
-//     //   lastCheckup,
-//     //   diseases,
-//     //   numberOfChildren,
-//     //   needChildEducationAssistance,
-//     //   needEmploymentSupport,
-//     //   educationLevel,
-//     //   skillset,
-//     //   interests,
-//     //   eventsAttended,
-//     //   community,
-//     //   gender)
-//   };
-
-//   return (
-//     <Wrapper>
-//     <form onSubmit={handleSubmit}>
-//       <h3>Sign up</h3>
-//       <div className="mb-3">
-//       <span style={{ color: 'red' }}>*</span> Name:
-//         <input
-//           type="text"
-//           name="name"
-//           value={formData.name}
-//           onChange={handleChange}
-//           className="form-control"
-//           placeholder="Enter Your Name"
-//         />
-//       </div>
-//       <div className="mb-3">
-//       <span style={{ color: 'red' }}>*</span> Aadhar:
-//         <input
-//           type="text"
-//           name="aadhar"
-//           value={formData.aadhar}
-//           onChange={handleChange}
-//           className="form-control"
-//           placeholder="Enter aadhar no."
-//         />
-//       </div>
-//       <div className="mb-3">
-//         Is PAN Card Available:
-//         <input
-//           type="checkbox"
-//           name="isPanCard"
-//           checked={formData.isPanCard}
-//           onChange={handleChange}
-//           className="form-check"
-//         />
-//       </div>
-//       <div className="mb-3">
-//         PAN:
-//         <input
-//           type="text"
-//           name="pan"
-//           value={formData.pan}
-//           onChange={handleChange}
-//           className="form-control"
-//           placeholder="Enter PAN number"
-//         />
-//       </div>
-//       <div className="mb-3">
-//         Is Eshram Available:
-//         <input
-//           type="checkbox"
-//           name="isEshram"
-//           checked={formData.isEshram}
-//           onChange={handleChange}
-//           className="form-check"
-//         />
-//       </div>
-      
-//       <div className="mb-3">
-//         Eshram:
-//         <input
-//           type="text"
-//           name="eshram"
-//           value={formData.eshram}
-//           onChange={handleChange}
-//           className="form-control"
-//           placeholder="Enter Eshram"
-//         />
-//       </div>
-//       <div className="mb-3">
-//       <span style={{ color: 'red' }}>*</span> Mobile:
-//         <input
-//           type="text"
-//           name="mobile"
-//           value={formData.mobile}
-//           onChange={handleChange}
-//           className="form-control"
-//           placeholder="Enter Mobile no."
-//         />
-//       </div>
-//       <div className="mb-3">
-//       <span style={{ color: 'red' }}>*</span> Date of Birth:
-//         <input
-//           type="date"
-//           name="dob"
-//           value={formData.dob}
-//           onChange={handleChange}
-//           className="form-control"
-//           placeholder="Enter DOB"
-//         />
-//       </div>
-//       <div>
-//       <span style={{ color: 'red' }}>*</span> Email:
-//         <input
-//           type="email"
-//           name="email"
-//           value={formData.email}
-//           onChange={handleChange}
-//           className="form-control"
-//           placeholder="Enter Email ID"
-//         />
-//       </div>
-//       <div className="mb-3">
-//         <h6>Address</h6>
-//         <span style={{ color: 'red' }}>*</span> Area:
-//         <input
-//           type="text"
-//           name="area"
-//           value={formData.area}
-//           onChange={handleChange}
-//           className="form-control"
-//         />
-//       </div>
-//       <div className="mb-3">
-//       <span style={{ color: 'red' }}>*</span> Street:
-//         <input
-//           type="text"
-//           name="street"
-//           value={formData.street}
-//           onChange={handleChange}
-//           className="form-control"
-//         />
-//       </div>
-//       <div className="mb-3">
-//       <span style={{ color: 'red' }}>*</span> City:
-//         <input
-//           type="text"
-//           name="city"
-//           value={formData.city}
-//           onChange={handleChange}
-//           className="form-control"
-//         />
-//       </div>
-//       <div className="mb-3">
-//       <span style={{ color: 'red' }}>*</span> State:
-//       <select
-//         name="state"
-//         value={formData.state}
-//         onChange={handleChange}
-//         className="form-control"
-//       >
-//         <option value="">Select State</option>
-//         {statesOfIndia.map((state) => (
-//           <option key={state} value={state}>
-//             {state}
-//           </option>
-//         ))}
-//       </select>
-//       </div>
-//       <div className="mb-3">
-//       <span style={{ color: 'red' }}>*</span> PIN:
-//         <input
-//           type="text"
-//           name="pin"
-//           value={formData.pin}
-//           onChange={handleChange}
-//           className="form-control"
-//         />
-//       </div>
-//       <div className="mb-3">
-//       <span style={{ color: 'red' }}>*</span> Password:
-//         <input
-//           type="password"
-//           name="password"
-//           value={formData.password}
-//           onChange={handleChange}
-//           className="form-control"
-//           placeholder="Enter Password"
-//         />
-//       </div>
-//       <div className="mb-3">
-//         Family & Friends:
-//         <input
-//           type="text"
-//           name="familyFriends"
-//           value={formData.familyFriends}
-//           onChange={handleChange}
-//           className="form-control"
-//         />
-//       </div>
-//       <div>
-//         Is Bank Account Available:
-//         <input
-//           type="checkbox"
-//           name="isBankAccount"
-//           checked={formData.isBankAccount}
-//           onChange={handleChange}
-//           className="form-check"
-//         />
-//       </div>
-//       <div className="mb-3">
-//         Bank Name:
-//         <input
-//           type="text"
-//           name="bankName"
-//           value={formData.bankName}
-//           onChange={handleChange}
-//           className="form-control"
-//           placeholder="Enter Bank Name"
-//         />
-//       </div>
-//       <div className="mb-3">
-//         Account Number:
-//         <input
-//           type="text"
-//           name="accountNumber"
-//           value={formData.accountNumber}
-//           onChange={handleChange}
-//           className="form-control"
-//           placeholder="Enter AAccount Number"
-//         />
-//       </div>
-//       <div className="mb-3">
-//         IFSC:
-//         <input
-//           type="text"
-//           name="ifsc"
-//           value={formData.ifsc}
-//           onChange={handleChange}
-//           className="form-control"
-//           placeholder="Enter IFSC Code"
-//         />
-//       </div>
-//       <div className="mb-3">
-//         Medical Test Frequency:
-//         <input
-//           type="text"
-//           name="medicalTestFrequency"
-//           value={formData.medicalTestFrequency}
-//           onChange={handleChange}
-//           className="form-control"
-//         />
-//       </div>
-//       <div className="mb-3">
-//         Last Checkup:
-//         <input
-//           type="date"
-//           name="lastCheckup"
-//           value={formData.lastCheckup}
-//           onChange={handleChange}
-//           className="form-control"
-//         />
-//       </div>
-//       <div className="mb-3">
-//         Diseases:
-//         {formData.diseases.map((disease, index) => (
-//           <div key={index}>
-//             <input
-//               type="text"
-//               name="disease"
-//               value={disease}
-//               onChange={(e) => handleDiseasesChange(e, index)}
-//             />
-//             <div>
-//               <button type="button" className="btn btn-primary btn-sm" onClick={() => handleRemoveDisease(index)}>
-//                 Remove
-//               </button>
-//             </div>
-//           </div>
-//         ))}
-//         <div>
-//           <button type="button" className="btn btn-primary btn-sm" onClick={handleAddDisease}>
-//             Add Disease
-//           </button>
-//         </div>
-//       </div>
-//       <div className="mb-3">
-//         Number of Children:
-//         <input
-//           type="number"
-//           name="numberOfChildren"
-//           value={formData.numberOfChildren}
-//           onChange={handleChange}
-//           className="form-control"
-//           placeholder="Enter no. of children"
-//         />
-//       </div>
-//       <div className="mb-3">
-//         Need Child Education Assistance:
-//         <input
-//           type="checkbox"
-//           name="needChildEducationAssistance"
-//           checked={formData.needChildEducationAssistance}
-//           onChange={handleChange}
-//           className="form-check"
-//         />
-//       </div>
-//       <div className="mb-3">
-//         Need Employment Support:
-//         <input
-//           type="checkbox"
-//           name="needEmploymentSupport"
-//           checked={formData.needEmploymentSupport}
-//           onChange={handleChange}
-//           className="form-check"
-//         />
-//       </div>
-//       <div className="mb-3">
-//       <span style={{ color: 'red' }}>*</span> Education Level:
-//         <input
-//           type="text"
-//           name="educationLevel"
-//           value={formData.educationLevel}
-//           onChange={handleChange}
-//           className="form-control"
-//           placeholder="Enter Education"
-//         />
-//       </div>
-//       <div className="mb-3">
-//         Skillset:
-//         <input
-//           type="text"
-//           name="skillset"
-//           value={formData.skillset}
-//           onChange={handleChange}
-//           className="form-control"
-//           placeholder="Enter Skills"
-//         />
-//       </div>
-//       <div className="mb-3">
-//         Interests:
-//         <input
-//           type="text"
-//           name="interests"
-//           value={formData.interests}
-//           onChange={handleChange}
-//           className="form-control"
-//           placeholder="Enter Interests"
-//         />
-//       </div>
-//       <div className="mb-3">
-//         Events Attended:
-//         <input
-//           type="text"
-//           name="eventsAttended"
-//           value={formData.eventsAttended}
-//           onChange={handleChange}
-//           className="form-control"
-//         />
-//       </div>
-//       <div className="mb-3">
-//       <span style={{ color: 'red' }}>*</span> Community:
-//         <input
-//           type="text"
-//           name="community"
-//           value={formData.community}
-//           onChange={handleChange}
-//           className="form-control"
-//           placeholder="Enter Community"
-//         />
-//       </div>
-//       <div className="mb-3">
-//       <span style={{ color: 'red' }}>*</span> Gender:
-//         <select
-//           name="gender"
-//           value={formData.gender}
-//           onChange={handleChange}
-//           className="form-control"
-//         >
-//           <option value="">Select Gender</option>
-//           <option value="male">Male</option>
-//           <option value="female">Female</option>
-//           <option value="other">Other</option>
-//         </select>
-//       </div>
-//       <div className="d-grid">
-//         <button type="submit" className="btn btn-primary">Submit</button>
-//       </div>
-//     </form>
-//     </Wrapper>
-//   );
-// };
-
-// export default Signup;
-
-
-
-
-
-
-
-
-
 
 
 import React, { useState } from 'react';
@@ -565,11 +15,8 @@ const Signup = () => {
   const { signup, error, isLoading, success, setSuccess } = useSignup();
 
   const [activeTab, setActiveTab] = useState(1);
-<<<<<<< HEAD
-=======
   // const{signup,error,isLoading,success,setSuccess}=useSignup();
   const [step, setstep] = useState(1);
->>>>>>> e1ef63dfe7d44f37021a5eb57962e8610b082ce0
 
   const [formData, setFormData] = useState({
     name: '',
@@ -606,7 +53,6 @@ const Signup = () => {
     gender: '',
     status: 'ACTIVE',
   });
-<<<<<<< HEAD
 
   const statesOfIndia = [
     'Andaman and Nicobar Islands',
@@ -647,7 +93,6 @@ const Signup = () => {
     'West Bengal',
   ];
 
-=======
   const nextStep = () => {
     setstep(step + 1);
   };
@@ -657,7 +102,6 @@ const Signup = () => {
     setstep(step - 1);
   };
   
->>>>>>> e1ef63dfe7d44f37021a5eb57962e8610b082ce0
   const handleDiseasesChange = (e, index) => {
     const { value } = e.target;
 
@@ -695,24 +139,23 @@ const Signup = () => {
     }));
   };
 
-<<<<<<< HEAD
   const handleTabClick = (tab) => {
     if (activeTab !== tab) {
       setActiveTab(tab);
     }
   };
 
-const handleRemoveDisease = (index) => {
-  setFormData((prevFormData) => {
-    const updatedDiseases = [...prevFormData.diseases];
-    updatedDiseases.splice(index, 1);
+// const handleRemoveDisease = (index) => {
+//   setFormData((prevFormData) => {
+//     const updatedDiseases = [...prevFormData.diseases];
+//     updatedDiseases.splice(index, 1);
 
-    return {
-      ...prevFormData,
-      diseases: updatedDiseases,
-    };
-  });
-};
+//     return {
+//       ...prevFormData,
+//       diseases: updatedDiseases,
+//     };
+//   });
+// };
 
 const handleAddSkill = () => {
   setFormData((prevFormData) => ({
@@ -771,41 +214,40 @@ const handleRemoveEvent = (index) => {
   });
 };
 
-const handleSubmit = (e) => {
+// const handleSubmit = (e) => {
+//   e.preventDefault();
+//   signup(formData);
+// };
+const handleRemoveDisease = (index) => {
+  setFormData((prevFormData) => {
+    const updatedDiseases = [...prevFormData.diseases];
+    updatedDiseases.splice(index, 1);
+
+    return {
+      ...prevFormData,
+      diseases: updatedDiseases,
+    };
+  });
+};
+const handleSubmit =async (e) => {
   e.preventDefault();
-  signup(formData);
+  // Perform form submission or validation
+  console.log(formData);
+  await signup(formData);
+ 
 };
 
-const renderForm = () => {
-  switch (activeTab) {
-    case 1:
-      return (
-        <div>
-          <h2>Personal Information</h2>
-          {/* Form fields for personal information */}
-          {/* ... */}
-          <div className="mb-3">
-      <span style={{ color: 'red' }}>*</span> Name:
-=======
-  const handleRemoveDisease = (index) => {
-    setFormData((prevFormData) => {
-      const updatedDiseases = [...prevFormData.diseases];
-      updatedDiseases.splice(index, 1);
-
-      return {
-        ...prevFormData,
-        diseases: updatedDiseases,
-      };
-    });
-  };
-  const handleSubmit =async (e) => {
-    e.preventDefault();
-    // Perform form submission or validation
-    console.log(formData);
-    await signup(formData);
-   
-  };
- 
+// const renderForm = () => {
+//   switch (activeTab) {
+//     case 1:
+//       return (
+//         <div>
+//           <h2>Personal Information</h2>
+//           {/* Form fields for personal information */}
+//           {/* ... */}
+//           <div className="mb-3">
+//       <span style={{ color: 'red' }}>*</span> Name:
+  
   switch (step) {
     // case 1 to show stepOne form and passing nextStep, prevStep, and handleInputData as handleFormData method as prop and also formData as value to the fprm
     case 1:
@@ -872,14 +314,14 @@ const renderForm = () => {
       );
   }
 }
+// export default Signup;
 
-  // return (
-    // <Wrapper>
+  {/* // return ( */}
+    {/* // <Wrapper> */}
     {/* <form onSubmit={handleSubmit}>
       <h3>Sign up</h3>
       <div className="mb-3">
         Name:<span class="required-field"></span>
->>>>>>> e1ef63dfe7d44f37021a5eb57962e8610b082ce0
         <input
           type="text"
           name="name"
@@ -891,10 +333,7 @@ const renderForm = () => {
       </div>
       <div className="mb-3">
       <span style={{ color: 'red' }}>*</span> Aadhar:
-<<<<<<< HEAD
-=======
         Aadhar:<span class="required-field"></span>
->>>>>>> e1ef63dfe7d44f37021a5eb57962e8610b082ce0
         <input
           type="text"
           name="aadhar"
@@ -949,10 +388,7 @@ const renderForm = () => {
       </div>
       <div className="mb-3">
       <span style={{ color: 'red' }}>*</span> Mobile:
-<<<<<<< HEAD
-=======
         Mobile:<span class="required-field"></span>
->>>>>>> e1ef63dfe7d44f37021a5eb57962e8610b082ce0
         <input
           type="text"
           name="mobile"
@@ -964,10 +400,7 @@ const renderForm = () => {
       </div>
       <div className="mb-3">
       <span style={{ color: 'red' }}>*</span> Date of Birth:
-<<<<<<< HEAD
-=======
         Date of Birth:<span class="required-field"></span>
->>>>>>> e1ef63dfe7d44f37021a5eb57962e8610b082ce0
         <input
           type="date"
           name="dob"
@@ -993,10 +426,7 @@ const renderForm = () => {
       </div>
       <div>
       <span style={{ color: 'red' }}>*</span> Email:
-<<<<<<< HEAD
-=======
         Email:<span class="required-field"></span>
->>>>>>> e1ef63dfe7d44f37021a5eb57962e8610b082ce0
         <input
           type="email"
           name="email"
@@ -1009,11 +439,8 @@ const renderForm = () => {
       <div className="mb-3">
         <h6>Address</h6>
         <span style={{ color: 'red' }}>*</span> Area:
-<<<<<<< HEAD
-=======
         <h6>Address<span class="required-field"></span></h6>
         Area:
->>>>>>> e1ef63dfe7d44f37021a5eb57962e8610b082ce0
         <input
           type="text"
           name="area"
@@ -1069,11 +496,8 @@ const renderForm = () => {
         />
       </div>
       <div className="mb-3">
-<<<<<<< HEAD
       <span style={{ color: 'red' }}>*</span> Password:
-=======
         Password:<span class="required-field"></span>
->>>>>>> e1ef63dfe7d44f37021a5eb57962e8610b082ce0
         <input
           type="password"
           name="password"
@@ -1205,133 +629,131 @@ const renderForm = () => {
 
     //     </div>
         
-<<<<<<< HEAD
-      );
-    case 3:
-      return (
-        <div>
-          <h2>Additional Information</h2>
-          {/* Form fields for additional information */}
-          {/* ... */}
-          <div className="mb-3">
-        Number of Children:
-        <input
-          type="number"
-          name="numberOfChildren"
-          value={formData.numberOfChildren}
-          onChange={handleChange}
-          className="form-control"
-          placeholder="Enter no. of children"
-        />
-      </div>
-      <div className="mb-3">
-        Need Child Education Assistance:
-        <input
-          type="checkbox"
-          name="needChildEducationAssistance"
-          checked={formData.needChildEducationAssistance}
-          onChange={handleChange}
-          className="form-check"
-        />
-      </div>
-      <div className="mb-3">
-        Need Employment Support:
-        <input
-          type="checkbox"
-          name="needEmploymentSupport"
-          checked={formData.needEmploymentSupport}
-          onChange={handleChange}
-          className="form-check"
-        />
-      </div>
+//       );
+//     case 3:
+//       return (
+//         <div>
+//           <h2>Additional Information</h2>
+//           {/* Form fields for additional information */}
+//           {/* ... */}
+//           <div className="mb-3">
+//         Number of Children:
+//         <input
+//           type="number"
+//           name="numberOfChildren"
+//           value={formData.numberOfChildren}
+//           onChange={handleChange}
+//           className="form-control"
+//           placeholder="Enter no. of children"
+//         />
+//       </div>
+//       <div className="mb-3">
+//         Need Child Education Assistance:
+//         <input
+//           type="checkbox"
+//           name="needChildEducationAssistance"
+//           checked={formData.needChildEducationAssistance}
+//           onChange={handleChange}
+//           className="form-check"
+//         />
+//       </div>
+//       <div className="mb-3">
+//         Need Employment Support:
+//         <input
+//           type="checkbox"
+//           name="needEmploymentSupport"
+//           checked={formData.needEmploymentSupport}
+//           onChange={handleChange}
+//           className="form-check"
+//         />
+//       </div>
       
-      <div className="mb-3">
-        Skillset:<span class="required-field"></span>
-        <input
-          type="text"
-          name="skillset"
-          value={formData.skillset}
-          onChange={handleChange}
-          className="form-control"
-          placeholder="Enter Skills"
-        />
-      </div>
-      <div className="mb-3">
-        Interests:
-        <input
-          type="text"
-          name="interests"
-          value={formData.interests}
-          onChange={handleChange}
-          className="form-control"
-          placeholder="Enter Interests"
-        />
-      </div>
-      <div className="mb-3">
-        Events Attended:
-        <input
-          type="text"
-          name="eventsAttended"
-          value={formData.eventsAttended}
-          onChange={handleChange}
-          className="form-control"
-        />
-      </div>
-      <div className="mb-3">
-      <span style={{ color: 'red' }}>*</span> Community:
-        <input
-          type="text"
-          name="community"
-          value={formData.community}
-          onChange={handleChange}
-          className="form-control"
-          placeholder="Enter Community"
-        />
-      </div>
+//       <div className="mb-3">
+//         Skillset:<span class="required-field"></span>
+//         <input
+//           type="text"
+//           name="skillset"
+//           value={formData.skillset}
+//           onChange={handleChange}
+//           className="form-control"
+//           placeholder="Enter Skills"
+//         />
+//       </div>
+//       <div className="mb-3">
+//         Interests:
+//         <input
+//           type="text"
+//           name="interests"
+//           value={formData.interests}
+//           onChange={handleChange}
+//           className="form-control"
+//           placeholder="Enter Interests"
+//         />
+//       </div>
+//       <div className="mb-3">
+//         Events Attended:
+//         <input
+//           type="text"
+//           name="eventsAttended"
+//           value={formData.eventsAttended}
+//           onChange={handleChange}
+//           className="form-control"
+//         />
+//       </div>
+//       <div className="mb-3">
+//       <span style={{ color: 'red' }}>*</span> Community:
+//         <input
+//           type="text"
+//           name="community"
+//           value={formData.community}
+//           onChange={handleChange}
+//           className="form-control"
+//           placeholder="Enter Community"
+//         />
+//       </div>
       
 
-        </div>
-      );
-    default:
-      return null;
-  }
-};
+//         </div>
+//       );
+//     default:
+//       return null;
+//   }
+// };
 
-return (
-  <Wrapper>
-      <form onSubmit={handleSubmit} style={{margin:"50px"}}>
-        {/* Tab navigation */}
-        <div className="btn-group">
-          <div style={{cursor: "pointer"}}
-            variant={activeTab === 1 ? 'primary'  : 'secondary'} 
-            onClick={() => handleTabClick(1)}
-          >
-            Personal Information
-          </div>
-          <div style={{cursor: "pointer"}}
-            variant={activeTab === 2 ? 'primary' : 'secondary'}
-            onClick={() => handleTabClick(2)}
-          >
-            Analytical Information
-          </div>
-          <div style={{cursor: "pointer"}}
-            variant={activeTab === 3 ? 'primary' : 'secondary'}
-            onClick={() => handleTabClick(3)}
-          >
-            Additional Information
-          </div>
-        </div>
-=======
-    //   );
-    // case 3:
-    //   return (
-    //     <div>
-    //       <h2>Additional Information</h2>
-    //       {/* Form fields for additional information */}
-    //       {/* ... */}
-    //       <div className="mb-3">
-    //     Number of Children:
-    //     <input
+// return (
+//   <Wrapper>
+//       <form onSubmit={handleSubmit} style={{margin:"50px"}}>
+//         {/* Tab navigation */}
+//         <div className="btn-group">
+//           <div style={{cursor: "pointer"}}
+//             variant={activeTab === 1 ? 'primary'  : 'secondary'} 
+//             onClick={() => handleTabClick(1)}
+//           >
+//             Personal Information
+//           </div>
+//           <div style={{cursor: "pointer"}}
+//             variant={activeTab === 2 ? 'primary' : 'secondary'}
+//             onClick={() => handleTabClick(2)}
+//           >
+//             Analytical Information
+//           </div>
+//           <div style={{cursor: "pointer"}}
+//             variant={activeTab === 3 ? 'primary' : 'secondary'}
+//             onClick={() => handleTabClick(3)}
+//           >
+//             Additional Information
+//           </div>
+//         </div>
+//     //   );
+//     // case 3:
+//     //   return (
+//     //     <div>
+//     //       <h2>Additional Information</h2>
+//     //       {/* Form fields for additional information */}
+//     //       {/* ... */}
+//     //       <div className="mb-3">
+//     //     Number of Children:
+//     //     <input
     //       type="number"
     //       name="numberOfChildren"
     //       value={formData.numberOfChildren}
@@ -1460,7 +882,6 @@ return (
 //             Additional Information
 //           </div>
 //         </div>
->>>>>>> e1ef63dfe7d44f37021a5eb57962e8610b082ce0
 
 //         {/* Render form based on active tab */}
 //         {renderForm()}

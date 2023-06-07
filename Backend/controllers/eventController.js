@@ -2,6 +2,7 @@ const e = require("express");
 const Event = require("../models/eventModel");
 const User = require("../models/userModel");
 const Feedback = require("../models/feedbackModel");
+const ObjectId = require('mongodb').ObjectID;
 const allevents = async (req, res) => {
 
     try {
@@ -17,9 +18,11 @@ const allevents = async (req, res) => {
 
 const getevent = async (req, res) => {
     try {
-        console.log(req.body);
+        // console.log(req.body);
+        
         const { id } = req.params;
-        Event.findById(id).then(function (events) {
+        console.log(id);
+        Event.findById(ObjectId(id)).then(function (events) {
             res.status(200).json(events);
         });
     } catch (error) {
