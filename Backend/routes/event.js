@@ -3,7 +3,7 @@ const express = require('express')
 // const { getannouncement } = require('../controllers/notificationController')
 
 // controller functions
-const { allevents,getevent,createevent,markAttendance, updateevent, deleteevent} = require('../controllers/eventController')
+const { allevents,getevent,createevent,markAttendance, updateevent, deleteevent,markAttendanceusingAadhar,createfeedback} = require('../controllers/eventController')
 
 const router = express.Router()
 // const cloudinary=require('cloudinary').v2;
@@ -19,10 +19,12 @@ const router = express.Router()
 // login route
 router.post('/create', createevent)
 router.get('/markAttendance',markAttendance)
+router.post('/markAttendanceaadhar/:id',markAttendanceusingAadhar)
 router.get('/get/:id',getevent)
 router.get('/getall',allevents)
 router.put('/update/:id',updateevent)
 router.delete('/delete/:id',deleteevent)
+router.post('/feedback/:id',createfeedback)
 
 // // signup route
 // router.post('/feesupload',feesUpload)

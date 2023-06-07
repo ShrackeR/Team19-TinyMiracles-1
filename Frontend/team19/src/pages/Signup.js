@@ -562,14 +562,9 @@ import Personal from './Personal';
 import { Container, Row, Col } from "react-bootstrap";
 
 const Signup = () => {
-<<<<<<< HEAD
   const { signup, error, isLoading, success, setSuccess } = useSignup();
 
   const [activeTab, setActiveTab] = useState(1);
-=======
-  const{signup,error,isLoading,success,setSuccess}=useSignup();
-  const [step, setstep] = useState(1);
->>>>>>> 2cc9fe67edfb6c7ae3d66e976c131514ec9bc921
 
   const [formData, setFormData] = useState({
     name: '',
@@ -606,7 +601,6 @@ const Signup = () => {
     gender: '',
     status: 'ACTIVE',
   });
-<<<<<<< HEAD
 
   const statesOfIndia = [
     'Andaman and Nicobar Islands',
@@ -647,17 +641,6 @@ const Signup = () => {
     'West Bengal',
   ];
 
-=======
-  const nextStep = () => {
-    setstep(step + 1);
-  };
-
-  // function for going to previous step by decreasing step state by 1
-  const prevStep = () => {
-    setstep(step - 1);
-  };
-  
->>>>>>> 2cc9fe67edfb6c7ae3d66e976c131514ec9bc921
   const handleDiseasesChange = (e, index) => {
     const { value } = e.target;
 
@@ -695,7 +678,6 @@ const Signup = () => {
     }));
   };
 
-<<<<<<< HEAD
   const handleTabClick = (tab) => {
     if (activeTab !== tab) {
       setActiveTab(tab);
@@ -786,130 +768,6 @@ const renderForm = () => {
           {/* ... */}
           <div className="mb-3">
       <span style={{ color: 'red' }}>*</span> Name:
-=======
-  const handleRemoveDisease = (index) => {
-    setFormData((prevFormData) => {
-      const updatedDiseases = [...prevFormData.diseases];
-      updatedDiseases.splice(index, 1);
-
-      return {
-        ...prevFormData,
-        diseases: updatedDiseases,
-      };
-    });
-  };
-  const handleSubmit =async (e) => {
-    e.preventDefault();
-    // Perform form submission or validation
-    console.log(formData);
-    await signup(formData);
-    // await signup( name,
-    //   aadhar,
-    //   isPanCard,
-    //   pan,
-    //   isEshram,
-    //   eshram,
-    //   mobile,
-    //   dob,
-    //   email,
-    //   area,
-    //   street,
-    //   city,
-    //   state,
-    //   pin,
-    //   password,
-    //   familyFriends,
-    //   isBankAccount,
-    //   bankName,
-    //   accountNumber,
-    //   ifsc,
-    //   medicalTestFrequency,
-    //   lastCheckup,
-    //   diseases,
-    //   numberOfChildren,
-    //   needChildEducationAssistance,
-    //   needEmploymentSupport,
-    //   educationLevel,
-    //   skillset,
-    //   interests,
-    //   eventsAttended,
-    //   community,
-    //   gender)
-  };
-
-  switch (step) {
-    // case 1 to show stepOne form and passing nextStep, prevStep, and handleInputData as handleFormData method as prop and also formData as value to the fprm
-    case 1:
-      return (
-        <div className="App">
-         
-          <Container>
-            <Row>
-            
-              <Col  md={{ span: 6, offset: 3 }} className={classes.App1}>
-                <StepOne nextStep={nextStep} handleFormData={handleChange} values={formData} submitF={handleSubmit}/>
-              </Col>
-            </Row>
-          </Container>
-        </div>
-      );
-    // case 2 to show stepTwo form passing nextStep, prevStep, and handleInputData as handleFormData method as prop and also formData as value to the fprm
-    case 2:
-      return (
-        <div className={`App ${classes.App1}`}>
-          <Container>
-            <Row>
-              <Col  md={{ span: 6, offset: 3 }} >
-                <StepTwo nextStep={nextStep} prevStep={prevStep} handleFormData={handleChange} values={formData} />
-              </Col>
-            </Row>
-          </Container>
-        </div>
-      );
-      // Only formData is passed as prop to show the final value at form submit
-    case 3:
-      return (
-        <div className={`App ${classes.App1}`}>
-          <Container>
-            <Row>
-              <Col  md={{ span: 6, offset: 3 }} >
-              <Final nextStep={nextStep} prevStep={prevStep} handleFormData={handleChange} values={formData}  />
-              </Col>
-            </Row>
-          </Container>
-        </div>
-      );
-    // default case to show nothing
-    case 4:
-      return (
-        <div className={`App ${classes.App1}`}>
-          <Container>
-            <Row>
-              <Col  md={{ span: 6, offset: 3 }} >
-              <Personal nextStep={nextStep} prevStep={prevStep} handleFormData={handleChange} values={formData} handleAddDisease={handleAddDisease}
-              handleDiseasesChange={handleDiseasesChange}
-              handleRemoveDisease={handleRemoveDisease}
-              submitF={handleSubmit}
-              />
-              </Col>
-            </Row>
-          </Container>
-        </div>
-      )
-    default:
-      return (
-        <div className={`App ${classes.App1}`}>
-        </div>
-      );
-  }
-
-  // return (
-    // <Wrapper>
-    {/* <form onSubmit={handleSubmit}>
-      <h3>Sign up</h3>
-      <div className="mb-3">
-        Name:<span class="required-field"></span>
->>>>>>> 2cc9fe67edfb6c7ae3d66e976c131514ec9bc921
         <input
           type="text"
           name="name"
@@ -920,11 +778,7 @@ const renderForm = () => {
         />
       </div>
       <div className="mb-3">
-<<<<<<< HEAD
       <span style={{ color: 'red' }}>*</span> Aadhar:
-=======
-        Aadhar:<span class="required-field"></span>
->>>>>>> 2cc9fe67edfb6c7ae3d66e976c131514ec9bc921
         <input
           type="text"
           name="aadhar"
@@ -978,11 +832,7 @@ const renderForm = () => {
         />
       </div>
       <div className="mb-3">
-<<<<<<< HEAD
       <span style={{ color: 'red' }}>*</span> Mobile:
-=======
-        Mobile:<span class="required-field"></span>
->>>>>>> 2cc9fe67edfb6c7ae3d66e976c131514ec9bc921
         <input
           type="text"
           name="mobile"
@@ -993,11 +843,7 @@ const renderForm = () => {
         />
       </div>
       <div className="mb-3">
-<<<<<<< HEAD
       <span style={{ color: 'red' }}>*</span> Date of Birth:
-=======
-        Date of Birth:<span class="required-field"></span>
->>>>>>> 2cc9fe67edfb6c7ae3d66e976c131514ec9bc921
         <input
           type="date"
           name="dob"
@@ -1022,11 +868,7 @@ const renderForm = () => {
         </select>
       </div>
       <div>
-<<<<<<< HEAD
       <span style={{ color: 'red' }}>*</span> Email:
-=======
-        Email:<span class="required-field"></span>
->>>>>>> 2cc9fe67edfb6c7ae3d66e976c131514ec9bc921
         <input
           type="email"
           name="email"
@@ -1037,13 +879,8 @@ const renderForm = () => {
         />
       </div>
       <div className="mb-3">
-<<<<<<< HEAD
         <h6>Address</h6>
         <span style={{ color: 'red' }}>*</span> Area:
-=======
-        <h6>Address<span class="required-field"></span></h6>
-        Area:
->>>>>>> 2cc9fe67edfb6c7ae3d66e976c131514ec9bc921
         <input
           type="text"
           name="area"
@@ -1099,11 +936,7 @@ const renderForm = () => {
         />
       </div>
       <div className="mb-3">
-<<<<<<< HEAD
       <span style={{ color: 'red' }}>*</span> Password:
-=======
-        Password:<span class="required-field"></span>
->>>>>>> 2cc9fe67edfb6c7ae3d66e976c131514ec9bc921
         <input
           type="password"
           name="password"
@@ -1273,21 +1106,7 @@ const renderForm = () => {
           className="form-check"
         />
       </div>
-<<<<<<< HEAD
       
-=======
-      <div className="mb-3">
-        Education Level:<span class="required-field"></span>
-        <input
-          type="text"
-          name="educationLevel"
-          value={formData.educationLevel}
-          onChange={handleChange}
-          className="form-control"
-          placeholder="Enter Education"
-        />
-      </div>
->>>>>>> 2cc9fe67edfb6c7ae3d66e976c131514ec9bc921
       <div className="mb-3">
         Skillset:<span class="required-field"></span>
         <input
@@ -1321,11 +1140,7 @@ const renderForm = () => {
         />
       </div>
       <div className="mb-3">
-<<<<<<< HEAD
       <span style={{ color: 'red' }}>*</span> Community:
-=======
-        Community:<span class="required-field"></span>
->>>>>>> 2cc9fe67edfb6c7ae3d66e976c131514ec9bc921
         <input
           type="text"
           name="community"
@@ -1335,7 +1150,6 @@ const renderForm = () => {
           placeholder="Enter Community"
         />
       </div>
-<<<<<<< HEAD
       
 
         </div>
@@ -1343,33 +1157,11 @@ const renderForm = () => {
     default:
       return null;
   }
-=======
-      <div className="mb-3">
-        Gender:<span class="required-field"></span>
-        <select
-          name="gender"
-          value={formData.gender}
-          onChange={handleChange}
-          className="form-control"
-        >
-          <option value="">Select Gender</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-      <div className="d-grid">
-        <button type="submit" className="btn btn-primary">Submit</button>
-      </div>
-    </form> */}
-    // </Wrapper>
-  // );
->>>>>>> 2cc9fe67edfb6c7ae3d66e976c131514ec9bc921
 };
 
 return (
   <Wrapper>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} style={{margin:"50px"}}>
         {/* Tab navigation */}
         <div className="btn-group">
           <div style={{cursor: "pointer"}}

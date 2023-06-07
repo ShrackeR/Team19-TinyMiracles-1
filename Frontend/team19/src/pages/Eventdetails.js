@@ -369,7 +369,9 @@
 
 import QrCode from "react-qr-code";
 import React, { useState, useEffect}  from "react";
+import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
+import Feedbackk from "./Feedback";
 import speaker1 from "../assets/images/speakers/speaker-1.jpg";
 import speaker2 from "../assets/images/speakers/speaker-2.jpg";
 import speaker3 from "../assets/images/speakers/speaker-3.jpg";
@@ -379,16 +381,44 @@ import speaker6 from "../assets/images/speakers/speaker-6.jpg";
 import "../assets/css/main.css";
 import {useParams, useNavigate } from "react-router-dom";
 function EventDetails() {
+    const[pass,setPass]=useState(null)
     const [getuserdata, setUserdata] = useState([]);
     console.log(getuserdata);
     console.log(getuserdata.title);
 
-    const { id } = useParams("");
-    console.log(id);
+    // const { id } = useParams("");
+    const {id}=useParams("")
+
 
     const navigate = useNavigate();
 
+    const [aadhar, setAadhar] = useState('');
 
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      // Call handleSubmit2 with the Aadhar number
+      
+      // You can use fetch or any other HTTP library to send the Aadhar number as the request body
+      // Example:
+      fetch(`http://localhost:4000/api/event/markAttendanceaadhar/${id}`, {
+        method: 'POST',
+        body: JSON.stringify({ aadhar }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(response => response.json())
+        .then(data => {
+            alert("Attendance Marked")
+          // Handle the response from the server
+        })
+        .catch(error => {
+          // Handle any errors
+          alert(error)
+        });
+    };
+  
+    
     const getdata = async () => {
 
         const res = await fetch(`http://localhost:4000/api/event/get/${id}`, {
@@ -406,14 +436,16 @@ function EventDetails() {
 
         } else {
             setUserdata(data)
+            setPass(getuserdata.attendants)
             console.log("get data");
         }
     }
-
     useEffect(() => {
         getdata();
     }, [])
-
+    console.log(getuserdata.attendants);
+    const extractedDate = new Date(getuserdata.start).toLocaleString('en-IN');
+    const extractedEnd = new Date(getuserdata.end).toLocaleString('en-IN');
     const deleteuser = async (id) => {
 
         const res2 = await fetch(` http://localhost:4000/api/event/delete/${id}`, {
@@ -477,9 +509,9 @@ function EventDetails() {
 <header id="site-header" class="site-header valign-center"> 
     <div class="intro">
 
-        <h2>25 April, 2015 / Townhall California</h2>
+        <h2>{extractedDate} to {extractedEnd} </h2>
         
-        <h1>Freelancer Conference 2015</h1>
+        <h1>{getuserdata.title}</h1>
         
         <p>First &amp; Largest Conference</p>
         
@@ -505,19 +537,30 @@ function EventDetails() {
 
             <div class="col-sm-6">
 
-                <h3 class="section-title multiple-title">What is Our Goal?</h3>
+                {/* <h3 class="section-title multiple-title">What is Our Goal?</h3> */}
 
-                <p>You've inspired new consumer, racked up click-thru's, blown-up brand enes. We can't give you back the weekends you worked, or erase the pain ebeing forced to make the logo bigger. But if you submit your best work we ajusts might be able to give the chance to show you best digital marketing.</p>
-
-                <ul class="list-arrow-right">
+                <h3>For got your mobile? </h3>
+                <h5>Use Aadhar to mark your attendance</h5>
+                {/* <ul class="list-arrow-right">
 
                     <li>Learn from the best Asian Social Media Experts &amp; Case Studies</li>
                     <li>Have dedicated 2-to-1 meetings with the experts</li>
                     <li>Reach more consumers for less by learning new digital media skills</li>
                     <li>Save money when spending in online advertising</li>
                 
-                </ul>
+                </ul> */}
+            <form onSubmit={handleSubmit}>
+      <label>
+        Aadhar Number:
+        <input
+          type="text"
+          value={aadhar}
+          onChange={(e) => setAadhar(e.target.value)}
+        />
+      </label>
+      <button type="submit" class="btn btn-primary">Submit</button>
 
+    </form>
             </div>
         </div>
     </div>
@@ -529,25 +572,25 @@ function EventDetails() {
             <div class="col-sm-3">
 
                 <i class="ion-ios-calendar"></i>
-                <h3>2015<br/>June 25</h3>
+                <h3><br/></h3>
             
             </div>
             <div class="col-sm-3">
 
                 <i class="ion-ios-location"></i>
-                <h3>California<br/>USA</h3>
+                <h3>{extractedDate}<br/></h3>
             
             </div>
             <div class="col-sm-3">
 
                 <i class="ion-pricetags"></i>
-                <h3>150<br/>Tickets</h3>
+                <h3> {getuserdata.location}<br/></h3>
             
             </div>
             <div class="col-sm-3">
             
                 <i class="ion-speakerphone"></i>
-                <h3>06<br/>Speakers</h3>
+                <h3><br/></h3>
             
             </div>
         </div>
@@ -559,7 +602,7 @@ function EventDetails() {
         <div class="row">
             <div class="col-md-12">
 
-                <h3 class="section-title">Speakers</h3>
+                <h3 class="section-title">Description</h3>
             
             </div>
         </div>
@@ -572,7 +615,7 @@ function EventDetails() {
                         <img alt="" class="img-responsive center-block" src="assets/images/speakers/speaker-1.jpg"/>
                     </figure>
 
-                    <h4>Jhon Smith</h4>
+                    {/* <h4>Jhon Smith</h4>
 
                     <p>CEO of Peren</p>
 
@@ -660,8 +703,8 @@ function EventDetails() {
 
                     <h4>Jhon Smith</h4>
 
-                    <p>CEO of Peren</p>
-
+                    <p>CEO of Peren</p> */}
+                    {/* <figure><p>{getuserdata.description}</p></figure>  */}
                     <ul class="social-block">
                         <li><a href=""><i class="ion-social-twitter"></i></a></li>
                         <li><a href=""><i class="ion-social-facebook"></i></a></li>
@@ -677,8 +720,8 @@ function EventDetails() {
                     <figure>
                         <img alt="" class="img-responsive center-block" src="assets/images/speakers/speaker-6.jpg"></img>
                     </figure>
-                    <h4>Jhon Smith</h4>
-                    <p>CEO of Peren</p>
+                    <h4>{getuserdata.description}</h4>
+                    {/* <p>CEO of Peren</p> */}
                     <ul class="social-block">
                         <li><a href=""><i class="ion-social-twitter"></i></a></li>
                         <li><a href=""><i class="ion-social-facebook"></i></a></li>
@@ -695,11 +738,11 @@ function EventDetails() {
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="section-title">Registration &amp; Pricing</h3>
+                <h3 class="section-title">Please provide a feedback</h3>
             </div>
         </div>
             
-        <form action="#" id="registration-form">
+        {/* <form action="#" id="registration-form">
             <div class="row">
                 <div class="col-md-12" id="registration-msg" style={{display:"none"}}>
                     <div class="alert"></div>
@@ -739,22 +782,26 @@ function EventDetails() {
                             <option>City Name 3</option>
                             <option>City Name 4</option>
                         </select>
-                    </div>
+                    </div> */}
 
-                    <div class="form-group">
+                    {/* <div class="form-group">
                         <select class="form-control" name="program" id="program" required>
                             <option readonly>Select Your Program</option>
                             <option>Program Name 1</option>
                             <option>Program Name 2</option>
                             <option>Program Name 3</option>
                         </select>
-                    </div>
-                </div>
+                    </div> */}
+                {/* </div>
             </div>
             <div class="text-center mt20">
                 <button type="submit" class="btn btn-black" id="registration-submit-btn">Submit</button>
             </div>
-        </form>
+        </form> */}
+
+
+
+        <Feedbackk id={id}/>
     </div>
 </section>
 
@@ -811,7 +858,7 @@ function EventDetails() {
     </div>
 </section>
 
-<section id="partner" class="section partner">
+{/* <section id="partner" class="section partner">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -848,13 +895,14 @@ function EventDetails() {
             </div>
         </div>   
     </div>
-</section>
+</section> */}
 
 <section id="faq" class="section faq">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="section-title">Event FAQs</h3>
+                <h3 class="section-title"><Link to=
+         {"/viewallattendance/"+id}>View Attendance</Link></h3>
             </div>
         </div>
         <div class="row">
