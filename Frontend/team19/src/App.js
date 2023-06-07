@@ -1,7 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
 import Signup from "./pages/Signup";
-// import UserHome from "./pages/UserHome";
+import Scanner from "./pages/Scanner";
+import Navbar from "./components/Navbar";
+import Viewallattendance from "./pages/Viewallattendance"
 import Login from "./pages/Login";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
@@ -10,7 +12,7 @@ import { useAuthContext2 } from "./hooks/useAuthContext2";
 import AdminHome from "./pages/AdminHome";
 import AdminLogin from "./pages/AdminLogin";
 import AdminSignup from "./pages/AdminSignup";
-
+import Feedbackk from "./pages/Feedback";
 import Details from './pages/Details';
 import Edit from './pages/Edit';
 import Allevents from "./pages/Allevents";
@@ -25,11 +27,11 @@ import FlaskForm from "./pages/FlaskForm";
 import Layout from "./components/Layout";
 import ViewAttended from "./pages/ViewAttended";
 // import Wrapper from "./components/Wrrapper";
-
-
+// import Home from "./pages/Home";
+import Wrapper from "./components/Wrrapper";
 import CreateEvent from "./pages/CreateEvent";
 import EditEvent from "./pages/editEvent";
-import Scanner from "./pages/Scanner";
+// import Feedback from "react-bootstrap/esm/Feedback";
 
 function App() {
   const { user } = useAuthContext();
@@ -45,21 +47,26 @@ function App() {
       <Routes>
           
 
-          <Route exact
+          {/* <Route exact
           path="/homepage"
-          element={<Home/>}
-          />
-         
-
+          element={<HomeMain/>}
+          />  */}
+          <Route
+              path="/"
+              element={user ? <Home /> : <Navigate to="/login" />}
+            />
             
             <Route
-              path="/"
-              element={user ? <FlaskForm /> : <Navigate to="/login" />}
-             
+              path="/flask"
+              element={user ? <FlaskForm /> : <Navigate to="/flask" />}
             />
             <Route
               exact path="/allevents"
               element={user ? <Allevents /> : <Navigate to="/allevents" />}
+            />
+            <Route
+              exact path="/feedback"
+              element={user ? <Feedbackk /> : <Navigate to="/feedback" />}
             />
             <Route
               path="/scanner"
@@ -70,6 +77,7 @@ function App() {
              exact path="/allevents/eventdetails/:id"
               element={user ? <EventDetails /> : <Navigate to="/allevents" />}
             />
+            <Route path="/viewallattendance/:id"element={<Viewallattendance/> } />
             
             {/* <Route
              path="/"

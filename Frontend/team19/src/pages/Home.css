@@ -125,7 +125,7 @@ header .text .arrow .left:after, header .text .arrow .right:after, header .text 
 header {
     height: calc(100vh - 22px);
     background-size: cover;
-    background: url("https://th.bing.com/th/id/OIP.erO8BvQ3pwVpqngzUDKYYgHaLG?pid=ImgDet&w=683&h=1024&rs=1") fixed bottom;
+    /* background: url("https://th.bing.com/th/id/OIP.erO8BvQ3pwVpqngzUDKYYgHaLG?pid=ImgDet&w=683&h=1024&rs=1") fixed bottom; */
     padding: 20px 70px;
 }
 header nav {
@@ -266,7 +266,7 @@ header .arrow-down {
     left: 50%;
     transform: translate(-50%, 0);
     z-index: 10;
-    background: url("https://th.bing.com/th/id/OIP.erO8BvQ3pwVpqngzUDKYYgHaLG?pid=ImgDet&w=683&h=1024&rs=1") no-repeat center;
+    /* background: url("") no-repeat center; */
 }
 /* /End Header/ */
 

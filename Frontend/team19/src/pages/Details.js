@@ -31,7 +31,22 @@ const Details = () => {
         });
 
         const data = await res.json();
+        
         console.log(data);
+        // const data = await res.json();
+        data.eventsAttended.forEach(async event => {
+          console.log(event)
+          const edata = await fetch(`/api/event/get/${event}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        console.log(event+" "+edata.title+" ")
+        data.eventsAttended.push(edata.title);
+        data.eventsAttended.pop(event);
+        // console.log(event+" "+edata.title+" ")
+        });
 
         if (res.status === 422 || !data) {
             console.log("error ");

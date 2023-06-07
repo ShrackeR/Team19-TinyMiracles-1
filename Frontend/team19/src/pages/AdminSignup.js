@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { useSignup2 } from "../hooks/useSignup2";
 import Wrapper from "../components/Wrrapper";
-
-import './AdminLogin.css';
 import { Link } from "react-router-dom";
 const AdminSignup = () => {
   const [name, setName] = useState("");

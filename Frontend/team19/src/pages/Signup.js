@@ -565,8 +565,11 @@ const Signup = () => {
   const { signup, error, isLoading, success, setSuccess } = useSignup();
 
   const [activeTab, setActiveTab] = useState(1);
+<<<<<<< HEAD
+=======
   // const{signup,error,isLoading,success,setSuccess}=useSignup();
   const [step, setstep] = useState(1);
+>>>>>>> e1ef63dfe7d44f37021a5eb57962e8610b082ce0
 
   const [formData, setFormData] = useState({
     name: '',
@@ -603,6 +606,48 @@ const Signup = () => {
     gender: '',
     status: 'ACTIVE',
   });
+<<<<<<< HEAD
+
+  const statesOfIndia = [
+    'Andaman and Nicobar Islands',
+    'Andhra Pradesh',
+    'Arunachal Pradesh',
+    'Assam',
+    'Bihar',
+    'Chandigarh',
+    'Chhattisgarh',
+    'Dadra and Nagar Haveli',
+    'Daman and Diu',
+    'Delhi',
+    'Goa',
+    'Gujarat',
+    'Haryana',
+    'Himachal Pradesh',
+    'Jammu and Kashmir',
+    'Jharkhand',
+    'Karnataka',
+    'Kerala',
+    'Lakshadweep',
+    'Madhya Pradesh',
+    'Maharashtra',
+    'Manipur',
+    'Meghalaya',
+    'Mizoram',
+    'Nagaland',
+    'Odisha',
+    'Puducherry',
+    'Punjab',
+    'Rajasthan',
+    'Sikkim',
+    'Tamil Nadu',
+    'Telangana',
+    'Tripura',
+    'Uttar Pradesh',
+    'Uttarakhand',
+    'West Bengal',
+  ];
+
+=======
   const nextStep = () => {
     setstep(step + 1);
   };
@@ -612,6 +657,7 @@ const Signup = () => {
     setstep(step - 1);
   };
   
+>>>>>>> e1ef63dfe7d44f37021a5eb57962e8610b082ce0
   const handleDiseasesChange = (e, index) => {
     const { value } = e.target;
 
@@ -649,6 +695,98 @@ const Signup = () => {
     }));
   };
 
+<<<<<<< HEAD
+  const handleTabClick = (tab) => {
+    if (activeTab !== tab) {
+      setActiveTab(tab);
+    }
+  };
+
+const handleRemoveDisease = (index) => {
+  setFormData((prevFormData) => {
+    const updatedDiseases = [...prevFormData.diseases];
+    updatedDiseases.splice(index, 1);
+
+    return {
+      ...prevFormData,
+      diseases: updatedDiseases,
+    };
+  });
+};
+
+const handleAddSkill = () => {
+  setFormData((prevFormData) => ({
+    ...prevFormData,
+    skillset: [...prevFormData.skillset, ''],
+  }));
+};
+
+const handleRemoveSkill = (index) => {
+  setFormData((prevFormData) => {
+    const updatedSkillset = [...prevFormData.skillset];
+    updatedSkillset.splice(index, 1);
+
+    return {
+      ...prevFormData,
+      skillset: updatedSkillset,
+    };
+  });
+};
+
+const handleAddInterest = () => {
+  setFormData((prevFormData) => ({
+    ...prevFormData,
+    interests: [...prevFormData.interests, ''],
+  }));
+};
+
+const handleRemoveInterest = (index) => {
+  setFormData((prevFormData) => {
+    const updatedInterests = [...prevFormData.interests];
+    updatedInterests.splice(index, 1);
+
+    return {
+      ...prevFormData,
+      interests: updatedInterests,
+    };
+  });
+};
+
+const handleAddEvent = () => {
+  setFormData((prevFormData) => ({
+    ...prevFormData,
+    eventsAttended: [...prevFormData.eventsAttended, ''],
+  }));
+};
+
+const handleRemoveEvent = (index) => {
+  setFormData((prevFormData) => {
+    const updatedEventsAttended = [...prevFormData.eventsAttended];
+    updatedEventsAttended.splice(index, 1);
+
+    return {
+      ...prevFormData,
+      eventsAttended: updatedEventsAttended,
+    };
+  });
+};
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+  signup(formData);
+};
+
+const renderForm = () => {
+  switch (activeTab) {
+    case 1:
+      return (
+        <div>
+          <h2>Personal Information</h2>
+          {/* Form fields for personal information */}
+          {/* ... */}
+          <div className="mb-3">
+      <span style={{ color: 'red' }}>*</span> Name:
+=======
   const handleRemoveDisease = (index) => {
     setFormData((prevFormData) => {
       const updatedDiseases = [...prevFormData.diseases];
@@ -741,6 +879,7 @@ const Signup = () => {
       <h3>Sign up</h3>
       <div className="mb-3">
         Name:<span class="required-field"></span>
+>>>>>>> e1ef63dfe7d44f37021a5eb57962e8610b082ce0
         <input
           type="text"
           name="name"
@@ -752,7 +891,10 @@ const Signup = () => {
       </div>
       <div className="mb-3">
       <span style={{ color: 'red' }}>*</span> Aadhar:
+<<<<<<< HEAD
+=======
         Aadhar:<span class="required-field"></span>
+>>>>>>> e1ef63dfe7d44f37021a5eb57962e8610b082ce0
         <input
           type="text"
           name="aadhar"
@@ -807,7 +949,10 @@ const Signup = () => {
       </div>
       <div className="mb-3">
       <span style={{ color: 'red' }}>*</span> Mobile:
+<<<<<<< HEAD
+=======
         Mobile:<span class="required-field"></span>
+>>>>>>> e1ef63dfe7d44f37021a5eb57962e8610b082ce0
         <input
           type="text"
           name="mobile"
@@ -819,7 +964,10 @@ const Signup = () => {
       </div>
       <div className="mb-3">
       <span style={{ color: 'red' }}>*</span> Date of Birth:
+<<<<<<< HEAD
+=======
         Date of Birth:<span class="required-field"></span>
+>>>>>>> e1ef63dfe7d44f37021a5eb57962e8610b082ce0
         <input
           type="date"
           name="dob"
@@ -845,7 +993,10 @@ const Signup = () => {
       </div>
       <div>
       <span style={{ color: 'red' }}>*</span> Email:
+<<<<<<< HEAD
+=======
         Email:<span class="required-field"></span>
+>>>>>>> e1ef63dfe7d44f37021a5eb57962e8610b082ce0
         <input
           type="email"
           name="email"
@@ -858,8 +1009,11 @@ const Signup = () => {
       <div className="mb-3">
         <h6>Address</h6>
         <span style={{ color: 'red' }}>*</span> Area:
+<<<<<<< HEAD
+=======
         <h6>Address<span class="required-field"></span></h6>
         Area:
+>>>>>>> e1ef63dfe7d44f37021a5eb57962e8610b082ce0
         <input
           type="text"
           name="area"
@@ -915,7 +1069,11 @@ const Signup = () => {
         />
       </div>
       <div className="mb-3">
+<<<<<<< HEAD
+      <span style={{ color: 'red' }}>*</span> Password:
+=======
         Password:<span class="required-field"></span>
+>>>>>>> e1ef63dfe7d44f37021a5eb57962e8610b082ce0
         <input
           type="password"
           name="password"
@@ -1047,6 +1205,123 @@ const Signup = () => {
 
     //     </div>
         
+<<<<<<< HEAD
+      );
+    case 3:
+      return (
+        <div>
+          <h2>Additional Information</h2>
+          {/* Form fields for additional information */}
+          {/* ... */}
+          <div className="mb-3">
+        Number of Children:
+        <input
+          type="number"
+          name="numberOfChildren"
+          value={formData.numberOfChildren}
+          onChange={handleChange}
+          className="form-control"
+          placeholder="Enter no. of children"
+        />
+      </div>
+      <div className="mb-3">
+        Need Child Education Assistance:
+        <input
+          type="checkbox"
+          name="needChildEducationAssistance"
+          checked={formData.needChildEducationAssistance}
+          onChange={handleChange}
+          className="form-check"
+        />
+      </div>
+      <div className="mb-3">
+        Need Employment Support:
+        <input
+          type="checkbox"
+          name="needEmploymentSupport"
+          checked={formData.needEmploymentSupport}
+          onChange={handleChange}
+          className="form-check"
+        />
+      </div>
+      
+      <div className="mb-3">
+        Skillset:<span class="required-field"></span>
+        <input
+          type="text"
+          name="skillset"
+          value={formData.skillset}
+          onChange={handleChange}
+          className="form-control"
+          placeholder="Enter Skills"
+        />
+      </div>
+      <div className="mb-3">
+        Interests:
+        <input
+          type="text"
+          name="interests"
+          value={formData.interests}
+          onChange={handleChange}
+          className="form-control"
+          placeholder="Enter Interests"
+        />
+      </div>
+      <div className="mb-3">
+        Events Attended:
+        <input
+          type="text"
+          name="eventsAttended"
+          value={formData.eventsAttended}
+          onChange={handleChange}
+          className="form-control"
+        />
+      </div>
+      <div className="mb-3">
+      <span style={{ color: 'red' }}>*</span> Community:
+        <input
+          type="text"
+          name="community"
+          value={formData.community}
+          onChange={handleChange}
+          className="form-control"
+          placeholder="Enter Community"
+        />
+      </div>
+      
+
+        </div>
+      );
+    default:
+      return null;
+  }
+};
+
+return (
+  <Wrapper>
+      <form onSubmit={handleSubmit} style={{margin:"50px"}}>
+        {/* Tab navigation */}
+        <div className="btn-group">
+          <div style={{cursor: "pointer"}}
+            variant={activeTab === 1 ? 'primary'  : 'secondary'} 
+            onClick={() => handleTabClick(1)}
+          >
+            Personal Information
+          </div>
+          <div style={{cursor: "pointer"}}
+            variant={activeTab === 2 ? 'primary' : 'secondary'}
+            onClick={() => handleTabClick(2)}
+          >
+            Analytical Information
+          </div>
+          <div style={{cursor: "pointer"}}
+            variant={activeTab === 3 ? 'primary' : 'secondary'}
+            onClick={() => handleTabClick(3)}
+          >
+            Additional Information
+          </div>
+        </div>
+=======
     //   );
     // case 3:
     //   return (
@@ -1185,6 +1460,7 @@ const Signup = () => {
 //             Additional Information
 //           </div>
 //         </div>
+>>>>>>> e1ef63dfe7d44f37021a5eb57962e8610b082ce0
 
 //         {/* Render form based on active tab */}
 //         {renderForm()}

@@ -3,6 +3,7 @@
     box-sizing: border-box;
 }
 body {
+<<<<<<< HEAD
     margin: 0;
     padding: 0px;
 }
@@ -116,6 +117,14 @@ header .text .arrow .left:after, header .text .arrow .right:after, header .text 
 }
 .dots .active.black {
     background-color: #000;
+=======
+  background:white !important;
+  min-height: 100vh;
+  text-align: center !important;
+  display: flex;
+  font-weight: 400;
+  font-family: 'Fira Sans', sans-serif;
+>>>>>>> 300490e3ba2954561634e65b046f44089839f7ba
 }
 
 /* /Start Home Page/
@@ -632,6 +641,7 @@ footer .newsletter i {
     }
 
 }
+<<<<<<< HEAD
 
 @media (max-width: 576px) {
     h3, h1 {
@@ -659,5 +669,62 @@ footer .newsletter i {
     .menu {
         padding: 60px 0 60px 20px;
     }
+=======
+@media (max-width:1000px) {
+  .auth-inner{
+    width: 70%;
+  }
+  
+}
+.auth-inner {
+  width: 40%;
+  margin-top: 100rem;
+  /* margin: auto; */
+  background: #ffffff;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  padding: 40px 55px 45px 55px;
+  border-radius: 15px;
+  transition: all .3s;
+}
+@media (max-width:1000px) {
+  .auth-inner{
+    width: 70%;
+  }
+  
+}
+@media (max-width:450px) {
+  .auth-inner{
+    width: 90%;
+  }
+  
+}
+.auth-wrapper .form-control:focus {
+  border-color: #167bff;
+  box-shadow: none;
+}
+
+.auth-wrapper h3 {
+  text-align: center;
+  margin: 0;
+  line-height: 1;
+  padding-bottom: 20px;
+}
+
+.custom-control-label {
+  font-weight: 400;
+}
+
+.forgot-password,
+.forgot-password a {
+  text-align: right;
+  font-size: 13px;
+  padding-top: 10px;
+  color: #7f7d7d;
+  margin: 0;
+}
+
+.forgot-password a {
+  color: #167bff;
+>>>>>>> 300490e3ba2954561634e65b046f44089839f7ba
 }
 /* /End Home Page Responsive/ */
