@@ -16,7 +16,7 @@ const UserNavbar = () => {
   };
  
 
-  console.log(user);
+  console.log(user.id);
   return (
     // <header>
     //   <div className="container">
@@ -81,6 +81,7 @@ const UserNavbar = () => {
                     <NavLink  eventKey="2" as={Link} to="/notification">Notification</NavLink>
                     <NavLink  eventKey="3" as={Link} to="/chatapp">Chat</NavLink>
                     <NavLink  eventKey="4" as={Link} to="/Complains">Complaints</NavLink>
+                    <NavLink  eventKey="4" as={Link} to={`/viewAttendedEvents/${user.id}`}>Attendance</NavLink>
                     {/* <NavLink  eventKey="4" as={Link} to="/Complains">Complaints</NavLink> */}
                     <button onClick={handleClick} type="button" class="btn btn-outline-dark but" >Log out</button>
                 </Nav>

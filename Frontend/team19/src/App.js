@@ -23,6 +23,7 @@ import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
 // import './App.css';
 import FlaskForm from "./pages/FlaskForm";
 import Layout from "./components/Layout";
+import ViewAttended from "./pages/ViewAttended";
 // import Wrapper from "./components/Wrrapper";
 
 
@@ -132,7 +133,13 @@ function App() {
             />
             
             {/* <Route exact path="/view/:id" component={Details} /> */}
+
+            <Route
+            path="/viewAttendedEvents/:id"
+            element={<ViewAttended/>}
+            />
              </Routes>
+             
 
       {/* </Wrapper> */}
          

@@ -291,6 +291,10 @@ const ResetPassword = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+const ViewAttended=async(req,res)=>{
+  const {id}=req.params;
+  
+}
 
 module.exports = {
   signupUser,
