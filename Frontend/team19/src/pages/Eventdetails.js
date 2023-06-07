@@ -373,19 +373,16 @@ import React, { useState, useEffect}  from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import Feedbackk from "./Feedback";
-import speaker1 from "../assets/images/speakers/speaker-1.jpg";
-import speaker2 from "../assets/images/speakers/speaker-2.jpg";
-import speaker3 from "../assets/images/speakers/speaker-3.jpg";
-import speaker4 from "../assets/images/speakers/speaker-4.jpg";
-import speaker5 from "../assets/images/speakers/speaker-5.jpg";
-import speaker6 from "../assets/images/speakers/speaker-6.jpg";
+import { useAuthContext } from "../hooks/useAuthContext";
 import "../assets/css/main.css";
 import {useParams, useNavigate } from "react-router-dom";
 function EventDetails() {
     const[pass,setPass]=useState(null)
     const [getuserdata, setUserdata] = useState([]);
-    console.log(getuserdata);
-    console.log(getuserdata.title);
+    // console.log(getuserdata);
+    // console.log(getuserdata.title);
+    const { user } = useAuthContext();
+    
 
     // const { id } = useParams("");
     const {id}=useParams("")
@@ -394,6 +391,7 @@ function EventDetails() {
     const navigate = useNavigate();
 
     const [aadhar, setAadhar] = useState('');
+   
 
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -468,6 +466,7 @@ function EventDetails() {
         }
 
     }
+   
   return (
     <>
     <nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
@@ -506,8 +505,7 @@ function EventDetails() {
         </div>
     </div>
 </nav>
-
-<header id="site-header" class="site-header valign-center"> 
+{user && <header id="site-header" class="site-header valign-center"> 
     <div class="intro">
 
         <h2>{extractedDate} to {extractedEnd} </h2>
@@ -519,7 +517,8 @@ function EventDetails() {
         <a class="btn btn-white" data-scroll href="#registration">Register Now</a>
     
     </div>
-</header>
+</header>}
+
 
 <section id="about" class="section about">
     <div class="container">
@@ -542,14 +541,7 @@ function EventDetails() {
 
                 <h3>For got your mobile? </h3>
                 <h5>Use Aadhar to mark your attendance</h5>
-                {/* <ul class="list-arrow-right">
-
-                    <li>Learn from the best Asian Social Media Experts &amp; Case Studies</li>
-                    <li>Have dedicated 2-to-1 meetings with the experts</li>
-                    <li>Reach more consumers for less by learning new digital media skills</li>
-                    <li>Save money when spending in online advertising</li>
-                
-                </ul> */}
+               
             <form onSubmit={handleSubmit}>
       <label>
         Aadhar Number:
@@ -616,96 +608,7 @@ function EventDetails() {
                         <img alt="" class="img-responsive center-block" src="assets/images/speakers/speaker-1.jpg"/>
                     </figure>
 
-                    {/* <h4>Jhon Smith</h4>
-
-                    <p>CEO of Peren</p>
-
-                    <ul class="social-block">
-                        <li><a href=""><i class="ion-social-twitter"></i></a></li>
-                        <li><a href=""><i class="ion-social-facebook"></i></a></li>
-                        <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
-                        <li><a href=""><i class="ion-social-googleplus"></i></a></li>
-                    </ul>
-
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="speaker">
-
-                    <figure>
-                        <img alt="" class="img-responsive center-block" src="assets/images/speakers/speaker-2.jpg"/>
-                    </figure>
-
-                    <h4>Jhon Smith</h4>
-
-                    <p>CEO of Peren</p>
-
-                    <ul class="social-block">
-                        <li><a href=""><i class="ion-social-twitter"></i></a></li>
-                        <li><a href=""><i class="ion-social-facebook"></i></a></li>
-                        <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
-                        <li><a href=""><i class="ion-social-googleplus"></i></a></li>
-                    </ul>
-
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="speaker">
-
-                    <figure>
-                        <img alt="" class="img-responsive center-block" src="assets/images/speakers/speaker-3.jpg"/>
-                    </figure>
-
-                    <h4>Jhon Smith</h4>
-
-                    <p>CEO of Peren</p>
-
-                    <ul class="social-block">
-                        <li><a href=""><i class="ion-social-twitter"></i></a></li>
-                        <li><a href=""><i class="ion-social-facebook"></i></a></li>
-                        <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
-                        <li><a href=""><i class="ion-social-googleplus"></i></a></li>
-                    </ul>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-4">
-
-                <div class="speaker">
-
-                    <figure>
-                        <img alt="" class="img-responsive center-block" src="assets/images/speakers/speaker-4.jpg"/>
-                    </figure>
-
-                    <h4>Jhon Smith</h4>
-
-                    <p>CEO of Peren</p>
-
-                    <ul class="social-block">
-                        <li><a href=""><i class="ion-social-twitter"></i></a></li>
-                        <li><a href=""><i class="ion-social-facebook"></i></a></li>
-                        <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
-                        <li><a href=""><i class="ion-social-googleplus"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-4">
-
-                <div class="speaker">
-
-                    <figure>
-                        <img alt="" class="img-responsive center-block" src="assets/images/speakers/speaker-5.jpg"/>
-                    </figure>
-
-                    <h4>Jhon Smith</h4>
-
-                    <p>CEO of Peren</p> */}
-                    {/* <figure><p>{getuserdata.description}</p></figure>  */}
+                    
                     <ul class="social-block">
                         <li><a href=""><i class="ion-social-twitter"></i></a></li>
                         <li><a href=""><i class="ion-social-facebook"></i></a></li>
@@ -734,77 +637,17 @@ function EventDetails() {
         </div>
     </div>
 </section>
-
-<section id="registration" class="section registration">
+{user && <section id="registration" class="section registration">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <h3 class="section-title">Please provide a feedback</h3>
             </div>
         </div>
-            
-        {/* <form action="#" id="registration-form">
-            <div class="row">
-                <div class="col-md-12" id="registration-msg" style={{display:"none"}}>
-                    <div class="alert"></div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name" id="fname" name="fname" required/>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Last Name" id="lname" name="lname" required/>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Email" id="email" name="email" required/>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Phone" id="cell" name="cell" required/>
-                    </div>
-                </div>
-
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Address" id="address" name="address" required/>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Zip Code" id="zip" name="zip" required/>
-                    </div>
-
-                    <div class="form-group">
-                        <select class="form-control" name="city" id="city" required>
-                            <option readonly>City</option>
-                            <option>City Name 1</option>
-                            <option>City Name 2</option>
-                            <option>City Name 3</option>
-                            <option>City Name 4</option>
-                        </select>
-                    </div> */}
-
-                    {/* <div class="form-group">
-                        <select class="form-control" name="program" id="program" required>
-                            <option readonly>Select Your Program</option>
-                            <option>Program Name 1</option>
-                            <option>Program Name 2</option>
-                            <option>Program Name 3</option>
-                        </select>
-                    </div> */}
-                {/* </div>
-            </div>
-            <div class="text-center mt20">
-                <button type="submit" class="btn btn-black" id="registration-submit-btn">Submit</button>
-            </div>
-        </form> */}
-
-
-
-        <Feedbackk id={id}/>
+  
     </div>
-</section>
+</section>}
+
 
 <section id="contribution" class="section bg-image-2 contribution">
     <div class="container">

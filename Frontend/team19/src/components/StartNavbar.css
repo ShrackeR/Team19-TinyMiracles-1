@@ -593,7 +593,7 @@ footer .newsletter i {
 @media (max-width: 768px) {
     header nav {
         display: block;
-        text-align: center;
+        text-align:left;
         left: 0;
         top: 0;
         width: 100%;

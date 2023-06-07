@@ -30,7 +30,7 @@ function Viewallattendance() {
     const {id}=useParams("")
     useEffect(() => {
         getdata();
-    }, [])
+    }, )
   return (
     <div>
       {/* {getuserdata.map((item) => (

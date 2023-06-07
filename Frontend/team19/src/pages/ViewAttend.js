@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom"
 import { useState,useEffect } from "react";
-import { Link } from "react-router-dom";
+
 import Event from "../components/Event";
 const ViewAttend=()=>{
     const {id}=useParams("")
-    let result=[];
+    
     const [userData,setUserData]=useState({
         name: '',
         aadhar: '',
@@ -49,7 +49,7 @@ const ViewAttend=()=>{
         }
         fetchData();
             
-},[])
+},)
 
     
   

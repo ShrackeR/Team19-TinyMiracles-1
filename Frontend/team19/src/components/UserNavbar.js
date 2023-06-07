@@ -1,18 +1,22 @@
 
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
+// import { Redirect } from 'react-router-dom';
 // import { useAuthContext2 } from "../hooks/useAuthContext2";
 // import { useAuthContext3 } from "../hooks/useAuthContext3";
 import { Link } from "react-router-dom";
 import './StartNavbar.css';
 import { Nav, Navbar, NavLink } from "react-bootstrap";
 const UserNavbar = () => {
+ 
   const { logout } = useLogout();
   const { user } = useAuthContext();
   // const { admin } = useAuthContext2();
   // const { clerk } = useAuthContext3();
   const handleClick = () => {
     logout();
+    // return <Redirect to={'/homepage'}/>
+    window.location.href = '/homepage'
   };
  
 

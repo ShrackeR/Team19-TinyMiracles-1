@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSignup2 } from "../hooks/useSignup2";
 import Wrapper from "../components/Wrrapper";
+import './AdminSign.css'
 import { Link } from "react-router-dom";
 const AdminSignup = () => {
   const [name, setName] = useState("");
@@ -19,8 +20,8 @@ const AdminSignup = () => {
   };
 
   return (
-    <Wrapper >
-    <div style={{marginTop:12+'rem'}}>
+    // <Wrapper >
+    <div className="admin">
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
@@ -105,7 +106,7 @@ const AdminSignup = () => {
         </p>
       </div>
     </div>
-    </Wrapper>
+    // </Wrapper>
   );
 };
 

@@ -252,7 +252,7 @@ const handleSubmit =async (e) => {
     // case 1 to show stepOne form and passing nextStep, prevStep, and handleInputData as handleFormData method as prop and also formData as value to the fprm
     case 1:
       return (
-        <div style={{marginTop:-8+'rem'}}>
+        <div style={{marginTop:-4+'rem'}}>
          
           <Container>
             <Row>
@@ -267,7 +267,7 @@ const handleSubmit =async (e) => {
     // case 2 to show stepTwo form passing nextStep, prevStep, and handleInputData as handleFormData method as prop and also formData as value to the fprm
     case 2:
       return (
-        <div style={{marginTop:-8+'rem'}}>
+        <div style={{marginTop:-4+'rem'}}>
           <Container>
             <Row>
               <Col  md={{ span: 6, offset: 3 }} >
@@ -280,7 +280,7 @@ const handleSubmit =async (e) => {
       // Only formData is passed as prop to show the final value at form submit
     case 3:
       return (
-        <div style={{marginTop:-8+'rem'}}>
+        <div style={{marginTop:-4+'rem'}}>
           <Container>
             <Row>
               <Col  md={{ span: 6, offset: 3 }} >
@@ -293,7 +293,7 @@ const handleSubmit =async (e) => {
     // default case to show nothing
     case 4:
       return (
-        <div style={{marginTop:-8+'rem'}}>
+        <div style={{marginTop:-4+'rem'}}>
           <Container>
             <Row>
               <Col  md={{ span: 6, offset: 3 }} >
