@@ -56,6 +56,29 @@ const AdminHome = () => {
       getdata();
     }
   };
+  const downloadCSV = () => {
+    fetch('http://localhost:4000/api/details/download')
+      .then((response) => {
+        if (response.ok) {
+          return response.blob();
+        }
+        throw new Error('Network response was not ok.');
+      })
+      .then((blob) => {
+        const url = window.URL.createObjectURL(new Blob([blob]));
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'data.csv';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+      })
+      .catch((error) => {
+        console.log('Error:', error);
+      });
+  };
+
 
   const handleFilterChange = (e) => {
     setFilterStatus(e.target.value);
@@ -90,7 +113,7 @@ const AdminHome = () => {
               <option value="Inactive">Inactive</option>
             </select>
           </div>
-
+          <button onClick={downloadCSV}>Download CSV</button>
           <table className="table">
             <thead>
               <tr className="table-dark">

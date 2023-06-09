@@ -373,6 +373,7 @@ import React, { useState, useEffect}  from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import Feedbackk from "./Feedback";
+import { useAuthContext } from "../hooks/useAuthContext";
 import speaker1 from "../assets/images/speakers/speaker-1.jpg";
 import speaker2 from "../assets/images/speakers/speaker-2.jpg";
 import speaker3 from "../assets/images/speakers/speaker-3.jpg";
@@ -382,12 +383,16 @@ import speaker6 from "../assets/images/speakers/speaker-6.jpg";
 import "../assets/css/main.css";
 import {useParams, useNavigate } from "react-router-dom";
 function EventDetails() {
+    const { user } = useAuthContext();
+
     const[pass,setPass]=useState(null)
     const [getuserdata, setUserdata] = useState([]);
     console.log(getuserdata);
     console.log(getuserdata.title);
 
     // const { id } = useParams("");
+
+    
     const {id}=useParams("")
 
 
@@ -470,7 +475,7 @@ function EventDetails() {
     }
   return (
     <>
-    <nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
+    {/* <nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
     <div class="container">
         <div class="navbar-header">
 
@@ -505,7 +510,7 @@ function EventDetails() {
             </ul>
         </div>
     </div>
-</nav>
+</nav> */}
 
 <header id="site-header" class="site-header valign-center"> 
     <div class="intro">
@@ -514,9 +519,7 @@ function EventDetails() {
         
         <h1>{getuserdata.title}</h1>
         
-        <p>First &amp; Largest Conference</p>
-        
-        <a class="btn btn-white" data-scroll href="#registration">Register Now</a>
+       
     
     </div>
 </header>
@@ -802,7 +805,7 @@ function EventDetails() {
 
 
 
-        <Feedbackk id={id}/>
+       {user && <Feedbackk id={id}/>}
     </div>
 </section>
 
@@ -904,6 +907,9 @@ function EventDetails() {
             <div class="col-md-12">
                 <h3 class="section-title"><Link to=
          {"/viewallattendance/"+id}>View Attendance</Link></h3>
+         
+         <h3 class="section-title"><Link to=
+         {"/viewfeedback/"+id}>View Feedback</Link></h3>
             </div>
         </div>
         <div class="row">

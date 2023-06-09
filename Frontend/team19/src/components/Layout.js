@@ -3,6 +3,7 @@ import { useAuthContext2 } from "../hooks/useAuthContext2";
 import StartNavbar from "./StartNavbar";
 import UserNavbar from "./UserNavbar";
 import AdminNavbar from './AdminNavbar';
+import Navbar  from "./Navbar";
 
 const Layout = (props) => {
     const { user } = useAuthContext();
@@ -10,7 +11,7 @@ const Layout = (props) => {
   return (
     <>
      
-      {user && <UserNavbar />}
+      {user && <Navbar />}
       {admin && <AdminNavbar />}
       {!user  && !admin && <StartNavbar />}
      

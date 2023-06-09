@@ -90,16 +90,16 @@ const FlaskForm = () => {
 
   return (
     <div className="container mt-4">
-      <h1>Flask Form Example</h1>
+      <h1>Here to help you..</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="prompt">Enter Prompt:</label>
+          <label htmlFor="prompt">What problem are you facing?</label>
           <input
             type="text"
             className="form-control"
             id="prompt"
             name="prompt"
-            placeholder="Enter your prompt here"
+            placeholder="Enter your querry here"
             style={{ color: 'black' }} // Set the prompt text color to black
             value={prompt}
             onChange={handlePromptChange}
@@ -111,8 +111,8 @@ const FlaskForm = () => {
       </form>
       {response && (
         <div className="mt-4">
-          <h2 style={{ color: 'white' }}>Response:</h2> {/* Set the response text color to white */}
-          <p style={{ color: 'white' }}>{response}</p> {/* Set the response text color to white */}
+          <h2 style={{ color: 'balck' }}>Response:</h2> {/* Set the response text color to white */}
+          <p style={{ color: 'black' }}>{response}</p> {/* Set the response text color to white */}
         </div>
       )}
     </div>

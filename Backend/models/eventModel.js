@@ -37,7 +37,15 @@ const eventSchema = new Schema({
     }],
     resources: [{
         type: String
-    }]
+    }],
+    question: [{
+        type: String
+    }],
+    duration:{
+        type:String
+    }
+    
+
 })
 
 //   nameSchema.plugin(uniqueValidator);

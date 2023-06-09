@@ -2,64 +2,92 @@ import { Link } from 'react-router-dom'
 import { useLogout2 } from '../hooks/useLogout2'
 import { useAuthContext2 } from '../hooks/useAuthContext2'
 import { useAuthContext } from '../hooks/useAuthContext'
-import { Nav, Navbar, NavLink } from "react-bootstrap";
-
-
+import { useState } from 'react'
+import "./Navbar3.css";
 
 const Navbar2 = () => {
   const { logout2 } = useLogout2()
   const { admin } = useAuthContext2()
-  const { user } = useAuthContext()
+  // const { user } = useAuthContext()
+  const [showNav, setShowNav] = useState(false);
+
   const handleClick = () => {
     logout2()
   }
+  const handleToggleNav = () => {
+    setShowNav(!showNav);
+  };
+
+
+ 
 
   return (
-    // <header>
-    //   <div className="container">
-    //     {/* <Link to="/admin/ad">
-    //       <h1>VJTI Hostel Portal-Admin</h1>
-    //     </Link> */}
-    //     <nav>
-    //       {admin &&!user  && (
-    //         <div>
-    //           <span>{admin.email}</span>
-    //           <button onClick={handleClick}>Log out</button>
-    //           {/* <Link to="/admin/mer">Merit-List</Link>
-    //           <Link to="/signup">CreateUser</Link>
-    //           <Link to="/verify">Verify</Link>
-    //           <Link to="/admin/ann">Announce</Link>
-    //           <Link to="/admin/acc">Accepted-students</Link>
-    //           <Link to="/admin/rej">Rejected-students</Link>
-    //           <Link to="/adminnotification">ViewAndDelAnnouncement</Link> */}
-    //         </div>
-            
-    //       )}
-    //       {/* {!admin && (
-    //         <div>
-    //           <Link to="/adminlogin">Login</Link>
-    //           <Link to="/adminsignup">Signup</Link>
-    //         </div>
-    //       )} */}
-    //     </nav>
-    //   </div>
-    // </header>
-    <div className='App'>
-      <Navbar collapseOnSelect expand="sm" bg="light" variant="light">
-            <Navbar.Toggle aria-controls="navbarScroll" data-bs-toggle="collapse" data-bs-target="#navbarScroll" />
-            <Navbar.Collapse id="navbarScroll">
-                <Nav>
-                    <NavLink  eventKey="1" as={Link} to="/homepage">Tiny Miracles</NavLink>
-                    {admin && !user &&  <><NavLink  eventKey="2" as={Link} to="/notification">Notification</NavLink>
-                    {/* <NavLink  eventKey="3" as={Link} to="/chatapp">Chat</NavLink>
-                    <NavLink  eventKey="4" as={Link} to="/Complains">Complaints</NavLink> */}
-                    {/* <NavLink  eventKey="4" as={Link} to="/Complains">Complaints</NavLink> */}
-                    <button onClick={handleClick} type="button" class="btn btn-outline-dark but" >Log out</button></>}
-                   
-                </Nav>
-            </Navbar.Collapse>     
-        </Navbar>
-    </div>
+    
+
+    <>
+      {/* <nav className="navbar">
+        <Link to="/admin/ad" className="navbar-brand">
+          <img id="logoImg-n" src={myImg} alt="Logo" /> Tiny Miracles
+        </Link>
+        <button className={`hamburger ${showNav ? 'active' : ''}`} onClick={handleToggleNav}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div className={`navbar-menu ${showNav ? 'show-nav' : ''}`}>
+          <ul>
+            {admin && (
+              <>
+                <li>
+                  <span className="hi" style={{color:"blue"}}>Hi!! {admin.name}</span>
+                </li>
+                <li>
+                  <Link to="/flask">NeedHelp?</Link>
+                </li>
+                <li>
+                  <Link to="/createEvent">CreateNewEvent</Link>
+                </li>
+                <li>
+                  <Link to="/alleventsadmin">Viewevents</Link>
+                </li>
+                
+                <li>
+                  <Link to="/admin/allusers">All Users</Link>
+                </li>
+                <li>
+                  <Link to="/admin/createann">Create Announcement</Link>
+                </li>
+                <li>
+                  <Link to="/admin/ann">View Announcements</Link>
+                </li>
+                <li>
+                <button className="btn btn-primary" onClick={handleClick}>
+                Log out
+              </button>
+                    </li>
+              </>
+            )}
+        </ul>
+        </div>
+      </nav> */}
+
+<div class="sidebar">
+        <Link to="/admin/ad">Home</Link>
+        <Link to="/flask">Need Help?</Link>
+        <Link to="/createEvent">Create New Event</Link>
+        <Link to="/alleventsadmin">View Events</Link>
+        <Link to="/admin/allusers">All Users</Link>
+        <Link to="/admin/createann">Create Announcement</Link>
+        <Link to="/admin/ann">View Announcements</Link>
+        <li>
+                  <button className="btn btn-primary" onClick={handleClick}>
+                    Log out
+                  </button>
+                </li>
+      </div>
+    </>
+
+
   )
 }
 

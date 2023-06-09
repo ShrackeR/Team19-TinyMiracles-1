@@ -119,7 +119,14 @@ const Allevents = () => {
                       <button className="btn btn-success">
                         <RemoveRedEyeIcon />
                       </button>
+
                     </NavLink>
+                    <NavLink to={`editEvent/${element._id}`}>
+                <button className="btn btn-primary mx-2">
+                  <CreateIcon />
+                </button>
+                </NavLink>
+
                  {!(element.status=="Inactive")&&  <button className="btn btn-danger mr-7" onClick={() => deleteuser(element._id)}>
                       <DeleteOutlineIcon />
                     </button>} 

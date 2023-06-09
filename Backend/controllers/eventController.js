@@ -1,5 +1,6 @@
 const e = require("express");
 const Event = require("../models/eventModel");
+const Survey = require("../models/surveyModel");
 const User = require("../models/userModel");
 const Feedback = require("../models/feedbackModel");
 const allevents = async (req, res) => {
@@ -20,6 +21,18 @@ const getevent = async (req, res) => {
         console.log(req.body);
         const { id } = req.params;
         Event.findById(id).then(function (events) {
+            res.status(200).json(events);
+        });
+    } catch (error) {
+        res.status(404).json({ "error": "Event not found" });
+        console.log(error.message)
+    }
+};
+const getfeedback = async (req, res) => {
+    try {
+        console.log(req.body);
+        const { id } = req.params;
+       Feedback.find({eventid:id}).then(function (events) {
             res.status(200).json(events);
         });
     } catch (error) {
@@ -53,7 +66,7 @@ const deleteevent = async (req, res) => {
 };
 
 const createevent = async (req, res) => {
-    const { title, description, location, community, start, end } = req.body;
+    const { title, description, location, community, start, end,questions,duration } = req.body;
     console.log("inside createevent eventctrller");
 
     try {
@@ -73,11 +86,49 @@ const createevent = async (req, res) => {
         // });
         blank = [];
 
-        const upload = await Event.create({ title, description, location, community, start, end, blank, blank });
+        const upload = await Event.create({ title, description, location, community, start, end,resources: blank,attendants: blank,question:questions,duration});
         console.log(upload);
+        
+
         res.status(200).json({ upload });
+
+
     } catch (error) {
         console.log("Inside createevent", error.message);
+        res.status(400).json({ error: error.message });
+    }
+}
+
+const createsurvey = async (req, res) => {
+    const { title, questions } = req.body;
+    console.log("inside createsurvey eventctrller");
+
+    try {
+        // var options = {
+        //     validation: {
+        //         allowedExts: ["pdf"],
+        //         allowedMimeTypes: [
+        //             "text/plain",
+        //             "application/msword",
+        //             "application/x-pdf",
+        //             "application/pdf",
+        //         ],
+        //     },
+        // };
+        // const imageResult = await cloudinary.uploader.upload(image, {
+        //     folder: "Event",
+        // });
+        blank = [];
+
+        const upload = await Survey.create({ title, questions});
+        console.log(upload);
+        
+
+        res.status(200).json({ upload });
+
+
+    } catch (error) {
+        console.log("Inside createsurvey", error.message);
         res.status(400).json({ error: error.message });
     }
 }
@@ -101,6 +152,38 @@ const createfeedback = async (req, res) => {
 
 const updateevent = async (req, res) => {
     const { title, description, location, community, start, end } = req.body;
+    const { id } = req.params;
+    console.log("inside updateevent eventctrller");
+
+    try {
+        try {
+            const eventobj = await Event.findById(id);
+            if (eventobj == null) {
+                res.status(400).json({ "error": "Event not found" });
+            }
+            console.log(eventobj);
+            eventobj.title = title;
+            eventobj.description = description;
+            eventobj.location = location;
+            eventobj.community = community;
+            eventobj.start = start;
+            eventobj.end = end;
+
+            Event.findByIdAndUpdate(id, eventobj, { new: true }).then((event) => {
+                res.status(200).json(event);
+            })
+        } catch (error) {
+            res.status(400).json({ "error": "Event not found" });
+        }
+
+    } catch (error) {
+        console.log("Inside updateevent", error.message);
+        res.status(400).json({ error: error.message });
+    }
+}
+
+const addLike = async (req, res) => {
+    // const { title, description, location, community, start, end } = req.body;
     const { id } = req.params;
     console.log("inside updateevent eventctrller");
 
@@ -207,8 +290,10 @@ const unmarkAttendanceasync = async (req, res) => {
       }
 };
 
+
+
 // user events
 
 module.exports = {
-    allevents, getevent, createevent, markAttendance, updateevent, deleteevent,markAttendanceusingAadhar,createfeedback
+    allevents, getevent, createevent, markAttendance, updateevent, deleteevent,markAttendanceusingAadhar,createfeedback,createsurvey,getfeedback
 };
