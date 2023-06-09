@@ -3,10 +3,10 @@ import { useParams } from "react-router-dom";
 import { usePostSurvey } from "../hooks/usePostSurvey";
 import './Survey.css';
 const Survey=(props)=>{
-    // const eventId=useParams("");
+    const {eventId}=useParams("");
     // console.log(eventId);
    
-    const eventId='6482ff73b7c4cde18871f9c0';
+    // const eventId='6482ff73b7c4cde18871f9c0';
     // const [eventData,setEventData]=useState();
     const [questionsData,setQuestionData]=useState();
     const [adharNo,setAdharNo]=useState();
@@ -15,15 +15,19 @@ const Survey=(props)=>{
    
 
     const questions=['have you created your banck account','will you want further session on financial litteracy','Are you satisfied with session','have you follow your daily checkup routine','do you know about investing']
-    console.log("before useEffect")
+    // console.log((eventId[eventId]));
+    const api="http://localhost:4000/api/event/get/"+eventId;
+                console.log(api);
    useEffect(()=>{
     console.log("inside useEffect")
             const fetchData= async()=>{
-                const response = await fetch("http://localhost:4000/api/event/get/6482ff73b7c4cde18871f9c0");
+                
+                const response = await fetch(api);
                 const data = await response.json();
                 // setEventData(data);
+                console.log(data);
                
-                    const  questionsD =data.question.reduce((acc, question, index) => {
+                    const  questionsD = await  data.question.reduce((acc, question, index) => {
                         acc[index] = { question, answer: false };
                         return acc;
                     }, {});
