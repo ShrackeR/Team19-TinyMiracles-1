@@ -117,13 +117,8 @@ const AdminHome = () => {
               <option value="Inactive">Inactive</option>
             </select>
           </div>
-<<<<<<< HEAD
-
-          <table className="table table-striped">
-=======
           <button onClick={downloadCSV}>Download CSV</button>
           <table className="table">
->>>>>>> 5350c62235486f8b54152db8229651eb27251ce2
             <thead>
               <tr className="table-light">
                 <th scope="col">id</th>

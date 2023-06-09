@@ -818,6 +818,8 @@ function EventDetails() {
          
          <h3 class="section-title"><Link to=
          {"/viewfeedback/"+id}>View Feedback</Link></h3>
+            <h3 class="section-title"><Link to=
+         {"/survey/"+id}>View Survey Form</Link></h3>
             </div>
         </div>
         <div class="row">

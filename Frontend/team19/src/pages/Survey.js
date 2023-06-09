@@ -1,41 +1,51 @@
 import { useState,useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { usePostSurvey } from "../hooks/usePostSurvey";
 import './Survey.css';
-const Survey=()=>{
-    const eventId=useParams("");
+const Survey=(props)=>{
+    // const eventId=useParams("");
+    // console.log(eventId);
    
-    // const eventId='647c9dec1252c81c102c6528';
-    const [eventData,setEventData]=useState();
+    const eventId='6482ff73b7c4cde18871f9c0';
+    // const [eventData,setEventData]=useState();
+    const [questionsData,setQuestionData]=useState();
+    const [adharNo,setAdharNo]=useState();
+    const { PostSurvey, isLoading, error,success }=usePostSurvey();
     
    
 
     const questions=['have you created your banck account','will you want further session on financial litteracy','Are you satisfied with session','have you follow your daily checkup routine','do you know about investing']
-    const  questionsD =questions.reduce((acc, question, index) => {
-        acc[index] = { question, answer: false };
-        return acc;
-    }, {});
-    const [questionsData,setQuestionData]=useState(questionsD);
-    // useEffect(()=>{
-    //     try{
-            
-            
-            
-    //         const fetchData= async()=>{
-    //               const response = await fetch(`http://localhost:4000/api/event/get/647c9dec1252c81c102c6528`);
-    //               const data = await response.json();
-    //               setEventData(data);
-    //         }
-    //         fetchData();
-    //         // setQuestionData(questionsData);
-    //     }catch(err){
-    //         console.log("data not found")
-    //     }
-            
-
-
-    // },[])
-    // console.log(eventData);
+    console.log("before useEffect")
+   useEffect(()=>{
+    console.log("inside useEffect")
+            const fetchData= async()=>{
+                const response = await fetch("http://localhost:4000/api/event/get/6482ff73b7c4cde18871f9c0");
+                const data = await response.json();
+                // setEventData(data);
+               
+                    const  questionsD =data.question.reduce((acc, question, index) => {
+                        acc[index] = { question, answer: false };
+                        return acc;
+                    }, {});
+                        setQuestionData(questionsD);
+                        // eventData=undefined;
+                    
+                   
+                
+        }
+        fetchData();
+   },[])
+     console.log(questionsData);
+//      if(eventData){
+//     const  questionsD =eventData.question.reduce((acc, question, index) => {
+//         acc[index] = { question, answer: false };
+//         return acc;
+//     }, {});
+//         setQuestionData(questionsD);
+//         // eventData=undefined;
     
+   
+// }
 
       const changeHandler=(e)=>{
         const {name,value}=e.target;
@@ -49,9 +59,21 @@ const Survey=()=>{
       }
       const submitFormHand=(e)=>{
         e.preventDefault();
-        console.log(questionsData);
+        
+        // setQuestionData((preD)=>({
+        //     ...preD,
+        //     adhar:adharNo,
+        //     eventId:eventId
+        // }))
+        const finalData={que:questionsData,adhar:adharNo,
+            eventId:eventId}
+        console.log(finalData);
+        PostSurvey(finalData);
       }
-    
+      const adharHand=(e)=>{
+        setAdharNo(e.target.value);
+      }
+    if(!questionsData) return <h1>Loading...</h1>
     return (
         <><div class="main-block">
     <h1>Survey Questions</h1>
@@ -71,10 +93,10 @@ const Survey=()=>{
       <input type="text" name="name" id="name" placeholder="Name" required/>
       <label id="icon" for="name"><i class="fas fa-unlock-alt"></i></label>
       <input type="password" name="name" id="name" placeholder="Password" required/> */}
-      {questions.map((que,index)=>(
+      { questionsData && Object.keys(questionsData).map((que,index)=>(
             <>
          <div>
-         <label for={`{index}`}>{que}</label>
+         <label for={`{index}`}>{questionsData[que].question}</label>
 
                 <select id={`${index}`} name={`${index}`} onChange={changeHandler} >
                 <option >Select answer</option>
@@ -87,6 +109,7 @@ const Survey=()=>{
        </>
 
       ))}
+      
      
       {/* <div class="gender">
         <input type="radio" value="none" id="male" name="gender" checked/>
@@ -94,12 +117,18 @@ const Survey=()=>{
         <input type="radio" value="none" id="female" name="gender" />
         <label for="female" class="radio">Female</label>
       </div> */}
-      <hr/>
+      {/* <hr/> */}
+      <label>Enter Aadhar No.</label>
+      <input type="text" name="adhar" id="name" placeholder="Adhar No." required onChange={adharHand}/>
+      
+      
       <div class="btn-block">
         {/* <p>By clicking Register, you agree on our <a href="https://www.w3docs.com/privacy-policy">Privacy Policy for W3Docs</a>.</p> */}
         <button type="submit">Submit</button>
       </div>
     </form>
-  </div></>)
+  </div></>
+  
+  )
 }
 export default Survey;

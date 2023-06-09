@@ -189,7 +189,7 @@ function App() {
             <Route
 
             path="/survey/:eventId"
-            element={<Survey/>}
+            element={<Survey key={123}/>}
              />
              </Routes>
              

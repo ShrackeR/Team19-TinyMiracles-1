@@ -242,7 +242,7 @@ const getevent = async (req, res) => {
         // console.log(req.body);
         
         const { id } = req.params;
-        console.log(id);
+        console.log("id: ",id);
         Event.findById(ObjectId(id)).then(function (events) {
             res.status(200).json(events);
         });
@@ -404,6 +404,20 @@ const updateevent = async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 }
+const postSurvey=async(req,res)=>{
+    // console.log(req.body);
+    const eventId=req.body.eventId;
+    // console.log("data received");
+    const survey= await Survey.create({...req.body});
+    const event=await Event.findById(eventId);
+    event.survey.push(survey._id);
+    event.save();
+    console.log(survey);
+    console.log(event);
+
+
+
+}
 
 const addLike = async (req, res) => {
     // const { title, description, location, community, start, end } = req.body;
@@ -518,5 +532,5 @@ const unmarkAttendanceasync = async (req, res) => {
 // user events
 
 module.exports = {
-    allevents, getevent, createevent, markAttendance, updateevent, deleteevent,markAttendanceusingAadhar,createfeedback,createsurvey,getfeedback
+    allevents, getevent, createevent, markAttendance, updateevent, deleteevent,markAttendanceusingAadhar,createfeedback,createsurvey,getfeedback,postSurvey
 };

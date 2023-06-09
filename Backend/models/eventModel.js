@@ -41,6 +41,11 @@ const eventSchema = new Schema({
     question: [{
         type: String
     }],
+    survey:[{
+        type:String
+
+    }]
+    ,
     duration:{
         type:String
     }
