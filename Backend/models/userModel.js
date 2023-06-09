@@ -102,6 +102,9 @@ const userSchema = new Schema({
   eventsAttended: [{
     type: String
   }],
+  eventsLiked: [{
+    type: String
+  }],
   community : {
     type: String,
     required: true

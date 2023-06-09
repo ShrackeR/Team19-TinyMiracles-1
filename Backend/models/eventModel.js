@@ -15,10 +15,8 @@ const eventSchema = new Schema({
         type: String,
         required: true
     },
-    community: {
-        type: String,
-        // required: true
-
+    address: {
+        type: String
     },
     start: {
         type: Date,
@@ -37,7 +35,21 @@ const eventSchema = new Schema({
     }],
     resources: [{
         type: String
-    }]
+    }],
+    enabled: {
+        type: Boolean,
+        required: true,
+        default: true
+    },
+    likes: {
+        type: Number,
+        default: 0
+    },
+    expectedAttendance: {
+        type: Number,
+        reqired: true,
+        default: 50
+    }
 })
 
 //   nameSchema.plugin(uniqueValidator);

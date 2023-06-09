@@ -24,6 +24,7 @@ const Navbar2 = () => {
             <div>
               <span>{admin.email}</span>
               <button onClick={handleClick}>Log out</button>
+              <a href="http://localhost:3000/tables">All Events</a>
               {/* <Link to="/admin/mer">Merit-List</Link>
               <Link to="/signup">CreateUser</Link>
               <Link to="/verify">Verify</Link>

@@ -1,7 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
 import Signup from "./pages/Signup";
+import Scanner from "./pages/Scanner";
 import Navbar from "./components/Navbar";
+// import Viewallattendance from "./pages/Viewallattendance"
 import Login from "./pages/Login";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
@@ -12,14 +14,18 @@ import AdminLogin from "./pages/AdminLogin";
 import AdminSignup from "./pages/AdminSignup";
 import StartNavbar from "./components/StartNavbar";
 import AdminNavbar from "./components/AdminNavbar";
+import EventDetails from "./pages/EventDetails";
+import EventCards from "./pages/eventCards";
+// import EventTable from "./tables/EventTable";
 import Details from './pages/Details';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
 // import './App.css';
-import Layout from "./components/Layout";
+// import Layout from "./components/Layout";
 import Wrapper from "./components/Wrrapper";
 import CreateEvent from "./pages/CreateEvent";
 import EditEvent from "./pages/editEvent";
+import ViewEvent from "./pages/viewEvent";
 
 function App() {
   const { user } = useAuthContext();
@@ -28,7 +34,7 @@ function App() {
   return (
     <BrowserRouter>
    
-    <Layout>
+    {/* <Layout> */}
       {/* <Wrapper> */}
       <Routes>
           
@@ -46,10 +52,19 @@ function App() {
               path="/editEvent/:eventId"
               element={<EditEvent/>}
             />
+            {/* <Route
+              path="/viewEvent/:eventId"
+              element={<ViewEvent/>}
+            /> */}
+            <Route
+              path="/viewEvent/:id"
+              element={<EventDetails/>}
+            />
             <Route
               path="/login"
               element={!user ? <Login /> : <Navigate to="/" />}
              /> 
+             
              <Route
               path="/forgotPassword"
               element={!user ? <ForgotPassword /> : <Navigate to="/" />}
@@ -70,6 +85,10 @@ function App() {
             path="/createEvent"
             element={<CreateEvent/>}
             />
+            <Route
+            path="/EventCards"
+            element={<EventCards/>}
+            />
              <Route
               path="/adminlogin"
               element={!admin ? <AdminLogin /> : <Navigate to="/admin/ad" />}
@@ -77,6 +96,10 @@ function App() {
               <Route
               path="/adminsignup"
               element={!admin ? <AdminSignup /> : <Navigate to="/admin/ad" />}
+            />
+            <Route
+             exact path="/allevents/eventdetails/:id"
+              element={<EventDetails /> }
             />
             <Route
               path="admin/ad/view/:id"
@@ -87,7 +110,7 @@ function App() {
       {/* </Wrapper> */}
          
         
-    </Layout>
+    {/* </Layout> */}
     </BrowserRouter>
   );
 }
