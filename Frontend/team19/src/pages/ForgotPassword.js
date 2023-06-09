@@ -1,5 +1,6 @@
 import { useState } from "react";
 import  {useForgotPassword} from "../hooks/useForgotPassword"
+import Wrapper from "../components/Wrrapper";
 
 const ForgotPassword = () => {
   const{forgotPassword,error,isLoading}=useForgotPassword();
@@ -17,7 +18,7 @@ console.log(aadhar)
 
 
   return (
-
+<Wrapper>
 
 <form className="login" onSubmit={handleSubmit}>
 <h3>Reset Password</h3>
@@ -47,6 +48,7 @@ console.log(aadhar)
 <button className="btn btn-primary">Reset Password</button>
 
 </form>
+</Wrapper>
             );
 }
 

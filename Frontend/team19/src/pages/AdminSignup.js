@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useSignup2 } from "../hooks/useSignup2";
 import Wrapper from "../components/Wrrapper";
+import './AdminSign.css'
+import { Link } from "react-router-dom";
 const AdminSignup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -18,8 +20,8 @@ const AdminSignup = () => {
   };
 
   return (
-    <Wrapper>
-    <div>
+    // <Wrapper >
+    <div className="admin">
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
@@ -100,11 +102,11 @@ const AdminSignup = () => {
       )}
       <div className="form-footer">
         <p>
-          <a href="/login">Already a user?</a>
+          <Link to="/login">Already a user?</Link>
         </p>
       </div>
     </div>
-    </Wrapper>
+    // </Wrapper>
   );
 };
 

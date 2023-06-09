@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const json2csv = require('json2csv');
+const fs = require('fs');
 const User = require("../models/userModel");
 router.get("/getdata",async(req,res)=>{
     try {
@@ -10,8 +12,27 @@ router.get("/getdata",async(req,res)=>{
         res.status(422).json(error);
     }
 })
+router.get("/download",async(req,res)=>{
+    User.find({}, (err, data) => {
+      if (err) throw err;
+
+      const csvData = json2csv.parse(data);
+      const filePath = './data.csv';
+
+      fs.writeFile(filePath, csvData, (err) => {
+        if (err) throw err;
+
+        res.download(filePath, 'data.csv', (err) => {
+          if (err) throw err;
+
+          fs.unlinkSync(filePath);
+          });
+        });
+      });
+})
 
 // get individual user
+router
 
 router.get("/getdata/:id",async(req,res)=>{
     try {
@@ -26,16 +47,37 @@ router.get("/getdata/:id",async(req,res)=>{
         res.status(422).json(error);
     }
 })
-router.delete("/deleteuser/:id",async(req,res)=>{
+router.delete("/deleteuser/:id", async (req, res) => {
+    try {
+      const { id } = req.params;
+  
+      const updateUser = await User.findByIdAndUpdate(
+        { _id: id },
+        { status: "Inactive" },
+        { new: true }
+      );
+  
+      console.log(updateUser);
+      res.status(201).json(updateUser);
+    } catch (error) {
+      res.status(422).json(error);
+    }
+  });
+  
+router.patch("/updateuser/:id",async(req,res)=>{
     try {
         const {id} = req.params;
 
-        const deletuser = await User.findByIdAndDelete({_id:id})
-        console.log(deletuser);
-        res.status(201).json(deletuser);
+        const updateduser = await User.findByIdAndUpdate(id,req.body,{
+            new:true
+        });
+
+        console.log(updateduser);
+        res.status(201).json(updateduser);
 
     } catch (error) {
         res.status(422).json(error);
     }
 })
+
 module.exports = router;

@@ -26,11 +26,12 @@ const loginUser = async (req, res) => {
 
     // create a token
     const token = createToken(user._id);
+    const id=user._id;
     const gender = user.gender;
     const name = user.name;
     const mobile = user.number;
-
-    res.status(200).json(token);
+    console.log(token,id,name);
+    res.status(200).json({token,name,id});
   } catch (error) {
     res.status(400).json({ error: error.message});
     console.log(error.message,"hi")
@@ -199,7 +200,7 @@ const signupUser = async (req, res) => {
     interests,
     eventsAttended,
     community,
-    gender,
+    gender,status
   } = req.body;
 
   try {
@@ -235,7 +236,7 @@ const signupUser = async (req, res) => {
       interests,
       eventsAttended,
       community,
-      gender
+      gender,status
     );
 
     res.status(200).json({
@@ -290,6 +291,32 @@ const ResetPassword = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+const viewAttended=async(req,res)=>{
+  const {id}=req.params;
+  try{
+
+    const user=await User.findById({_id:id});
+    res.status(200).json(user);
+  }catch(err){
+    res.status(400).json({ error: error.message }); 
+  }
+
+
+}
+const getuser=async(req,res)=>{
+  try{
+      const {id}=req.params;
+      const user=await User.findById({_id:id});
+      res.status(200).json(user);
+
+
+
+  }
+  catch(err){
+    res.status(400).json({ err: err.message }); 
+  }
+
+}
 
 module.exports = {
   signupUser,
@@ -297,5 +324,7 @@ module.exports = {
   loginUser,
   forgotPassword,
   ResetPassword,
+  viewAttended,
+  getuser
   // feesUpload,
 };

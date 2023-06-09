@@ -1,8 +1,9 @@
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useAuthContext2 } from "../hooks/useAuthContext2";
 import StartNavbar from "./StartNavbar";
-import Navbar from "./Navbar";
+import UserNavbar from "./UserNavbar";
 import AdminNavbar from './AdminNavbar';
+import Navbar  from "./Navbar";
 
 const Layout = (props) => {
     const { user } = useAuthContext();

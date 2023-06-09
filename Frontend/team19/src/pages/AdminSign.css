@@ -1,0 +1,25 @@
+.admin{
+    width: 35%;
+    /* height: 50%; */
+    margin: auto;
+    margin-top: 1rem;
+    padding: 2rem;
+    /* border: 2px solid red; */
+}
+@media (max-width:996px) {
+    .admin{
+        width: 50%;
+    }
+    
+    
+}
+@media (max-width:650px) {
+    .admin{
+        width: 80%;
+    }
+    .h1{
+        font-size: small !important;
+    }
+    
+    
+}

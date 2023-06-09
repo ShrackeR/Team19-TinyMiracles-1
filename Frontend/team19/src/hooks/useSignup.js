@@ -14,7 +14,7 @@ export const useSignup = () => {
       console.log(formData)
       
       setSuccess(0);
-    const response = await fetch('/api/user/signup', {
+    const response = await fetch(' http://localhost:4000/api/user/signup', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({ name: formData.name,
@@ -44,10 +44,12 @@ export const useSignup = () => {
         needChildEducationAssistance: formData.needChildEducationAssistance,
         needEmploymentSupport: formData.needEmploymentSupport,
         educationLevel: formData.educationLevel,
+        skillset:formData.skillset,
         interests:formData.interests,
         eventsAttended:formData.eventsAttended,
         community:formData.community,
-        gender:formData.gender,})
+        gender:formData.gender,
+        status:formData.status})
     })
     const json = await response.json()
 

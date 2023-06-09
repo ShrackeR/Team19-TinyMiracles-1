@@ -49,7 +49,14 @@ const eventSchema = new Schema({
         type: Number,
         reqired: true,
         default: 50
+    },
+    question: [{
+        type: String
+    }],
+    duration:{
+        type:String
     }
+    
 })
 
 //   nameSchema.plugin(uniqueValidator);

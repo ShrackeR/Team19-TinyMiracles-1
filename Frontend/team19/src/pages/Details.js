@@ -23,7 +23,7 @@ const Details = () => {
 
     const getdata = async () => {
 
-        const res = await fetch(`/api/details/getdata/${id}`, {
+        const res = await fetch(` http://localhost:4000/api/details/getdata/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -31,17 +31,22 @@ const Details = () => {
         });
 
         const data = await res.json();
+        
+        console.log(data);
+        // const data = await res.json();
         data.eventsAttended.forEach(async event => {
+          console.log(event)
           const edata = await fetch(`/api/event/get/${event}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
             }
         });
+        console.log(event+" "+edata.title+" ")
         data.eventsAttended.push(edata.title);
         data.eventsAttended.pop(event);
+        // console.log(event+" "+edata.title+" ")
         });
-        console.log(data);
 
         if (res.status === 422 || !data) {
             console.log("error ");
@@ -58,7 +63,7 @@ const Details = () => {
 
     const deleteuser = async (id) => {
 
-        const res2 = await fetch(`/api/details/getdata/${id}`, {
+        const res2 = await fetch(` http://localhost:4000/api/details/deleteuser/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
@@ -73,7 +78,7 @@ const Details = () => {
         } else {
             console.log("user deleted");
             alert("Success");
-            navigate("/")
+            window.location.reload(false);
         }
 
     }
@@ -82,7 +87,7 @@ const Details = () => {
         <div className="container mt-3 mango">
         
   
-        <Card sx={{ maxWidth: 600 }}>
+        <Card sx={{ maxWidth: 800 }}>
           <CardContent>
             <div className="add_btn">
               <NavLink to={`/edit/${getuserdata._id}`}>
@@ -96,13 +101,13 @@ const Details = () => {
             </div>
             <div className="row">
               <div className="left_view col-lg-6 col-md-6 col-12">
-                <img src="/profile.png" style={{ width: 50 }} alt="profile" />
-                <h3 className="mt-3">
+                {/* <img src="/profile.png" style={{ width: 50 }} alt="profile" /> */}
+                <h4 className="mt-3">
                   Name: <span>{getuserdata.name}</span>
-                </h3>
-                <h3 className="mt-3">
+                </h4>
+                <h4 className="mt-3">
                   Age: <span>{getuserdata.age}</span>
-                </h3>
+                </h4>
                 <p className="mt-3">
                   <MailOutlineIcon />
                   Email: <span>{getuserdata.email}</span>
