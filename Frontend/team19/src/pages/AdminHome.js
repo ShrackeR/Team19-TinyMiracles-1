@@ -5,6 +5,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { NavLink } from 'react-router-dom';
 import { adddata, deldata } from '../context/ContextProvider';
 import { updatedata } from '../context/ContextProvider';
+import AdminPanel from '../components/adminDashboard/AdminPanel';
 
 const AdminHome = () => {
   const [getuserdata, setUserdata] = useState([]);
@@ -67,6 +68,9 @@ const AdminHome = () => {
 
   return (
     <>
+    <AdminPanel>
+      <div class="col main pt-3 mt-1">
+        <h3>User Details:</h3>
       {udata && (
         <div class="alert alert-success alert-dismissible fade show" role="alert">
           <strong>{udata.name}</strong> added succesfully!
@@ -91,9 +95,9 @@ const AdminHome = () => {
             </select>
           </div>
 
-          <table className="table">
+          <table className="table table-striped">
             <thead>
-              <tr className="table-dark">
+              <tr className="table-light">
                 <th scope="col">id</th>
                 <th scope="col">Name</th>
                 <th scope="col">AadharNo</th>
@@ -126,6 +130,8 @@ const AdminHome = () => {
           </table>
         </div>
       </div>
+      </div>
+      </AdminPanel>
     </>
   );
 };

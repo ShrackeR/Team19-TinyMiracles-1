@@ -37,6 +37,9 @@ const eventSchema = new Schema({
     }],
     resources: [{
         type: String
+    }],
+    Survey:[{
+        type:String
     }]
 })
 
