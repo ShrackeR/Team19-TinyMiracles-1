@@ -81,6 +81,7 @@ const Allevents = () => {
       )} */}
 
       <div className="mt-5">
+        <h1>All Events</h1>
         <div className="container">
           {/* <div className="filter-container">
             <label htmlFor="filterStatus">Filter by Status:</label>
@@ -115,7 +116,7 @@ const Allevents = () => {
                   <td>{element.tag}</td>
                   <td>{element.enabled}</td>
                   <td className="d-flex justify-content-evenly">
-                    <NavLink to={`eventdetails/${element._id}`}>
+                    <NavLink to={`/allevents/eventdetails/${element._id}`}>
                       <button className="btn btn-success">
                         <RemoveRedEyeIcon />
                       </button>

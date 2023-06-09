@@ -291,6 +291,32 @@ const ResetPassword = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+const viewAttended=async(req,res)=>{
+  const {id}=req.params;
+  try{
+
+    const user=await User.findById({_id:id});
+    res.status(200).json(user);
+  }catch(err){
+    res.status(400).json({ error: error.message }); 
+  }
+
+
+}
+const getuser=async(req,res)=>{
+  try{
+      const {id}=req.params;
+      const user=await User.findById({_id:id});
+      res.status(200).json(user);
+
+
+
+  }
+  catch(err){
+    res.status(400).json({ err: err.message }); 
+  }
+
+}
 
 module.exports = {
   signupUser,
@@ -298,5 +324,7 @@ module.exports = {
   loginUser,
   forgotPassword,
   ResetPassword,
+  viewAttended,
+  getuser
   // feesUpload,
 };

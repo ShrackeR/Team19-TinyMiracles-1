@@ -387,8 +387,9 @@ function EventDetails() {
 
     const[pass,setPass]=useState(null)
     const [getuserdata, setUserdata] = useState([]);
-    console.log(getuserdata);
-    console.log(getuserdata.title);
+    // console.log(getuserdata);
+    // console.log(getuserdata.title);
+    
 
     // const { id } = useParams("");
 
@@ -399,6 +400,7 @@ function EventDetails() {
     const navigate = useNavigate();
 
     const [aadhar, setAadhar] = useState('');
+   
 
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -473,6 +475,7 @@ function EventDetails() {
         }
 
     }
+   
   return (
     <>
     {/* <nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
@@ -524,6 +527,7 @@ function EventDetails() {
     </div>
 </header>
 
+
 <section id="about" class="section about">
     <div class="container">
         <div class="row">
@@ -545,14 +549,7 @@ function EventDetails() {
 
                 <h3>For got your mobile? </h3>
                 <h5>Use Aadhar to mark your attendance</h5>
-                {/* <ul class="list-arrow-right">
-
-                    <li>Learn from the best Asian Social Media Experts &amp; Case Studies</li>
-                    <li>Have dedicated 2-to-1 meetings with the experts</li>
-                    <li>Reach more consumers for less by learning new digital media skills</li>
-                    <li>Save money when spending in online advertising</li>
-                
-                </ul> */}
+               
             <form onSubmit={handleSubmit}>
       <label>
         Aadhar Number:
@@ -619,96 +616,7 @@ function EventDetails() {
                         <img alt="" class="img-responsive center-block" src="assets/images/speakers/speaker-1.jpg"/>
                     </figure>
 
-                    {/* <h4>Jhon Smith</h4>
-
-                    <p>CEO of Peren</p>
-
-                    <ul class="social-block">
-                        <li><a href=""><i class="ion-social-twitter"></i></a></li>
-                        <li><a href=""><i class="ion-social-facebook"></i></a></li>
-                        <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
-                        <li><a href=""><i class="ion-social-googleplus"></i></a></li>
-                    </ul>
-
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="speaker">
-
-                    <figure>
-                        <img alt="" class="img-responsive center-block" src="assets/images/speakers/speaker-2.jpg"/>
-                    </figure>
-
-                    <h4>Jhon Smith</h4>
-
-                    <p>CEO of Peren</p>
-
-                    <ul class="social-block">
-                        <li><a href=""><i class="ion-social-twitter"></i></a></li>
-                        <li><a href=""><i class="ion-social-facebook"></i></a></li>
-                        <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
-                        <li><a href=""><i class="ion-social-googleplus"></i></a></li>
-                    </ul>
-
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="speaker">
-
-                    <figure>
-                        <img alt="" class="img-responsive center-block" src="assets/images/speakers/speaker-3.jpg"/>
-                    </figure>
-
-                    <h4>Jhon Smith</h4>
-
-                    <p>CEO of Peren</p>
-
-                    <ul class="social-block">
-                        <li><a href=""><i class="ion-social-twitter"></i></a></li>
-                        <li><a href=""><i class="ion-social-facebook"></i></a></li>
-                        <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
-                        <li><a href=""><i class="ion-social-googleplus"></i></a></li>
-                    </ul>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-4">
-
-                <div class="speaker">
-
-                    <figure>
-                        <img alt="" class="img-responsive center-block" src="assets/images/speakers/speaker-4.jpg"/>
-                    </figure>
-
-                    <h4>Jhon Smith</h4>
-
-                    <p>CEO of Peren</p>
-
-                    <ul class="social-block">
-                        <li><a href=""><i class="ion-social-twitter"></i></a></li>
-                        <li><a href=""><i class="ion-social-facebook"></i></a></li>
-                        <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
-                        <li><a href=""><i class="ion-social-googleplus"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-4">
-
-                <div class="speaker">
-
-                    <figure>
-                        <img alt="" class="img-responsive center-block" src="assets/images/speakers/speaker-5.jpg"/>
-                    </figure>
-
-                    <h4>Jhon Smith</h4>
-
-                    <p>CEO of Peren</p> */}
-                    {/* <figure><p>{getuserdata.description}</p></figure>  */}
+                    
                     <ul class="social-block">
                         <li><a href=""><i class="ion-social-twitter"></i></a></li>
                         <li><a href=""><i class="ion-social-facebook"></i></a></li>
@@ -737,8 +645,7 @@ function EventDetails() {
         </div>
     </div>
 </section>
-
-<section id="registration" class="section registration">
+{user && <section id="registration" class="section registration">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -807,7 +714,8 @@ function EventDetails() {
 
        {user && <Feedbackk id={id}/>}
     </div>
-</section>
+</section>}
+
 
 <section id="contribution" class="section bg-image-2 contribution">
     <div class="container">

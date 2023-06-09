@@ -1,6 +1,7 @@
 import React from 'react';
 import {useState,useEffect} from 'react'
 import { useParams } from 'react-router-dom';
+import User from '../components/UserCol';
 function Viewallattendance() {
     // const { attendants } = props.attendants;
     // console.log(props)
@@ -29,7 +30,7 @@ function Viewallattendance() {
     const {id}=useParams("")
     useEffect(() => {
         getdata();
-    }, [])
+    }, )
   return (
     <div>
       {/* {getuserdata.map((item) => (
@@ -39,11 +40,23 @@ function Viewallattendance() {
     ))}
   </React.Fragment>
 ))} */}
-          <ul>
-        {getuserdata.attendants?.map((hobby, index) => (
-          <li key={index}>{hobby}</li>
-        ))}
-      </ul>
+          
+       
+        <table className="table">
+            <thead>
+              <tr className="table-dark">
+                <th scope="col">Name</th>
+                {/* <th scope="col">Date</th> */}
+                
+              </tr>
+            </thead>
+            <tbody>
+            {getuserdata.attendants?.map((hobby, index) => (
+          <User id={hobby}/>
+          ))}
+            </tbody>
+          </table>
+      
     </div>
   );
 }

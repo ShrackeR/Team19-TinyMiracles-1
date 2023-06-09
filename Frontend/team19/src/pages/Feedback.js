@@ -1,14 +1,14 @@
 import { useState } from "react";
 import './feedback.css';
 import { FaStar } from "react-icons/fa";
-import Feedback from "react-bootstrap/esm/Feedback";
+// import Feedback from "react-bootstrap/esm/Feedback";
 import { useAuthContext } from "../hooks/useAuthContext";
 
-const colors = {
-    orange: "#FFBA5A",
-    grey: "#a9a9a9"
+// const colors = {
+//     orange: "#FFBA5A",
+//     grey: "#a9a9a9"
     
-};
+// };
 
 
 
@@ -62,6 +62,7 @@ function Feedbackk(props) {
   console.log(id);
   console.log(exp);
   return (
+    
     <form onSubmit={handleSubmit}>
     <div style={styles.container}>
       <h2>Rate the event</h2>

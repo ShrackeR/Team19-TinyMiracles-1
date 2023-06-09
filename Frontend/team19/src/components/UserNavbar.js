@@ -1,22 +1,26 @@
 
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
+// import { Redirect } from 'react-router-dom';
 // import { useAuthContext2 } from "../hooks/useAuthContext2";
 // import { useAuthContext3 } from "../hooks/useAuthContext3";
 import { Link } from "react-router-dom";
 import './StartNavbar.css';
 import { Nav, Navbar, NavLink } from "react-bootstrap";
 const UserNavbar = () => {
+ 
   const { logout } = useLogout();
   const { user } = useAuthContext();
   // const { admin } = useAuthContext2();
   // const { clerk } = useAuthContext3();
   const handleClick = () => {
     logout();
+    // return <Redirect to={'/homepage'}/>
+    window.location.href = '/homepage'
   };
  
 
-  console.log(user);
+  console.log(user.id);
   return (
     // <header>
     //   <div className="container">
@@ -81,6 +85,7 @@ const UserNavbar = () => {
                     <NavLink  eventKey="2" as={Link} to="/notification">Notification</NavLink>
                     <NavLink  eventKey="3" as={Link} to="/chatapp">Chat</NavLink>
                     <NavLink  eventKey="4" as={Link} to="/Complains">Complaints</NavLink>
+                    <NavLink  eventKey="4" as={Link} to={`/viewAttendedEvents/${user.id}`}>Attendance</NavLink>
                     {/* <NavLink  eventKey="4" as={Link} to="/Complains">Complaints</NavLink> */}
                     <button onClick={handleClick} type="button" class="btn btn-outline-dark but" >Log out</button>
                 </Nav>

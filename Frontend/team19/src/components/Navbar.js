@@ -94,6 +94,7 @@ const Navbar = () => {
   const { logout } = useLogout();
   const { user } = useAuthContext();
   const [showNav, setShowNav] = useState(false);
+  const userid=user.id;
 
   const handleToggleNav = () => {
     setShowNav(!showNav);
@@ -134,6 +135,9 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link to="/scanner">Mark Attendance</Link>
+                </li>
+                <li>
+                  <Link to={`/viewAttendedEvents/${userid}`}>View attended events</Link>
                 </li>
                 <li>
                   <Link to="/employment">Job opportunities</Link>

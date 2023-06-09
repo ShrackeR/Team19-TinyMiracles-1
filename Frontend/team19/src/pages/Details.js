@@ -101,13 +101,13 @@ const Details = () => {
             </div>
             <div className="row">
               <div className="left_view col-lg-6 col-md-6 col-12">
-                <img src="/profile.png" style={{ width: 50 }} alt="profile" />
-                <h3 className="mt-3">
+                {/* <img src="/profile.png" style={{ width: 50 }} alt="profile" /> */}
+                <h4 className="mt-3">
                   Name: <span>{getuserdata.name}</span>
-                </h3>
-                <h3 className="mt-3">
+                </h4>
+                <h4 className="mt-3">
                   Age: <span>{getuserdata.age}</span>
-                </h3>
+                </h4>
                 <p className="mt-3">
                   <MailOutlineIcon />
                   Email: <span>{getuserdata.email}</span>
