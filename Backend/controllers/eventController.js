@@ -2,8 +2,8 @@
 // const Event = require("../models/eventModel");
 // const User = require("../models/userModel");
 // const Feedback = require("../models/feedbackModel");
-// const ObjectId = require('mongodb').ObjectID;
-// const allevents = async (req, res) => {
+const ObjectId = require('mongodb').ObjectID;
+// const alls = async (req, res) => {
 
 //     try {
 //         Event.find({}).then(function (events) {
@@ -159,32 +159,32 @@
 // };
 
 
-// const markAttendance = async (req, res) => {
-//     try {
-//         console.log("params"+req.params);
-//         console.log("query"+req.query);
-//         const { event, user } = req.query;
-//         console.log("params"+event+user);
-//         const eventobj = await Event.findById(event);
-//         const userobj = await User.findById(user);
-//         console.log(eventobj);
-//         // const check= await Event.findOne({attendants:userobj._id})
-//         if(eventobj.attendants.includes(user))
-//         {
-//             res.status(200).json("Already marked")
-//         }
-//         else{
-//         eventobj.attendants.push(user);
-//         userobj.eventsAttended.push(event);
-//         await eventobj.save()
-//         await userobj.save().then(function (user) {
-//             res.status(200).json("Success");
-//         });}
-//     } catch (error) {
-//         res.status(400).json({ error: error.message });
-//         console.log(error.message)
-//     }
-// };
+const markAttendance = async (req, res) => {
+    try {
+        console.log("params"+req.params);
+        console.log("query"+req.query);
+        const { event, user } = req.query;
+        console.log("params"+event+user);
+        const eventobj = await Event.findById(event);
+        const userobj = await User.findById(user);
+        console.log(eventobj);
+        // const check= await Event.findOne({attendants:userobj._id})
+        if(eventobj.attendants.includes(user))
+        {
+            res.status(200).json("Already marked")
+        }
+        else{
+        eventobj.attendants.push(user);
+        userobj.eventsAttended.push(event);
+        await eventobj.save()
+        await userobj.save().then(function (user) {
+            res.status(200).json("Success");
+        });}
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+        console.log(error.message)
+    }
+};
 
 // const unmarkAttendanceasync = async (req, res) => {
     
@@ -299,7 +299,7 @@ const deleteevent = async (req, res) => {
 };
 
 const createevent = async (req, res) => {
-    const { title, description, location, address, community, start, end, resources, tag, attendance,questions,duration } = req.body;
+    const { title, description, location, address, community, start, end, resources, tag, attendance,question,duration,expectedAnswer,expectedAttendance } = req.body;
     console.log("inside createevent eventctrller");
 
     try {
@@ -320,7 +320,7 @@ const createevent = async (req, res) => {
         blank = [];
         const zero =0;
         const t =true;
-        const upload = await Event.create({ title, description, location, address, community, start, end, tag, blank, resources, t, zero, attendance,questions, duration });
+        const upload = await Event.create({ title, description, location, address, community, start, end, tag, blank, resources, t, zero, attendance,question, duration,expectedAttendance,expectedAnswer });
         console.log(upload);
         
 
@@ -427,6 +427,11 @@ const postSurvey=async(req,res)=>{
     const survey= await Survey.create({...req.body});
     const event=await Event.findById(eventId);
     event.survey.push(survey._id);
+    if(survey.answer==true && event.expectedAnswer=='true'){
+        // console.log("here");
+        event.positiveRes++;
+        // event.save();
+    }
     event.save();
     console.log(survey);
     console.log(event);
@@ -435,35 +440,35 @@ const postSurvey=async(req,res)=>{
 
 }
 
-const addLike = async (req, res) => {
-    // const { title, description, location, community, start, end } = req.body;
-    const { id } = req.params;
-    console.log("inside updateevent eventctrller");
+// const addLike = async (req, res) => {
+//     // const { title, description, location, community, start, end } = req.body;
+//     const { id } = req.params;
+//     console.log("inside updateevent eventctrller");
 
-    try {
-        console.log(req.body);
-        const { event, user } = req.body;
-        const eventobj = await Event.findById(event);
-        const userobj = await User.findById(user);
-        console.log(eventobj);
-        eventobj.attendants.push(user);
-        await eventobj.save()
-        userobj.eventsAttended.push(event);
-        userobj.save().then(function (user) {
-            res.status(200).json("Success");
-        });
+//     try {
+//         console.log(req.body);
+//         const { event, user } = req.body;
+//         const eventobj = await Event.findById(event);
+//         const userobj = await User.findById(user);
+//         console.log(eventobj);
+//         eventobj.attendants.push(user);
+//         await eventobj.save()
+//         userobj.eventsAttended.push(event);
+//         userobj.save().then(function (user) {
+//             res.status(200).json("Success");
+//         });
 
 
-    } catch (error) {
-        const { event, user } = req.body;
-        eventobj.attendants.pop(user);
-        await eventobj.save()
-        userobj.eventsAttended.pop(event);
-        await userobj.save()
-        console.log(error.message)
-        res.status(400).json({ error: error.message });
-    }
-};
+//     } catch (error) {
+//         const { event, user } = req.body;
+//         eventobj.attendants.pop(user);
+//         await eventobj.save()
+//         userobj.eventsAttended.pop(event);
+//         await userobj.save()
+//         console.log(error.message)
+//         res.status(400).json({ error: error.message });
+//     }
+// };
 
 
 const markAttendanceusingAadhar = async (req, res) => {
@@ -499,22 +504,22 @@ const markAttendanceusingAadhar = async (req, res) => {
 };
 
 
-// const addLike = async (req, res) => {
-//     try {
-//         console.log(req.body);
-//         const { event } = req.params;
-//         const eventobj = await Event.findById(event);
-//         console.log(eventobj);
-//         eventobj.likes=eventobj.likes+1;
-//         await eventobj.save().then(function (user) {
-//             res.status(200).json("Success");
-//         });
+const addLike = async (req, res) => {
+    try {
+        console.log(req.body);
+        const { event } = req.params;
+        const eventobj = await Event.findById(event);
+        console.log(eventobj);
+        eventobj.likes=eventobj.likes+1;
+        await eventobj.save().then(function (user) {
+            res.status(200).json("Success");
+        });
 
 
-//     } catch (error) {
-//         res.status(400).json({ error: error.message });
-//     }
-// };
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+};
 
 const removeLike = async (req, res) => {
     try {
@@ -558,6 +563,6 @@ const unmarkAttendanceasync = async (req, res) => {
 // user events
 
 module.exports = {
-   postSurvey,
-    allevents, getevent, createevent, markAttendance, updateevent, deleteevent,markAttendanceusingAadhar,createfeedback,createsurvey,getfeedback, addLike, removeLike, unmarkAttendanceasync
+   postSurvey,markAttendance,
+    allevents, getevent, createevent,  updateevent, deleteevent,markAttendanceusingAadhar,createfeedback,createsurvey,getfeedback, addLike, removeLike, unmarkAttendanceasync
 };

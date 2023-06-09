@@ -14,8 +14,9 @@ export const usePostSurvey=()=>{
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({ eventId:formData.eventId,
-    adhar:formData.adhar,
-questions:formData.que})
+    question:formData.question,
+  answer:formData.answer,
+userId:formData.userId})
     })
     const json = await response.json()
 

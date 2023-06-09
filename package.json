@@ -1,8 +1,9 @@
 {
   "dependencies": {
-    "react-icons": "^4.9.0"
     "@yudiel/react-qr-scanner": "^1.1.8",
     "query-string": "^8.1.0",
-    "react-intl": "^6.4.3"
+    "react-icons": "^4.9.0",
+    "react-intl": "^6.4.3",
+    "react-share": "^4.4.1"
   }
 }

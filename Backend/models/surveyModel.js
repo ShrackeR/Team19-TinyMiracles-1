@@ -5,16 +5,17 @@ const Schema = mongoose.Schema;
 const surveySchema = new Schema({
     eventId: {
         type: String,
-        required: true
+        // required: true
     },
-    questions:{
-       type: Schema.Types.Mixed,
-        required:true
+    question:{
+       type:String 
     },
-    adhar:{
-        type:String,
-        require:true
-    }
+   userId:{
+    type:String
+   },
+   answer:{
+    type:Boolean
+   }
 })
 
 module.exports = mongoose.model('Survey', surveySchema);
