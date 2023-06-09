@@ -3,8 +3,8 @@ import { useCreateEvent } from "../hooks/useCreateEvent";
 import Wrapper from "../components/Wrrapper";
 
 const EditEvent = (props) => {
-  // const id=props.id;
-  const id = "647ca68456ee5b502156f9df";
+  const id=props.id;
+  // const id = "647ca68456ee5b502156f9df";
   console.log("here!!!!")
 
   const { createEvent, error, isLoading, success, setSuccess } = useCreateEvent();
@@ -19,12 +19,12 @@ const EditEvent = (props) => {
 
   });
   useEffect(() => {
-    const response = fetch("/api/event/get/647cbed781ce5aa4170f83c9").then(res => {
+    const response = fetch("/api/event/get/"+id).then(res => {
       return res.json();
 
     }).then(data => {
       console.log(data);
-      var extractedDate = new Date(data.start).toLocaleDateString('en-CA');
+      var extractedDate = new Date(data.start).toLocaleString('en-IN');
       var extractedTime = new Date(data.start).toLocaleTimeString()
       extractedTime = extractedTime.substring(0, extractedTime.length - 3);
       const start = extractedDate + " " + extractedTime;
@@ -68,6 +68,7 @@ const EditEvent = (props) => {
     console.log(eventData);
     await createEvent(eventData);
   }
+
   return (<>
     <Wrapper>
       <form onSubmit={handleSubmit}>

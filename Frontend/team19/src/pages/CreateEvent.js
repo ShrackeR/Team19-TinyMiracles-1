@@ -271,18 +271,28 @@ const CreateEvent=()=>{
       </div>
      
       <div className="mb-3">
-        Location:
+        Locality:
         <input
           type="text"
           name="location"
           value={eventData.location}
           onChange={handleChange}
           className="form-control"
-          placeholder="Enter location of event"
+          placeholder="Enter locality of event"
         />
       </div>
      
-      
+      <div className="mb-3">
+        Address:
+        <input
+          type="text"
+          name="address"
+          value={eventData.address}
+          onChange={handleChange}
+          className="form-control"
+          placeholder="Enter address of event"
+        />
+      </div>
     
     
       <div className="mb-3">

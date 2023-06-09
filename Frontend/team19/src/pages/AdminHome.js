@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react'
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import CreateIcon from '@mui/icons-material/Create';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
@@ -79,7 +79,6 @@ const AdminHome = () => {
         console.log('Error:', error);
       });
   };
-
 
   const handleFilterChange = (e) => {
     setFilterStatus(e.target.value);

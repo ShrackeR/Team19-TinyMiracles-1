@@ -408,6 +408,7 @@ function EventDetails() {
       
       // You can use fetch or any other HTTP library to send the Aadhar number as the request body
       // Example:
+      console.log(aadhar);
       fetch(`http://localhost:4000/api/event/markAttendanceaadhar/${id}`, {
         method: 'POST',
         body: JSON.stringify({ aadhar }),

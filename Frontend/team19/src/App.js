@@ -24,7 +24,8 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
 import Viewfeedback from "./pages/Viewfeedback"
 // import './App.css';
-import Hindi from "./Hindi"
+import EventCards from "./pages/eventCards";
+// import Hindi from "./Hindi"
 import FlaskForm from "./pages/FlaskForm";
 import Layout from "./components/Layout";
 import "./components/Navbar3.css";
@@ -88,11 +89,6 @@ function App() {
               element={<Scanner /> }
              
             />
-            <Route
-              path="/hindi"
-              element={<Hindi/> }
-             
-            />
             
             <Route
              exact path="/allevents/eventdetails/:id"
@@ -109,10 +105,19 @@ function App() {
               path="/alleventsadmin/editEvent/:eventId"
               element={<EditEvent/>}
             />
+            {/* <Route
+              path="/viewEvent/:eventId"
+              element={<ViewEvent/>}
+            /> */}
+            <Route
+              path="/viewEvent/:id"
+              element={<EventDetails/>}
+            />
             <Route
               path="/login"
               element={!user ? <Login /> : <Navigate to="/" />}
              /> 
+             
              <Route
               path="/forgotPassword"
               element={!user ? <ForgotPassword /> : <Navigate to="/" />}
@@ -149,6 +154,10 @@ function App() {
             path="/createEvent"
             element={<CreateEvent/>}
             />
+            <Route
+            path="/EventCards"
+            element={<EventCards/>}
+            />
 
             <Route
             path="/employment"
@@ -165,6 +174,10 @@ function App() {
               <Route
               path="/adminsignup"
               element={!admin ? <AdminSignup /> : <Navigate to="/admin/ad" />}
+            />
+            <Route
+             exact path="/allevents/eventdetails/:id"
+              element={<EventDetails /> }
             />
             <Route
               path="admin/allusers/view/:id"
