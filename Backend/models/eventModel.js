@@ -38,9 +38,14 @@ const eventSchema = new Schema({
     resources: [{
         type: String
     }],
-    Survey:[{
+    question: [{
+        type: String
+    }],
+    duration:{
         type:String
-    }]
+    }
+    
+
 })
 
 //   nameSchema.plugin(uniqueValidator);

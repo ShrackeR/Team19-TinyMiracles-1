@@ -1,6 +1,8 @@
 import "./Home.css";
+import React from 'react';
 
 const Home = () => {
+
     return ( 
         <>
   
@@ -18,12 +20,11 @@ const Home = () => {
       <span className="loader-item" />
     </div>
   </div>
-  
-  {/* <div className="dots">
+  <div className="dots">
     <div className="active one" data-x="header" />
     <div className="two" data-x=".recipes" />
     <div className="three" data-x=".fixed-image" />
-  </div> */}
+  </div>
   
  
 

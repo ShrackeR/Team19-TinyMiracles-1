@@ -14,7 +14,7 @@ export const useCreateEvent = () => {
       console.log(formData)
       
       setSuccess(0);
-    const response = await fetch('api/event/create', {
+    const response = await fetch('http://localhost:4000/api/event/create', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({ title:formData.title,
@@ -24,7 +24,9 @@ export const useCreateEvent = () => {
             end:formData.end,
             
             resources:formData.resources,
-            tag:formData.tag
+            tag:formData.tag,
+            questions:formData.questions,
+            duration:formData.duration
 })
     })
     const json = await response.json()

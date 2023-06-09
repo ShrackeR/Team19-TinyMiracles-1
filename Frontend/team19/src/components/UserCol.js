@@ -15,12 +15,11 @@ const User=(props)=>{
 
 return (<>
     {userData && <tr>
-        <td> <Link to={`/admin/ad/view/${id}`}>{userData.name}</Link></td>
+        <td> <Link to={`/admin/allusers/view/${id}`}>{userData.name}</Link></td>
        
     
     </tr>}
 </>)
-
 
 }
 export default User;

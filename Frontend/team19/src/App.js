@@ -22,9 +22,13 @@ import Adminann from "./pages/Adminann";
 import EventDetails from "./pages/Eventdetails";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+import Viewfeedback from "./pages/Viewfeedback"
 // import './App.css';
+import Hindi from "./Hindi"
 import FlaskForm from "./pages/FlaskForm";
 import Layout from "./components/Layout";
+import "./components/Navbar3.css";
+
 import ViewAttend from "./pages/ViewAttend";
 import AdminPanel from "./components/adminDashboard/AdminPanel";
 // import Wrapper from "./components/Wrrapper";
@@ -32,6 +36,8 @@ import AdminPanel from "./components/adminDashboard/AdminPanel";
 import Wrapper from "./components/Wrrapper";
 import CreateEvent from "./pages/CreateEvent";
 import EditEvent from "./pages/editEvent";
+import Employment from "./pages/Employment";
+// import Chartss from "./pages/Chartss";
 import Survey from "./pages/Survey";
 // import Feedback from "react-bootstrap/esm/Feedback";
 
@@ -43,7 +49,7 @@ function App() {
     <BrowserRouter>
    
     <Layout>
-      
+      <div className="content">
 
       {/* <Wrapper> */}
       <Routes>
@@ -63,11 +69,15 @@ function App() {
             
             <Route
               path="/flask"
-              element={user ? <FlaskForm /> : <Navigate to="/flask" />}
+              element={user || admin ? <FlaskForm /> : <Navigate to="/flask" />}
             />
             <Route
              path="/allevents"
               element={user|| admin ? <Allevents /> : <Navigate to="/allevents" />}
+            />
+            <Route
+              exact path="/alleventsadmin"
+              element={admin ? <Allevents /> : <Navigate to="/alleventsadmin" />}
             />
             <Route
               exact path="/feedback"
@@ -79,17 +89,24 @@ function App() {
              
             />
             <Route
+              path="/hindi"
+              element={<Hindi/> }
+             
+            />
+            
+            <Route
              exact path="/allevents/eventdetails/:id"
               element={user ||admin ? <EventDetails /> : <Navigate to="/allevents" />}
             />
             <Route path="/viewallattendance/:id"element={<Viewallattendance/> } />
+            <Route path="/viewfeedback/:id"element={<Viewfeedback/> } />
             
             {/* <Route
              path="/"
               element={user ? <HomeMain/> : <Navigate to="/login" />}
             /> */}
             <Route
-              path="/editEvent/:eventId"
+              path="/alleventsadmin/editEvent/:eventId"
               element={<EditEvent/>}
             />
             <Route
@@ -122,12 +139,25 @@ function App() {
             />
             <Route
               path="/admin/ad"
+              element={<Home /> }
+            />
+            <Route
+              path="/admin/allusers"
               element={<AdminHome /> }
             />
             <Route
             path="/createEvent"
             element={<CreateEvent/>}
             />
+
+            <Route
+            path="/employment"
+            element={<Employment/>}
+            />
+            {/* <Route
+            path="/dashboard"
+            element={<Chartss/>}
+            /> */}
              <Route
               path="/adminlogin"
               element={!admin ? <AdminLogin /> : <Navigate to="/admin/ad" />}
@@ -137,12 +167,16 @@ function App() {
               element={!admin ? <AdminSignup /> : <Navigate to="/admin/ad" />}
             />
             <Route
-              path="admin/ad/view/:id"
+              path="admin/allusers/view/:id"
               element={admin ? <Details /> : <Navigate to="/adminlogin" />}
             />
             <Route
               path="edit/:id"
               element={admin ? <Edit/> : <Navigate to="/adminlogin" />}
+            />
+            <Route
+              path="alleventsadmin/eventdetails/:id"
+              element={<EventDetails/> }
             />
             
             {/* <Route exact path="/view/:id" component={Details} /> */}
@@ -162,7 +196,7 @@ function App() {
 
       {/* </Wrapper> */}
          
-        
+      </div>
     </Layout>
     </BrowserRouter>
   );

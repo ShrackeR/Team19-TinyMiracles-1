@@ -44,6 +44,7 @@ export const useSignup = () => {
         needChildEducationAssistance: formData.needChildEducationAssistance,
         needEmploymentSupport: formData.needEmploymentSupport,
         educationLevel: formData.educationLevel,
+        skillset:formData.skillset,
         interests:formData.interests,
         eventsAttended:formData.eventsAttended,
         community:formData.community,

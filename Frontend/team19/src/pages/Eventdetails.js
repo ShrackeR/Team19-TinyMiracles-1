@@ -374,17 +374,26 @@ import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import Feedbackk from "./Feedback";
 import { useAuthContext } from "../hooks/useAuthContext";
+import speaker1 from "../assets/images/speakers/speaker-1.jpg";
+import speaker2 from "../assets/images/speakers/speaker-2.jpg";
+import speaker3 from "../assets/images/speakers/speaker-3.jpg";
+import speaker4 from "../assets/images/speakers/speaker-4.jpg";
+import speaker5 from "../assets/images/speakers/speaker-5.jpg";
+import speaker6 from "../assets/images/speakers/speaker-6.jpg";
 import "../assets/css/main.css";
 import {useParams, useNavigate } from "react-router-dom";
 function EventDetails() {
+    const { user } = useAuthContext();
+
     const[pass,setPass]=useState(null)
     const [getuserdata, setUserdata] = useState([]);
     // console.log(getuserdata);
     // console.log(getuserdata.title);
-    const { user } = useAuthContext();
     
 
     // const { id } = useParams("");
+
+    
     const {id}=useParams("")
 
 
@@ -469,7 +478,7 @@ function EventDetails() {
    
   return (
     <>
-    <nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
+    {/* <nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
     <div class="container">
         <div class="navbar-header">
 
@@ -504,20 +513,19 @@ function EventDetails() {
             </ul>
         </div>
     </div>
-</nav>
-{user && <header id="site-header" class="site-header valign-center"> 
+</nav> */}
+
+<header id="site-header" class="site-header valign-center"> 
     <div class="intro">
 
         <h2>{extractedDate} to {extractedEnd} </h2>
         
         <h1>{getuserdata.title}</h1>
         
-        <p>First &amp; Largest Conference</p>
-        
-        <a class="btn btn-white" data-scroll href="#registration">Register Now</a>
+       
     
     </div>
-</header>}
+</header>
 
 
 <section id="about" class="section about">
@@ -644,7 +652,67 @@ function EventDetails() {
                 <h3 class="section-title">Please provide a feedback</h3>
             </div>
         </div>
-  
+            
+        {/* <form action="#" id="registration-form">
+            <div class="row">
+                <div class="col-md-12" id="registration-msg" style={{display:"none"}}>
+                    <div class="alert"></div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="First Name" id="fname" name="fname" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Last Name" id="lname" name="lname" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Email" id="email" name="email" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Phone" id="cell" name="cell" required/>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Address" id="address" name="address" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Zip Code" id="zip" name="zip" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <select class="form-control" name="city" id="city" required>
+                            <option readonly>City</option>
+                            <option>City Name 1</option>
+                            <option>City Name 2</option>
+                            <option>City Name 3</option>
+                            <option>City Name 4</option>
+                        </select>
+                    </div> */}
+
+                    {/* <div class="form-group">
+                        <select class="form-control" name="program" id="program" required>
+                            <option readonly>Select Your Program</option>
+                            <option>Program Name 1</option>
+                            <option>Program Name 2</option>
+                            <option>Program Name 3</option>
+                        </select>
+                    </div> */}
+                {/* </div>
+            </div>
+            <div class="text-center mt20">
+                <button type="submit" class="btn btn-black" id="registration-submit-btn">Submit</button>
+            </div>
+        </form> */}
+
+
+
+       {user && <Feedbackk id={id}/>}
     </div>
 </section>}
 
@@ -747,6 +815,9 @@ function EventDetails() {
             <div class="col-md-12">
                 <h3 class="section-title"><Link to=
          {"/viewallattendance/"+id}>View Attendance</Link></h3>
+         
+         <h3 class="section-title"><Link to=
+         {"/viewfeedback/"+id}>View Feedback</Link></h3>
             </div>
         </div>
         <div class="row">

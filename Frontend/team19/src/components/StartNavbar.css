@@ -20,12 +20,12 @@ ul {
 img {
     max-width: 80%;
 }
-h2 {
+/* h2 {
     font-family: 'Herr Von Muellerhoff', cursive;
     font-size: 100px;
     font-weight: normal;
     margin: 0 0 -55px;
-}
+} */
 h1, h3 {
     font-family: "Source Code Pro", sans-serif;
     font-size: 47px;
@@ -674,7 +674,7 @@ footer .newsletter i {
 }
 .auth-inner {
   width: 40%;
-  margin-top: 30rem;
+  margin-top: 120rem;
   /* margin: auto; */
   background: #ffffff;
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
