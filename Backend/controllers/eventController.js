@@ -163,10 +163,11 @@ const createfeedback = async (req, res) => {
 
 
 const updateevent = async (req, res) => {
-    const { title, description, location, address, community, start, end, resources, tag, } = req.body;
+    console.log(req.body);
+    const { question,expectedAnswer,expectedAttendance,duration,title, description, location, address, community, start, end, resources, tag, } = req.body;
     const { id } = req.params;
     console.log("inside updateevent eventctrller");
-    console.log(req.body);
+    // console.log(req.body);
 
     try {
         
@@ -183,6 +184,10 @@ const updateevent = async (req, res) => {
             eventobj.community = community;
             eventobj.start = start;
             eventobj.end = end;
+            eventobj.question=question;
+            eventobj.expectedAnswer=expectedAnswer;
+            eventobj.expectedAttendance=expectedAttendance,
+            eventobj.duration=duration
             if (typeof(resources) == "string") {
                 eventobj.resources.push(resources);
             }
@@ -190,6 +195,7 @@ const updateevent = async (req, res) => {
 
 
             Event.findByIdAndUpdate(id, eventobj, { new: true }).then((event) => {
+                console.log(event);
                 res.status(200).json(event);
             })
         }  catch (error) {
@@ -198,7 +204,6 @@ const updateevent = async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 }
-
 const markAttendance = async (req, res) => {
     try {
         console.log(req.body);
