@@ -1,0 +1,16 @@
+#my-div
+{
+    width    : 100%;
+    height   : 470px;
+    overflow : hidden;
+    position : relative;
+}
+
+#my-iframe
+{
+    position : absolute;
+    top      : -150px;
+    left     : -230px;
+    width    : 1280px;
+    height   : 1200px;
+}

@@ -131,7 +131,7 @@ const Navbar = () => {
                   <Link to="/noti">Messages</Link>
                 </li>
                 <li>
-                  <Link to="/allevents">View Events</Link>
+                  <Link to="/EventCards">View All Events</Link>
                 </li>
                 <li>
                   <Link to="/scanner">Mark Attendance</Link>

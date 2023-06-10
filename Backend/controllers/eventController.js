@@ -220,30 +220,35 @@ const createfeedback = async (req, res) => {
 
 
 const updateevent = async (req, res) => {
-    const { title, description, location, address, community, start, end, resources, tag, } = req.body;
+    console.log(req.body);
+    const { question,expectedAnswer,expectedAttendance,duration,title, description, location, address, community, start, end, resources, tag, } = req.body;
     const { id } = req.params;
     console.log("inside updateevent eventctrller");
-    console.log(req.body);
+    // console.log(req.body);
 
     try {
-
-        const eventobj = await Event.findById(id);
-        if (eventobj == null) {
-            console.log("obj null");
-            res.status(400).json({ "error": "Event not found" });
-        }
-        console.log(eventobj);
-        eventobj.title = title;
-        eventobj.description = description;
-        eventobj.location = location;
-        eventobj.address = address;
-        eventobj.community = community;
-        eventobj.start = start;
-        eventobj.end = end;
-        if (typeof (resources) == "string") {
-            eventobj.resources.push(resources);
-        }
-        eventobj.tag = tag;
+        
+            const eventobj = await Event.findById(id);
+            if (eventobj == null) {
+                console.log("obj null");
+                res.status(400).json({ "error": "Event not found" });
+            }
+            console.log(eventobj);
+            eventobj.title = title;
+            eventobj.description = description;
+            eventobj.location = location;
+            eventobj.address = address;
+            eventobj.community = community;
+            eventobj.start = start;
+            eventobj.end = end;
+            eventobj.question=question;
+            eventobj.expectedAnswer=expectedAnswer;
+            eventobj.expectedAttendance=expectedAttendance,
+            eventobj.duration=duration
+            if (typeof(resources) == "string") {
+                eventobj.resources.push(resources);
+            }
+            eventobj.tag = tag;
 
 
         Event.findByIdAndUpdate(id, eventobj, { new: true }).then((event) => {
@@ -255,11 +260,10 @@ const updateevent = async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 }
-
 const markAttendance = async (req, res) => {
     try {
         console.log(req.body);
-        const { event, user } = req.body;
+        const { event, user } = req.query;
         const eventobj = await Event.findById(event);
         const userobj = await User.findById(user);
         console.log(eventobj);
@@ -282,7 +286,6 @@ const markAttendance = async (req, res) => {
     }
 };
 
-
 const markAttendanceusingAadhar = async (req, res) => {
     try {
         // console.log("params"+req.params);
@@ -297,23 +300,17 @@ const markAttendanceusingAadhar = async (req, res) => {
         const event = eventobj._id;
         console.log(eventobj);
         eventobj.attendants.push(user);
-        await eventobj.save()
         userobj.eventsAttended.push(event);
-        userobj.save().then(function (user) {
+        await eventobj.save()
+        await userobj.save().then(function (user) {
             res.status(200).json("Success");
         });
-
-
     } catch (error) {
-        const { event, user } = req.body;
-        eventobj.attendants.pop(user);
-        await eventobj.save()
-        userobj.eventsAttended.pop(event);
-        await userobj.save()
-        console.log(error.message)
         res.status(400).json({ error: error.message });
+        console.log("inside markattendance",error.message)
     }
 };
+
 
 
 const addLike = async (req, res) => {

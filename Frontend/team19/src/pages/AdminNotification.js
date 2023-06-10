@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import { useAuthContext2 } from '../hooks/useAuthContext2'
 
 const Notification = () => {
-
+const {admin}=useAuthContext2()
   const[ notifi, setNotifi]= useState("")
   useEffect(() => {
     const fetchNotifi = async () => {
@@ -18,7 +19,11 @@ const Notification = () => {
   const handleClick = async (not) => {
       console.log("Inside handleclick",not)
     const response = await fetch(' http://localhost:4000/api/admin/delnotification/' + not._id, {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${admin.token}`
+      }
     })
     const json = await response.json()
 

@@ -3,6 +3,30 @@ const router = express.Router();
 const json2csv = require('json2csv');
 const fs = require('fs');
 const User = require("../models/userModel");
+
+
+const requireAuth2 = require("../middleware/requireAuth2");
+
+router.use(requireAuth2);
+
+router.get("/download",async(req,res)=>{
+  User.find({}, (err, data) => {
+    if (err) throw err;
+
+    const csvData = json2csv.parse(data);
+    const filePath = './data.csv';
+
+    fs.writeFile(filePath, csvData, (err) => {
+      if (err) throw err;
+
+      res.download(filePath, 'data.csv', (err) => {
+        if (err) throw err;
+
+        fs.unlinkSync(filePath);
+        });
+      });
+    });
+})
 router.get("/getdata",async(req,res)=>{
     try {
         User.find({}).then(function (events) {
@@ -20,27 +44,9 @@ router.get("/getdata",async(req,res)=>{
         res.status(422).json(error);
     }
 })
-router.get("/download",async(req,res)=>{
-    User.find({}, (err, data) => {
-      if (err) throw err;
-
-      const csvData = json2csv.parse(data);
-      const filePath = './data.csv';
-
-      fs.writeFile(filePath, csvData, (err) => {
-        if (err) throw err;
-
-        res.download(filePath, 'data.csv', (err) => {
-          if (err) throw err;
-
-          fs.unlinkSync(filePath);
-          });
-        });
-      });
-})
 
 // get individual user
-router
+
 
 router.get("/getdata/:id",async(req,res)=>{
     try {
@@ -87,5 +93,6 @@ router.patch("/updateuser/:id",async(req,res)=>{
         res.status(422).json(error);
     }
 })
+
 
 module.exports = router;

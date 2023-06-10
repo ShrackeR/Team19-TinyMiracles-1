@@ -1,6 +1,8 @@
 import "./Home.css";
 import React from 'react';
-
+import Iframe from 'react-iframe';
+import "./iframe.css"
+import EventCards2 from "./eventCards2";
 const Home = () => {
 
     return ( 
@@ -26,10 +28,10 @@ const Home = () => {
     <div className="three" data-x=".fixed-image" />
   </div>
   
- 
+  <h4>Events conducted by Tiny Miracles</h4>
 
   <div className="about-us">
-    <div className="text">
+    {/* <div className="text">
       <h2>Discover</h2>
       <h3>The Sun Shines for Everyone
       </h3>
@@ -56,6 +58,11 @@ const Home = () => {
         />
       </div>
       
+    </div> */}
+    
+    <div id="my-div" style={{ height: "250px" }}>
+
+    <EventCards2/>
     </div>
   </div>
   {/* {/End About Us/}
@@ -86,20 +93,20 @@ const Home = () => {
       <div className="image active">
         <img
           src="https://img.freepik.com/free-vector/hand-drawn-flat-international-day-elimination-violence-against-women-background_23-2149120937.jpg?w=740&t=st=1685962046~exp=1685962646~hmac=dc907d28ca51aa0549878ec254ecb551e274212fd42baae1ee54fd8bc363078d"
-          alt="middle Photo"
+          alt="middle Photo" style={{height:"300px"}}
         />
       </div>
-      <div className="image">
+      {/* <div className="image">
         <img
           src="https://media.istockphoto.com/id/1324689337/photo/indian-village-government-school-girls-operating-laptop-computer-system-at-rural-area-in-india.jpg?s=612x612&w=0&k=20&c=yXYV73UwR6ZXOhcxv96TVNLH_A3AvL55qjaA3BRSDPY="
           alt="middle Photo"
         />
-      </div>
+      </div> */}
      
       <div className="image">
         <img
           src="https://media.istockphoto.com/id/1064019662/photo/pediatrician-doctor-examining-ill-girl-at-village.jpg?s=612x612&w=0&k=20&c=SDj2bv9S4wBllpN3nG8j681tDJN27w1MQOx0nd-jC1U="
-          alt="middle Photo"
+          alt="middle Photo" style={{height:"300px"}}
         />
       </div>
     </div>
@@ -226,11 +233,11 @@ const Home = () => {
     </svg>
     <i className="fas fa-angle-double-up arrow-up" />
     <ul className="info">
-      <li>© PULSE FIT  2023</li>
+      <li></li>
       <li>VJTI,Matunga</li>
       <li>Tel: 123456789</li>
       <li>
-        Handcrafted with love by <a href="#">INHERIT_WARRIORS</a> Team
+
       </li>
     </ul>
     <ul className="CTA">

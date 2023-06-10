@@ -3,13 +3,14 @@ import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import CreateIcon from '@mui/icons-material/Create';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { NavLink } from 'react-router-dom';
+import { useAuthContext2 } from '../hooks/useAuthContext2';
 // import { adddata, deldata } from '../context/ContextProvider';
 // import { updatedata } from '../context/ContextProvider';
 
 const Allevents = () => {
   const [getuserdata, setUserdata] = useState([]);
   const [filterStatus, setFilterStatus] = useState('');
-
+  const {admin}=useAuthContext2();
   console.log(getuserdata);
 
 //   const { udata, setUdata } = useContext(adddata);
@@ -43,6 +44,8 @@ const Allevents = () => {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${admin.token}`
+
       },
     });
 

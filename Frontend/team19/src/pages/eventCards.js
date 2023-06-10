@@ -10,6 +10,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import Button from "@mui/material/Button";
 import { FaShareAlt, FaEye, FaRegHeart, FaHeart } from "react-icons/fa";
+import { NavLink } from 'react-router-dom';
 
 import {
     EmailShareButton,
@@ -38,7 +39,6 @@ import {
     TelegramIcon
 } from "react-share";
 
-
 function toggleLike(id, status) {
     if (status === true) {
         fetch("http://localhost:4000/api/event/unlike/" + id, {
@@ -64,6 +64,8 @@ const EventCards = (props) => {
     const [data, setData] = useState([]);
     const [open, setOpen] = React.useState(false);
     const [filterStatus, setFilterStatus] = useState('');
+    const [lang, setLang] = useState("en");
+
     const handleClickToOpen = () => {
         setOpen(true);
     };
@@ -95,8 +97,7 @@ const EventCards = (props) => {
     ]
 
     let rows = [];
-
-
+   
     data.map((item) => {
         rows.push({
             _id: item._id,
@@ -129,6 +130,7 @@ const EventCards = (props) => {
     {
         return (
             <>
+
                 {/* { <EventWrapper> } */}
                 <section>
                     <div className="events">
@@ -164,10 +166,20 @@ const EventCards = (props) => {
                                                 {!item.like?<FaRegHeart style={{ color: "red" }} onClick={() => { toggleLike(item._id,item.like); item.like? alert(item.name+" unliked!") :alert(item.name+" liked!"); item.like=!item.like; }} />:<FaHeart style={{ color: "red" }} onClick={() => { toggleLike(item._id,item.like); item.like=!item.like;}} />}
                                             </div>
                                             <p>
-                                                {item.description.slice(0, 100) + "..."}
-                                            </p>
+                    {lang === "hi" ? (
+                      <>
+                        {item.description_hindi && item.description_hindi.length > 0 ? (
+                          <>{item.description_hindi.slice(0, 100) + "..."}</>
+                        ) : (
+                          <>{item.description.slice(0, 100) + "..."}</>
+                        )}
+                      </>
+                    ) : (
+                      <>{item.description.slice(0, 100) + "..."}</>
+                    )}
+                  </p>
                                             <div style={{ justifyContent: "space-between", display: "flex" }}>
-                                                <a href={"http://localhost:3000/allevents/eventdetails/" + item._id}><FaEye /></a>
+                                            <NavLink to={`/allevents/eventdetails/${item._id}`}><FaEye /></NavLink>
                                                 <a variant="outlined" color="primary"
                                                     onClick={handleClickToOpen} style={{ "margin-left": "auto", "margin-right": "0", cursor: "pointer", color: "#0d6efd" }}>
                                                     <FaShareAlt />
@@ -236,7 +248,11 @@ const EventCards = (props) => {
                             ))
                             }
                         </ul>
+                        {/* <button onClick={toggleLanguage}>
+        {lang === "en" ? "Switch to Hindi" : "Switch to English"}
+      </button> */}
                     </div>
+                   
                 </section>
                 {/* </EventWrapper> */}
 

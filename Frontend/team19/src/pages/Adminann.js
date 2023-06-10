@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { useAuthContext2 } from "../hooks/useAuthContext2"
+
 // import { createannouncement } from "../../../Backend/controllers/notificationController";
 //import { create } from "../../../Backend/models/workoutModel";
 
 const Adminann = () => {
   const [announcement, setAnnouncement] = useState('');
-  
+  const {admin} = useAuthContext2()
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,12 +17,14 @@ const Adminann = () => {
 
     fetch('http://localhost:4000/api/admin/ann', {
       method: 'POST',
-      headers: { "Content-Type": "application/json" },
+      headers: {        'Content-Type': 'application/json',
+      'Authorization': `Bearer ${admin.token}`},
+
       body: JSON.stringify({
         announcement: ann.announcement
       })
     }).then((res) => {
-        console.log("announcement made")
+        alert("announcement made")
         setAnnouncement('')
         return res.json()
      })

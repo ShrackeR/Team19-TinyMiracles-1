@@ -2,9 +2,10 @@ import React, { useContext, useEffect, useState } from 'react'
 import { NavLink, useParams,useHistory } from 'react-router-dom'
 import { updatedata } from '../context/ContextProvider'
 import Wrapper from '../components/Wrrapper'
+import { useAuthContext2 } from '../hooks/useAuthContext2'
 
 const Edit = () => {
-
+    const {admin}=useAuthContext2();
     // const [getuserdata, setUserdata] = useState([]);
     // console.log(getuserdata);
 
@@ -131,7 +132,8 @@ const Edit = () => {
         const res = await fetch(` http://localhost:4000/api/details/getdata/${id}`, {
             method: "GET",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                'Authorization': `Bearer ${admin.token}`
             }
         });
 
@@ -192,7 +194,8 @@ const Edit = () => {
         const res2 = await fetch(` http://localhost:4000/api/details/updateuser/${id}`,{
             method: "PATCH",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                'Authorization': `Bearer ${admin.token}`
             },
             body:JSON.stringify({
                 name,
