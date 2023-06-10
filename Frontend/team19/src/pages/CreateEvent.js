@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { useCreateEvent } from "../hooks/useCreateEvent";
 import Wrapper from "../components/Wrrapper";
 import { useParams } from "react-router-dom";
+import { useAuthContext2 } from "../hooks/useAuthContext2";
 const CreateEvent=()=>{
+  const {admin}=useAuthContext2();
     const{createEvent,error,isLoading,success,setSuccess}=useCreateEvent();
     const [eventData,setEventData]=useState({
         title:'',
@@ -73,7 +75,9 @@ const CreateEvent=()=>{
         fetch(`http://localhost:4000/api/event/surveyform`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${admin.token}`
+
       },
       body: JSON.stringify({title,questions})
     })

@@ -5,15 +5,7 @@ body {
 }
 /* Styling section, giving background
     image and dimensions */
-section {
-    width: 100%;
-    /* height: 100vh; */
-    background:
-        url(
-'https://tinymiracles.com/wp-content/webp-express/webp-images/uploads/2023/04/Jobs-1-1.jpg.webp'
-        );
-    background-size: cover;
-}
+
 section .events {
     position: relative;
     width: 100%;

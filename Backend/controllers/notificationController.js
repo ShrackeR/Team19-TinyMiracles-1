@@ -66,7 +66,7 @@ const deletenotification = async (req, res) => {
 // create new workout
 const createannouncement = async (req, res) => {
   const {announcement} = req.body
-
+  console.log(req.body)
   let emptyFields = []
 
   if(!announcement) {
@@ -88,6 +88,7 @@ const createannouncement = async (req, res) => {
     const ann = await Announcement.create({announcement})
     res.status(200).json(ann)
   } catch (error) {
+    console.log(error);
     res.status(400).json({error: error.message})
   }
 }

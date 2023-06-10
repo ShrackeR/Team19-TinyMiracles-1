@@ -1,6 +1,7 @@
 import "./Home.css";
 import React from 'react';
-
+import Iframe from 'react-iframe';
+import "./iframe.css"
 const Home = () => {
 
     return ( 
@@ -26,10 +27,10 @@ const Home = () => {
     <div className="three" data-x=".fixed-image" />
   </div>
   
- 
+  <h4>Events conducted by Tiny Miracles</h4>
 
   <div className="about-us">
-    <div className="text">
+    {/* <div className="text">
       <h2>Discover</h2>
       <h3>The Sun Shines for Everyone
       </h3>
@@ -56,6 +57,16 @@ const Home = () => {
         />
       </div>
       
+    </div> */}
+    
+    <div id="my-div">
+
+    <Iframe id="my-iframe" 
+      url="http://localhost:3000/EventCards" // Replace with the URL of the desired website
+      width="100%"
+      height="400px"
+      frameBorder="0"
+    />
     </div>
   </div>
   {/* {/End About Us/}

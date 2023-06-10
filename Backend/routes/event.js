@@ -5,6 +5,7 @@ const express = require('express')
 // controller functions
 const { allevents,getevent,createevent,markAttendance, updateevent, deleteevent, addLike, removeLike,markAttendanceusingAadhar,createfeedback,createsurvey,getfeedback} = require('../controllers/eventController')
 // const { allevents,getevent,createevent,markAttendance, updateevent, deleteevent,markAttendanceusingAadhar,createfeedback,createsurvey,getfeedback} = require('../controllers/eventController')
+const requireAuth2 = require("../middleware/requireAuth2");
 
 const router = express.Router()
 // const cloudinary=require('cloudinary').v2;
@@ -18,17 +19,22 @@ const router = express.Router()
 //   });
 
 // login route
-router.post('/create', createevent)
+
 router.post('/like/:event',addLike)
 router.post('/unlike/:event',removeLike)
 router.get('/markAttendance',markAttendance)
-router.post('/markAttendanceaadhar/:id',markAttendanceusingAadhar)
 router.get('/get/:id',getevent)
-router.get('/getfeedback/:id',getfeedback)
 router.get('/getall',allevents)
+
+router.post('/feedback/:id',createfeedback)
+
+router.use(requireAuth2);
+router.get('/getfeedback/:id',getfeedback)
+
+router.post('/markAttendanceaadhar/:id',markAttendanceusingAadhar)
+router.post('/create', createevent)
 router.put('/update/:id',updateevent)
 router.delete('/delete/:id',deleteevent)
-router.post('/feedback/:id',createfeedback)
 router.post('/surveyform',createsurvey)
 
 // // signup route

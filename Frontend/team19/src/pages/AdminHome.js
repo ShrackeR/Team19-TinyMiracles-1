@@ -5,21 +5,24 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { NavLink } from 'react-router-dom';
 import { adddata, deldata } from '../context/ContextProvider';
 import { updatedata } from '../context/ContextProvider';
+import { useAuthContext2 } from '../hooks/useAuthContext2'
 
 const AdminHome = () => {
   const [getuserdata, setUserdata] = useState([]);
   const [filterStatus, setFilterStatus] = useState('');
 
   console.log(getuserdata);
+  const { admin } = useAuthContext2()
 
   const { udata, setUdata } = useContext(adddata);
   const { updata, setUPdata } = useContext(updatedata);
 
   const getdata = async () => {
-    const res = await fetch(' http://localhost:4000/api/details/getdata', {
+    const res = await fetch('http://localhost:4000/api/details/getdata', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${admin.token}`
       },
     });
 
@@ -39,10 +42,11 @@ const AdminHome = () => {
   }, []);
 
   const deleteuser = async (id) => {
-    const res2 = await fetch(` http://localhost:4000/api/details/deleteuser/${id}`, {
+    const res2 = await fetch(`http://localhost:4000/api/details/deleteuser/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${admin.token}`
       },
     });
 
@@ -57,7 +61,10 @@ const AdminHome = () => {
     }
   };
   const downloadCSV = () => {
-    fetch('http://localhost:4000/api/details/download')
+    fetch('http://localhost:4000/api/details/download',{headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${admin.token}`}
+    })
       .then((response) => {
         if (response.ok) {
           return response.blob();

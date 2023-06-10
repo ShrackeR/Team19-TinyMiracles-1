@@ -1,8 +1,11 @@
 import { useState } from 'react'
 import { useAuthContext } from './useAuthContext'
+import { useAuthContext2 } from './useAuthContext2'
 // import { useNavigate } from 'react-router-dom'
 
 export const useCreateEvent = () => {
+  const {admin}=useAuthContext2();
+
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
   const { dispatch } = useAuthContext()
@@ -12,11 +15,12 @@ export const useCreateEvent = () => {
     setIsLoading(true)
     setError(null)
       console.log(formData)
-      
       setSuccess(0);
     const response = await fetch('http://localhost:4000/api/event/create', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      headers: {'Content-Type': 'application/json',
+      'Authorization': `Bearer ${admin.token}`
+    },
       body: JSON.stringify({ title:formData.title,
             description:formData.description,
             location:formData.location,

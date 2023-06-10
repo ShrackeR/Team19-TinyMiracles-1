@@ -374,6 +374,7 @@ import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import Feedbackk from "./Feedback";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { useAuthContext2 } from "../hooks/useAuthContext2";
 import speaker1 from "../assets/images/speakers/speaker-1.jpg";
 import speaker2 from "../assets/images/speakers/speaker-2.jpg";
 import speaker3 from "../assets/images/speakers/speaker-3.jpg";
@@ -384,6 +385,7 @@ import "../assets/css/main.css";
 import {useParams, useNavigate } from "react-router-dom";
 function EventDetails() {
     const { user } = useAuthContext();
+    const { admin } = useAuthContext2();
 
     const[pass,setPass]=useState(null)
     const [getuserdata, setUserdata] = useState([]);
@@ -409,11 +411,13 @@ function EventDetails() {
       // You can use fetch or any other HTTP library to send the Aadhar number as the request body
       // Example:
       console.log(aadhar);
-      fetch(`http://localhost:4000/api/event/markAttendanceaadhar/${id}`, {
+      fetch(`http://192.168.0.194:4000/api/event/markAttendanceaadhar/${id}`, {
         method: 'POST',
         body: JSON.stringify({ aadhar }),
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${admin.token}`
+
         }
       })
         .then(response => response.json())
@@ -430,7 +434,7 @@ function EventDetails() {
     
     const getdata = async () => {
 
-        const res = await fetch(`http://localhost:4000/api/event/get/${id}`, {
+        const res = await fetch(`http://192.168.0.194:4000/api/event/get/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -457,10 +461,12 @@ function EventDetails() {
     const extractedEnd = new Date(getuserdata.end).toLocaleString('en-IN');
     const deleteuser = async (id) => {
 
-        const res2 = await fetch(` http://localhost:4000/api/event/delete/${id}`, {
+        const res2 = await fetch(` http://192.168.0.194:4000/api/event/delete/${id}`, {
             method: "DELETE",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                'Authorization': `Bearer ${admin.token}`
+
             }
         });
 

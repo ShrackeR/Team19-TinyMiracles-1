@@ -9,8 +9,10 @@ import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { NavLink, useParams, useNavigate } from 'react-router-dom';
 
+import { useAuthContext2 } from '../hooks/useAuthContext2'
 
 const Details = () => {
+  const { admin } = useAuthContext2()
 
     const [getuserdata, setUserdata] = useState([]);
     console.log(getuserdata);
@@ -26,7 +28,8 @@ const Details = () => {
         const res = await fetch(` http://localhost:4000/api/details/getdata/${id}`, {
             method: "GET",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                'Authorization': `Bearer ${admin.token}`
             }
         });
 
@@ -36,7 +39,7 @@ const Details = () => {
         // const data = await res.json();
         data.eventsAttended.forEach(async event => {
           console.log(event)
-          const edata = await fetch(`/api/event/get/${event}`, {
+          const edata = await fetch(`http://localhost:4000/api/event/get/${event}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useAuthContext2 } from "../hooks/useAuthContext2";
 // import { useCreateEvent } from "../hooks/useCreateEvent";
 import Wrapper from "../components/Wrrapper";
 import { NavLink, useParams } from "react-router-dom";
 
 const EditEvent = (props) => {
+  const {admin}=useAuthContext2();
   const { eventId } = useParams('');
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
@@ -25,7 +27,7 @@ const EditEvent = (props) => {
 
   });
   useEffect(() => {
-    const response = fetch("/api/event/get/" + eventId).then(res => {
+    const response = fetch("http://localhost:4000/api/event/get/" + eventId).then(res => {
       return res.json();
 
     }).then(data => {
@@ -81,7 +83,9 @@ const EditEvent = (props) => {
     setSuccess(0);
     const response = await fetch('http://localhost:4000/api/event/update/'+eventId, {
       method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json',
+      'Authorization': `Bearer ${admin.token}`
+    },
       body: JSON.stringify({
         title: eventData.title,
         description: eventData.description,

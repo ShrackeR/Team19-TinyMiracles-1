@@ -5,6 +5,7 @@ const express = require('express')
 const { loginUser,signupUser,forgotPassword,ResetPassword,viewAttended,getuser} = require('../controllers/userController')
 const { getannouncement } = require('../controllers/notificationController')
 // const { default: ViewAttended } = require('../../Frontend/team19/src/pages/ViewAttended')
+const requireAuth2 = require("../middleware/requireAuth2");
 
 const router = express.Router()
 // const cloudinary=require('cloudinary').v2;
@@ -24,6 +25,9 @@ router.post('/forgotPassword',forgotPassword)
 router.put('/resetPassword/:newToken',ResetPassword)
 router.get('/notification', getannouncement)
 router.get('/viewAttendedEvents/:id',viewAttended);
+
+router.use(requireAuth2);
+
 router.get('/get/:id',getuser);
 
 

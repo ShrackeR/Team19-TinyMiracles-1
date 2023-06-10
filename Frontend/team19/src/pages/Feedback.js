@@ -3,6 +3,7 @@ import './feedback.css';
 import { FaStar } from "react-icons/fa";
 // import Feedback from "react-bootstrap/esm/Feedback";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { useAuthContext2 } from "../hooks/useAuthContext2";
 
 // const colors = {
 //     orange: "#FFBA5A",
@@ -14,6 +15,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 
 function Feedbackk(props) {
     const { user } = useAuthContext();
+    const { admin } = useAuthContext2();
 
     const [hoverValue, setHoverValue] = useState(undefined);
     const [currentValue, setCurrentValue] = useState(0);
@@ -41,6 +43,8 @@ function Feedbackk(props) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
+        
+
       },
       body: JSON.stringify({exp,currentValue,id2,name})
     })

@@ -1,35 +1,37 @@
-import React from 'react';
-import {useState,useEffect} from 'react'
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useAuthContext2 } from '../hooks/useAuthContext2';
 function Viewafeedback() {
-    // const { attendants } = props.attendants;
-    // console.log(props)
-    const [getuserdata, setUserdata] = useState([]);
-    const getdata = async () => {
+  const [getuserdata, setUserdata] = useState([]);
+  const { id } = useParams("");
+  const {admin}=useAuthContext2();
+  const getdata = async () => {
+    const res = await fetch(`http://localhost:4000/api/event/getfeedback/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': `Bearer ${admin.token}`
 
-        const res = await fetch(`http://localhost:4000/api/event/getfeedback/${id}`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        });
+      }
+    });
 
-        const data = await res.json();
-        console.log(data);
+    const data = await res.json();
+    console.log(data);
 
-        if (res.status === 422 || !data) {
-            console.log("error ");
-
-        } else {
-            setUserdata(data)
-           
-            console.log(data);
-        }
+    if (res.status === 422 || !data) {
+      console.log("error");
+    } else {
+      setUserdata(data);
+      console.log(data);
     }
-    const {id}=useParams("")
-    useEffect(() => {
-        getdata();
-    }, [])
+  }
+
+  useEffect(() => {
+    getdata();
+  }, []);
+
+  console.log("getuserdata:", getuserdata);
+
   return (
     <div>
       {/* {getuserdata.map((item) => (
@@ -39,18 +41,19 @@ function Viewafeedback() {
     ))}
   </React.Fragment>
 ))} */}
-          <ul>
-        {getuserdata.map((hobby, index) => (
-          <li key={index}><div class="card">
-          <div class="card-header">Username: 
-            {hobby.username}          </div>
-          <div class="card-body">
-            <blockquote class="blockquote mb-0">
-              <p>Feedback: {hobby.experience}</p>
-              <footer class="blockquote-footer" style={{color:"yellow"}}>Rating: {hobby.rating} <cite title="Source Title"></cite></footer>
-            </blockquote>
-          </div>
-        </div></li>
+      <ul>
+        {getuserdata && getuserdata.map((hobby, index) => (
+          <li key={index}>
+            <div class="card">
+              <div class="card-header">Username: {hobby.username}</div>
+              <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                  <p>Feedback: {hobby.experience}</p>
+                  <footer class="blockquote-footer" style={{ color: "yellow" }}>Rating: {hobby.rating} <cite title="Source Title"></cite></footer>
+                </blockquote>
+              </div>
+            </div>
+          </li>
         ))}
       </ul>
     </div>
