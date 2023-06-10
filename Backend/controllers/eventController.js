@@ -225,7 +225,6 @@ const markAttendance = async (req, res) => {
     }
 };
 
-
 const markAttendanceusingAadhar = async (req, res) => {
     try {
         // console.log("params"+req.params);
@@ -240,23 +239,17 @@ const markAttendanceusingAadhar = async (req, res) => {
         const event = eventobj._id;
         console.log(eventobj);
         eventobj.attendants.push(user);
-        await eventobj.save()
         userobj.eventsAttended.push(event);
-        userobj.save().then(function (user) {
+        await eventobj.save()
+        await userobj.save().then(function (user) {
             res.status(200).json("Success");
         });
-
-
     } catch (error) {
-        const { event, user } = req.body;
-        eventobj.attendants.pop(user);
-        await eventobj.save()
-        userobj.eventsAttended.pop(event);
-        await userobj.save()
-        console.log(error.message)
         res.status(400).json({ error: error.message });
+        console.log("inside markattendance",error.message)
     }
 };
+
 
 
 const addLike = async (req, res) => {

@@ -31,7 +31,6 @@ import Layout from "./components/Layout";
 import "./components/Navbar3.css";
 
 import ViewAttend from "./pages/ViewAttend";
-import AdminPanel from "./components/adminDashboard/AdminPanel";
 // import Wrapper from "./components/Wrrapper";
 // import Home from "./pages/Home";
 import Wrapper from "./components/Wrrapper";
@@ -41,7 +40,7 @@ import Employment from "./pages/Employment";
 // import Chartss from "./pages/Chartss";
 import Survey from "./pages/Survey";
 // import Feedback from "react-bootstrap/esm/Feedback";
-
+import EventCards2 from "./pages/eventCards2";
 function App() {
   const { user } = useAuthContext();
   const { admin } = useAuthContext2();
@@ -54,10 +53,10 @@ function App() {
 
       {/* <Wrapper> */}
       <Routes>
-          <Route
+          {/* <Route
           path="/adminpanel"
           element={<AdminPanel/>}
-          />
+          /> */}
 
           <Route exact
           path="/homepage"
@@ -87,6 +86,11 @@ function App() {
             <Route
               path="/scanner"
               element={<Scanner /> }
+             
+            />
+            <Route
+              path="/eventCards2"
+              element={<EventCards2/> }
              
             />
             

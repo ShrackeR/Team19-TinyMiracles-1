@@ -38,7 +38,6 @@ import {
     EmailIcon,
     TelegramIcon
 } from "react-share";
-import GoogleTranslateButton from "./GoogleTranslate";
 
 function toggleLike(id, status) {
     if (status === true) {
@@ -134,7 +133,6 @@ const EventCards = (props) => {
 
                 {/* { <EventWrapper> } */}
                 <section>
-                <GoogleTranslateButton/>
                     <div className="events">
                         <h1 style={{ textAlign: "center", color: "white", paddingTop: "40px", }}>
                             All Events

@@ -96,7 +96,6 @@ const AdminHome = () => {
 
   return (
     <>
-    <AdminPanel>
       <div class="col main pt-3 mt-1">
         <h3>User Details:</h3>
       {udata && (
@@ -159,7 +158,7 @@ const AdminHome = () => {
         </div>
       </div>
       </div>
-      </AdminPanel>
+      
     </>
   );
 };
