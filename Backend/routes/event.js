@@ -36,6 +36,7 @@ router.post('/create', createevent)
 router.put('/update/:id',updateevent)
 router.delete('/delete/:id',deleteevent)
 router.post('/surveyform',createsurvey)
+// router.post('/postsurvey/:id',postSurvey)
 
 // // signup route
 // router.post('/feesupload',feesUpload)

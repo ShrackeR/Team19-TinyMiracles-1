@@ -11,6 +11,7 @@ import { FormattedMessage, IntlProvider } from 'react-intl';
 // import Personal from './Personal';
 import Personal from './Personal';
 import { Container, Row, Col } from "react-bootstrap";
+// import classes from './signup.moudle.css';
 
 const Signup = () => {
   const { signup, error, isLoading, success, setSuccess } = useSignup();

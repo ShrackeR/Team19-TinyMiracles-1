@@ -3,14 +3,19 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const surveySchema = new Schema({
-    title: {
+    eventId: {
         type: String,
-        required: true
+        // required: true
     },
-    questions:[{
-        type:String,
-        required:true
-    }]
+    question:{
+       type:String 
+    },
+   userId:{
+    type:String
+   },
+   answer:{
+    type:Boolean
+   }
 })
 
 module.exports = mongoose.model('Survey', surveySchema);

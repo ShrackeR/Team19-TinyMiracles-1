@@ -26,11 +26,15 @@ export const useCreateEvent = () => {
             location:formData.location,
             start:formData.start,
             end:formData.end,
+            address:formData.address,
             
             resources:formData.resources,
             tag:formData.tag,
-            questions:formData.questions,
-            duration:formData.duration
+            question:formData.question,
+            duration:formData.duration,
+            expectedAttendance:formData.expectedAttendance,
+            expectedAnswer:formData.expectedAnswer,
+
 })
     })
     const json = await response.json()

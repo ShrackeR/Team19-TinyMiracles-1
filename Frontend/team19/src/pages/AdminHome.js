@@ -96,6 +96,9 @@ const AdminHome = () => {
 
   return (
     <>
+    <AdminPanel>
+      <div class="col main pt-3 mt-1">
+        <h3>User Details:</h3>
       {udata && (
         <div class="alert alert-success alert-dismissible fade show" role="alert">
           <strong>{udata.name}</strong> added succesfully!
@@ -122,7 +125,7 @@ const AdminHome = () => {
           <button onClick={downloadCSV}>Download CSV</button>
           <table className="table">
             <thead>
-              <tr className="table-dark">
+              <tr className="table-light">
                 <th scope="col">id</th>
                 <th scope="col">Name</th>
                 <th scope="col">AadharNo</th>
@@ -155,6 +158,8 @@ const AdminHome = () => {
           </table>
         </div>
       </div>
+      </div>
+      </AdminPanel>
     </>
   );
 };

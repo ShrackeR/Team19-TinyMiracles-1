@@ -31,6 +31,7 @@ import Layout from "./components/Layout";
 import "./components/Navbar3.css";
 
 import ViewAttend from "./pages/ViewAttend";
+import AdminPanel from "./components/adminDashboard/AdminPanel";
 // import Wrapper from "./components/Wrrapper";
 // import Home from "./pages/Home";
 import Wrapper from "./components/Wrrapper";
@@ -38,6 +39,7 @@ import CreateEvent from "./pages/CreateEvent";
 import EditEvent from "./pages/editEvent";
 import Employment from "./pages/Employment";
 // import Chartss from "./pages/Chartss";
+import Survey from "./pages/Survey";
 // import Feedback from "react-bootstrap/esm/Feedback";
 
 function App() {
@@ -52,7 +54,10 @@ function App() {
 
       {/* <Wrapper> */}
       <Routes>
-          
+          <Route
+          path="/adminpanel"
+          element={<AdminPanel/>}
+          />
 
           <Route exact
           path="/homepage"
@@ -193,6 +198,12 @@ function App() {
             path="/viewAttendedEvents/:id"
             element={<ViewAttend/>}
             />
+
+            <Route
+
+            path="/survey/:eventId"
+            element={user? <Survey key={123}/>:<Login/>}
+             />
              </Routes>
              
 
