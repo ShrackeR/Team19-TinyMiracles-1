@@ -50,12 +50,21 @@ const eventSchema = new Schema({
         reqired: true,
         default: 50
     },
-    question: [{
+    question: {
         type: String
-    }],
+    },
     duration:{
         type:String
-    }
+    },
+    createdAt: {
+        type: Date,
+    },
+    expectedAnswer: {
+        type: String
+    },
+    survey: [{
+        type: String
+    }],
     
 })
 

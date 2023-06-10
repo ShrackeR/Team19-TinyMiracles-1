@@ -5,9 +5,17 @@ const fs = require('fs');
 const User = require("../models/userModel");
 router.get("/getdata",async(req,res)=>{
     try {
-        const userdata = await User.find();
-        res.status(201).json(userdata)
-        console.log(userdata);
+        User.find({}).then(function (events) {
+          events.map((event) => {
+              event.createdAt = event._id.getTimestamp();
+              console.log(event.createdAt);
+              // event.save();
+          });
+          console.log(events);
+          res.send(events);
+      });
+        
+        // console.log(userdata);
     } catch (error) {
         res.status(422).json(error);
     }

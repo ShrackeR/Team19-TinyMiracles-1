@@ -114,7 +114,10 @@ const userSchema = new Schema({
   },
 status:{
   type:String
-}
+},
+createdAt: {
+    type: Date,
+},
 });
 
 
