@@ -16,29 +16,32 @@
 
 */
 
-export const lineChartOptionsDashboard = {
+export const barDashboard = {
   chart: {
     toolbar: {
       show: false,
     },
   },
   tooltip: {
+    style: {
+      fontSize: "10px",
+      fontFamily: "Plus Jakarta Display",
+    },
+    onDatasetHover: {
+      style: {
+        fontSize: "10px",
+        fontFamily: "Plus Jakarta Display",
+      },
+    },
     theme: "dark",
   },
-  dataLabels: {
-    enabled: false,
-  },
-  stroke: {
-    curve: "smooth",
-  },
   xaxis: {
-    type: "datetime",
-    categories: [
-      "Nill", "Primary", "SSC", "HSC", "Under Grad", "Graduate", "Post Grad", "Doctorate"
-    ],
+    categories: ["January","February","March","April","May","June","July","August","September","October","November","December"],
+    show: true,
     labels: {
+      show: true,
       style: {
-        colors: "#c8cfca",
+        colors: "#fff",
         fontSize: "10px",
       },
     },
@@ -50,43 +53,52 @@ export const lineChartOptionsDashboard = {
     },
   },
   legend: {
-    show: true,
+    show: false,
     labels: {
       colors: "#fff",
       useSeriesColors: false
     },
     markers: {
-      fillColors: ["#0075FF", "#D5869D", "#01b574"],
+      fillColors: ["#0075FF"],
     }
   },
   yaxis: {
+    show: true,
+    color: "#fff",
     labels: {
+      show: true,
       style: {
-        colors: "#c8cfca",
+        colors: "#fff",
         fontSize: "10px",
+        fontFamily: "Plus Jakarta Display",
       },
     },
   },
-  legend: {
+  grid: {
     show: false,
   },
-  grid: {
-    strokeDashArray: 5,
-    borderColor: "#56577A",
-  },
   fill: {
-    type: "gradient",
-    gradient: {
-      shade: "dark",
-      type: "vertical",
-      shadeIntensity: 0,
-      gradientToColors: undefined, // optional, if not defined - uses the shades of same color in series
-      inverseColors: true,
-      opacityFrom: 0.8,
-      opacityTo: 0,
-      stops: [],
-    },
-    colors: ["#0075FF", "#01b574","#D5869D", ],
+    colors: ["#0075FF"],
   },
-  colors: ["#0075FF", "#01b574", "#D5869D"],
+  dataLabels: {
+    enabled: false,
+  },
+  plotOptions: {
+    bar: {
+      borderRadius: 8,
+      columnWidth: "12px",
+    },
+  },
+  responsive: [
+    {
+      breakpoint: 768,
+      options: {
+        plotOptions: {
+          bar: {
+            borderRadius: 0,
+          },
+        },
+      },
+    },
+  ],
 };

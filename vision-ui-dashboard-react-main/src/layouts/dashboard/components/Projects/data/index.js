@@ -6,6 +6,7 @@ import VuiBox from "components/VuiBox";
 import VuiTypography from "components/VuiTypography";
 import VuiAvatar from "components/VuiAvatar";
 import VuiProgress from "components/VuiProgress";
+import StarRatings from 'react-star-ratings';
 
 // Images
 import AdobeXD from "examples/Icons/AdobeXD";
@@ -18,6 +19,7 @@ import avatar1 from "assets/images/avatar1.png";
 import avatar2 from "assets/images/avatar2.png";
 import avatar3 from "assets/images/avatar3.png";
 import avatar4 from "assets/images/avatar4.png";
+import { InsertEmoticon } from "@mui/icons-material";
 
 export default function data() {
   const avatars = (members) =>
@@ -47,41 +49,40 @@ export default function data() {
 
   return {
     columns: [
-      { name: "companies", align: "left" },
-      { name: "members", align: "left" },
-      { name: "budget", align: "center" },
-      { name: "completion", align: "center" },
+      { name: "event", align: "left" },
+      { name: "rating", align: "left" },
+      { name: "likes", align: "center" },
+      { name: "attendance", align: "center" },
     ],
 
     rows: [
       {
-        companies: (
+        event: (
           <VuiBox display="flex" alignItems="center">
             <AdobeXD size="20px" />
             <VuiTypography pl="16px" color="white" variant="button" fontWeight="medium">
-              Chakra Vision UI Version
+              {item.title}
             </VuiTypography>
           </VuiBox>
         ),
-        members: (
+        rating: (
           <VuiBox display="flex" py={1}>
-            {avatars([
-              [avatar1, "Ryan Tompson"],
-              [avatar2, "Romina Hadid"],
-              [avatar3, "Alexander Smith"],
-              [avatar4, "Jessica Doe"],
-            ])}
+            <StarRatings
+              rating={item.rating}
+              starDimension="40px"
+              starSpacing="15px"
+            />
           </VuiBox>
         ),
-        budget: (
+        likes: (
           <VuiTypography variant="button" color="white" fontWeight="bold">
-            $14,000
+            {item.likes}
           </VuiTypography>
         ),
-        completion: (
+        attendance: (
           <VuiBox width="8rem" textAlign="left">
             <VuiTypography color="white" variant="button" fontWeight="bold">
-              60%
+              {item.attendance}
             </VuiTypography>
             <VuiProgress value={60} color="info" label={false} sx={{ background: "#2D2E5F" }} />
           </VuiBox>

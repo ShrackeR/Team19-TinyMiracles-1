@@ -165,7 +165,7 @@ function Sidenav({ color, brandName, routes, ...rest }) {
           </VuiTypography>
         </VuiBox>
         <VuiBox component={NavLink} to="/" display="flex" alignItems="center">
-          <VuiBox
+          {/* <VuiBox
             sx={
               ((theme) => sidenavLogoLabel(theme, { miniSidenav }),
               {
@@ -174,8 +174,8 @@ function Sidenav({ color, brandName, routes, ...rest }) {
                 margin: "0 auto",
               })
             }
-          >
-            <VuiBox
+          > */}
+            {/* <VuiBox
               display="flex"
               sx={
                 ((theme) => sidenavLogoLabel(theme, { miniSidenav, transparentSidenav }),
@@ -185,8 +185,8 @@ function Sidenav({ color, brandName, routes, ...rest }) {
               }
             >
               <SimmmpleLogo size="24px" />
-            </VuiBox>
-            <VuiTypography
+            </VuiBox> */}
+            {/* <VuiTypography
               variant="button"
               textGradient={true}
               color="logo"
@@ -201,10 +201,10 @@ function Sidenav({ color, brandName, routes, ...rest }) {
                   margin: "0 auto",
                 })
               }
-            >
-              {brandName}
+            > */}
+              {/* {brandName}
             </VuiTypography>
-          </VuiBox>
+          </VuiBox> */}
         </VuiBox>
       </VuiBox>
       <Divider light />
@@ -225,8 +225,8 @@ function Sidenav({ color, brandName, routes, ...rest }) {
           },
         })}
       >
-        <SidenavCard color={color} />
-        <VuiBox mt={2}>
+        {/* <SidenavCard color={color} /> */}
+        {/* <VuiBox mt={2}>
           <VuiButton
             component="a"
             href="https://creative-tim.com/product/vision-ui-dashboard-pro-react"
@@ -238,7 +238,7 @@ function Sidenav({ color, brandName, routes, ...rest }) {
           >
             Upgrade to PRO
           </VuiButton>
-        </VuiBox>
+        </VuiBox> */}
       </VuiBox>
     </SidenavRoot>
   );

@@ -34,7 +34,7 @@ export const lineChartOptionsDashboard = {
   xaxis: {
     type: "datetime",
     categories: [
-      "Nill", "Primary", "SSC", "HSC", "Under Grad", "Graduate", "Post Grad", "Doctorate"
+        "January","February","March","April","May","June","July","August","September","October","November","December"
     ],
     labels: {
       style: {
@@ -48,16 +48,6 @@ export const lineChartOptionsDashboard = {
     axisTicks: {
       show: false,
     },
-  },
-  legend: {
-    show: true,
-    labels: {
-      colors: "#fff",
-      useSeriesColors: false
-    },
-    markers: {
-      fillColors: ["#0075FF", "#D5869D", "#01b574"],
-    }
   },
   yaxis: {
     labels: {
@@ -86,7 +76,7 @@ export const lineChartOptionsDashboard = {
       opacityTo: 0,
       stops: [],
     },
-    colors: ["#0075FF", "#01b574","#D5869D", ],
+    colors: ["#0075FF"],
   },
-  colors: ["#0075FF", "#01b574", "#D5869D"],
+  colors: ["#0075FF"],
 };

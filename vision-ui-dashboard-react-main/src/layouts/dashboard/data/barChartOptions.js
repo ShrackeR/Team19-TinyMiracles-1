@@ -36,10 +36,10 @@ export const barChartOptionsDashboard = {
     theme: "dark",
   },
   xaxis: {
-    categories: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    show: false,
+    categories: ["No Education", "Primary", "Secondary", "Higher Secondary", "Under Grad", "Graduate", "Post Grad", "Doctorate"],
+    show: true,
     labels: {
-      show: false,
+      show: true,
       style: {
         colors: "#fff",
         fontSize: "10px",
@@ -51,6 +51,16 @@ export const barChartOptionsDashboard = {
     axisTicks: {
       show: false,
     },
+  },
+  legend: {
+    show: true,
+    labels: {
+      colors: "#fff",
+      useSeriesColors: false
+    },
+    markers: {
+      fillColors: ["#0075FF", "#D5869D", "#01b574"],
+    }
   },
   yaxis: {
     show: true,
@@ -68,7 +78,7 @@ export const barChartOptionsDashboard = {
     show: false,
   },
   fill: {
-    colors: "#fff",
+    colors: ["#0075FF", "#D5869D", "#01b574"],
   },
   dataLabels: {
     enabled: false,

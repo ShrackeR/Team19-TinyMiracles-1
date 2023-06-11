@@ -7,9 +7,11 @@ import { FaEllipsisH } from 'react-icons/fa';
 import linearGradient from 'assets/theme/functions/linearGradient';
 import CircularProgress from '@mui/material/CircularProgress';
 
-function ReferralTracking() {
+function ReferralTracking(props) {
+	const {pan,eshram,basicDoc} = props;
 	const { info, gradients } = colors;
 	const { cardContent } = gradients;
+	
 
 	return (
 		<Card
@@ -25,16 +27,16 @@ function ReferralTracking() {
 					sx={{ width: '100%' }}
 					mb='40px'>
 					<VuiTypography variant='lg' color='white' mr='auto' fontWeight='bold'>
-						Referral Tracking
+						Basic Documentation
 					</VuiTypography>
-					<VuiBox
+					{/* <VuiBox
 						display='flex'
 						justifyContent='center'
 						alignItems='center'
 						bgColor='#22234B'
 						sx={{ width: '37px', height: '37px', cursor: 'pointer', borderRadius: '12px' }}>
 						<FaEllipsisH color={info.main} size='18px' />
-					</VuiBox>
+					</VuiBox> */}
 				</VuiBox>
 				<VuiBox
 					display='flex'
@@ -83,10 +85,10 @@ function ReferralTracking() {
 								}
 							})}>
 							<VuiTypography color='text' variant='button' fontWeight='regular' mb='5px'>
-								Invited
+								Pan Card
 							</VuiTypography>
 							<VuiTypography color='white' variant='lg' fontWeight='bold'>
-								145 people
+								{parseInt(pan)} %
 							</VuiTypography>
 						</VuiBox>
 						<VuiBox
@@ -106,17 +108,17 @@ function ReferralTracking() {
 								}
 							})}>
 							<VuiTypography color='text' variant='button' fontWeight='regular' mb='5px'>
-								Bonus
+								Eshram Card
 							</VuiTypography>
 							<VuiTypography color='white' variant='lg' fontWeight='bold'>
-								1,465
+								{parseInt(eshram)} %
 							</VuiTypography>
 						</VuiBox>
 					</Stack>
 					<VuiBox sx={{ position: 'relative', display: 'inline-flex' }}>
 						<CircularProgress
 							variant='determinate'
-							value={70}
+							value={basicDoc}
 							size={window.innerWidth >= 1024 ? 200 : window.innerWidth >= 768 ? 170 : 200}
 							color='success'
 						/>
@@ -133,7 +135,7 @@ function ReferralTracking() {
 							}}>
 							<VuiBox display='flex' flexDirection='column' justifyContent='center' alignItems='center'>
 								<VuiTypography color='text' variant='button' mb='4px'>
-									Safety
+									Atleast One <br/> Document
 								</VuiTypography>
 								<VuiTypography
 									color='white'
@@ -145,11 +147,11 @@ function ReferralTracking() {
 											fontSize: '32px'
 										}
 									})}>
-									9.3
+									{parseInt(basicDoc)} %
 								</VuiTypography>
-								<VuiTypography color='text' variant='button'>
-									Total Score
-								</VuiTypography>
+								{/* <VuiTypography color='text' variant='button'>
+									
+								</VuiTypography> */}
 							</VuiBox>
 						</VuiBox>
 					</VuiBox>

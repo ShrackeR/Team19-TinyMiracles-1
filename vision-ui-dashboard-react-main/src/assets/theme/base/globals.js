@@ -20,11 +20,11 @@
 import colors from "assets/theme/base/colors";
 import bgAdmin from "assets/images/body-background.png";
 
-const { info, dark } = colors;
+const { info, dark, light } = colors;
 export default {
   html: {
     scrollBehavior: "smooth",
-    background: dark.body,
+    background: light.body,
   },
   body: {
     background: `url(${bgAdmin})`,
