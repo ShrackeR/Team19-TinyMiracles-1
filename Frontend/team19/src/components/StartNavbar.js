@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import './StartNavbar.css';
+import './Navbar3.css';
 import { Nav, Navbar, NavLink } from "react-bootstrap";
 
 
@@ -9,7 +9,7 @@ const StartNavbar = () => {
     return (
 
         <>
-       <div className="App">
+       {/* <div className="App"> */}
         {/* <nav className="navbar navbar-expand-lg navbar-light fixed-top">
           <div className="container">
             <Link className="navbar-brand" to={'/homepage'}>
@@ -33,7 +33,7 @@ const StartNavbar = () => {
             </div>
           </div>
         </nav> */}
-        <Navbar collapseOnSelect expand="sm" bg="light" variant="light">
+        {/* <Navbar collapseOnSelect expand="sm" bg="light" variant="light">
             <Navbar.Toggle aria-controls="navbarScroll" data-bs-toggle="collapse" data-bs-target="#navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
                 <Nav>
@@ -44,7 +44,30 @@ const StartNavbar = () => {
             </Navbar.Collapse>     
         </Navbar>
 
-        </div>
+        </div> */}
+
+<div className="sidebar">
+      <ul>
+            
+              <><li>
+                <Link to="/" className="navbar-brand">
+        {/* <img id="logoImg-n" src={myImg} alt="Logo" />  */}
+        Tiny Miracles
+        </Link>
+              </li>
+                
+                
+                <li>
+                  <Link to="/login">User login</Link>
+                </li>
+                <li>
+                  <Link to="/adminlogin">Admin Login</Link>
+                </li>
+               
+              </>
+           
+          </ul>
+      </div>
     </>
     
       
@@ -52,4 +75,3 @@ const StartNavbar = () => {
 }
  
 export default StartNavbar;
-

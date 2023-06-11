@@ -41,14 +41,14 @@ import {
 
 function toggleLike(id, status) {
     if (status === true) {
-        fetch("http://localhost:4000/api/event/unlike/" + id, {
+        fetch("https://miracleachievers.shreeraj.me/backend/api/event/unlike/" + id, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             }
         }).then((res) => res.json());
     } else {
-        fetch("http://localhost:4000/api/event/like/" + id, {
+        fetch("https://miracleachievers.shreeraj.me/backend/api/event/like/" + id, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -73,7 +73,7 @@ const EventCards = (props) => {
         setOpen(false);
     };
     const getData = async () => {
-        const response = await fetch("http://localhost:4000/api/event/getall", {
+        const response = await fetch("https://miracleachievers.shreeraj.me/backend/api/event/getall", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"

@@ -9,7 +9,7 @@ const User=(props)=>{
     const [userData,setUserData]=useState();
     useEffect(()=>{
         const fetchData= async()=>{
-              const response = await fetch(`http://localhost:4000/api/user/get/${id}`,{ headers: {
+              const response = await fetch(`https://miracleachievers.shreeraj.me/backend/api/user/get/${id}`,{ headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${admin.token}`
               }});

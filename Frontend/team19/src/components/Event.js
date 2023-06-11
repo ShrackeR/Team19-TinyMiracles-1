@@ -7,7 +7,7 @@ const Event=(props)=>{
         try{
       
             const fetchData= async()=>{
-                  const response = await fetch(`http://localhost:4000/api/event/get/${ id }`);
+                  const response = await fetch(`https://miracleachievers.shreeraj.me/backend/api/event/get/${ id }`);
                   const data = await response.json();
                   setEventData(data);
             }

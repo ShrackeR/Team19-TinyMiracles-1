@@ -23,7 +23,7 @@
 
 // //     const getdata = async () => {
 
-// //         const res = await fetch(` http://localhost:4000/api/event/get/${id}`, {
+// //         const res = await fetch(` https://miracleachievers.shreeraj.me/backend/api/event/get/${id}`, {
 // //             method: "GET",
 // //             headers: {
 // //                 "Content-Type": "application/json"
@@ -48,7 +48,7 @@
 
 // //     const deleteuser = async (id) => {
 
-// //         const res2 = await fetch(` http://localhost:4000/api/event/delete/${id}`, {
+// //         const res2 = await fetch(` https://miracleachievers.shreeraj.me/backend/api/event/delete/${id}`, {
 // //             method: "DELETE",
 // //             headers: {
 // //                 "Content-Type": "application/json"
@@ -231,7 +231,7 @@
 
 //     const getdata = async () => {
 
-//         const res = await fetch(` http://localhost:4000/api/event/get/${id}`, {
+//         const res = await fetch(` https://miracleachievers.shreeraj.me/backend/api/event/get/${id}`, {
 //             method: "GET",
 //             headers: {
 //                 "Content-Type": "application/json"
@@ -256,7 +256,7 @@
 
 //     const deleteuser = async (id) => {
 
-//         const res2 = await fetch(` http://localhost:4000/api/event/delete/${id}`, {
+//         const res2 = await fetch(` https://miracleachievers.shreeraj.me/backend/api/event/delete/${id}`, {
 //             method: "DELETE",
 //             headers: {
 //                 "Content-Type": "application/json"
@@ -411,7 +411,7 @@ function EventDetails() {
       // You can use fetch or any other HTTP library to send the Aadhar number as the request body
       // Example:
       console.log(aadhar);
-      fetch(`http://localhost:4000/api/event/markAttendanceaadhar/${id}`, {
+      fetch(`https://miracleachievers.shreeraj.me/backend/api/event/markAttendanceaadhar/${id}`, {
         method: 'POST',
         body: JSON.stringify({ aadhar }),
         headers: {
@@ -431,10 +431,14 @@ function EventDetails() {
         });
     };
   
-    
+   
+    const imageStyle = {
+        height: 'calc(100% / 3)', // Reduce height by 1/3
+        opacity: 0.33, // Reduce opacity by 1/3
+      }; 
     const getdata = async () => {
 
-        const res = await fetch(`http://localhost:4000/api/event/get/${id}`, {
+        const res = await fetch(`https://miracleachievers.shreeraj.me/backend/api/event/get/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -461,7 +465,7 @@ function EventDetails() {
     const extractedEnd = new Date(getuserdata.end).toLocaleString('en-IN');
     const deleteuser = async (id) => {
 
-        const res2 = await fetch(` http://localhost:4000/api/event/delete/${id}`, {
+        const res2 = await fetch(` https://miracleachievers.shreeraj.me/backend/api/event/delete/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -522,19 +526,12 @@ function EventDetails() {
     </div>
 </nav> */}
 
-<header id="site-header" class="site-header valign-center"> 
-    <div class="intro">
+<div className="intro">
+        <h2 style={{ color: 'black', fontFamily: 'Arial' }}>From {extractedDate} to {extractedEnd}</h2>
+        <h1 style={{ color: 'bhite', fontFamily: 'Arial' }}>{getuserdata.title}</h1>
+      </div>
 
-        <h2>{extractedDate} to {extractedEnd} </h2>
-        
-        <h1>{getuserdata.title}</h1>
-        
-       
-    
-    </div>
-</header>
-
-
+{admin &&
 <section id="about" class="section about">
     <div class="container">
         <div class="row">
@@ -554,8 +551,8 @@ function EventDetails() {
 
                 {/* <h3 class="section-title multiple-title">What is Our Goal?</h3> */}
 
-                <h3>For got your mobile? </h3>
-                <h5>Use Aadhar to mark your attendance</h5>
+                
+                <h4>Help user mark attendance</h4>
                
             <form onSubmit={handleSubmit}>
       <label>
@@ -572,86 +569,8 @@ function EventDetails() {
             </div>
         </div>
     </div>
-</section>
+</section>}
 
-<section id="facts" class="section bg-image-1 facts text-center">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-3">
-
-                <i class="ion-ios-calendar"></i>
-                <h3><br/></h3>
-            
-            </div>
-            <div class="col-sm-3">
-
-                <i class="ion-ios-location"></i>
-                <h3>{extractedDate}<br/></h3>
-            
-            </div>
-            <div class="col-sm-3">
-
-                <i class="ion-pricetags"></i>
-                <h3> {getuserdata.location}<br/></h3>
-            
-            </div>
-            <div class="col-sm-3">
-            
-                <i class="ion-speakerphone"></i>
-                <h3><br/></h3>
-            
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="speakers" class="section speakers">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-
-                <h3 class="section-title">Description</h3>
-            
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-4">
-                <div class="speaker">
-
-                    <figure>
-                        <img alt="" class="img-responsive center-block" src="assets/images/speakers/speaker-1.jpg"/>
-                    </figure>
-
-                    
-                    <ul class="social-block">
-                        <li><a href=""><i class="ion-social-twitter"></i></a></li>
-                        <li><a href=""><i class="ion-social-facebook"></i></a></li>
-                        <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
-                        <li><a href=""><i class="ion-social-googleplus"></i></a></li>
-                    </ul>
-
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="speaker">
-                    <figure>
-                        <img alt="" class="img-responsive center-block" src="assets/images/speakers/speaker-6.jpg"></img>
-                    </figure>
-                    <h4>{getuserdata.description}</h4>
-                    {/* <p>CEO of Peren</p> */}
-                    <ul class="social-block">
-                        <li><a href=""><i class="ion-social-twitter"></i></a></li>
-                        <li><a href=""><i class="ion-social-facebook"></i></a></li>
-                        <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
-                        <li><a href=""><i class="ion-social-googleplus"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 {user && <section id="registration" class="section registration">
     <div class="container">
         <div class="row">
@@ -724,58 +643,6 @@ function EventDetails() {
 </section>}
 
 
-<section id="contribution" class="section bg-image-2 contribution">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="text-uppercase mt0 font-400">Submit Your Contribution Work</h3>
-                
-                <p>You've inspired new consumer, racked up click-thru's, blown-up brand awareness. We can't give you back the weekends you worked, or erase the pain of being forced to make the logo bigger. But if you submit your best work.</p>
-
-                <a class="btn btn-white" href="#">Submit</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="schedule" class="section schedule">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="section-title">Event Schedule</h3>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 col-sm-6">
-                <div class="schedule-box">
-                    <div class="time">
-                        <time datetime="09:00">09:00 am</time> - <time datetime="22:00">10:00 am</time>
-                    </div>
-                    <h3>Welcome and intro</h3>
-                    <p>Mustafizur Khan, SD Asia</p>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="schedule-box">
-                    <div class="time">
-                        <time datetime="10:00">10:00 am</time> - <time datetime="22:00">10:00 am</time>
-                    </div>
-                    <h3>Tips and share</h3>
-                    <p>Mustafizur Khan, SD Asia</p>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="schedule-box">
-                    <div class="time">
-                        <time datetime="10:00">10:00 am</time> - <time datetime="22:00">10:00 am</time>
-                    </div>
-                    <h3>View from the top</h3>
-                    <p>Mustafizur Khan, SD Asia</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 {/* <section id="partner" class="section partner">
     <div class="container">
@@ -816,18 +683,45 @@ function EventDetails() {
     </div>
 </section> */}
 
-<section id="faq" class="section faq">
+<section id="speakers" class="section speakers">
+    <div class="container">
+        
+                <h3 class="section-title">Description</h3>
+            
+           
+
+        
+                    
+
+                    
+                    
+
+                
+
+            <div class="col-md-4">
+                <div class="speaker">
+                    
+                    <h4 style={{ width: "750px", float: "left", textAlign: "left" }}>{getuserdata.description}</h4>
+                    {/* <p>CEO of Peren</p> */}
+                    
+                </div>
+           
+        </div>
+    </div>
+</section>
+
+{admin && <section id="faq" class="section faq">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="section-title"><Link to=
-         {"/viewallattendance/"+id}>View Attendance</Link></h3>
+                <h4 class="section-title"><Link to=
+         {"/viewallattendance/"+id}>View Attendance</Link></h4>
          
-         <h3 class="section-title"><Link to=
-         {"/viewfeedback/"+id}>View Feedback</Link></h3>
+         <h4 class="section-title"><Link to=
+         {"/viewfeedback/"+id}>View Feedback</Link></h4>
             </div>
         </div>
-        <div class="row">
+        {/* <div class="row">
             <div class="col-md-12">
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                     
@@ -895,93 +789,25 @@ function EventDetails() {
                     </div>
                 </div>
             </div>
-        </div>
+        </div> */}
     </div>
-</section>
+</section>}
 
-<section id="photos" class="section photos">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="section-title">Photos</h3>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <ul class="grid">
-                    
-                    <li class="grid-item grid-item-sm-6">
-                        <img alt="" class="img-responsive center-block" src="assets/images/photos/photos-1.jpg"/>
-                    </li>
-
-                    <li class="grid-item grid-item-sm-3">
-                        <img alt="" class="img-responsive center-block" src="assets/images/photos/photos-2.jpg"/>
-                    </li>
-
-                    <li class="grid-item grid-item-sm-3">
-                        <img alt="" class="img-responsive center-block" src="assets/images/photos/photos-3.jpg"/>
-                    </li>
-                
-                    <li class="grid-item grid-item-sm-3">
-                        <img alt="" class="img-responsive center-block" src="assets/images/photos/photos-5.jpg"/>
-                    </li>
-
-                    <li class="grid-item grid-item-sm-3">
-                        <img alt="" class="img-responsive center-block" src="assets/images/photos/photos-6.jpg"/>
-                    </li>
-
-                    <li class="grid-item grid-item-sm-3">
-                        <img alt="" class="img-responsive center-block" src="assets/images/photos/photos-7.jpg"/>
-                    </li>
-
-                    <li class="grid-item grid-item-sm-3">
-                        <img alt="" class="img-responsive center-block" src="assets/images/photos/photos-8.jpg"/>
-                    </li>
-
-                    <li class="grid-item grid-item-sm-3">
-                        <img alt="" class="img-responsive center-block" src="assets/images/photos/photos-2.jpg"/>
-                    </li>
-
-                    <li class="grid-item grid-item-sm-3">
-                        <img alt="" class="img-responsive center-block" src="assets/images/photos/photos-3.jpg"/>
-                    </li>
-                </ul>
-            </div>
-        </div>            
-    </div>
-</section>
 
 <section id="location" class="section location">
     <div class="container">
         <div class="row">
             <div class="col-sm-3">
-                <h3 class="section-title">Event Location</h3>
-                <address>
-                    <p>Eardenia<br/> The Grand Hall<br/> House # 08, Road #52, Street<br/> Phone: +1159t3764<br/> Email: example@mail.com</p>
-                </address>
+            <h3 class="section-title">{getuserdata.location}</h3>
             </div>
             <div class="col-sm-9">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96706.50013548559!2d-78.9870674333782!3d40.76030630398601!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited+States!5e0!3m2!1sen!2sbd!4v1436299406518" width="100%" height="450" frameborder="0" style={{border:"0"}} allowfullscreen></iframe>
             </div>
+            <span style={{textAlign:"right"}}>(Coming up soon...)</span>
         </div>
     </div>
 </section>
 
-<footer class="site-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <p class="site-info">Designed and <br/> Developed by <a href="http://technextit.com">Technext Limited</a></p>
-                <ul class="social-block">
-                    <li><a href=""><i class="ion-social-twitter"></i></a></li>
-                    <li><a href=""><i class="ion-social-facebook"></i></a></li>
-                    <li><a href=""><i class="ion-social-linkedin-outline"></i></a></li>
-                    <li><a href=""><i class="ion-social-googleplus"></i></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</footer>
 </>
   );
 }

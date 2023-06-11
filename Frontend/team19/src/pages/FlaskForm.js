@@ -68,7 +68,7 @@ const FlaskForm = () => {
 
     if (prompt.trim() !== '') {
       try {
-        const response = await fetch('http://127.0.0.1:5000/prompt', {
+        const response = await fetch('https://miracleachievers.shreeraj.me/chat/prompt', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

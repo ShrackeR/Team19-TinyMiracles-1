@@ -16,7 +16,7 @@ export const useCreateEvent = () => {
     setError(null)
       console.log(formData)
       setSuccess(0);
-    const response = await fetch('http://localhost:4000/api/event/create', {
+    const response = await fetch('https://miracleachievers.shreeraj.me/backend/api/event/create', {
       method: 'POST',
       headers: {'Content-Type': 'application/json',
       'Authorization': `Bearer ${admin.token}`

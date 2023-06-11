@@ -39,7 +39,7 @@ function Feedbackk(props) {
     e.preventDefault();
     // Make a POST request to the backend with the rating and experience
     
-    fetch(`http://localhost:4000/api/event/feedback/${id}`, {
+    fetch(`https://miracleachievers.shreeraj.me/backend/api/event/feedback/${id}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

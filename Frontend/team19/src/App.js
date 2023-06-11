@@ -22,6 +22,8 @@ import Adminann from "./pages/Adminann";
 import EventDetails from "./pages/Eventdetails";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+import DateForm from "./pages/seldate";
+import DateFormEvent from "./pages/seldateevent";
 import Viewfeedback from "./pages/Viewfeedback"
 // import './App.css';
 import EventCards from "./pages/eventCards";
@@ -69,37 +71,45 @@ function App() {
             
             <Route
               path="/flask"
-              element={user || admin ? <FlaskForm /> : <Navigate to="/flask" />}
+              element={user? <FlaskForm /> : <Navigate to="/login" />}
             />
             <Route
              path="/allevents"
-              element={user|| admin ? <Allevents /> : <Navigate to="/allevents" />}
-            />
+             element={admin ? <Allevents /> : <Navigate to="/adminlogin" />}
+             />
             <Route
               exact path="/alleventsadmin"
-              element={admin ? <Allevents /> : <Navigate to="/alleventsadmin" />}
+              element={admin ? <Allevents /> :  <Navigate to="/adminlogin" />}
             />
             <Route
               exact path="/feedback"
               element={user ? <Feedbackk /> : <Navigate to="/feedback" />}
             />
             <Route
+              exact path="/selUserDate"
+              element={admin ? <DateForm /> : <Navigate to="/" />}
+            />
+            <Route
+              exact path="/selEventDate"
+              element={admin ? <DateFormEvent /> : <Navigate to="/" />}
+            />
+            <Route
               path="/scanner"
-              element={<Scanner /> }
+              element={user? <Scanner />  : <Navigate to="/login" />}
              
             />
             <Route
               path="/eventCards2"
-              element={<EventCards2/> }
+              element={user ?<EventCards2/>:<Navigate to="/login" /> }
              
             />
             
             <Route
              exact path="/allevents/eventdetails/:id"
-              element={user ||admin ? <EventDetails /> : <Navigate to="/allevents" />}
-            />
-            <Route path="/viewallattendance/:id"element={<Viewallattendance/> } />
-            <Route path="/viewfeedback/:id"element={<Viewfeedback/> } />
+             element={ <EventDetails /> }
+             />
+            <Route path="/viewallattendance/:id"element={admin?<Viewallattendance/> : <Navigate to="/adminlogin" />} />
+            <Route path="/viewfeedback/:id"element={admin?<Viewfeedback/> : <Navigate to="/adminlogin" />} />
             
             {/* <Route
              path="/"
@@ -107,7 +117,7 @@ function App() {
             /> */}
             <Route
               path="/alleventsadmin/editEvent/:eventId"
-              element={<EditEvent/>}
+              element={admin? <EditEvent/>: <Navigate to="/adminlogin" />}
             />
             {/* <Route
               path="/viewEvent/:eventId"
@@ -115,7 +125,7 @@ function App() {
             /> */}
             <Route
               path="/viewEvent/:id"
-              element={<EventDetails/>}
+              element={<EventDetails/> }
             />
             <Route
               path="/login"
@@ -128,15 +138,15 @@ function App() {
             />
               <Route
               path="/noti"
-              element={ <Notification />}
+              element={user? <Notification /> : <Navigate to="/login" />}
             />
             <Route
               path="/admin/ann"
-              element={ <AdminNotification /> }
+              element={admin? <AdminNotification />: <Navigate to="/adminlogin" /> }
             />
             <Route
               path="/admin/createann"
-              element={<Adminann /> }
+              element={admin? <Adminann /> : <Navigate to="/adminlogin" />}
             />
             <Route
               path="/resetPassword/:newToken"
@@ -148,24 +158,24 @@ function App() {
             />
             <Route
               path="/admin/ad"
-              element={<Home /> }
+              element={admin? <Home /> : <Navigate to="/adminlogin" />}
             />
             <Route
               path="/admin/allusers"
-              element={<AdminHome /> }
+              element={admin? <AdminHome />: <Navigate to="/adminlogin" /> }
             />
             <Route
             path="/createEvent"
-            element={<CreateEvent/>}
+            element={admin?<CreateEvent/>: <Navigate to="/adminlogin" />}
             />
             <Route
             path="/EventCards"
-            element={<EventCards/>}
+            element={user? <EventCards/>:<Navigate to="/login" />}
             />
 
             <Route
             path="/employment"
-            element={<Employment/>}
+            element={user? <Employment/> : <Navigate to="/login" />}
             />
             {/* <Route
             path="/dashboard"
@@ -181,7 +191,7 @@ function App() {
             />
             <Route
              exact path="/allevents/eventdetails/:id"
-              element={<EventDetails /> }
+              element={ <EventDetails /> }
             />
             <Route
               path="admin/allusers/view/:id"
@@ -193,22 +203,23 @@ function App() {
             />
             <Route
               path="alleventsadmin/eventdetails/:id"
-              element={<EventDetails/> }
+              element={<EventDetails/>  }
             />
             
             {/* <Route exact path="/view/:id" component={Details} /> */}
 
             <Route
             path="/viewAttendedEvents/:id"
-            element={<ViewAttend/>}
+            element={user? <ViewAttend/> : <Navigate to="/login" />}
             />
 
             <Route
 
             path="/survey/:eventId"
-            element={user? <Survey key={123}/>:<Login/>}
+            element={user? <Survey key={123}/>:  <Navigate to="/login" />}
              />
              </Routes>
+
              
 
       {/* </Wrapper> */}

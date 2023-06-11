@@ -267,12 +267,16 @@ const markAttendance = async (req, res) => {
         const eventobj = await Event.findById(event);
         const userobj = await User.findById(user);
         console.log(eventobj);
-        eventobj.attendants.push(user);
-        await eventobj.save()
-        userobj.eventsAttended.push(event);
-        userobj.save().then(function (user) {
-            res.status(200).json("Success");
-        });
+        if(eventobj.attendants.includes(user)){
+            res.status(400).json({ "error": "Already marked" });
+        } else {
+            eventobj.attendants.push(user);
+            await eventobj.save()
+            userobj.eventsAttended.push(event);
+            userobj.save().then(function (user) {
+                res.status(200).json("Success");
+            });
+        }
 
 
     } catch (error) {

@@ -25,7 +25,7 @@ const Details = () => {
 
     const getdata = async () => {
 
-        const res = await fetch(` http://localhost:4000/api/details/getdata/${id}`, {
+        const res = await fetch(` https://miracleachievers.shreeraj.me/backend/api/details/getdata/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -39,7 +39,7 @@ const Details = () => {
         // const data = await res.json();
         data.eventsAttended.forEach(async event => {
           console.log(event)
-          const edata = await fetch(`http://localhost:4000/api/event/get/${event}`, {
+          const edata = await fetch(`https://miracleachievers.shreeraj.me/backend/api/event/get/${event}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -66,7 +66,7 @@ const Details = () => {
 
     const deleteuser = async (id) => {
 
-        const res2 = await fetch(` http://localhost:4000/api/details/deleteuser/${id}`, {
+        const res2 = await fetch(` https://miracleachievers.shreeraj.me/backend/api/details/deleteuser/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"

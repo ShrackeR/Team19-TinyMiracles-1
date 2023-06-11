@@ -9,7 +9,7 @@ import { useAuthContext2 } from '../hooks/useAuthContext2'
 
 const AdminHome = () => {
   const [getuserdata, setUserdata] = useState([]);
-  const [filterStatus, setFilterStatus] = useState('');
+  const [filterStatus, setFilterStatus] = useState('ACTIVE');
 
   console.log(getuserdata);
   const { admin } = useAuthContext2()
@@ -18,7 +18,7 @@ const AdminHome = () => {
   const { updata, setUPdata } = useContext(updatedata);
 
   const getdata = async () => {
-    const res = await fetch('http://localhost:4000/api/details/getdata', {
+    const res = await fetch('https://miracleachievers.shreeraj.me/backend/api/details/getdata', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ const AdminHome = () => {
   }, []);
 
   const deleteuser = async (id) => {
-    const res2 = await fetch(`http://localhost:4000/api/details/deleteuser/${id}`, {
+    const res2 = await fetch(`https://miracleachievers.shreeraj.me/backend/api/details/deleteuser/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ const AdminHome = () => {
     }
   };
   const downloadCSV = () => {
-    fetch('http://localhost:4000/api/details/download',{headers: {
+    fetch('https://miracleachievers.shreeraj.me/backend/api/details/download',{headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${admin.token}`}
     })
@@ -141,15 +141,16 @@ const AdminHome = () => {
                   <td>{element.aadhar}</td>
                   <td>{element.gender}</td>
                   <td>{element.status}</td>
-                  <td className="d-flex justify-content-evenly">
+                  <td className="d-flex ">
                     <NavLink to={`view/${element._id}`}>
                       <button className="btn btn-success">
                         <RemoveRedEyeIcon />
                       </button>
                     </NavLink>
-                 {!(element.status=="Inactive")&&  <button className="btn btn-danger mr-7" onClick={() => deleteuser(element._id)}>
+                    <NavLink to="" >
+                 {!(element.status=="Inactive")&&  <button  className="btn btn-danger ml-7" onClick={() => deleteuser(element._id)}>
                       <DeleteOutlineIcon />
-                    </button>} 
+                    </button>} </NavLink>
                   </td>
                 </tr>
               ))}

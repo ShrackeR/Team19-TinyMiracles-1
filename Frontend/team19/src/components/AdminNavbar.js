@@ -79,6 +79,8 @@ const Navbar2 = () => {
         <Link to="/admin/allusers">All Users</Link>
         <Link to="/admin/createann">Create Announcement</Link>
         <Link to="/admin/ann">View Announcements</Link>
+        <Link to="/selUserDate">View User Analytics</Link>
+        <Link to="/selEventDate">View Event Analytics</Link>
         <li>
                   <button className="btn btn-primary" onClick={handleClick}>
                     Log out

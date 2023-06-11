@@ -173,42 +173,18 @@ const Home = () => {
   {/Start Footer/} */}
   <footer>
     <div className="text">
-      <h2>ABOUT Tiny Miracles</h2>
+    <h2 style={{color:"white"}}>ABOUT Tiny Miracles</h2>
       <div>
         <i className="fas fa-asterisk" />
       </div>
-      <p>
-      tell us ypur daily habits and we will tell you if you have risk of heart diseases
-      book appointments from our best doctors and nutritionalists,start your fitness journey,
-      get your BMI and suggested exercise routines and diet plans according to your fitness goals.,
-      also shop for your fitness needs
+      <p style={{color:"white"}}>
+      Along the way we hope to empower 1 million people to break out of their cycle of poverty. Once and for all.
+
+      We're based in Mumbai and Amsterdam. We get amazing people to make amazing products for amazing companies. 
+
+By creating a place in the economy for them and by fostering education and a sense of community, we empower people to get out (and stay out) of poverty for ever more.
       </p>
-    </div>
-    <div className="contact-container">
-      <div className="social-media">
-        <h3>Follow Along</h3>
-        <div className="links">
-          <a href="#">
-            <i className="fab fa-twitter" />
-          </a>
-          <a href="#">
-            <i className="fab fa-facebook-square" />
-          </a>
-          <a href="#">
-            <i className="fab fa-pinterest" />
-          </a>
-          <a href="#">
-            <i className="fab fa-linkedin-in" />
-          </a>
-        </div>
-      </div>
-      <div className="newsletter">
-        <h3>NewsLetter</h3>
-        <form method="post">
-          <input type="email" name="email" placeholder="Type Your Email" />
-          <i className="fas fa-envelope" />
-        </form>
-      </div>
+    
     </div>
   </footer>
   {/* {/End Footer/}
@@ -235,17 +211,9 @@ const Home = () => {
     <ul className="info">
       <li></li>
       <li>VJTI,Matunga</li>
-      <li>Tel: 123456789</li>
+      {/* <li>Tel: 123456789</li> */}
       <li>
 
-      </li>
-    </ul>
-    <ul className="CTA">
-      <li>
-        <a href="#">PERMISSIONS AND COPYRIGHT</a>
-      </li>
-      <li>
-        <a href="#">CONTACT THE TEAM</a>
       </li>
     </ul>
   </div>

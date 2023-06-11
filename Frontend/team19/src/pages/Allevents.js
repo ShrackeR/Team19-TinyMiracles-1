@@ -17,7 +17,7 @@ const Allevents = () => {
 //   const { updata, setUPdata } = useContext(updatedata);
 
   const getdata = async () => {
-    const res = await fetch('http://localhost:4000/api/event/getall', {
+    const res = await fetch('https://miracleachievers.shreeraj.me/backend/api/event/getall', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ const Allevents = () => {
   }, []);
 
   const deleteuser = async (id) => {
-    const res2 = await fetch(`http://localhost:4000/api/event/delete/${id}`, {
+    const res2 = await fetch(`https://miracleachievers.shreeraj.me/backend/api/event/delete/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ const Allevents = () => {
       console.log('error');
     } else {
       alert('user deleted');
-      getdata();
+      window.location.reload(false);
     }
   };
 
@@ -117,7 +117,7 @@ const Allevents = () => {
                   <td>{element.start}</td>
                   <td>{element.end}</td>
                   <td>{element.tag}</td>
-                  <td>{element.enabled}</td>
+                  <td>{element.enabled?"Active":"Inactive"}</td>
                   <td className="d-flex justify-content-evenly">
                     <NavLink to={`/allevents/eventdetails/${element._id}`}>
                       <button className="btn btn-success">
