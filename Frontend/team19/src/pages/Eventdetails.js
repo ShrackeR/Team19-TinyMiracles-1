@@ -394,7 +394,7 @@ function EventDetails() {
     
 
     // const { id } = useParams("");
-
+    
     
     const {id}=useParams("")
 
@@ -532,7 +532,7 @@ function EventDetails() {
         </center></div>
      
 
-{user && <section id="registration" class="section registration">
+{user && new Date(getuserdata.end) < new Date() && <section id="registration" class="section registration">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
