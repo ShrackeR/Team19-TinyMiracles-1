@@ -488,7 +488,7 @@ function EventDetails() {
     }
    
   return (
-    <>
+    <div style={{background:"#E6E6FA"}}>
     {/* <nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
     <div class="container">
         <div class="navbar-header">
@@ -527,49 +527,10 @@ function EventDetails() {
 </nav> */}
 
 <div className="intro">
-        <h2 style={{ color: 'black', fontFamily: 'Arial' }}>From {extractedDate} to {extractedEnd}</h2>
         <h1 style={{ color: 'bhite', fontFamily: 'Arial' }}>{getuserdata.title}</h1>
-      </div>
-
-{admin &&
-<section id="about" class="section about">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6">
-
-                {/* <h3 class="section-title">About Us</h3> */}
-
-                {/* <p>You've inspired new consumer, racked up click-thru's, blown-up brand enes. We can't give you back the weekends you worked, or erase the pain ebeing forced to make the logo bigger. But if you submit your best work we ajusts might be able to give the chance to show you best digital marketing.</p> */}
-                <p> <QrCode value={`event=${id}`}/> </p>
-                <figure>
-                    <img alt="" class="img-responsive" src="assets/images/about-us.jpg"/>
-                </figure>
-
-            </div>
-
-            <div class="col-sm-6">
-
-                {/* <h3 class="section-title multiple-title">What is Our Goal?</h3> */}
-
-                
-                <h4>Help user mark attendance</h4>
-               
-            <form onSubmit={handleSubmit}>
-      <label>
-        Aadhar Number:
-        <input
-          type="text"
-          value={aadhar}
-          onChange={(e) => setAadhar(e.target.value)}
-        />
-      </label>
-      <button type="submit" class="btn btn-primary">Submit</button>
-
-    </form>
-            </div>
-        </div>
-    </div>
-</section>}
+        <center><h2 style={{ color: 'black', fontFamily: 'Arial' }}>From {extractedDate} to {extractedEnd}</h2>
+        </center></div>
+     
 
 {user && <section id="registration" class="section registration">
     <div class="container">
@@ -701,7 +662,7 @@ function EventDetails() {
             <div class="col-md-4">
                 <div class="speaker">
                     
-                    <h4 style={{ width: "750px", float: "left", textAlign: "left" }}>{getuserdata.description}</h4>
+                <h4 style={{ width: "1000px", float: "left", textAlign: "left" }}>{getuserdata.description}</h4>
                     {/* <p>CEO of Peren</p> */}
                     
                 </div>
@@ -710,87 +671,52 @@ function EventDetails() {
     </div>
 </section>
 
-{admin && <section id="faq" class="section faq">
+{admin &&
+<section id="about" class="section about">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <h4 class="section-title"><Link to=
+            <div class="col-sm-6">
+
+                {/* <h3 class="section-title">About Us</h3> */}
+
+               
+                {/* <p>You've inspired new consumer, racked up click-thru's, blown-up brand enes. We can't give you back the weekends you worked, or erase the pain ebeing forced to make the logo bigger. But if you submit your best work we ajusts might be able to give the chance to show you best digital marketing.</p> */}
+                
+                <p> <QrCode value={`event=${id}`}/> </p>
+                <figure>
+                    <img alt="" class="img-responsive" src="assets/images/about-us.jpg"/>
+                </figure>
+
+            </div>
+
+            <div class="col-sm-6">
+
+                {/* <h3 class="section-title multiple-title">What is Our Goal?</h3> */}
+
+                
+                <h4>Help user mark attendance</h4>
+               
+            <form onSubmit={handleSubmit}>
+      <label>
+        Aadhar Number:
+        <input
+          type="text"
+          value={aadhar}
+          onChange={(e) => setAadhar(e.target.value)}
+        />
+      </label>
+      <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+            </div>
+        </div>
+        <h4 class="section-title"><Link to=
          {"/viewallattendance/"+id}>View Attendance</Link></h4>
          
          <h4 class="section-title"><Link to=
          {"/viewfeedback/"+id}>View Feedback</Link></h4>
-            </div>
-        </div>
-        {/* <div class="row">
-            <div class="col-md-12">
-                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                    
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingOne">
-                            <h4 class="panel-title">
-                                <a class="faq-toggle collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> What is the price of the ticket ?</a>
-                            </h4>
-                        </div>
-
-                        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                            <div class="panel-body">
-                                <h3>Hello</h3>
-                                <p>Lorem Ipsum</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingTwo">
-                            <h4 class="panel-title">
-                                <a class="faq-toggle collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> What is included in my ticket ?</a>
-                            </h4>
-                        </div>
-
-                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                            <div class="panel-body">Hello</div>
-                        </div>
-                    </div>
-
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingThree">
-                            <h4 class="panel-title">
-                                <a class="faq-toggle collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"> Office address ?</a>
-                            </h4>
-                        </div>
-
-                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                            <div class="panel-body">Hello</div>
-                        </div>
-                    </div>
-
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingFour">
-                            <h4 class="panel-title">
-                                <a class="faq-toggle collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour"> How should I dress ?</a>
-                            </h4>
-                        </div>
-
-                        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                            <div class="panel-body">Hello</div>
-                        </div>
-                    </div>
-
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingFive">
-                            <h4 class="panel-title">
-                                <a class="faq-toggle collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive"> I have specific questions that are not addressed here. Who can help me ?</a>
-                            </h4>
-                        </div>
-
-                        <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
-                            <div class="panel-body">Hello</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> */}
     </div>
+
 </section>}
 
 
@@ -808,7 +734,7 @@ function EventDetails() {
     </div>
 </section>
 
-</>
+</div>
   );
 }
 
