@@ -166,7 +166,7 @@ function App() {
             />
             <Route
             path="/createEvent"
-            element={admin?<CreateEvent/>: <Navigate to="/adminlogin" />}
+            element={amdin?<CreateEvent/>: <Navigate to="admin/" />}
             />
             <Route
             path="/EventCards"
