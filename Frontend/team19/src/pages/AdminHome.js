@@ -18,7 +18,7 @@ const AdminHome = () => {
   const { updata, setUPdata } = useContext(updatedata);
 
   const getdata = async () => {
-    const res = await fetch('https://miracleachievers.shreeraj.me/backend/api/details/getdata', {
+    const res = await fetch('http://localhost:4000/api/details/getdata', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ const AdminHome = () => {
   }, []);
 
   const deleteuser = async (id) => {
-    const res2 = await fetch(`https://miracleachievers.shreeraj.me/backend/api/details/deleteuser/${id}`, {
+    const res2 = await fetch(`http://localhost:4000/api/details/deleteuser/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ const AdminHome = () => {
     }
   };
   const downloadCSV = () => {
-    fetch('https://miracleachievers.shreeraj.me/backend/api/details/download',{headers: {
+    fetch('http://localhost:4000/api/details/download',{headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${admin.token}`}
     })

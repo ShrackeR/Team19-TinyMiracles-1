@@ -72,7 +72,7 @@
 //        await createEvent(eventData);
 
 //        setTimeout(function() {
-//         fetch(`https://miracleachievers.shreeraj.me/backend/api/event/surveyform`, {
+//         fetch(`http://localhost:4000/api/event/surveyform`, {
 //       method: 'POST',
 //       headers: {
 //         'Content-Type': 'application/json',
@@ -507,7 +507,7 @@ const CreateEvent=()=>{
        await createEvent(eventData);
 
     //    setTimeout(function() {
-    //     fetch(`https://miracleachievers.shreeraj.me/backend/api/event/surveyform`, {
+    //     fetch(`http://localhost:4000/api/event/surveyform`, {
     //   method: 'POST',
     //   headers: {
     //     'Content-Type': 'application/json'

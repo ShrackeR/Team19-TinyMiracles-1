@@ -10,7 +10,7 @@ export const useSignup2 = () => {
     setIsLoading(true);
     setError(null);
     console.log(email);
-    const response = await fetch(" https://miracleachievers.shreeraj.me/backend/api/admin/adminsignup", {
+    const response = await fetch(" http://localhost:4000/api/admin/adminsignup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password,name,gender,address,phone}),

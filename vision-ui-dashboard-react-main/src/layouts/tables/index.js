@@ -73,7 +73,7 @@ function Function({ job, org }) {
 }
 
 function setEventStatus(id, status) {
-  fetch("https://miracleachievers.shreeraj.me/backend/api/event/delete/" + id, {
+  fetch("http://localhost:4000/api/event/delete/" + id, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -106,7 +106,7 @@ function Tables() {
   const [feedbacks, setFeedbacks] = useState({});
   const [surveys, setSurveys] = useState([]);
   const getFeedback = async () => {
-    const response = await fetch("https://miracleachievers.shreeraj.me/backend/api/event/getallfeedback", {
+    const response = await fetch("http://localhost:4000/api/event/getallfeedback", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -122,7 +122,7 @@ function Tables() {
   // end.setDate(end.getDate());
 
   const getData = async () => {
-    const response = await fetch("https://miracleachievers.shreeraj.me/backend/api/event/getall", {
+    const response = await fetch("http://localhost:4000/api/event/getall", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -133,7 +133,7 @@ function Tables() {
     seteduDone(1);
   };
   const getSurveys = async () => {
-    const response = await fetch("https://miracleachievers.shreeraj.me/backend/api/event/getallsurvey", {
+    const response = await fetch("http://localhost:4000/api/event/getallsurvey", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

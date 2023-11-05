@@ -19,7 +19,7 @@ const EditEvent = (props) => {
 
   });
   useEffect(() => {
-    const response = fetch("https://miracleachievers.shreeraj.me/backend/api/event/get/"+id).then(res => {
+    const response = fetch("http://localhost:4000/api/event/get/"+id).then(res => {
       return res.json();
 
     }).then(data => {

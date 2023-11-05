@@ -15,7 +15,7 @@ const Adminann = () => {
     // await createannouncement(announcement);
     const ann = { announcement };
 
-    fetch('https://miracleachievers.shreeraj.me/backend/api/admin/ann', {
+    fetch('http://localhost:4000/api/admin/ann', {
       method: 'POST',
       headers: {        'Content-Type': 'application/json',
       'Authorization': `Bearer ${admin.token}`},

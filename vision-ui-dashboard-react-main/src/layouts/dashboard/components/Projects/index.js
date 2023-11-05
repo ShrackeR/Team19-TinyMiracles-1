@@ -105,7 +105,7 @@ function Projects(token,startp,endp) {
   const closeMenu = () => setMenu(null);
 
   const getEvents = async () => {
-    const response = await fetch("https://miracleachievers.shreeraj.me/backend/api/event/getall", {
+    const response = await fetch("http://localhost:4000/api/event/getall", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -116,7 +116,7 @@ function Projects(token,startp,endp) {
   };
 
   const getRatings = async () => {
-    const response = await fetch("https://miracleachievers.shreeraj.me/backend/api/event/ratings", {
+    const response = await fetch("http://localhost:4000/api/event/ratings", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -127,7 +127,7 @@ function Projects(token,startp,endp) {
   };
 
   const getFeedback = async () => {
-    const response = await fetch("https://miracleachievers.shreeraj.me/backend/api/event/getallsurvey", {
+    const response = await fetch("http://localhost:4000/api/event/getallsurvey", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

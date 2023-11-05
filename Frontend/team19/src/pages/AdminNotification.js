@@ -6,7 +6,7 @@ const {admin}=useAuthContext2()
   const[ notifi, setNotifi]= useState("")
   useEffect(() => {
     const fetchNotifi = async () => {
-      const response = await fetch('https://miracleachievers.shreeraj.me/backend/api/user/notification')
+      const response = await fetch('http://localhost:4000/api/user/notification')
       const json = await response.json()
   
       if (response.ok) {
@@ -18,7 +18,7 @@ const {admin}=useAuthContext2()
   },[])
   const handleClick = async (not) => {
       console.log("Inside handleclick",not)
-    const response = await fetch(' https://miracleachievers.shreeraj.me/backend/api/admin/delnotification/' + not._id, {
+    const response = await fetch(' http://localhost:4000/api/admin/delnotification/' + not._id, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

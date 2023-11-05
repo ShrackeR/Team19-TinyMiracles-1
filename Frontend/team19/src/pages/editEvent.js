@@ -85,7 +85,7 @@ const EditEvent = (props) => {
     console.log("evd"+eventData.tag)
 
     setSuccess(0);
-    const response = await fetch('https://miracleachievers.shreeraj.me/backend/api/event/update/'+eventId, {
+    const response = await fetch('http://localhost:4000/api/event/update/'+eventId, {
       method: 'PUT',
       headers: { 
         'Content-Type': 'application/json' ,

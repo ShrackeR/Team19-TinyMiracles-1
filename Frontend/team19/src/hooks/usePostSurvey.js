@@ -10,7 +10,7 @@ export const usePostSurvey=()=>{
       console.log(formData)
       
       setSuccess(0);
-    const response = await fetch(' https://miracleachievers.shreeraj.me/backend/api/event/postsurvey/:id', {
+    const response = await fetch(' http://localhost:4000/api/event/postsurvey/:id', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({ eventId:formData.eventId,
