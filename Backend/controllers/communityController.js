@@ -1,4 +1,4 @@
-const User = require("../models/userModel");
+const Community = require("../models/communityModel");
 // const Register = require("../models/registerModel");
 // const FeesAllotment = require("../models/feesAllotmentModel");
 const { resetPassword } = require("../utils/emailTemplates");
@@ -13,24 +13,23 @@ const createToken = (_id) => {
 //   cloud_name: "ddyiex0z8",
 //   api_key: "616962189132742",
 //   api_secret: "s_7ldYcshqnuvBz7PnYj8E6S9fI",
-
 //   secure: true,
 // });
-// login a user
-const loginUser = async (req, res) => {
+// login a community
+const loginCommunity = async (req, res) => {
   console.log(req.body);
-  const { aadhar, password } = req.body;
+  const { email, password } = req.body;
  
 
   try {
-    const user = await User.login(aadhar, password);
+    const community = await Community.login(email, password);
 
     // create a token
-    const token = createToken(user._id);
-    const id=user._id;
-    const gender = user.gender;
-    const name = user.name;
-    const mobile = user.number;
+    const token = createToken(community._id);
+    const id=community._id;
+    // const gender = community.gender;
+    const name = community.name;
+    const mobile = community.number;
     console.log(token,id,name);
     res.status(200).json({token,name,id});
   } catch (error) {
@@ -39,10 +38,10 @@ const loginUser = async (req, res) => {
   }
 };
 
-// signup a user
+// signup a community
 // const feesUpload = async (req, res) => {
 //   const { name, feesReceipt, prevAllot } = req.body;
-//   console.log("inside feesUpload userctrller");
+//   console.log("inside feesUpload communityctrller");
 
 //   try {
 //     var options = {
@@ -82,7 +81,7 @@ const loginUser = async (req, res) => {
 //   }
 // };
 
-// const registerUser = async (req, res) => {
+// const registerCommunity = async (req, res) => {
 //   const {
 //     name,
 //     course,
@@ -160,104 +159,72 @@ const loginUser = async (req, res) => {
 //     res.status(200).json({ name });
 //   } catch (error) {
 //     console.log(
-//       "error inside in catch usercontroller register user ",
+//       "error inside in catch communitycontroller register community ",
 //       error.message
 //     );
 //     res.status(400).json({ error: error.message });
 //   }
 // };
 
-const signupUser = async (req, res) => {
+const signupCommunity = async (req, res) => {
   console.log(req.body)
   const {
     name,
-    aadhar,
     isPanCard,
     pan,
-    isEshram,
-    eshram,
     mobile,
-    dob,
     email,
     area,
     street,
     city,
     state,
     pin,
+    location,
     password,
-    familyFriends,
     isBankAccount,
     bankName,
     accountNumber,
-    ifsc,
-    medicalTestFrequency,
-    lastCheckup,
-    diseases,
-    numberOfChildren,
-    needChildEducationAssistance,
-    needEmploymentSupport,
-    educationLevel,
-    skillset,
-    interests,
-    eventsAttended,
-    community,
-    gender,status
+    ifsc
   } = req.body;
-
+  console.log(location)
   try {
-    const user = await User.signup(
-      name,
-      aadhar,
-      isPanCard,
-      pan,
-      isEshram,
-      eshram,
-      mobile,
-      dob,
-      email,
-      area,
-      street,
-      city,
-      state,
-      pin,
-      password,
-      familyFriends,
-      isBankAccount,
-      bankName,
-      accountNumber,
-      ifsc,
-      medicalTestFrequency,
-      lastCheckup,
-      diseases,
-      numberOfChildren,
-      needChildEducationAssistance,
-      needEmploymentSupport,
-      educationLevel,
-      skillset,
-      interests,
-      eventsAttended,
-      community,
-      gender,status
+    const community = await Community.signup(
+        name,
+        isPanCard,
+        pan,
+        mobile,
+        email,
+        area,
+        street,
+        city,
+        state,
+        pin,
+        location,
+        password,
+        isBankAccount,
+        bankName,
+        accountNumber,
+        ifsc
     );
 
     res.status(200).json({
       name,
     });
   } catch (error) {
-    console.log("inside signup user catch", error.message);
+    console.log("inside signup community catch", error.message);
     res.status(400).json({ error: error.message });
   }
 };
 
 const forgotPassword = async (req, res) => {
-  const { aadhar } = req.body;
+  const { pan } = req.body;
 
   try {
-    const user = await User.forgot(aadhar);
-    console.log(user,"hey");
+    const community = await Community.forgot(pan);
+    console.log(community,"hey");
     const newToken = jwt.sign(
       {
-        _id: user._id,
+        _id: community._id,
       },
       process.env.JWT_RESET_PW_KEY,
       {
@@ -265,7 +232,7 @@ const forgotPassword = async (req, res) => {
       }
     );
     console.log(newToken,"Hi");
-    const emailTemplate = resetPassword(user.email, newToken);
+    const emailTemplate = resetPassword(community.email, newToken);
     console.log("bye")
     sendEmail(emailTemplate);
     res.status(200).json({
@@ -281,9 +248,9 @@ const ResetPassword = async (req, res) => {
   const { newpassword, confirmpassword } = req.body;
   try {
     const decoded = jwt.verify(newToken, process.env.JWT_RESET_PW_KEY);
-    console.log(decoded, "inside resetpassoword in usercontroller");
+    console.log(decoded, "inside resetpassoword in communitycontroller");
 
-    const user = await User.reset(decoded._id, newpassword, confirmpassword);
+    const community = await Community.reset(decoded._id, newpassword, confirmpassword);
     res.status(200).json({
       status: true,
       message: "Password changed successfully",
@@ -296,19 +263,19 @@ const viewAttended=async(req,res)=>{
   const {id}=req.params;
   try{
 
-    const user=await User.findById({_id:id});
-    res.status(200).json(user);
+    const community=await Community.findById({_id:id});
+    res.status(200).json(community);
   }catch(err){
     res.status(400).json({ error: error.message }); 
   }
 
 
 }
-const getuser=async(req,res)=>{
+const getcommunity=async(req,res)=>{
   try{
       const {id}=req.params;
-      const user=await User.findById({_id:id});
-      res.status(200).json(user);
+      const community=await Community.findById({_id:id});
+      res.status(200).json(community);
 
 
 
@@ -319,13 +286,33 @@ const getuser=async(req,res)=>{
 
 }
 
+
+const allcommunities = async (req, res) => {
+
+  try {
+      Community.find({}).then(function (events) {
+          events.map((event) => {
+              event.createdAt = event._id.getTimestamp();
+              // event.save();
+          });
+          res.send(events);
+      });
+      //   res.status(200).json("Success" );
+  } catch (error) {
+      res.status(400).json({ error: error.message });
+      console.log(error.message)
+  }
+};
+
+
 module.exports = {
-  signupUser,
-  // registerUser,
-  loginUser,
+  signupCommunity,
+  // registerCommunity,
+  loginCommunity,
   forgotPassword,
   ResetPassword,
   viewAttended,
-  getuser
+  getcommunity,
+  allcommunities
   // feesUpload,
 };

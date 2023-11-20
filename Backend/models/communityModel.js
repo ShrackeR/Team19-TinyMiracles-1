@@ -45,15 +45,16 @@ const communitySchema = new Schema({
   },
   location: {
     type: {
-      type: String,
-      enum: ['Point'],
-      default: 'Point',
+      type: String, // Don't do `{ location: { type: String } }`
+      enum: ['Point'], // 'location.type' must be 'Point'
+      required: true
     },
     coordinates: {
       type: [Number],
-      required: true,
+      required: true
     }
-},
+  },
+   
   password: {
     type: String,
     required: true,
@@ -90,6 +91,7 @@ communitySchema.statics.signup = async function (
   city,
   state,
   pin,
+  location,
   password,
   isBankAccount,
   bankName,
@@ -105,7 +107,8 @@ communitySchema.statics.signup = async function (
     !area ||
     !city ||
     !state ||
-    !pin 
+    !pin ||
+    !location
   ) {
     throw Error("All fields must be filled");
   }
@@ -130,6 +133,7 @@ communitySchema.statics.signup = async function (
     city,
     state,
     pin,
+    location,
     password : hash,
     isBankAccount,
     bankName,
@@ -141,14 +145,14 @@ communitySchema.statics.signup = async function (
 };
 
 // static login method
-communitySchema.statics.login = async function ( pan,password) {
-  if (!pan || !password) {
+communitySchema.statics.login = async function ( email,password) {
+  if (!email || !password) {
     throw Error("All fields must be filled");
   }
 
-  const Community = await this.findOne({ pan });
+  const Community = await this.findOne({ email });
   if (!Community) {
-    throw Error("Incorrect Aadhar Number");
+    throw Error("Incorrect Email");
   }
 
   const match = await bcrypt.compare(password, Community.password);

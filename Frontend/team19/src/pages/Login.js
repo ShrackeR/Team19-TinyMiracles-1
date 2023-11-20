@@ -104,7 +104,7 @@ const Login = () => {
   <MapPicker defaultLocation={location}
     zoom={zoom}
     mapTypeId="roadmap"
-    style={{height:'700px'}}
+    style={{height:'20rem'}}
     onChangeLocation={handleChangeLocation} 
     onChangeZoom={handleChangeZoom}
     apiKey='AIzaSyD07E1VvpsN_0FvsmKAj4nK9GnLq-9jtj8'/>
