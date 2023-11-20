@@ -38,7 +38,7 @@ const Login = () => {
       console.log("Longitude is :", position.coords.longitude);
       latt=position.coords.latitude;
       longg=position.coords.longitude;
-      setLocation(latt,longg)
+      handleChangeLocation(latt,longg)
     });
   }
   
