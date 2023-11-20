@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLogin } from "../hooks/useLogin";
 import { Link } from "react-router-dom";
 import Wrapper from "../components/Wrrapper";
+import MapPicker from 'react-google-map-picker'
 
 const Login = () => {
   const [aadhar, setAadhar] = useState("");
@@ -13,7 +14,35 @@ const Login = () => {
 
     await login(aadhar, password);
   };
+  const DefaultLocation = { lat: 70, lng: 20};
+  const DefaultZoom = 10;
+  const [defaultLocation, setDefaultLocation] = useState(DefaultLocation);
 
+  const [location, setLocation] = useState(defaultLocation);
+  const [zoom, setZoom] = useState(DefaultZoom);
+
+  function handleChangeLocation (lat, lng){
+    setLocation({lat:lat, lng:lng});
+  }
+  
+  function handleChangeZoom (newZoom){
+    setZoom(newZoom);
+  }
+
+  var latt, longg;
+  function handleResetLocation(){
+    setDefaultLocation({ ... DefaultLocation});
+    setZoom(DefaultZoom);
+    navigator.geolocation.getCurrentPosition(function(position) {
+      console.log("Latitude is :", position.coords.latitude);
+      console.log("Longitude is :", position.coords.longitude);
+      latt=position.coords.latitude;
+      longg=position.coords.longitude;
+      setLocation(latt,longg)
+    });
+  }
+  
+  
   return (
 
     <Wrapper>
@@ -56,7 +85,7 @@ const Login = () => {
         <p className="forgot-password text-right">
         <Link to="/forgotPassword">Forgot Password ?</Link>
         </p>
-       
+      
         <div>
           {isLoading && (
             <div>
@@ -67,7 +96,18 @@ const Login = () => {
         </div>
         {error && <div className="error">{error}</div>}
       </form>
-
+      <button onClick={handleResetLocation}>Get Location</button>
+  <label>Latitute:</label><input type='text' value={location.lat} disabled/>
+  <label>Longitute:</label><input type='text' value={location.lng} disabled/>
+  <label>Zoom:</label><input type='text' value={zoom} disabled/>
+  
+  <MapPicker defaultLocation={location}
+    zoom={zoom}
+    mapTypeId="roadmap"
+    style={{height:'700px'}}
+    onChangeLocation={handleChangeLocation} 
+    onChangeZoom={handleChangeZoom}
+    apiKey='AIzaSyD07E1VvpsN_0FvsmKAj4nK9GnLq-9jtj8'/>
     </Wrapper>
 
   
