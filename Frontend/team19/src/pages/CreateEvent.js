@@ -409,7 +409,7 @@
 
 
 
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useCreateEvent } from "../hooks/useCreateEvent";
 import Wrapper from "../components/Wrrapper";
 import { useParams } from "react-router-dom";
@@ -432,6 +432,23 @@ const CreateEvent=()=>{
 
     });
     // const {id}=useParams("")
+    const [allCommunities, setAllCommunities] = useState([]);
+
+  useEffect(() => {
+    // Fetch data from the allcommunities API
+    const fetchCommunities = async () => {
+      try {
+        const response = await fetch('http://localhost:4000/api/community/getall');
+        const data = await response.json();
+        const names = data.map(item => item.name);
+        setAllCommunities(names); 
+      } catch (error) {
+        console.error('Error fetching communities:', error);
+      }
+    };
+
+    fetchCommunities();
+  }, []); 
     console.log(eventData);
     const handleQuestionsChange = (e, index) => {
       const { value } = e.target;
@@ -565,16 +582,22 @@ const CreateEvent=()=>{
       </div>
      
       <div className="mb-3">
-        Locality:
-        <input
-          type="text"
-          name="location"
-          value={eventData.location}
-          onChange={handleChange}
-          className="form-control"
-          placeholder="Enter locality of event"
-        />
-      </div>
+        Select Community
+         
+          <select
+            name="community"
+            value={eventData.community}
+            onChange={handleChange}
+            className="form-control"
+          >
+            <option value="">Select Community</option>
+            {allCommunities.map((community) => (
+              <option key={community} value={community}>
+                {community}
+              </option>
+            ))}
+          </select>
+        </div>
      
       <div className="mb-3">
         Address:
