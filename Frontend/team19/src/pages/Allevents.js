@@ -100,7 +100,7 @@ const Allevents = () => {
               <tr className="table-dark">
                 <th scope="col">id</th>
                 <th scope="col">Name</th>
-                <th scope="col">Location</th>
+                <th scope="col">Community</th>
                 <th scope="col">start</th>
                 <th scope="col">end</th>
                 <th scope="col">tags</th>

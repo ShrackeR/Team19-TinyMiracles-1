@@ -1,8 +1,19 @@
 const mongoose = require('mongoose');
 const announcementSchema = new mongoose.Schema({
-    announcement: {
+    title: {
         type: String,
         required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    community: {
+        type: String,
+        required: true
+    },
+    createdAt: {
+        type: Date,
     }
 })
 

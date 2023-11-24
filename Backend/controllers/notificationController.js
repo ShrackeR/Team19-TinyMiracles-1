@@ -65,33 +65,34 @@ const deletenotification = async (req, res) => {
 
 // create new workout
 const createannouncement = async (req, res) => {
-  const {announcement} = req.body
-  console.log(req.body)
-  let emptyFields = []
+  const { title, description, community } = req.body; // Updated to include title, description, and community
+  console.log(req.body);
+  let emptyFields = [];
 
-  if(!announcement) {
-    emptyFields.push('announcement')
+  if (!title) {
+    emptyFields.push('title');
   }
-//   if(!load) {
-//     emptyFields.push('load')
-//   }
-//   if(!reps) {
-//     emptyFields.push('reps')
-//   }
-  if(emptyFields.length > 0) {
-    return res.status(400).json({ error: 'Please fill in all the fields', emptyFields })
+  if (!description) {
+    emptyFields.push('description');
+  }
+  if (!community) {
+    emptyFields.push('community');
+  }
+  if (emptyFields.length > 0) {
+    return res.status(400).json({ error: 'Please fill in all the fields', emptyFields });
   }
 
   // add doc to db
   try {
     // const user_id = req.user._id
-    const ann = await Announcement.create({announcement})
-    res.status(200).json(ann)
+    const ann = await Announcement.create({ title, description, community, createdAt: new Date() }); // Updated to include the new fields
+    res.status(200).json(ann);
   } catch (error) {
     console.log(error);
-    res.status(400).json({error: error.message})
+    res.status(400).json({ error: error.message });
   }
-}
+};
+
 
 // delete a workout
 // const deleteWorkout = async (req, res) => {
