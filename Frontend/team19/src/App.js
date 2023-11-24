@@ -31,6 +31,7 @@ import EventCards from "./pages/eventCards";
 import FlaskForm from "./pages/FlaskForm";
 import Layout from "./components/Layout";
 import "./components/Navbar3.css";
+import CommunityLogin from "./pages/CommunityLogin.js";
 
 import ViewAttend from "./pages/ViewAttend";
 // import Wrapper from "./components/Wrrapper";
@@ -43,6 +44,7 @@ import Employment from "./pages/Employment";
 import Survey from "./pages/Survey";
 // import Feedback from "react-bootstrap/esm/Feedback";
 import EventCards2 from "./pages/eventCards2";
+import Signup3 from "./pages/CommunitySignup.js";
 function App() {
   const { user } = useAuthContext();
   const { admin } = useAuthContext2();
@@ -218,6 +220,15 @@ function App() {
             path="/survey/:eventId"
             element={user? <Survey key={123}/>:  <Navigate to="/login" />}
              />
+
+            <Route
+              path="/communitylogin"
+              element={<CommunityLogin /> }
+              />
+               <Route
+              path="/communitysignup"
+              element={<Signup3 /> }
+              />
              </Routes>
 
              
