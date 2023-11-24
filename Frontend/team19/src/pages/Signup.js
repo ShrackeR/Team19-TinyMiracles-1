@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useSignup } from '../hooks/useSignup';
 import Wrapper from '../components/Wrrapper';
 import classes from'./signup.module.css'
@@ -189,7 +189,23 @@ const Signup = () => {
       };
     });
   };
+  const [allCommunities, setAllCommunities] = useState([]);
 
+  useEffect(() => {
+    // Fetch data from the allcommunities API
+    const fetchCommunities = async () => {
+      try {
+        const response = await fetch('http://localhost:4000/api/community/getall');
+        const data = await response.json();
+        const names = data.map(item => item.name);
+        setAllCommunities(names); 
+      } catch (error) {
+        console.error('Error fetching communities:', error);
+      }
+    };
+
+    fetchCommunities();
+  }, []); 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
 
@@ -896,17 +912,22 @@ const renderForm = () => {
           className="form-control"
         />
       </div> */}
-      <div className="mb-3">
-      <span style={{ color: 'red' }}>*</span> <FormattedMessage id="community" />
-        <input
-          type="text"
-          name="community"
-          value={formData.community}
-          onChange={handleChange}
-          className="form-control"
-          placeholder="Enter Community"
-        />
-      </div>
+       <div className="mb-3">
+          <span style={{ color: 'red' }}>*</span> <FormattedMessage id="community" />
+          <select
+            name="community"
+            value={formData.community}
+            onChange={handleChange}
+            className="form-control"
+          >
+            <option value="">Select Community</option>
+            {allCommunities.map((community) => (
+              <option key={community} value={community}>
+                {community}
+              </option>
+            ))}
+          </select>
+        </div>
       </IntlProvider>
 
         </div>
