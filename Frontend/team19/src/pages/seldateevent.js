@@ -41,7 +41,7 @@ const DateFormEvent = () => {
       </label>
       <br />
       <br />
-      <Link className='btn btn-primary' target='_blank' to={"http://13.235.113.174:3001/tables/"+admin.token+"/"+startDate+"/"+endDate}>View Event Analytics</Link>
+      <Link className='btn btn-primary' target='_blank' to={"http://localhost:3001/tables/"+admin.token+"/"+startDate+"/"+endDate}>View Event Analytics</Link>
       {/* <button type="submit">Submit</button> */}
     </form>
     </Wrapper>

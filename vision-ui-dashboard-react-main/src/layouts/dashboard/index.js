@@ -72,6 +72,7 @@ function Dashboard() {
   // // console.log(queryParameters.get("token"),"queryParameters")
   // const token = queryParameters.get("token")
   // const { admin } = useAuthContext2();
+  console.log("Hiii")
   const {token,startp,endp} = useParams();
   console.log(token,startp,endp);
   let start = new Date(startp);
@@ -334,7 +335,6 @@ function Dashboard() {
   console.log(data);
   return (
     <DashboardLayout>
-      {/* <DashboardNavbar /> */}
       <VuiBox py={3}>
         <Card style={{ marginBottom: "1.5vw", }}>
           <VuiTypography variant="lg" color="white" fontWeight="bold" mb="5px">
@@ -577,7 +577,7 @@ function Dashboard() {
         </Grid>
       </VuiBox>
       <Footer />
-    </DashboardLayout>
+      </DashboardLayout>
   );
 }
 

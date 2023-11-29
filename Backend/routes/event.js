@@ -28,7 +28,7 @@ router.get('/getall',allevents)
 
 router.post('/feedback/:id',createfeedback)
 
-router.use(requireAuth2);
+// router.use(requireAuth2);
 router.get('/getfeedback/:id',getfeedback)
 router.get('/getallfeedback',getallfeedback)
 router.get('/getallsurvey',getallsurvey)
