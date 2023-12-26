@@ -160,6 +160,28 @@ const getcommunity=async(req,res)=>{
 
 }
 
+const getnearcommunity=async(req,res)=>{
+  try{
+      const {location,distance}=req.body;
+      const community=await Community.aggregate([
+        {
+          $geoNear: {
+          near: [parseFloat(location['coordinates'][0]),parseFloat(location['coordinates'][1])],
+          key: "location",
+          distanceField: "dist.calculated",
+          spherical: true
+        }
+      }
+      ]);
+      res.status(200).json(community);
+
+  }
+  catch(err){
+    res.status(400).json({ err: err.message }); 
+  }
+
+}
+
 
 const allcommunities = async (req, res) => {
 
@@ -187,6 +209,7 @@ module.exports = {
   ResetPassword,
   viewAttended,
   getcommunity,
-  allcommunities
+  allcommunities,
+  getnearcommunity
   // feesUpload,
 };

@@ -128,6 +128,9 @@ const Navbar = () => {
                   <Link to="/flask">Need Help?</Link>
                 </li>
                 <li>
+                  <Link to="/nearngo">Locate Nearby NGOs</Link>
+                </li>
+                <li>
                   <Link to="/noti">Messages</Link>
                 </li>
                 <li>

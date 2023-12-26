@@ -45,6 +45,8 @@ import Survey from "./pages/Survey";
 // import Feedback from "react-bootstrap/esm/Feedback";
 import EventCards2 from "./pages/eventCards2";
 import Signup3 from "./pages/CommunitySignup.js";
+import NearNgo from "./pages/NearNgo.js";
+
 function App() {
   const { user } = useAuthContext();
   const { admin } = useAuthContext2();
@@ -69,6 +71,10 @@ function App() {
           <Route
               path="/"
               element={user ? <Home /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/nearngo"
+              element={ <NearNgo  />}
             />
             
             <Route
