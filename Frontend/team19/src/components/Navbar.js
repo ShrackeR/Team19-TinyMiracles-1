@@ -118,17 +118,20 @@ const Navbar = () => {
               <><li>
                 <Link to="/" className="navbar-brand">
         {/* <img id="logoImg-n" src={myImg} alt="Logo" />  */}
-        Tiny Miracles
+        Home Page
         </Link>
               </li>
                 <li>
-                  <span className="hi" style={{color:"blue"}}>Hi!! {user.name}</span>
+                  <p className="hi" style={{color:"blue",margin:"15px"}}>Hi {user.name}!!</p>
                 </li>
-                <li>
+                {/* <li>
                   <Link to="/flask">Need Help?</Link>
+                </li> */}
+                <li>
+                  <Link to="/nearngo">Locate Nearby NGOs</Link>
                 </li>
                 <li>
-                  <Link to="/noti">Messages</Link>
+                  <Link to="/noti">Notifications</Link>
                 </li>
                 <li>
                   <Link to="/EventCards">View All Events</Link>
@@ -139,9 +142,9 @@ const Navbar = () => {
                 <li>
                   <Link to={`/viewAttendedEvents/${userid}`}>View attended events</Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link to="/employment">Job opportunities</Link>
-                </li>
+                </li> */}
                 <li>
                   <button className="btn btn-primary" onClick={handleClick}>
                     Log out

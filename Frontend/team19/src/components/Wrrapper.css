@@ -27,7 +27,7 @@ body {
   
   h1,h2,h3,h4,h5,h6,label,span {
     font-weight: 500;
-    font-family: 'Fira Sans', sans-serif;
+    font-family: 'Times New Roman', sans-serif;
   }
   
   body, html, .App, #root, .auth-wrapper {

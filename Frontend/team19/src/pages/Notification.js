@@ -42,16 +42,18 @@ const Notification = () => {
     className="p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-gray-800 dark:text-blue-400"
     role="alert"
   >
-    <span className="fontmedium">Notification alert! 
-</span> Behold!!!
+    <h1>Notification alert! 
+</h1>
 <br/>
 <br/>
 <div>
 {notifi && notifi.map((not) => (
   <div key={not._id}>
-  <div  >
-    {not.announcement}
-  </div>
+  <h2>{not.title} at {not.community}</h2>
+<div >
+  
+  {not.description}
+</div>
   {/* <button className="material-symbols-outlined" onClick={()=>handleClick(not)}>delete</button> */}
   <br/>
   <br/>

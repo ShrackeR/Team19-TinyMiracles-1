@@ -278,6 +278,7 @@ function Dashboard() {
   nosf = ((nosf / female) * 100).toFixed(2);
   let perEmployed = parseInt((employed / adult) * 100);
   let perEmployedChange = perEmployed - parseInt((oemployed / oadult) * 100);
+  // console.log(parseInt((oemployed / oadult) * 100) + " " + oadult)
   let perEmployedColor = perEmployedChange < 0 ? "error" : "success";
   perEmployedChange = perEmployedChange < 0 ? "" + perEmployedChange : "+" + perEmployedChange;
   let totEduNo = totalEdu.reduce((a, b) => a + b, 0);

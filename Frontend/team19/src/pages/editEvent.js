@@ -27,7 +27,7 @@ const EditEvent = (props) => {
 
   });
   useEffect(() => {
-    const response = fetch("/api/event/get/" + eventId).then(res => {
+    const response = fetch("http://localhost:4000/api/event/get/" + eventId).then(res => {
       return res.json();
 
     }).then(data => {

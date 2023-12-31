@@ -219,7 +219,9 @@ function Projects(token,startp,endp) {
 
 
   })
+  console.log(ratings, "rating");
   Object.keys(ratings).map((item) => {
+    console.log(item, "item",item[0]);
     sum = 0;
     ratings[item].map((rating) => {
       sum += rating;

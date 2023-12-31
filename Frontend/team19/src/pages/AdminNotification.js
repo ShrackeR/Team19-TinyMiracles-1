@@ -3,7 +3,7 @@ import { useAuthContext2 } from '../hooks/useAuthContext2'
 
 const Notification = () => {
 const {admin}=useAuthContext2()
-  const[ notifi, setNotifi]= useState("")
+  const[ notifi, setNotifi]= useState([])
   useEffect(() => {
     const fetchNotifi = async () => {
       const response = await fetch('http://localhost:4000/api/user/notification')
@@ -11,7 +11,7 @@ const {admin}=useAuthContext2()
   
       if (response.ok) {
         setNotifi(json)
-        console.log(notifi)
+        console.log(json)
       }
     }
     fetchNotifi()
@@ -46,15 +46,17 @@ const {admin}=useAuthContext2()
     className="p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-gray-800 dark:text-blue-400"
     role="alert"
   >
-    <span className="fontmedium">Notification alert! 
-</span> Behold!!!
+    <span className="fontmedium"><h1> Notification alert! </h1>
+</span> 
 <br/>
 <br/>
 <div>
 {notifi && notifi.map((not) => (
   <div key={not._id}>
+    <h2>{not.title} at {not.community}</h2>
   <div >
-    {not.announcement}
+    
+    {not.description}
   </div>
   <button className="material-symbols-outlined" onClick={()=>handleClick(not)}>delete</button>
   <br/>

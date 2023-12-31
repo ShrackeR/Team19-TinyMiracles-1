@@ -124,7 +124,7 @@ const EventCards = (props) => {
 
 
 
-    let currurl = "https://shreeraj.me/allevents/eventdetails/";
+    let currurl = "http://127.0.0.1:3000/allevents/eventdetails/";
     let title = "Check out this event on Tiny Miracles!";
 
     {
@@ -161,7 +161,8 @@ const EventCards = (props) => {
                                         <div className="details">
                                             <div style={{ justifyContent: "space-between", display: "flex" }}>
                                                 <h3>
-                                                    {item.name}, {item.location}
+                                                {item.name}
+                                                    {/* {item.name}, {item.location} */}
                                                 </h3>
                                                 {!item.like?<FaRegHeart style={{ color: "red" }} onClick={() => { toggleLike(item._id,item.like); item.like? alert(item.name+" unliked!") :alert(item.name+" liked!"); item.like=!item.like; }} />:<FaHeart style={{ color: "red" }} onClick={() => { toggleLike(item._id,item.like); item.like=!item.like;}} />}
                                             </div>

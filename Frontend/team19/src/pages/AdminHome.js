@@ -6,6 +6,8 @@ import { NavLink } from 'react-router-dom';
 import { adddata, deldata } from '../context/ContextProvider';
 import { updatedata } from '../context/ContextProvider';
 import { useAuthContext2 } from '../hooks/useAuthContext2'
+import PDFGenerator from './PDFGenerator';
+
 
 const AdminHome = () => {
   const [getuserdata, setUserdata] = useState([]);
@@ -93,11 +95,11 @@ const AdminHome = () => {
   const filteredData = filterStatus
     ? getuserdata.filter((element) => element.status === filterStatus)
     : getuserdata;
-
+    
   return (
     <>
       <div class="col main pt-3 mt-1">
-        <h3>User Details:</h3>
+        <h1>User Details:</h1>
       {udata && (
         <div class="alert alert-success alert-dismissible fade show" role="alert">
           <strong>{udata.name}</strong> added succesfully!
@@ -122,15 +124,16 @@ const AdminHome = () => {
             </select>
           </div>
           <button onClick={downloadCSV}>Download CSV</button>
+          <PDFGenerator data={filteredData} />
           <table className="table">
             <thead>
               <tr className="table-light">
-                <th scope="col">id</th>
+                <th scope="col">Sr. No.</th>
                 <th scope="col">Name</th>
-                <th scope="col">AadharNo</th>
+                <th scope="col">Aadhar No</th>
                 <th scope="col">Gender</th>
                 <th scope="col">Status</th>
-                <th scope="col"></th>
+                <th scope="col">View / Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -139,14 +142,15 @@ const AdminHome = () => {
                   <th scope="row">{id + 1}</th>
                   <td>{element.name}</td>
                   <td>{element.aadhar}</td>
-                  <td>{element.gender}</td>
-                  <td>{element.status}</td>
+                  <td style={{textTransform:"capitalize"}}>{element.gender}</td>
+                  <td style={{textTransform:"uppercase"}}>{element.status}</td>
                   <td className="d-flex ">
                     <NavLink to={`view/${element._id}`}>
                       <button className="btn btn-success">
                         <RemoveRedEyeIcon />
                       </button>
                     </NavLink>
+                    &nbsp;&nbsp;&nbsp;
                     <NavLink to="" >
                  {!(element.status=="Inactive")&&  <button  className="btn btn-danger ml-7" onClick={() => deleteuser(element._id)}>
                       <DeleteOutlineIcon />

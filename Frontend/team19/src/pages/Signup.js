@@ -941,24 +941,24 @@ return (
   <Wrapper>
       <form onSubmit={handleSubmit} style={{margin:"50px"}}>
         {/* Tab navigation */}
-        <div className="btn-group">
+        <div className="btn-group" style={{fontWeight:'bold',fontSize:'3px', width:'100%',justifyContent:'space-around'}}>
           <div style={{cursor: "pointer"}}
             variant={activeTab === 1 ? 'primary'  : 'secondary'} 
             onClick={() => handleTabClick(1)}
           >
-            Personal Information
+            | Personal Information |
           </div>
           <div style={{cursor: "pointer"}}
             variant={activeTab === 2 ? 'primary' : 'secondary'}
             onClick={() => handleTabClick(2)}
           >
-            Analytical Information
+            | Analytical Information |
           </div>
           <div style={{cursor: "pointer"}}
             variant={activeTab === 3 ? 'primary' : 'secondary'}
             onClick={() => handleTabClick(3)}
           >
-            Additional Information
+            | Additional Information |
           </div>
         </div>
 

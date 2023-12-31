@@ -7,9 +7,9 @@ html, body {
     padding: 0;
     margin: 0;
     outline: none;
-    font-family: Roboto, Arial, sans-serif;
+    font-family: 'Times New Roman', Times, serif;
     font-size: 16px;
-    color: #666;
+    /* color: #666; */
     }
     h1 {
     padding: 10px 0;
@@ -83,19 +83,6 @@ html, body {
     input[type=radio]:checked + label:after {
     opacity: 1;
     }
-    input[type=text], input[type=password] {
-    width: calc(100% - 57px);
-    height: 36px;
-    margin: 13px 0 0 -5px;
-    padding-left: 10px; 
-    border-radius: 0 5px 5px 0;
-    border: solid 1px #cbc9c9; 
-    box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
-    background: #fff; 
-    }
-    input[type=password] {
-    margin-bottom: 15px;
-    }
     #icon {
     display: inline-block;
     padding: 9.3px 15px;
@@ -124,7 +111,4 @@ html, body {
     }
     p{
         font-size: 1rem;
-    }
-    h3{
-        margin-left: 3rem;
     }

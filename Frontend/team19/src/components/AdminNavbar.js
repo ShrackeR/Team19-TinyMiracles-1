@@ -73,7 +73,8 @@ const Navbar2 = () => {
 
 <div class="sidebar">
         <Link to="/admin/ad">Home</Link>
-        <Link to="/flask">Need Help?</Link>
+        {/* <Link to="/flask">Need Help?</Link> */}
+        <Link to="/communitysignup">Create Community</Link>
         <Link to="/createEvent">Create New Event</Link>
         <Link to="/alleventsadmin">View Events</Link>
         <Link to="/admin/allusers">All Users</Link>

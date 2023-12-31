@@ -3,7 +3,7 @@ import QrCode from "react-qr-code";
 import React, { useState, useEffect}  from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
-import Feedbackk from "./Feedback";
+import Feedbackk from "../pages/Feedback";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useAuthContext2 } from "../hooks/useAuthContext2";
 import speaker1 from "../assets/images/speakers/speaker-1.jpg";
@@ -13,7 +13,9 @@ import speaker4 from "../assets/images/speakers/speaker-4.jpg";
 import speaker5 from "../assets/images/speakers/speaker-5.jpg";
 import speaker6 from "../assets/images/speakers/speaker-6.jpg";
 import "../assets/css/main.css";
+import image from './PB9auk.png';
 import {useParams, useNavigate } from "react-router-dom";
+import { height } from "@mui/system";
 function EventDetails() {
     const { user } = useAuthContext();
     const { admin } = useAuthContext2();
@@ -119,8 +121,8 @@ function EventDetails() {
     }
    
   return (
-    <div className="post-page">
-    <div style={{background:"#E6E6FA"}}>
+    <div style={{ backgroundImage:`url(${image})`}}>
+    <div >
     {/* <nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
     <div class="container">
         <div class="navbar-header">
@@ -161,17 +163,28 @@ function EventDetails() {
 <div className="texts">
     
         <h1 style={{ color: 'Black', fontweight: 'bold', fontSize: '80px'}}>{getuserdata.title}</h1>
-        <center><h2 style={{ color: 'black', fontFamily: 'Arial' }}>From {extractedDate} to {extractedEnd}</h2>
+        <center><h2 style={{ color: 'black', fontFamily: 'Arial' }}>🕑 When: {extractedDate.toUpperCase()}</h2>
         </center></div>
      
+        <section id="speakers" class="section speakers" style={{padding:'20px 0'}}>
+    <div class="content" style={{marginLeft:"100px",textAlign:"justify",textJustify:'inter-word',fontFamily:"Times New Roman"}}>
+        
+                <h2 class="section-title">Description</h2>
+            
 
-{user && new Date(getuserdata.end) < new Date() && <section id="registration" class="section registration">
-    <div class="summary">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="section-title">Please provide a feedback</h3>
-            </div>
+                
+
+                <div class="speaker" style={{margin:0}}>
+                    
+                <p style={{ float: "left", textAlign: "justify", marginRight:'100px' , textTransform:'none',color:'black', fontSize:'20px'}}>{getuserdata.description}</p>
+                    {/* <p>CEO of Peren</p> */}
+                    
+           
         </div>
+    </div>
+</section>
+{user && new Date(getuserdata.end) < new Date() && <section id="registration"  style={{padding:0}} class="section registration">
+    <div class="summary">
             
        
 
@@ -222,35 +235,10 @@ function EventDetails() {
     </div>
 </section> */}
 
-<section id="speakers" class="section speakers">
-    <div class="content">
-        
-                <h4 class="section-title" >Description</h4>
-            
-           
 
-        
-                    
-
-                    
-                    
-
-                
-
-            <div class="col-md-4">
-                <div class="speaker">
-                    
-                <h4 style={{ width: "1000px", float: "left", textAlign: "left" }}>{getuserdata.description}</h4>
-                    {/* <p>CEO of Peren</p> */}
-                    
-                </div>
-           
-        </div>
-    </div>
-</section>
 
 {admin &&
-<section id="about" class="section about">
+<section id="about" class="section about" style={{padding:0}}>
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
@@ -277,22 +265,23 @@ function EventDetails() {
             <form onSubmit={handleSubmit}>
       <label>
         Aadhar Number:
-        <input
+        
+      </label>
+      <input style={{width:'webkit-fill-available'}}
           type="text"
           value={aadhar}
           onChange={(e) => setAadhar(e.target.value)}
         />
-      </label>
       <button type="submit" class="btn btn-primary">Submit</button>
 
     </form>
             </div>
         </div>
-        <h4 class="section-title"><Link to=
-         {"/viewallattendance/"+id}>View Attendance</Link></h4>
+        <button class="btn btn-primary"><Link style={{color:'white'}} to=
+         {"/viewallattendance/"+id}>View Attendance</Link></button>
          
-         <h4 class="section-title"><Link to=
-         {"/viewfeedback/"+id}>View Feedback</Link></h4>
+         <button class="btn btn-primary"><Link  style={{color:'white'}}  to=
+         {"/viewfeedback/"+id}>View Feedback</Link></button>
     </div>
 
 </section>}

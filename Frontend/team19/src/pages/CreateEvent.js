@@ -550,7 +550,7 @@ const CreateEvent=()=>{
     return (<>
     <Wrapper>
     <form onSubmit={handleSubmit}>
-      <h3>Fill Event Details</h3>
+      <h1 >New Event</h1>
       <div className="mb-3">
         Title:
         <input
@@ -705,7 +705,7 @@ const CreateEvent=()=>{
         />
       </div>
       <div className="mb-3">
-       Axpected attendants:
+       Expected attendants:
         <input
           type="number"
           name="expectedAttendance"

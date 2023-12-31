@@ -26,13 +26,6 @@ img {
     font-weight: normal;
     margin: 0 0 -55px;
 } */
-h1, h3 {
-    font-family: "Source Code Pro", sans-serif;
-    font-size: 47px;
-    font-weight: bold;
-    letter-spacing: 9.4px;
-    margin: 0 0 15px;
-}
 p {
     color: #515151;
     line-height: 27px;
@@ -83,9 +76,6 @@ button, .dots > div, header nav .toggle, header .arrow-down, .menu .box-model .c
 }
 .dots .active, header nav.active, header nav.active .toggle.active span, header nav .toggle span, header .navigation-bar .underline, header .text .arrow .left, header .text .arrow .right, header .text .button button, .contact form button {
     background-color: #fff;
-}
-h1, h3, header .navigation-bar a, header .text span, .menu .box-model .close:hover, footer .text h2, footer .text p, footer .social-media .links a, .contact .text i, .contact .form form button {
-    color: black;
 }
 header nav, header .navigation-bar.show, header .navigation-bar a:hover .underline, header .navigation-bar li.active .underline, header .text .arrow .left:after, .menu .box-model, .copyright .arrow-up {
     left: 0;
@@ -673,7 +663,7 @@ footer .newsletter i {
   
 }
 .auth-inner {
-  width: 40%;
+  width: 60%;
   margin-top: 10vw;
   /* margin: auto; */
   background: #ffffff;

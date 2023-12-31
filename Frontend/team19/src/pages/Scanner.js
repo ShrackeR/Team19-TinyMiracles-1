@@ -68,10 +68,12 @@ const Scanner = () => {
         // Process the response data further if needed
       } else {
         // Handle error case
-        alert('Error:', response.status);
+        alert('Error: Already Marked!');
+        <Navigate to="/" />
       }
     } catch (error) {
-      alert('Error:', error);
+      alert('Error:Already Marked!');
+      <Navigate to="/" />
     }
   };
 

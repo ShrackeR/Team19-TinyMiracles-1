@@ -5,7 +5,7 @@ let resetPassword = (email, token) => {
     to: email,
     subject: "Password reset for " + email,
     text:
-      "Password Reset Link: " + "localhost:3000/" + "resetPassword/" + token,
+      "Password Reset Link: " + "http://localhost:3000/" + "resetPassword/" + token,
   };
   return emailTemplate;
 };

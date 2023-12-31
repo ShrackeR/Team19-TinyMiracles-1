@@ -63,9 +63,9 @@ const StartNavbar = () => {
                 <li>
                   <Link to="/adminlogin">Admin Login</Link>
                 </li>
-               <li>
+               {/* <li>
                <Link to="/communitylogin">Community Login</Link>
-               </li>
+               </li> */}
               </>
            
           </ul>

@@ -207,8 +207,8 @@ const renderForm = () => {
       return (
         <IntlProvider locale={locale} messages={messages[locale]}>
 
-        <div style={{margin:"50px"}}>
-        <div>
+        <div className="mb-3" style={{margin:"50px"}}>
+        <div className="mb-3">
           <label htmlFor="locale">Select Language:</label>
           <select id="locale" value={locale} onChange={handleLocaleChange}>
             <option value="en">English</option>
@@ -427,8 +427,9 @@ const renderForm = () => {
             <IntlProvider locale={locale} messages={messages[locale]}>
                 <div>
                 
-                <div style={{ width: '550px', height: '550px' }}>
-  <button onClick={handleResetLocation}>Get Location</button>
+                <div  className="mb-3">
+                <div className="d-grid">
+                  <button  className="btn btn-primary" onClick={handleResetLocation}>Get Location</button></div>
   <div>
     <label>Latitude: {location.lat}</label>
   </div>
@@ -470,25 +471,25 @@ return (
   <Wrapper>
       <form onSubmit={handleSubmit} >
         {/* Tab navigation */}
-        <div className="btn-group">
+        <div className="btn-group" style={{fontWeight:'bold',fontSize:'3px', width:'100%',justifyContent:'space-around'}}>
           <div style={{cursor: "pointer"}}
             variant={activeTab === 1 ? 'primary'  : 'secondary'} 
             onClick={() => handleTabClick(1)}
           >
-            Community Information |  
+           | Community Information |  
           </div>
           <div style={{cursor: "pointer"}}
             variant={activeTab === 2 ? 'primary' : 'secondary'}
             onClick={() => handleTabClick(2)}
           >
-            Analytical Information  |  
+            | Analytical Information  |  
           </div>
           <div
        style={{cursor: "pointer"}}
         className={`tab ${activeTab === 3 ? 'primary' : 'secondary'}`}
         onClick={() => handleTabClick(3)}
       >
-            Select Location
+            | Select Location |
           </div>
         </div>
 
@@ -496,7 +497,9 @@ return (
          {renderForm()}
 
          {/* Submit button */}
-         <button type="submit" variant="primary">Submit</button>
+         <div className="d-grid">
+         <button type="submit"  className="btn btn-primary">Submit</button>
+         </div>
        </form>
      </Wrapper>);
 };

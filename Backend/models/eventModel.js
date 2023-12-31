@@ -65,7 +65,7 @@ const eventSchema = new Schema({
     survey: [{
         type: String
     }],
-    positiveRes:{
+    rating:{
         type:Number,
         default:0
     },

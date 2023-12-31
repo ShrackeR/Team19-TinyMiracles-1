@@ -130,7 +130,7 @@ const Allevents = () => {
                   <CreateIcon />
                 </button>
                 </NavLink>
-
+                &nbsp;&nbsp;&nbsp;
                  {!(element.status=="Inactive")&&  <button className="btn btn-danger mr-7" onClick={() => deleteuser(element._id)}>
                       <DeleteOutlineIcon />
                     </button>} 

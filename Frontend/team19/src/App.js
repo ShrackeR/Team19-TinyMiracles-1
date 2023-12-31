@@ -19,7 +19,7 @@ import Allevents from "./pages/Allevents";
 import Notification from "./pages/Notification";
 import AdminNotification from "./pages/AdminNotification";
 import Adminann from "./pages/Adminann";
-import EventDetails from "./pages/Eventdetails";
+import EventDetails from "./event/Eventdetails";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
 import DateForm from "./pages/seldate";
@@ -30,9 +30,10 @@ import EventCards from "./pages/eventCards";
 // import Hindi from "./Hindi"
 import FlaskForm from "./pages/FlaskForm";
 import Layout from "./components/Layout";
-import "./components/Navbar3.css";
+// import "./components/Navbar3.css";
 import CommunityLogin from "./pages/CommunityLogin.js";
 
+import NearNgo from "./pages/NearNgo.js";
 import ViewAttend from "./pages/ViewAttend";
 // import Wrapper from "./components/Wrrapper";
 // import Home from "./pages/Home";
@@ -104,6 +105,11 @@ function App() {
               path="/eventCards2"
               element={user ?<EventCards2/>:<Navigate to="/login" /> }
              
+            />
+            
+            <Route
+              path="/nearngo"
+              element={ <NearNgo  />}
             />
             
             <Route
@@ -223,7 +229,7 @@ function App() {
 
             <Route
               path="/communitylogin"
-              element={<CommunityLogin /> }
+              element={admin?<CommunityLogin />: <Navigate to="/adminlogin" /> }
               />
                <Route
               path="/communitysignup"

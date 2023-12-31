@@ -2,7 +2,7 @@ const express = require('express')
 // const { getannouncement } = require('../controllers/notificationController')
 
 // controller functions
-const { loginCommunity,signupCommunity,forgotPassword,ResetPassword,viewAttended,getcommunity,allcommunities} = require('../controllers/communityController')
+const { loginCommunity,signupCommunity,forgotPassword,ResetPassword,viewAttended,getcommunity,allcommunities, getnearcommunity} = require('../controllers/communityController')
 const { getannouncement } = require('../controllers/notificationController')
 // const { default: ViewAttended } = require('../../Frontend/team19/src/pages/ViewAttended')
 
@@ -31,6 +31,7 @@ router.get('/viewAttendedEvents/:id',viewAttended);
 
 router.get('/get/:id',getcommunity);
 router.get('/getall',allcommunities);
+router.post('/getnear',getnearcommunity);
 
 // // signup route
 // router.post('/feesupload',feesUpload)
