@@ -53,7 +53,7 @@ const Scanner = () => {
     try {
       console.log(result.text,"yoo");
 
-      const response = await fetch(`http://localhost:4000/api/event/markAttendance?${result.text}&user=${user.id}`, {
+      const response = await fetch(`http://35.244.31.186:8080/api/event/markAttendance?${result.text}&user=${user.id}`, {
         method: 'GET',
         // Add any additional headers or options if required
       });

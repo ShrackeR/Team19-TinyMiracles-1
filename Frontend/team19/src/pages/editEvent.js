@@ -27,7 +27,7 @@ const EditEvent = (props) => {
 
   });
   useEffect(() => {
-    const response = fetch("http://localhost:4000/api/event/get/" + eventId).then(res => {
+    const response = fetch("http://35.244.31.186:8080/api/event/get/" + eventId).then(res => {
       return res.json();
 
     }).then(data => {
@@ -85,7 +85,7 @@ const EditEvent = (props) => {
     console.log("evd"+eventData.tag)
 
     setSuccess(0);
-    const response = await fetch('http://localhost:4000/api/event/update/'+eventId, {
+    const response = await fetch('http://35.244.31.186:8080/api/event/update/'+eventId, {
       method: 'PUT',
       headers: { 
         'Content-Type': 'application/json' ,

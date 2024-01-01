@@ -41,14 +41,14 @@ import {
 
 function toggleLike(id, status) {
     if (status === true) {
-        fetch("http://localhost:4000/api/event/unlike/" + id, {
+        fetch("http://35.244.31.186:8080/api/event/unlike/" + id, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             }
         }).then((res) => res.json());
     } else {
-        fetch("http://localhost:4000/api/event/like/" + id, {
+        fetch("http://35.244.31.186:8080/api/event/like/" + id, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -73,7 +73,7 @@ const EventCards = (props) => {
         setOpen(false);
     };
     const getData = async () => {
-        const response = await fetch("http://localhost:4000/api/event/getall", {
+        const response = await fetch("http://35.244.31.186:8080/api/event/getall", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"

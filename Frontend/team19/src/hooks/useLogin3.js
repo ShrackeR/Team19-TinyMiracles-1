@@ -10,7 +10,7 @@ export const useLogin3 = () => {
     setIsLoading(true)
     setError(null)
 
-    const response = await fetch('http://localhost:4000/api/community/login', {
+    const response = await fetch('http://35.244.31.186:8080/api/community/login', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({ email, password })

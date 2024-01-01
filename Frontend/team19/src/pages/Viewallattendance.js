@@ -8,7 +8,7 @@ function Viewallattendance() {
     const [getuserdata, setUserdata] = useState([]);
     const getdata = async () => {
 
-        const res = await fetch(`http://localhost:4000/api/event/get/${id}`, {
+        const res = await fetch(`http://35.244.31.186:8080/api/event/get/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"

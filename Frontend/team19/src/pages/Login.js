@@ -21,7 +21,8 @@ const Login = () => {
     <Wrapper>
 
        <form onSubmit={handleSubmit}>
-        <h3>Sign In</h3>
+        <h3 style={{textAlign:'center'}}>Sign In</h3>
+        {error && <div  style={{textAlign:"center",fontWeight:'bold',color:'red',fontSize:'20px'}}  className="error">{error}</div>}
         <div className="mb-3">
           <label>Aadhar</label>
           <input
@@ -52,12 +53,12 @@ const Login = () => {
             Submit
           </button>
         </div>
-        <p className="forgot-password text-left">
+        <div style={{justifyContent:'space-between',display:'flex'}} ><p style={{width:'max-content',display:'inline'}} className="forgot-password text-left">
         <Link to="/signup">Don't have account ?</Link>
         </p>
-        <p className="forgot-password text-right">
+        <p  className="forgot-password text-right">
         <Link to="/forgotPassword">Forgot Password ?</Link>
-        </p>
+        </p></div>
       
         <div>
           {isLoading && (
@@ -67,7 +68,7 @@ const Login = () => {
             </div>
           )}
         </div>
-        {error && <div className="error">{error}</div>}
+        
       </form>
  
     </Wrapper>

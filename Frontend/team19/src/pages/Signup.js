@@ -195,7 +195,7 @@ const Signup = () => {
     // Fetch data from the allcommunities API
     const fetchCommunities = async () => {
       try {
-        const response = await fetch('http://localhost:4000/api/community/getall');
+        const response = await fetch('http://35.244.31.186:8080/api/community/getall');
         const data = await response.json();
         const names = data.map(item => item.name);
         setAllCommunities(names); 

@@ -43,7 +43,7 @@ const ViewAttend=()=>{
     // const [loading,setloading]=useState(false);
     useEffect(()=>{
         const fetchData= async()=>{
-              const response = await fetch(`http://localhost:4000/api/user/viewAttendedEvents/${id}`);
+              const response = await fetch(`http://35.244.31.186:8080/api/user/viewAttendedEvents/${id}`);
               const data = await response.json();
               setUserData(data);
         }

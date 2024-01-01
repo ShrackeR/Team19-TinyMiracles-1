@@ -17,7 +17,7 @@ const Allevents = () => {
 //   const { updata, setUPdata } = useContext(updatedata);
 
   const getdata = async () => {
-    const res = await fetch('http://localhost:4000/api/event/getall', {
+    const res = await fetch('http://35.244.31.186:8080/api/event/getall', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ const Allevents = () => {
   }, []);
 
   const deleteuser = async (id) => {
-    const res2 = await fetch(`http://localhost:4000/api/event/delete/${id}`, {
+    const res2 = await fetch(`http://35.244.31.186:8080/api/event/delete/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

@@ -56,7 +56,7 @@ const NearNgo = () => {
   async function handleNgoLocation(e) {
     e.preventDefault(); // Prevent the default form submission
     console.log(formData);
-    const res = await fetch(`http://localhost:4000/api/community/getnear`, {
+    const res = await fetch(`http://35.244.31.186:8080/api/community/getnear`, {
       method: 'POST',
       body: JSON.stringify(formData),
       headers: {

@@ -26,7 +26,7 @@ const Survey=(props)=>{
 
     // const questions=['have you created your banck account','will you want further session on financial litteracy','Are you satisfied with session','have you follow your daily checkup routine','do you know about investing']
     // console.log((eventId[eventId]));
-    const api="http://localhost:4000/api/event/get/"+eventId;
+    const api="http://35.244.31.186:8080/api/event/get/"+eventId;
                 console.log(api);
    useEffect(()=>{
     console.log("inside useEffect")

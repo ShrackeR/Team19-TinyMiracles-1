@@ -72,7 +72,7 @@
 //        await createEvent(eventData);
 
 //        setTimeout(function() {
-//         fetch(`http://localhost:4000/api/event/surveyform`, {
+//         fetch(`http://35.244.31.186:8080/api/event/surveyform`, {
 //       method: 'POST',
 //       headers: {
 //         'Content-Type': 'application/json',
@@ -438,7 +438,7 @@ const CreateEvent=()=>{
     // Fetch data from the allcommunities API
     const fetchCommunities = async () => {
       try {
-        const response = await fetch('http://localhost:4000/api/community/getall');
+        const response = await fetch('http://35.244.31.186:8080/api/community/getall');
         const data = await response.json();
         const names = data.map(item => item.name);
         setAllCommunities(names); 
@@ -524,7 +524,7 @@ const CreateEvent=()=>{
        await createEvent(eventData);
 
     //    setTimeout(function() {
-    //     fetch(`http://localhost:4000/api/event/surveyform`, {
+    //     fetch(`http://35.244.31.186:8080/api/event/surveyform`, {
     //   method: 'POST',
     //   headers: {
     //     'Content-Type': 'application/json'

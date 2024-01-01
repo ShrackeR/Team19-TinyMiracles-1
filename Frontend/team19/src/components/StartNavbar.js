@@ -2,15 +2,14 @@ import { Link } from "react-router-dom";
 import './Navbar3.css';
 import { Nav, Navbar, NavLink } from "react-bootstrap";
 
-
 const StartNavbar = () => {
-   
- 
-    return (
 
-        <>
-       {/* <div className="App"> */}
-        {/* <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+
+  return (
+
+    <>
+      {/* <div className="App"> */}
+      {/* <nav className="navbar navbar-expand-lg navbar-light fixed-top">
           <div className="container">
             <Link className="navbar-brand" to={'/homepage'}>
               Tiny Miracles
@@ -33,7 +32,7 @@ const StartNavbar = () => {
             </div>
           </div>
         </nav> */}
-        {/* <Navbar collapseOnSelect expand="sm" bg="light" variant="light">
+      {/* <Navbar collapseOnSelect expand="sm" bg="light" variant="light">
             <Navbar.Toggle aria-controls="navbarScroll" data-bs-toggle="collapse" data-bs-target="#navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
                 <Nav>
@@ -45,35 +44,43 @@ const StartNavbar = () => {
         </Navbar>
 
         </div> */}
+      
+      <div className="sidebar">
+        <ul>
 
-<div className="sidebar">
-      <ul>
-            
-              <><li>
-                <Link to="/" className="navbar-brand">
-        {/* <img id="logoImg-n" src={myImg} alt="Logo" />  */}
-        Tiny Miracles
-        </Link>
-              </li>
-                
-                
-                <li>
-                  <Link to="/login">User login</Link>
-                </li>
-                <li>
-                  <Link to="/adminlogin">Admin Login</Link>
-                </li>
-               {/* <li>
+          <><li>
+            <Link to="/" className="navbar-brand">
+              {/* <img id="logoImg-n" src={myImg} alt="Logo" />  */}
+              Tiny Miracles
+            </Link>
+          </li>
+
+
+            <li>
+              <Link to="/login">User login</Link>
+            </li>
+            <li>
+              <Link to="/adminlogin">Admin Login</Link>
+            </li>
+            {/* <li>
                <Link to="/communitylogin">Community Login</Link>
                </li> */}
-              </>
-           
-          </ul>
+          </>
+
+        </ul>
+        <ul style={{ bottom: 0, position: 'absolute',width:'100%' }}>
+          <li>
+            <Link to="/donate">Donate Us!</Link>
+            
+
+            
+          </li>
+        </ul>
       </div>
     </>
-    
-      
-      );
+
+
+  );
 }
- 
+
 export default StartNavbar;

@@ -46,6 +46,7 @@ import Survey from "./pages/Survey";
 // import Feedback from "react-bootstrap/esm/Feedback";
 import EventCards2 from "./pages/eventCards2";
 import Signup3 from "./pages/CommunitySignup.js";
+import Donate from "./pages/donate.js";
 function App() {
   const { user } = useAuthContext();
   const { admin } = useAuthContext2();
@@ -193,6 +194,10 @@ function App() {
               path="/adminlogin"
               element={!admin ? <AdminLogin /> : <Navigate to="/admin/ad" />}
               />
+              <Route
+               path="/donate"
+               element={<Donate/>}
+               />
               <Route
               path="/adminsignup"
               element={!admin ? <AdminSignup /> : <Navigate to="/admin/ad" />}

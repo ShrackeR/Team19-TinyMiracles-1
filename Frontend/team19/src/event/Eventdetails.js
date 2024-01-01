@@ -44,7 +44,7 @@ function EventDetails() {
       // You can use fetch or any other HTTP library to send the Aadhar number as the request body
       // Example:
       console.log(aadhar);
-      fetch(`http://localhost:4000/api/event/markAttendanceaadhar/${id}`, {
+      fetch(`http://35.244.31.186:8080/api/event/markAttendanceaadhar/${id}`, {
         method: 'POST',
         body: JSON.stringify({ aadhar }),
         headers: {
@@ -71,7 +71,7 @@ function EventDetails() {
       }; 
     const getdata = async () => {
 
-        const res = await fetch(`http://localhost:4000/api/event/get/${id}`, {
+        const res = await fetch(`http://35.244.31.186:8080/api/event/get/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -98,7 +98,7 @@ function EventDetails() {
     const extractedEnd = new Date(getuserdata.end).toLocaleString('en-IN');
     const deleteuser = async (id) => {
 
-        const res2 = await fetch(` http://localhost:4000/api/event/delete/${id}`, {
+        const res2 = await fetch(` http://35.244.31.186:8080/api/event/delete/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",

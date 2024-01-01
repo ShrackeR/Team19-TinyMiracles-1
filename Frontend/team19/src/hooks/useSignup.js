@@ -14,7 +14,7 @@ export const useSignup = () => {
       console.log(formData)
       
       setSuccess(0);
-    const response = await fetch(' http://localhost:4000/api/user/signup', {
+    const response = await fetch(' http://35.244.31.186:8080/api/user/signup', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({ name: formData.name,

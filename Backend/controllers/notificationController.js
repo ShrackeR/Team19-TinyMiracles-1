@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const Announcement = require('../models/announcementModel')
+const Announcement = require('../models/announcementmodel')
 // const Complain = require('../models/complainModel')
 
 

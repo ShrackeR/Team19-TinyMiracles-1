@@ -12,7 +12,7 @@ export const useResetPassword = () => {
 
     
     const response = await fetch(
-      `http://localhost:4000/api/user/resetPassword/${params.newToken}`,
+      `http://35.244.31.186:8080/api/user/resetPassword/${params.newToken}`,
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },

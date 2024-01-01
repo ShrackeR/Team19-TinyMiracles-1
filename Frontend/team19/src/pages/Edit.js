@@ -129,7 +129,7 @@ const Edit = () => {
 
     const getdata = async () => {
 
-        const res = await fetch(` http://localhost:4000/api/details/getdata/${id}`, {
+        const res = await fetch(` http://35.244.31.186:8080/api/details/getdata/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -191,7 +191,7 @@ const Edit = () => {
               community,
               gender} = formData;
 
-        const res2 = await fetch(` http://localhost:4000/api/details/updateuser/${id}`,{
+        const res2 = await fetch(` http://35.244.31.186:8080/api/details/updateuser/${id}`,{
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
